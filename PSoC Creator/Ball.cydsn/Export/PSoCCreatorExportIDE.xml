@@ -127,23 +127,19 @@
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBUART_Dp_aliases.h</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBUART_Dp.c</File>
           <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\USBUART_Dp.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Count_1_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Count_1.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Count_1.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Counter.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Counter.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Counter_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_PWM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_PWM.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_PWM_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Count_2_aliases.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Count_2.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Count_2.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Timer.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Timer.h</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Timer_PM.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Timer_Interrupt.c</File>
-          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Timer_Interrupt.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch_2_aliases.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch_2.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch_2.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch2_Timer.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch2_Timer.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch2_Timer_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch2_Timer_Interrupt.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Ch2_Timer_Interrupt.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Connection_Timer.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Connection_Timer.h</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Connection_Timer_PM.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Connection_Timer_Interrupt.c</File>
+          <File BuildType="BUILD" Toolchain="">.\Generated_Source\PSoC5\RC_Connection_Timer_Interrupt.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Export\ARM_GCC_Generic">

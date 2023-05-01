@@ -1,5 +1,5 @@
 # Ball
-# 2023-04-30 22:13:05Z
+# 2023-05-01 01:47:54Z
 
 # IO_0@[IOP=(1)][IoId=(0)] is reserved: SWDDebugEnabled
 dont_use_io iocell 1 0
@@ -9,8 +9,7 @@ dont_use_io iocell 1 1
 dont_use_io iocell 1 3
 set_io "Motor_A_Output_In1(0)" iocell 1 7
 set_io "Motor_A_Output_In2(0)" iocell 1 6
-set_io "RC_Count_1(0)" iocell 3 0
 set_io "\USBUART:Dm(0)\" iocell 15 7
 set_io "\USBUART:Dp(0)\" iocell 15 6
-set_io "RC_Count_2(0)" iocell 0 0
+set_io "RC_Ch_2(0)" iocell 0 0
 set_location "\USBUART:USB\" usbcell -1 -1 0

@@ -1,0 +1,2690 @@
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"RC_Connection_Timer.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.RC_Connection_Timer_Enable,"ax",%progbits
+  19              		.align	2
+  20              		.global	RC_Connection_Timer_Enable
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	RC_Connection_Timer_Enable, %function
+  24              	RC_Connection_Timer_Enable:
+  25              	.LFB1:
+  26              		.file 1 ".\\Generated_Source\\PSoC5\\RC_Connection_Timer.c"
+   1:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * File Name: RC_Connection_Timer.c
+   3:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Version 2.70
+   4:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+   5:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Description:
+   6:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+   7:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  a selectable period between 2 and 2^Width - 1.  The timer may free run
+   8:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  or be used as a capture timer as well.  The capture can be initiated
+   9:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  by a positive or negative edge signal as well as via software.
+  10:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  A trigger input can be programmed to enable the timer on rising edge
+  11:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  falling edge, either edge or continous run.
+  12:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Interrupts may be generated due to a terminal count condition
+  13:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  or a capture event.
+  14:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+  15:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Note:
+  16:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+  17:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+  18:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+  19:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * the software package with which this file was provided.
+  22:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************/
+  23:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  24:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #include "RC_Connection_Timer.h"
+  25:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  26:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint8 RC_Connection_Timer_initVar = 0u;
+  27:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  28:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  29:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+  30:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_Init
+  31:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 2
+
+
+  32:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+  33:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+  34:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Initialize to the schematic state
+  35:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+  36:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+  37:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+  38:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+  39:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+  40:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+  41:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+  42:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+  43:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_Init(void) 
+  44:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+  45:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(!RC_Connection_Timer_UsingFixedFunction)
+  46:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             /* Interrupt State Backup for Critical Region*/
+  47:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             uint8 RC_Connection_Timer_interruptState;
+  48:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Interrupt state back up for Fixed Function only */
+  49:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  50:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (RC_Connection_Timer_UsingFixedFunction)
+  51:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+  52:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL &= RC_Connection_Timer_CTRL_ENABLE;
+  53:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  54:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Clear the mode bits for continuous run mode */
+  55:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (CY_PSOC5A)
+  56:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             RC_Connection_Timer_CONTROL2 &= ((uint8)(~RC_Connection_Timer_CTRL_MODE_MASK));
+  57:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Clear bits in CONTROL2 only in PSOC5A */
+  58:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  59:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+  60:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             RC_Connection_Timer_CONTROL3 &= ((uint8)(~RC_Connection_Timer_CTRL_MODE_MASK));
+  61:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
+  62:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  63:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  64:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_RunModeUsed != 0x0u)
+  65:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             /* Set 3rd bit of Control register to enable one shot mode */
+  66:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             RC_Connection_Timer_CONTROL |= 0x04u;
+  67:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
+  68:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  69:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_RunModeUsed == 2)
+  70:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #if (CY_PSOC5A)
+  71:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 /* Set last 2 bits of control2 register if one shot(halt on
+  72:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 interrupt) is enabled*/
+  73:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL2 |= 0x03u;
+  74:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
+  75:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  76:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  77:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 /* Set last 2 bits of control3 register if one shot(halt on
+  78:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 interrupt) is enabled*/
+  79:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL3 |= 0x03u;
+  80:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
+  81:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  82:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
+  83:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  84:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_UsingHWEnable != 0)
+  85:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #if (CY_PSOC5A)
+  86:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+  87:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL2 |= RC_Connection_Timer_CTRL_MODE_PULSEWIDTH;
+  88:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 3
+
+
+  89:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  90:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  91:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 /* Clear and Set ROD and COD bits of CFG2 register */
+  92:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL3 &= ((uint8)(~RC_Connection_Timer_CTRL_RCOD_MASK));
+  93:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL3 |= RC_Connection_Timer_CTRL_RCOD;
+  94:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  95:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 /* Clear and Enable the HW enable bit in CFG2 register */
+  96:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL3 &= ((uint8)(~RC_Connection_Timer_CTRL_ENBL_MASK));
+  97:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL3 |= RC_Connection_Timer_CTRL_ENBL;
+  98:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+  99:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+ 100:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 RC_Connection_Timer_CONTROL3 |= RC_Connection_Timer_CTRL_MODE_CONTINUOUS;
+ 101:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
+ 102:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 103:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Configure Run Mode with hardware enable */
+ 104:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 105:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 106:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_RT1 &= ((uint8)(~RC_Connection_Timer_RT1_MASK));
+ 107:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_RT1 |= RC_Connection_Timer_SYNC;
+ 108:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 109:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /*Enable DSI Sync all all inputs of the Timer*/
+ 110:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_RT1 &= ((uint8)(~RC_Connection_Timer_SYNCDSI_MASK));
+ 111:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_RT1 |= RC_Connection_Timer_SYNCDSI_EN;
+ 112:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 113:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Set the IRQ to use the status register interrupts */
+ 114:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL2 |= RC_Connection_Timer_CTRL2_IRQ_SEL;
+ 115:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Configuring registers of fixed function implementation */
+ 116:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 117:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Set Initial values from Configuration */
+ 118:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_WritePeriod(RC_Connection_Timer_INIT_PERIOD);
+ 119:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_WriteCounter(RC_Connection_Timer_INIT_PERIOD);
+ 120:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 121:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (RC_Connection_Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
+ 122:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CAPTURE_COUNT_CTRL |= RC_Connection_Timer_CNTR_ENABLE;
+ 123:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_SetCaptureCount(RC_Connection_Timer_INIT_CAPTURE_COUNT);
+ 124:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Configure capture counter value */
+ 125:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 126:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UsingFixedFunction)
+ 127:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_SoftwareCaptureMode)
+ 128:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             RC_Connection_Timer_SetCaptureMode(RC_Connection_Timer_INIT_CAPTURE_MODE);
+ 129:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 130:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 131:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_SoftwareTriggerMode)
+ 132:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED)
+ 133:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 if (0u == (RC_Connection_Timer_CONTROL & RC_Connection_Timer__B_TIMER__TM_SOFTWARE)
+ 134:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 {
+ 135:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                     RC_Connection_Timer_SetTriggerMode(RC_Connection_Timer_INIT_TRIGGER_MODE);
+ 136:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****                 }
+ 137:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             #endif /* (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) */
+ 138:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+ 139:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 140:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critica
+ 141:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Enter Critical Region*/
+ 142:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_interruptState = CyEnterCriticalSection();
+ 143:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 144:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Use the interrupt output of the status register for IRQ output */
+ 145:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_STATUS_AUX_CTRL |= RC_Connection_Timer_STATUS_ACTL_INT_EN_MASK;
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 4
+
+
+ 146:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 147:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Exit Critical Region*/
+ 148:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         CyExitCriticalSection(RC_Connection_Timer_interruptState);
+ 149:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 150:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_EnableTriggerMode)
+ 151:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             RC_Connection_Timer_EnableTrigger();
+ 152:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 153:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 		
+ 154:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 		
+ 155:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #if (RC_Connection_Timer_InterruptOnCaptureCount && !RC_Connection_Timer_UDB_CONTROL_REG_RE
+ 156:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****             RC_Connection_Timer_SetInterruptCount(RC_Connection_Timer_INIT_INT_CAPTURE_COUNT);
+ 157:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*
+ 158:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 159:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_ClearFIFO();
+ 160:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Configure additional features of UDB implementation */
+ 161:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 162:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_SetInterruptMode(RC_Connection_Timer_INIT_INTERRUPT_MODE);
+ 163:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 164:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 165:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 166:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 167:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_Enable
+ 168:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 169:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 170:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 171:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Enable the Timer
+ 172:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 173:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 174:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 175:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 176:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 177:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 178:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 179:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 180:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_Enable(void) 
+ 181:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+  27              		.loc 1 181 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+ 182:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 183:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (RC_Connection_Timer_UsingFixedFunction)
+ 184:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_GLOBAL_ENABLE |= RC_Connection_Timer_BLOCK_EN_MASK;
+ 185:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_GLOBAL_STBY_ENABLE |= RC_Connection_Timer_BLOCK_STBY_EN_MASK;
+ 186:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Set Enable bit for enabling Fixed function timer*/
+ 187:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 188:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Remove assignment if control register is removed */
+ 189:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED || RC_Connection_Timer_UsingFixedFunction)
+ 190:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL |= RC_Connection_Timer_CTRL_ENABLE;
+  32              		.loc 1 190 0
+  33 0000 024A     		ldr	r2, .L2
+  34 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  35 0004 43F08003 		orr	r3, r3, #128
+  36 0008 1370     		strb	r3, [r2]
+  37 000a 7047     		bx	lr
+  38              	.L3:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 5
+
+
+  39              		.align	2
+  40              	.L2:
+  41 000c 73640040 		.word	1073767539
+  42              		.cfi_endproc
+  43              	.LFE1:
+  44              		.size	RC_Connection_Timer_Enable, .-RC_Connection_Timer_Enable
+  45              		.section	.text.RC_Connection_Timer_Stop,"ax",%progbits
+  46              		.align	2
+  47              		.global	RC_Connection_Timer_Stop
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	RC_Connection_Timer_Stop, %function
+  51              	RC_Connection_Timer_Stop:
+  52              	.LFB3:
+ 191:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Remove assignment if control register is removed */
+ 192:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 193:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 194:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 195:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 196:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_Start
+ 197:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 198:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 199:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 200:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The start function initializes the timer with the default values, the
+ 201:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  enables the timerto begin counting.  It does not enable interrupts,
+ 202:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  the EnableInt command should be called if interrupt generation is required.
+ 203:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 204:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 205:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 206:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 207:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 208:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 209:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 210:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Global variables:
+ 211:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  RC_Connection_Timer_initVar: Is modified when this function is called for the
+ 212:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *   first time. Is used to ensure that initialization happens only once.
+ 213:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 214:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 215:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_Start(void) 
+ 216:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 217:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     if(RC_Connection_Timer_initVar == 0u)
+ 218:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     {
+ 219:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_Init();
+ 220:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 221:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_initVar = 1u;   /* Clear this bit for Initialization */
+ 222:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     }
+ 223:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 224:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Enable the Timer */
+ 225:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_Enable();
+ 226:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 227:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 228:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 229:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 230:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_Stop
+ 231:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 232:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 233:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 6
+
+
+ 234:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The stop function halts the timer, but does not change any modes or disable
+ 235:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  interrupts.
+ 236:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 237:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 238:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 239:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 240:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 241:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 242:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 243:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 244:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *               has no effect on the operation of the timer.
+ 245:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 246:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 247:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_Stop(void) 
+ 248:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+  53              		.loc 1 248 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+ 249:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Disable Timer */
+ 250:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED || RC_Connection_Timer_UsingFixedFunction)
+ 251:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL &= ((uint8)(~RC_Connection_Timer_CTRL_ENABLE));
+  58              		.loc 1 251 0
+  59 0000 024A     		ldr	r2, .L5
+  60 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+  61 0004 03F07F03 		and	r3, r3, #127
+  62 0008 1370     		strb	r3, [r2]
+  63 000a 7047     		bx	lr
+  64              	.L6:
+  65              		.align	2
+  66              	.L5:
+  67 000c 73640040 		.word	1073767539
+  68              		.cfi_endproc
+  69              	.LFE3:
+  70              		.size	RC_Connection_Timer_Stop, .-RC_Connection_Timer_Stop
+  71              		.section	.text.RC_Connection_Timer_SetInterruptMode,"ax",%progbits
+  72              		.align	2
+  73              		.global	RC_Connection_Timer_SetInterruptMode
+  74              		.thumb
+  75              		.thumb_func
+  76              		.type	RC_Connection_Timer_SetInterruptMode, %function
+  77              	RC_Connection_Timer_SetInterruptMode:
+  78              	.LFB4:
+ 252:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Remove assignment if control register is removed */
+ 253:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 254:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Globally disable the Fixed Function Block chosen */
+ 255:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (RC_Connection_Timer_UsingFixedFunction)
+ 256:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_GLOBAL_ENABLE &= ((uint8)(~RC_Connection_Timer_BLOCK_EN_MASK));
+ 257:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~RC_Connection_Timer_BLOCK_STBY_EN_MASK)
+ 258:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
+ 259:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 260:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 261:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 262:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 263:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_SetInterruptMode
+ 264:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 7
+
+
+ 265:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 266:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 267:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function selects which of the interrupt inputs may cause an interrupt.
+ 268:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The twosources are caputure and terminal.  One, both or neither may
+ 269:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  be selected.
+ 270:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 271:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 272:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  interruptMode:   This parameter is used to enable interrups on either/or
+ 273:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *                   terminal count or capture.
+ 274:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 275:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 276:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 277:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 278:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 279:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_SetInterruptMode(uint8 interruptMode) 
+ 280:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+  79              		.loc 1 280 0
+  80              		.cfi_startproc
+  81              		@ args = 0, pretend = 0, frame = 0
+  82              		@ frame_needed = 0, uses_anonymous_args = 0
+  83              		@ link register save eliminated.
+  84              	.LVL0:
+ 281:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_STATUS_MASK = interruptMode;
+  85              		.loc 1 281 0
+  86 0000 014B     		ldr	r3, .L8
+  87 0002 1870     		strb	r0, [r3]
+  88 0004 7047     		bx	lr
+  89              	.L9:
+  90 0006 00BF     		.align	2
+  91              	.L8:
+  92 0008 82640040 		.word	1073767554
+  93              		.cfi_endproc
+  94              	.LFE4:
+  95              		.size	RC_Connection_Timer_SetInterruptMode, .-RC_Connection_Timer_SetInterruptMode
+  96              		.section	.text.RC_Connection_Timer_SoftwareCapture,"ax",%progbits
+  97              		.align	2
+  98              		.global	RC_Connection_Timer_SoftwareCapture
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.type	RC_Connection_Timer_SoftwareCapture, %function
+ 102              	RC_Connection_Timer_SoftwareCapture:
+ 103              	.LFB5:
+ 282:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 283:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 284:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 285:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 286:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_SoftwareCapture
+ 287:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 288:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 289:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 290:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function forces a capture independent of the capture signal.
+ 291:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 292:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 293:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 294:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 295:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 296:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 8
+
+
+ 297:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 298:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Side Effects:
+ 299:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  An existing hardware capture could be overwritten.
+ 300:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 301:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 302:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_SoftwareCapture(void) 
+ 303:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 104              		.loc 1 303 0
+ 105              		.cfi_startproc
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108              		@ link register save eliminated.
+ 304:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Generate a software capture by reading the counter register */
+ 305:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(RC_Connection_Timer_UsingFixedFunction)
+ 306:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         (void)CY_GET_REG16(RC_Connection_Timer_COUNTER_LSB_PTR);
+ 307:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 308:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         (void)CY_GET_REG8(RC_Connection_Timer_COUNTER_LSB_PTR_8BIT);
+ 109              		.loc 1 308 0
+ 110 0000 014B     		ldr	r3, .L11
+ 111 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 112 0004 7047     		bx	lr
+ 113              	.L12:
+ 114 0006 00BF     		.align	2
+ 115              	.L11:
+ 116 0008 00640040 		.word	1073767424
+ 117              		.cfi_endproc
+ 118              	.LFE5:
+ 119              		.size	RC_Connection_Timer_SoftwareCapture, .-RC_Connection_Timer_SoftwareCapture
+ 120              		.section	.text.RC_Connection_Timer_ReadStatusRegister,"ax",%progbits
+ 121              		.align	2
+ 122              		.global	RC_Connection_Timer_ReadStatusRegister
+ 123              		.thumb
+ 124              		.thumb_func
+ 125              		.type	RC_Connection_Timer_ReadStatusRegister, %function
+ 126              	RC_Connection_Timer_ReadStatusRegister:
+ 127              	.LFB6:
+ 309:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif/* (RC_Connection_Timer_UsingFixedFunction) */
+ 310:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Capture Data is now in the FIFO */
+ 311:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 312:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 313:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 314:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 315:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ReadStatusRegister
+ 316:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 317:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 318:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 319:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Reads the status register and returns it's state. This function should use
+ 320:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  defined types for the bit-field information as the bits in this register may
+ 321:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  be permuteable.
+ 322:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 323:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 324:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 325:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 326:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 327:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The contents of the status register
+ 328:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 329:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Side Effects:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 9
+
+
+ 330:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Status register bits may be clear on read.
+ 331:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 332:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 333:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint8   RC_Connection_Timer_ReadStatusRegister(void) 
+ 334:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 128              		.loc 1 334 0
+ 129              		.cfi_startproc
+ 130              		@ args = 0, pretend = 0, frame = 0
+ 131              		@ frame_needed = 0, uses_anonymous_args = 0
+ 132              		@ link register save eliminated.
+ 335:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     return (RC_Connection_Timer_STATUS);
+ 133              		.loc 1 335 0
+ 134 0000 014B     		ldr	r3, .L14
+ 135 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 336:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 136              		.loc 1 336 0
+ 137 0004 7047     		bx	lr
+ 138              	.L15:
+ 139 0006 00BF     		.align	2
+ 140              	.L14:
+ 141 0008 62640040 		.word	1073767522
+ 142              		.cfi_endproc
+ 143              	.LFE6:
+ 144              		.size	RC_Connection_Timer_ReadStatusRegister, .-RC_Connection_Timer_ReadStatusRegister
+ 145              		.section	.text.RC_Connection_Timer_ReadControlRegister,"ax",%progbits
+ 146              		.align	2
+ 147              		.global	RC_Connection_Timer_ReadControlRegister
+ 148              		.thumb
+ 149              		.thumb_func
+ 150              		.type	RC_Connection_Timer_ReadControlRegister, %function
+ 151              	RC_Connection_Timer_ReadControlRegister:
+ 152              	.LFB7:
+ 337:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 338:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 339:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+ 340:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 341:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 342:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 343:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ReadControlRegister
+ 344:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 345:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 346:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 347:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Reads the control register and returns it's value.
+ 348:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 349:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 350:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 351:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 352:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 353:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The contents of the control register
+ 354:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 355:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 356:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint8 RC_Connection_Timer_ReadControlRegister(void) 
+ 357:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 153              		.loc 1 357 0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 10
+
+
+ 157              		@ link register save eliminated.
+ 358:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) 
+ 359:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         return ((uint8)RC_Connection_Timer_CONTROL);
+ 158              		.loc 1 359 0
+ 159 0000 014B     		ldr	r3, .L17
+ 160 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 360:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 361:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         return (0);
+ 362:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) */
+ 363:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 161              		.loc 1 363 0
+ 162 0004 7047     		bx	lr
+ 163              	.L18:
+ 164 0006 00BF     		.align	2
+ 165              	.L17:
+ 166 0008 73640040 		.word	1073767539
+ 167              		.cfi_endproc
+ 168              	.LFE7:
+ 169              		.size	RC_Connection_Timer_ReadControlRegister, .-RC_Connection_Timer_ReadControlRegister
+ 170              		.section	.text.RC_Connection_Timer_WriteControlRegister,"ax",%progbits
+ 171              		.align	2
+ 172              		.global	RC_Connection_Timer_WriteControlRegister
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.type	RC_Connection_Timer_WriteControlRegister, %function
+ 176              	RC_Connection_Timer_WriteControlRegister:
+ 177              	.LFB8:
+ 364:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 365:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 366:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 367:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_WriteControlRegister
+ 368:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 369:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 370:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 371:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Sets the bit-field of the control register.
+ 372:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 373:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 374:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  control: The contents of the control register
+ 375:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 376:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 377:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 378:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 379:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_WriteControlRegister(uint8 control) 
+ 380:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 178              		.loc 1 380 0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 0
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+ 182              		@ link register save eliminated.
+ 183              	.LVL1:
+ 381:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) 
+ 382:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL = control;
+ 184              		.loc 1 382 0
+ 185 0000 014B     		ldr	r3, .L20
+ 186 0002 1870     		strb	r0, [r3]
+ 187 0004 7047     		bx	lr
+ 188              	.L21:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 11
+
+
+ 189 0006 00BF     		.align	2
+ 190              	.L20:
+ 191 0008 73640040 		.word	1073767539
+ 192              		.cfi_endproc
+ 193              	.LFE8:
+ 194              		.size	RC_Connection_Timer_WriteControlRegister, .-RC_Connection_Timer_WriteControlRegister
+ 195              		.section	.text.RC_Connection_Timer_ReadPeriod,"ax",%progbits
+ 196              		.align	2
+ 197              		.global	RC_Connection_Timer_ReadPeriod
+ 198              		.thumb
+ 199              		.thumb_func
+ 200              		.type	RC_Connection_Timer_ReadPeriod, %function
+ 201              	RC_Connection_Timer_ReadPeriod:
+ 202              	.LFB9:
+ 383:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 384:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         control = 0u;
+ 385:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) */
+ 386:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 387:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 388:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #endif /* Remove API if control register is unused */
+ 389:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 390:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 391:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 392:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ReadPeriod
+ 393:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 394:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 395:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 396:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function returns the current value of the Period.
+ 397:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 398:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 399:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 400:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 401:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 402:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The present value of the counter.
+ 403:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 404:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 405:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint32 RC_Connection_Timer_ReadPeriod(void) 
+ 406:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 203              		.loc 1 406 0
+ 204              		.cfi_startproc
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 207              		@ link register save eliminated.
+ 407:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #if(RC_Connection_Timer_UsingFixedFunction)
+ 408:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****        return ((uint32)CY_GET_REG16(RC_Connection_Timer_PERIOD_LSB_PTR));
+ 409:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #else
+ 410:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****        return (CY_GET_REG24(RC_Connection_Timer_PERIOD_LSB_PTR));
+ 208              		.loc 1 410 0
+ 209 0000 024B     		ldr	r3, .L23
+ 210 0002 1868     		ldr	r0, [r3]
+ 411:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #endif /* (RC_Connection_Timer_UsingFixedFunction) */
+ 412:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 211              		.loc 1 412 0
+ 212 0004 20F07F40 		bic	r0, r0, #-16777216
+ 213 0008 7047     		bx	lr
+ 214              	.L24:
+ 215 000a 00BF     		.align	2
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 12
+
+
+ 216              	.L23:
+ 217 000c 20640040 		.word	1073767456
+ 218              		.cfi_endproc
+ 219              	.LFE9:
+ 220              		.size	RC_Connection_Timer_ReadPeriod, .-RC_Connection_Timer_ReadPeriod
+ 221              		.section	.text.RC_Connection_Timer_WritePeriod,"ax",%progbits
+ 222              		.align	2
+ 223              		.global	RC_Connection_Timer_WritePeriod
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.type	RC_Connection_Timer_WritePeriod, %function
+ 227              	RC_Connection_Timer_WritePeriod:
+ 228              	.LFB10:
+ 413:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 414:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 415:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 416:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_WritePeriod
+ 417:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 418:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 419:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 420:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function is used to change the period of the counter.  The new period
+ 421:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  will be loaded the next time terminal count is detected.
+ 422:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 423:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 424:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+ 425:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *          result in the counter remaining at zero.
+ 426:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 427:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 428:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 429:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 430:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 431:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_WritePeriod(uint32 period) 
+ 432:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 229              		.loc 1 432 0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233              	.LVL2:
+ 234 0000 08B5     		push	{r3, lr}
+ 235              		.cfi_def_cfa_offset 8
+ 236              		.cfi_offset 3, -8
+ 237              		.cfi_offset 14, -4
+ 238 0002 0146     		mov	r1, r0
+ 433:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(RC_Connection_Timer_UsingFixedFunction)
+ 434:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         uint16 period_temp = (uint16)period;
+ 435:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         CY_SET_REG16(RC_Connection_Timer_PERIOD_LSB_PTR, period_temp);
+ 436:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 437:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         CY_SET_REG24(RC_Connection_Timer_PERIOD_LSB_PTR, period);
+ 239              		.loc 1 437 0
+ 240 0004 0148     		ldr	r0, .L27
+ 241              	.LVL3:
+ 242 0006 FFF7FEFF 		bl	CySetReg24
+ 243              	.LVL4:
+ 244 000a 08BD     		pop	{r3, pc}
+ 245              	.L28:
+ 246              		.align	2
+ 247              	.L27:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 13
+
+
+ 248 000c 20640040 		.word	1073767456
+ 249              		.cfi_endproc
+ 250              	.LFE10:
+ 251              		.size	RC_Connection_Timer_WritePeriod, .-RC_Connection_Timer_WritePeriod
+ 252              		.section	.text.RC_Connection_Timer_ReadCapture,"ax",%progbits
+ 253              		.align	2
+ 254              		.global	RC_Connection_Timer_ReadCapture
+ 255              		.thumb
+ 256              		.thumb_func
+ 257              		.type	RC_Connection_Timer_ReadCapture, %function
+ 258              	RC_Connection_Timer_ReadCapture:
+ 259              	.LFB11:
+ 438:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 439:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 440:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 441:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 442:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 443:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ReadCapture
+ 444:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 445:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 446:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 447:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function returns the last value captured.
+ 448:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 449:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 450:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 451:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 452:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 453:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Present Capture value.
+ 454:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 455:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 456:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint32 RC_Connection_Timer_ReadCapture(void) 
+ 457:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 260              		.loc 1 457 0
+ 261              		.cfi_startproc
+ 262              		@ args = 0, pretend = 0, frame = 0
+ 263              		@ frame_needed = 0, uses_anonymous_args = 0
+ 264              		@ link register save eliminated.
+ 458:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #if(RC_Connection_Timer_UsingFixedFunction)
+ 459:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****        return ((uint32)CY_GET_REG16(RC_Connection_Timer_CAPTURE_LSB_PTR));
+ 460:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #else
+ 461:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****        return (CY_GET_REG24(RC_Connection_Timer_CAPTURE_LSB_PTR));
+ 265              		.loc 1 461 0
+ 266 0000 024B     		ldr	r3, .L30
+ 267 0002 1868     		ldr	r0, [r3]
+ 462:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #endif /* (RC_Connection_Timer_UsingFixedFunction) */
+ 463:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 268              		.loc 1 463 0
+ 269 0004 20F07F40 		bic	r0, r0, #-16777216
+ 270 0008 7047     		bx	lr
+ 271              	.L31:
+ 272 000a 00BF     		.align	2
+ 273              	.L30:
+ 274 000c 40640040 		.word	1073767488
+ 275              		.cfi_endproc
+ 276              	.LFE11:
+ 277              		.size	RC_Connection_Timer_ReadCapture, .-RC_Connection_Timer_ReadCapture
+ 278              		.section	.text.RC_Connection_Timer_WriteCounter,"ax",%progbits
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 14
+
+
+ 279              		.align	2
+ 280              		.global	RC_Connection_Timer_WriteCounter
+ 281              		.thumb
+ 282              		.thumb_func
+ 283              		.type	RC_Connection_Timer_WriteCounter, %function
+ 284              	RC_Connection_Timer_WriteCounter:
+ 285              	.LFB12:
+ 464:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 465:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 466:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 467:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_WriteCounter
+ 468:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 469:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 470:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 471:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This funtion is used to set the counter to a specific value
+ 472:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 473:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 474:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  counter:  New counter value.
+ 475:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 476:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 477:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 478:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 479:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 480:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_WriteCounter(uint32 counter) 
+ 481:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 286              		.loc 1 481 0
+ 287              		.cfi_startproc
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290              	.LVL5:
+ 291 0000 08B5     		push	{r3, lr}
+ 292              		.cfi_def_cfa_offset 8
+ 293              		.cfi_offset 3, -8
+ 294              		.cfi_offset 14, -4
+ 295 0002 0146     		mov	r1, r0
+ 482:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****    #if(RC_Connection_Timer_UsingFixedFunction)
+ 483:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* This functionality is removed until a FixedFunction HW update to
+ 484:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****          * allow this register to be written
+ 485:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****          */
+ 486:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         CY_SET_REG16(RC_Connection_Timer_COUNTER_LSB_PTR, (uint16)counter);
+ 487:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         
+ 488:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 489:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         CY_SET_REG24(RC_Connection_Timer_COUNTER_LSB_PTR, counter);
+ 296              		.loc 1 489 0
+ 297 0004 0148     		ldr	r0, .L34
+ 298              	.LVL6:
+ 299 0006 FFF7FEFF 		bl	CySetReg24
+ 300              	.LVL7:
+ 301 000a 08BD     		pop	{r3, pc}
+ 302              	.L35:
+ 303              		.align	2
+ 304              	.L34:
+ 305 000c 00640040 		.word	1073767424
+ 306              		.cfi_endproc
+ 307              	.LFE12:
+ 308              		.size	RC_Connection_Timer_WriteCounter, .-RC_Connection_Timer_WriteCounter
+ 309              		.section	.text.RC_Connection_Timer_ReadCounter,"ax",%progbits
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 15
+
+
+ 310              		.align	2
+ 311              		.global	RC_Connection_Timer_ReadCounter
+ 312              		.thumb
+ 313              		.thumb_func
+ 314              		.type	RC_Connection_Timer_ReadCounter, %function
+ 315              	RC_Connection_Timer_ReadCounter:
+ 316              	.LFB13:
+ 490:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 491:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 492:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 493:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 494:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 495:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ReadCounter
+ 496:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 497:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 498:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 499:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function returns the current counter value.
+ 500:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 501:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 502:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 503:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 504:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 505:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Present compare value.
+ 506:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 507:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 508:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint32 RC_Connection_Timer_ReadCounter(void) 
+ 509:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 317              		.loc 1 509 0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 0
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+ 321              		@ link register save eliminated.
+ 510:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Force capture by reading Accumulator */
+ 511:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Must first do a software capture to be able to read the counter */
+ 512:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 513:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(RC_Connection_Timer_UsingFixedFunction)
+ 514:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         (void)CY_GET_REG16(RC_Connection_Timer_COUNTER_LSB_PTR);
+ 515:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 516:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         (void)CY_GET_REG8(RC_Connection_Timer_COUNTER_LSB_PTR_8BIT);
+ 322              		.loc 1 516 0
+ 323 0000 034B     		ldr	r3, .L37
+ 324 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 517:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif/* (RC_Connection_Timer_UsingFixedFunction) */
+ 518:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 519:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 520:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(RC_Connection_Timer_UsingFixedFunction)
+ 521:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         return ((uint32)CY_GET_REG16(RC_Connection_Timer_CAPTURE_LSB_PTR));
+ 522:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #else
+ 523:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         return (CY_GET_REG24(RC_Connection_Timer_CAPTURE_LSB_PTR));
+ 325              		.loc 1 523 0
+ 326 0004 034B     		ldr	r3, .L37+4
+ 327 0006 1868     		ldr	r0, [r3]
+ 524:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* (RC_Connection_Timer_UsingFixedFunction) */
+ 525:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 328              		.loc 1 525 0
+ 329 0008 20F07F40 		bic	r0, r0, #-16777216
+ 330 000c 7047     		bx	lr
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 16
+
+
+ 331              	.L38:
+ 332 000e 00BF     		.align	2
+ 333              	.L37:
+ 334 0010 00640040 		.word	1073767424
+ 335 0014 40640040 		.word	1073767488
+ 336              		.cfi_endproc
+ 337              	.LFE13:
+ 338              		.size	RC_Connection_Timer_ReadCounter, .-RC_Connection_Timer_ReadCounter
+ 339              		.section	.text.RC_Connection_Timer_SetCaptureMode,"ax",%progbits
+ 340              		.align	2
+ 341              		.global	RC_Connection_Timer_SetCaptureMode
+ 342              		.thumb
+ 343              		.thumb_func
+ 344              		.type	RC_Connection_Timer_SetCaptureMode, %function
+ 345              	RC_Connection_Timer_SetCaptureMode:
+ 346              	.LFB14:
+ 526:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 527:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 528:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if(!RC_Connection_Timer_UsingFixedFunction) /* UDB Specific Functions */
+ 529:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 530:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     
+ 531:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 532:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****  * The functions below this point are only available using the UDB
+ 533:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****  * implementation.  If a feature is selected, then the API is enabled.
+ 534:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****  ******************************************************************************/
+ 535:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 536:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 537:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if (RC_Connection_Timer_SoftwareCaptureMode)
+ 538:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 539:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 540:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 541:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_SetCaptureMode
+ 542:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 543:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 544:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 545:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function sets the capture mode to either rising or falling edge.
+ 546:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 547:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 548:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  captureMode: This parameter sets the capture mode of the UDB capture feature
+ 549:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The parameter values are defined using the
+ 550:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  #define RC_Connection_Timer__B_TIMER__CM_NONE 0
+ 551:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #define RC_Connection_Timer__B_TIMER__CM_RISINGEDGE 1
+ 552:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #define RC_Connection_Timer__B_TIMER__CM_FALLINGEDGE 2
+ 553:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #define RC_Connection_Timer__B_TIMER__CM_EITHEREDGE 3
+ 554:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #define RC_Connection_Timer__B_TIMER__CM_SOFTWARE 4
+ 555:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****  identifiers
+ 556:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  The following are the possible values of the parameter
+ 557:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  RC_Connection_Timer__B_TIMER__CM_NONE        - Set Capture mode to None
+ 558:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  RC_Connection_Timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+ 559:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  RC_Connection_Timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+ 560:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  RC_Connection_Timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+ 561:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 562:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 563:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 564:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 565:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 566:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_SetCaptureMode(uint8 captureMode) 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 17
+
+
+ 567:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 347              		.loc 1 567 0
+ 348              		.cfi_startproc
+ 349              		@ args = 0, pretend = 0, frame = 0
+ 350              		@ frame_needed = 0, uses_anonymous_args = 0
+ 351              		@ link register save eliminated.
+ 352              	.LVL8:
+ 568:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* This must only set to two bits of the control register associated */
+ 569:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     captureMode = ((uint8)((uint8)captureMode << RC_Connection_Timer_CTRL_CAP_MODE_SHIFT));
+ 353              		.loc 1 569 0
+ 354 0000 4001     		lsls	r0, r0, #5
+ 355              	.LVL9:
+ 570:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     captureMode &= (RC_Connection_Timer_CTRL_CAP_MODE_MASK);
+ 356              		.loc 1 570 0
+ 357 0002 00F06000 		and	r0, r0, #96
+ 358              	.LVL10:
+ 571:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 572:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED)
+ 573:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Clear the Current Setting */
+ 574:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL &= ((uint8)(~RC_Connection_Timer_CTRL_CAP_MODE_MASK));
+ 359              		.loc 1 574 0
+ 360 0006 044B     		ldr	r3, .L40
+ 361 0008 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 362 000a 02F09F02 		and	r2, r2, #159
+ 363 000e 1A70     		strb	r2, [r3]
+ 575:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 576:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Write The New Setting */
+ 577:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL |= captureMode;
+ 364              		.loc 1 577 0
+ 365 0010 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 366 0012 1043     		orrs	r0, r0, r2
+ 367              	.LVL11:
+ 368 0014 1870     		strb	r0, [r3]
+ 369 0016 7047     		bx	lr
+ 370              	.L41:
+ 371              		.align	2
+ 372              	.L40:
+ 373 0018 73640040 		.word	1073767539
+ 374              		.cfi_endproc
+ 375              	.LFE14:
+ 376              		.size	RC_Connection_Timer_SetCaptureMode, .-RC_Connection_Timer_SetCaptureMode
+ 377              		.section	.text.RC_Connection_Timer_EnableTrigger,"ax",%progbits
+ 378              		.align	2
+ 379              		.global	RC_Connection_Timer_EnableTrigger
+ 380              		.thumb
+ 381              		.thumb_func
+ 382              		.type	RC_Connection_Timer_EnableTrigger, %function
+ 383              	RC_Connection_Timer_EnableTrigger:
+ 384              	.LFB15:
+ 578:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) */
+ 579:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 580:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #endif /* Remove API if Capture Mode is not Software Controlled */
+ 581:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 582:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 583:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if (RC_Connection_Timer_SoftwareTriggerMode)
+ 584:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 585:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 18
+
+
+ 586:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 587:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_SetTriggerMode
+ 588:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 589:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 590:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 591:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function sets the trigger input mode
+ 592:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 593:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 594:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
+ 595:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #define RC_Connection_Timer__B_TIMER__TM_NONE 0x00u
+ 596:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #define RC_Connection_Timer__B_TIMER__TM_RISINGEDGE 0x04u
+ 597:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #define RC_Connection_Timer__B_TIMER__TM_FALLINGEDGE 0x08u
+ 598:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #define RC_Connection_Timer__B_TIMER__TM_EITHEREDGE 0x0Cu
+ 599:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #define RC_Connection_Timer__B_TIMER__TM_SOFTWARE 0x10u
+ 600:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 601:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 602:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 603:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 604:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 605:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_SetTriggerMode(uint8 triggerMode) 
+ 606:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 607:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* This must only set to two bits of the control register associated */
+ 608:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     triggerMode &= RC_Connection_Timer_CTRL_TRIG_MODE_MASK;
+ 609:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 610:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register i
+ 611:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     
+ 612:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Clear the Current Setting */
+ 613:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL &= ((uint8)(~RC_Connection_Timer_CTRL_TRIG_MODE_MASK));
+ 614:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 615:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Write The New Setting */
+ 616:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL |= (triggerMode | RC_Connection_Timer__B_TIMER__TM_SOFTWARE);
+ 617:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Remove code section if control register is not used */
+ 618:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 619:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #endif /* Remove API if Trigger Mode is not Software Controlled */
+ 620:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 621:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if (RC_Connection_Timer_EnableTriggerMode)
+ 622:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 623:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 624:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 625:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_EnableTrigger
+ 626:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 627:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 628:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 629:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Sets the control bit enabling Hardware Trigger mode
+ 630:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 631:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 632:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 633:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 634:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 635:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 636:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 637:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 638:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_EnableTrigger(void) 
+ 639:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 385              		.loc 1 639 0
+ 386              		.cfi_startproc
+ 387              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 19
+
+
+ 388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 389              		@ link register save eliminated.
+ 640:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register i
+ 641:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL |= RC_Connection_Timer_CTRL_TRIG_EN;
+ 390              		.loc 1 641 0
+ 391 0000 024A     		ldr	r2, .L43
+ 392 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 393 0004 43F01003 		orr	r3, r3, #16
+ 394 0008 1370     		strb	r3, [r2]
+ 395 000a 7047     		bx	lr
+ 396              	.L44:
+ 397              		.align	2
+ 398              	.L43:
+ 399 000c 73640040 		.word	1073767539
+ 400              		.cfi_endproc
+ 401              	.LFE15:
+ 402              		.size	RC_Connection_Timer_EnableTrigger, .-RC_Connection_Timer_EnableTrigger
+ 403              		.section	.text.RC_Connection_Timer_DisableTrigger,"ax",%progbits
+ 404              		.align	2
+ 405              		.global	RC_Connection_Timer_DisableTrigger
+ 406              		.thumb
+ 407              		.thumb_func
+ 408              		.type	RC_Connection_Timer_DisableTrigger, %function
+ 409              	RC_Connection_Timer_DisableTrigger:
+ 410              	.LFB16:
+ 642:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Remove code section if control register is not used */
+ 643:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 644:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 645:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 646:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 647:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_DisableTrigger
+ 648:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 649:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 650:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 651:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Clears the control bit enabling Hardware Trigger mode
+ 652:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 653:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 654:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 655:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 656:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 657:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 658:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 659:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 660:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_DisableTrigger(void) 
+ 661:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 411              		.loc 1 661 0
+ 412              		.cfi_startproc
+ 413              		@ args = 0, pretend = 0, frame = 0
+ 414              		@ frame_needed = 0, uses_anonymous_args = 0
+ 415              		@ link register save eliminated.
+ 662:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register 
+ 663:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL &= ((uint8)(~RC_Connection_Timer_CTRL_TRIG_EN));
+ 416              		.loc 1 663 0
+ 417 0000 024A     		ldr	r2, .L46
+ 418 0002 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 419 0004 03F0EF03 		and	r3, r3, #239
+ 420 0008 1370     		strb	r3, [r2]
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 20
+
+
+ 421 000a 7047     		bx	lr
+ 422              	.L47:
+ 423              		.align	2
+ 424              	.L46:
+ 425 000c 73640040 		.word	1073767539
+ 426              		.cfi_endproc
+ 427              	.LFE16:
+ 428              		.size	RC_Connection_Timer_DisableTrigger, .-RC_Connection_Timer_DisableTrigger
+ 429              		.section	.text.RC_Connection_Timer_ClearFIFO,"ax",%progbits
+ 430              		.align	2
+ 431              		.global	RC_Connection_Timer_ClearFIFO
+ 432              		.thumb
+ 433              		.thumb_func
+ 434              		.type	RC_Connection_Timer_ClearFIFO, %function
+ 435              	RC_Connection_Timer_ClearFIFO:
+ 436              	.LFB17:
+ 664:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Remove code section if control register is not used */
+ 665:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 666:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #endif /* Remove API is Trigger Mode is set to None */
+ 667:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 668:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if(RC_Connection_Timer_InterruptOnCaptureCount)
+ 669:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 670:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 671:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 672:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_SetInterruptCount
+ 673:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 674:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 675:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 676:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function sets the capture count before an interrupt is triggered.
+ 677:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 678:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 679:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
+ 680:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *                   an interrupt will occur each time a capture occurs.
+ 681:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *                   A value of 1 to 3 will cause the interrupt
+ 682:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *                   to delay by the same number of captures.
+ 683:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 684:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 685:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 686:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 687:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 688:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_SetInterruptCount(uint8 interruptCount) 
+ 689:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 690:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     /* This must only set to two bits of the control register associated */
+ 691:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     interruptCount &= RC_Connection_Timer_CTRL_INTCNT_MASK;
+ 692:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 693:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED)
+ 694:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Clear the Current Setting */
+ 695:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL &= ((uint8)(~RC_Connection_Timer_CTRL_INTCNT_MASK));
+ 696:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         /* Write The New Setting */
+ 697:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         RC_Connection_Timer_CONTROL |= interruptCount;
+ 698:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* (!RC_Connection_Timer_UDB_CONTROL_REG_REMOVED) */
+ 699:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 700:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #endif /* RC_Connection_Timer_InterruptOnCaptureCount */
+ 701:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 702:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 703:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #if (RC_Connection_Timer_UsingHWCaptureCounter)
+ 704:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 21
+
+
+ 705:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 706:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 707:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_SetCaptureCount
+ 708:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 709:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 710:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 711:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function sets the capture count
+ 712:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 713:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 714:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  captureCount: A value between 2 and 127 inclusive is valid.  A value of 1
+ 715:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *                to 127 will cause the interrupt to delay by the same number of
+ 716:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *                captures.
+ 717:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 718:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 719:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 720:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 721:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 722:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_SetCaptureCount(uint8 captureCount) 
+ 723:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 724:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_CAP_COUNT = captureCount;
+ 725:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 726:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 727:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 728:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 729:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ReadCaptureCount
+ 730:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 731:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 732:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 733:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function reads the capture count setting
+ 734:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 735:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 736:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 737:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 738:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 739:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  Returns the Capture Count Setting
+ 740:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 741:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 742:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** uint8 RC_Connection_Timer_ReadCaptureCount(void) 
+ 743:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 744:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     return ((uint8)RC_Connection_Timer_CAP_COUNT);
+ 745:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 746:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** #endif /* RC_Connection_Timer_UsingHWCaptureCounter */
+ 747:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 748:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 749:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** /*******************************************************************************
+ 750:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Function Name: RC_Connection_Timer_ClearFIFO
+ 751:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** ********************************************************************************
+ 752:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 753:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Summary:
+ 754:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  This function clears all capture data from the capture FIFO
+ 755:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 756:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Parameters:
+ 757:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 758:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ 759:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** * Return:
+ 760:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *  void
+ 761:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 22
+
+
+ 762:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** *******************************************************************************/
+ 763:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** void RC_Connection_Timer_ClearFIFO(void) 
+ 764:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** {
+ 437              		.loc 1 764 0
+ 438              		.cfi_startproc
+ 439              		@ args = 0, pretend = 0, frame = 0
+ 440              		@ frame_needed = 0, uses_anonymous_args = 0
+ 441 0000 08B5     		push	{r3, lr}
+ 442              		.cfi_def_cfa_offset 8
+ 443              		.cfi_offset 3, -8
+ 444              		.cfi_offset 14, -4
+ 765:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     while(0u != (RC_Connection_Timer_ReadStatusRegister() & RC_Connection_Timer_STATUS_FIFONEMP))
+ 445              		.loc 1 765 0
+ 446 0002 01E0     		b	.L49
+ 447              	.L50:
+ 766:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     {
+ 767:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         (void)RC_Connection_Timer_ReadCapture();
+ 448              		.loc 1 767 0
+ 449 0004 FFF7FEFF 		bl	RC_Connection_Timer_ReadCapture
+ 450              	.LVL12:
+ 451              	.L49:
+ 765:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     while(0u != (RC_Connection_Timer_ReadStatusRegister() & RC_Connection_Timer_STATUS_FIFONEMP))
+ 452              		.loc 1 765 0
+ 453 0008 FFF7FEFF 		bl	RC_Connection_Timer_ReadStatusRegister
+ 454              	.LVL13:
+ 455 000c 10F0080F 		tst	r0, #8
+ 456 0010 F8D1     		bne	.L50
+ 768:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     }
+ 769:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 457              		.loc 1 769 0
+ 458 0012 08BD     		pop	{r3, pc}
+ 459              		.cfi_endproc
+ 460              	.LFE17:
+ 461              		.size	RC_Connection_Timer_ClearFIFO, .-RC_Connection_Timer_ClearFIFO
+ 462              		.section	.text.RC_Connection_Timer_Init,"ax",%progbits
+ 463              		.align	2
+ 464              		.global	RC_Connection_Timer_Init
+ 465              		.thumb
+ 466              		.thumb_func
+ 467              		.type	RC_Connection_Timer_Init, %function
+ 468              	RC_Connection_Timer_Init:
+ 469              	.LFB0:
+  44:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #if(!RC_Connection_Timer_UsingFixedFunction)
+ 470              		.loc 1 44 0
+ 471              		.cfi_startproc
+ 472              		@ args = 0, pretend = 0, frame = 0
+ 473              		@ frame_needed = 0, uses_anonymous_args = 0
+ 474 0000 10B5     		push	{r4, lr}
+ 475              		.cfi_def_cfa_offset 8
+ 476              		.cfi_offset 4, -8
+ 477              		.cfi_offset 14, -4
+ 118:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     RC_Connection_Timer_WriteCounter(RC_Connection_Timer_INIT_PERIOD);
+ 478              		.loc 1 118 0
+ 479 0002 0D4C     		ldr	r4, .L54
+ 480 0004 2046     		mov	r0, r4
+ 481 0006 FFF7FEFF 		bl	RC_Connection_Timer_WritePeriod
+ 482              	.LVL14:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 23
+
+
+ 119:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 483              		.loc 1 119 0
+ 484 000a 2046     		mov	r0, r4
+ 485 000c FFF7FEFF 		bl	RC_Connection_Timer_WriteCounter
+ 486              	.LVL15:
+ 128:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 487              		.loc 1 128 0
+ 488 0010 8020     		movs	r0, #128
+ 489 0012 FFF7FEFF 		bl	RC_Connection_Timer_SetCaptureMode
+ 490              	.LVL16:
+ 142:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 491              		.loc 1 142 0
+ 492 0016 FFF7FEFF 		bl	CyEnterCriticalSection
+ 493              	.LVL17:
+ 145:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 494              		.loc 1 145 0
+ 495 001a 084A     		ldr	r2, .L54+4
+ 496 001c 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 497 001e 43F01003 		orr	r3, r3, #16
+ 498 0022 1370     		strb	r3, [r2]
+ 148:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 499              		.loc 1 148 0
+ 500 0024 FFF7FEFF 		bl	CyExitCriticalSection
+ 501              	.LVL18:
+ 151:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 502              		.loc 1 151 0
+ 503 0028 FFF7FEFF 		bl	RC_Connection_Timer_EnableTrigger
+ 504              	.LVL19:
+ 159:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     #endif /* Configure additional features of UDB implementation */
+ 505              		.loc 1 159 0
+ 506 002c FFF7FEFF 		bl	RC_Connection_Timer_ClearFIFO
+ 507              	.LVL20:
+ 162:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 508              		.loc 1 162 0
+ 509 0030 0520     		movs	r0, #5
+ 510 0032 FFF7FEFF 		bl	RC_Connection_Timer_SetInterruptMode
+ 511              	.LVL21:
+ 512 0036 10BD     		pop	{r4, pc}
+ 513              	.L55:
+ 514              		.align	2
+ 515              	.L54:
+ 516 0038 1FA10700 		.word	499999
+ 517 003c 92640040 		.word	1073767570
+ 518              		.cfi_endproc
+ 519              	.LFE0:
+ 520              		.size	RC_Connection_Timer_Init, .-RC_Connection_Timer_Init
+ 521              		.section	.text.RC_Connection_Timer_Start,"ax",%progbits
+ 522              		.align	2
+ 523              		.global	RC_Connection_Timer_Start
+ 524              		.thumb
+ 525              		.thumb_func
+ 526              		.type	RC_Connection_Timer_Start, %function
+ 527              	RC_Connection_Timer_Start:
+ 528              	.LFB2:
+ 216:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     if(RC_Connection_Timer_initVar == 0u)
+ 529              		.loc 1 216 0
+ 530              		.cfi_startproc
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 24
+
+
+ 531              		@ args = 0, pretend = 0, frame = 0
+ 532              		@ frame_needed = 0, uses_anonymous_args = 0
+ 533 0000 08B5     		push	{r3, lr}
+ 534              		.cfi_def_cfa_offset 8
+ 535              		.cfi_offset 3, -8
+ 536              		.cfi_offset 14, -4
+ 217:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     {
+ 537              		.loc 1 217 0
+ 538 0002 054B     		ldr	r3, .L59
+ 539 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 540 0006 23B9     		cbnz	r3, .L57
+ 219:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** 
+ 541              		.loc 1 219 0
+ 542 0008 FFF7FEFF 		bl	RC_Connection_Timer_Init
+ 543              	.LVL22:
+ 221:.\Generated_Source\PSoC5/RC_Connection_Timer.c ****     }
+ 544              		.loc 1 221 0
+ 545 000c 0122     		movs	r2, #1
+ 546 000e 024B     		ldr	r3, .L59
+ 547 0010 1A70     		strb	r2, [r3]
+ 548              	.L57:
+ 225:.\Generated_Source\PSoC5/RC_Connection_Timer.c **** }
+ 549              		.loc 1 225 0
+ 550 0012 FFF7FEFF 		bl	RC_Connection_Timer_Enable
+ 551              	.LVL23:
+ 552 0016 08BD     		pop	{r3, pc}
+ 553              	.L60:
+ 554              		.align	2
+ 555              	.L59:
+ 556 0018 00000000 		.word	.LANCHOR0
+ 557              		.cfi_endproc
+ 558              	.LFE2:
+ 559              		.size	RC_Connection_Timer_Start, .-RC_Connection_Timer_Start
+ 560              		.global	RC_Connection_Timer_initVar
+ 561              		.bss
+ 562              		.set	.LANCHOR0,. + 0
+ 563              		.type	RC_Connection_Timer_initVar, %object
+ 564              		.size	RC_Connection_Timer_initVar, 1
+ 565              	RC_Connection_Timer_initVar:
+ 566 0000 00       		.space	1
+ 567              		.text
+ 568              	.Letext0:
+ 569              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 570              		.file 3 ".\\Generated_Source\\PSoC5\\CyLib.h"
+ 571              		.section	.debug_info,"",%progbits
+ 572              	.Ldebug_info0:
+ 573 0000 A2030000 		.4byte	0x3a2
+ 574 0004 0400     		.2byte	0x4
+ 575 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 576 000a 04       		.byte	0x4
+ 577 000b 01       		.uleb128 0x1
+ 578 000c ED020000 		.4byte	.LASF40
+ 579 0010 01       		.byte	0x1
+ 580 0011 51020000 		.4byte	.LASF41
+ 581 0015 85010000 		.4byte	.LASF42
+ 582 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 583 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 25
+
+
+ 584 0021 00000000 		.4byte	.Ldebug_line0
+ 585 0025 02       		.uleb128 0x2
+ 586 0026 01       		.byte	0x1
+ 587 0027 06       		.byte	0x6
+ 588 0028 94040000 		.4byte	.LASF0
+ 589 002c 02       		.uleb128 0x2
+ 590 002d 01       		.byte	0x1
+ 591 002e 08       		.byte	0x8
+ 592 002f 4D010000 		.4byte	.LASF1
+ 593 0033 02       		.uleb128 0x2
+ 594 0034 02       		.byte	0x2
+ 595 0035 05       		.byte	0x5
+ 596 0036 42040000 		.4byte	.LASF2
+ 597 003a 02       		.uleb128 0x2
+ 598 003b 02       		.byte	0x2
+ 599 003c 07       		.byte	0x7
+ 600 003d A0040000 		.4byte	.LASF3
+ 601 0041 02       		.uleb128 0x2
+ 602 0042 04       		.byte	0x4
+ 603 0043 05       		.byte	0x5
+ 604 0044 66040000 		.4byte	.LASF4
+ 605 0048 02       		.uleb128 0x2
+ 606 0049 04       		.byte	0x4
+ 607 004a 07       		.byte	0x7
+ 608 004b 18020000 		.4byte	.LASF5
+ 609 004f 02       		.uleb128 0x2
+ 610 0050 08       		.byte	0x8
+ 611 0051 05       		.byte	0x5
+ 612 0052 1B040000 		.4byte	.LASF6
+ 613 0056 02       		.uleb128 0x2
+ 614 0057 08       		.byte	0x8
+ 615 0058 07       		.byte	0x7
+ 616 0059 36010000 		.4byte	.LASF7
+ 617 005d 03       		.uleb128 0x3
+ 618 005e 04       		.byte	0x4
+ 619 005f 05       		.byte	0x5
+ 620 0060 696E7400 		.ascii	"int\000"
+ 621 0064 02       		.uleb128 0x2
+ 622 0065 04       		.byte	0x4
+ 623 0066 07       		.byte	0x7
+ 624 0067 99030000 		.4byte	.LASF8
+ 625 006b 04       		.uleb128 0x4
+ 626 006c 2A020000 		.4byte	.LASF9
+ 627 0070 02       		.byte	0x2
+ 628 0071 9201     		.2byte	0x192
+ 629 0073 2C000000 		.4byte	0x2c
+ 630 0077 04       		.uleb128 0x4
+ 631 0078 E6020000 		.4byte	.LASF10
+ 632 007c 02       		.byte	0x2
+ 633 007d 9401     		.2byte	0x194
+ 634 007f 48000000 		.4byte	0x48
+ 635 0083 02       		.uleb128 0x2
+ 636 0084 04       		.byte	0x4
+ 637 0085 04       		.byte	0x4
+ 638 0086 28010000 		.4byte	.LASF11
+ 639 008a 02       		.uleb128 0x2
+ 640 008b 08       		.byte	0x8
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 26
+
+
+ 641 008c 04       		.byte	0x4
+ 642 008d DF020000 		.4byte	.LASF12
+ 643 0091 02       		.uleb128 0x2
+ 644 0092 01       		.byte	0x1
+ 645 0093 08       		.byte	0x8
+ 646 0094 6F040000 		.4byte	.LASF13
+ 647 0098 04       		.uleb128 0x4
+ 648 0099 5B010000 		.4byte	.LASF14
+ 649 009d 02       		.byte	0x2
+ 650 009e 3C02     		.2byte	0x23c
+ 651 00a0 A4000000 		.4byte	0xa4
+ 652 00a4 05       		.uleb128 0x5
+ 653 00a5 6B000000 		.4byte	0x6b
+ 654 00a9 04       		.uleb128 0x4
+ 655 00aa 1C000000 		.4byte	.LASF15
+ 656 00ae 02       		.byte	0x2
+ 657 00af 3E02     		.2byte	0x23e
+ 658 00b1 B5000000 		.4byte	0xb5
+ 659 00b5 05       		.uleb128 0x5
+ 660 00b6 77000000 		.4byte	0x77
+ 661 00ba 02       		.uleb128 0x2
+ 662 00bb 04       		.byte	0x4
+ 663 00bc 07       		.byte	0x7
+ 664 00bd 12040000 		.4byte	.LASF16
+ 665 00c1 06       		.uleb128 0x6
+ 666 00c2 C4020000 		.4byte	.LASF17
+ 667 00c6 01       		.byte	0x1
+ 668 00c7 B4       		.byte	0xb4
+ 669 00c8 00000000 		.4byte	.LFB1
+ 670 00cc 10000000 		.4byte	.LFE1-.LFB1
+ 671 00d0 01       		.uleb128 0x1
+ 672 00d1 9C       		.byte	0x9c
+ 673 00d2 06       		.uleb128 0x6
+ 674 00d3 38020000 		.4byte	.LASF18
+ 675 00d7 01       		.byte	0x1
+ 676 00d8 F7       		.byte	0xf7
+ 677 00d9 00000000 		.4byte	.LFB3
+ 678 00dd 10000000 		.4byte	.LFE3-.LFB3
+ 679 00e1 01       		.uleb128 0x1
+ 680 00e2 9C       		.byte	0x9c
+ 681 00e3 07       		.uleb128 0x7
+ 682 00e4 60010000 		.4byte	.LASF22
+ 683 00e8 01       		.byte	0x1
+ 684 00e9 1701     		.2byte	0x117
+ 685 00eb 00000000 		.4byte	.LFB4
+ 686 00ef 0C000000 		.4byte	.LFE4-.LFB4
+ 687 00f3 01       		.uleb128 0x1
+ 688 00f4 9C       		.byte	0x9c
+ 689 00f5 08010000 		.4byte	0x108
+ 690 00f9 08       		.uleb128 0x8
+ 691 00fa 29040000 		.4byte	.LASF24
+ 692 00fe 01       		.byte	0x1
+ 693 00ff 1701     		.2byte	0x117
+ 694 0101 6B000000 		.4byte	0x6b
+ 695 0105 01       		.uleb128 0x1
+ 696 0106 50       		.byte	0x50
+ 697 0107 00       		.byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 27
+
+
+ 698 0108 09       		.uleb128 0x9
+ 699 0109 04010000 		.4byte	.LASF19
+ 700 010d 01       		.byte	0x1
+ 701 010e 2E01     		.2byte	0x12e
+ 702 0110 00000000 		.4byte	.LFB5
+ 703 0114 0C000000 		.4byte	.LFE5-.LFB5
+ 704 0118 01       		.uleb128 0x1
+ 705 0119 9C       		.byte	0x9c
+ 706 011a 0A       		.uleb128 0xa
+ 707 011b DD000000 		.4byte	.LASF20
+ 708 011f 01       		.byte	0x1
+ 709 0120 4D01     		.2byte	0x14d
+ 710 0122 6B000000 		.4byte	0x6b
+ 711 0126 00000000 		.4byte	.LFB6
+ 712 012a 0C000000 		.4byte	.LFE6-.LFB6
+ 713 012e 01       		.uleb128 0x1
+ 714 012f 9C       		.byte	0x9c
+ 715 0130 0A       		.uleb128 0xa
+ 716 0131 D5040000 		.4byte	.LASF21
+ 717 0135 01       		.byte	0x1
+ 718 0136 6401     		.2byte	0x164
+ 719 0138 6B000000 		.4byte	0x6b
+ 720 013c 00000000 		.4byte	.LFB7
+ 721 0140 0C000000 		.4byte	.LFE7-.LFB7
+ 722 0144 01       		.uleb128 0x1
+ 723 0145 9C       		.byte	0x9c
+ 724 0146 07       		.uleb128 0x7
+ 725 0147 B4000000 		.4byte	.LASF23
+ 726 014b 01       		.byte	0x1
+ 727 014c 7B01     		.2byte	0x17b
+ 728 014e 00000000 		.4byte	.LFB8
+ 729 0152 0C000000 		.4byte	.LFE8-.LFB8
+ 730 0156 01       		.uleb128 0x1
+ 731 0157 9C       		.byte	0x9c
+ 732 0158 6B010000 		.4byte	0x16b
+ 733 015c 08       		.uleb128 0x8
+ 734 015d 30020000 		.4byte	.LASF25
+ 735 0161 01       		.byte	0x1
+ 736 0162 7B01     		.2byte	0x17b
+ 737 0164 6B000000 		.4byte	0x6b
+ 738 0168 01       		.uleb128 0x1
+ 739 0169 50       		.byte	0x50
+ 740 016a 00       		.byte	0
+ 741 016b 0A       		.uleb128 0xa
+ 742 016c F3030000 		.4byte	.LASF26
+ 743 0170 01       		.byte	0x1
+ 744 0171 9501     		.2byte	0x195
+ 745 0173 77000000 		.4byte	0x77
+ 746 0177 00000000 		.4byte	.LFB9
+ 747 017b 10000000 		.4byte	.LFE9-.LFB9
+ 748 017f 01       		.uleb128 0x1
+ 749 0180 9C       		.byte	0x9c
+ 750 0181 07       		.uleb128 0x7
+ 751 0182 5E000000 		.4byte	.LASF27
+ 752 0186 01       		.byte	0x1
+ 753 0187 AF01     		.2byte	0x1af
+ 754 0189 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 28
+
+
+ 755 018d 10000000 		.4byte	.LFE10-.LFB10
+ 756 0191 01       		.uleb128 0x1
+ 757 0192 9C       		.byte	0x9c
+ 758 0193 C2010000 		.4byte	0x1c2
+ 759 0197 0B       		.uleb128 0xb
+ 760 0198 8A000000 		.4byte	.LASF28
+ 761 019c 01       		.byte	0x1
+ 762 019d AF01     		.2byte	0x1af
+ 763 019f 77000000 		.4byte	0x77
+ 764 01a3 00000000 		.4byte	.LLST0
+ 765 01a7 0C       		.uleb128 0xc
+ 766 01a8 0A000000 		.4byte	.LVL4
+ 767 01ac 70030000 		.4byte	0x370
+ 768 01b0 0D       		.uleb128 0xd
+ 769 01b1 01       		.uleb128 0x1
+ 770 01b2 51       		.byte	0x51
+ 771 01b3 03       		.uleb128 0x3
+ 772 01b4 F3       		.byte	0xf3
+ 773 01b5 01       		.uleb128 0x1
+ 774 01b6 50       		.byte	0x50
+ 775 01b7 0D       		.uleb128 0xd
+ 776 01b8 01       		.uleb128 0x1
+ 777 01b9 50       		.byte	0x50
+ 778 01ba 05       		.uleb128 0x5
+ 779 01bb 0C       		.byte	0xc
+ 780 01bc 20640040 		.4byte	0x40006420
+ 781 01c0 00       		.byte	0
+ 782 01c1 00       		.byte	0
+ 783 01c2 0A       		.uleb128 0xa
+ 784 01c3 BC030000 		.4byte	.LASF29
+ 785 01c7 01       		.byte	0x1
+ 786 01c8 C801     		.2byte	0x1c8
+ 787 01ca 77000000 		.4byte	0x77
+ 788 01ce 00000000 		.4byte	.LFB11
+ 789 01d2 10000000 		.4byte	.LFE11-.LFB11
+ 790 01d6 01       		.uleb128 0x1
+ 791 01d7 9C       		.byte	0x9c
+ 792 01d8 07       		.uleb128 0x7
+ 793 01d9 A3020000 		.4byte	.LASF30
+ 794 01dd 01       		.byte	0x1
+ 795 01de E001     		.2byte	0x1e0
+ 796 01e0 00000000 		.4byte	.LFB12
+ 797 01e4 10000000 		.4byte	.LFE12-.LFB12
+ 798 01e8 01       		.uleb128 0x1
+ 799 01e9 9C       		.byte	0x9c
+ 800 01ea 19020000 		.4byte	0x219
+ 801 01ee 0B       		.uleb128 0xb
+ 802 01ef 2E010000 		.4byte	.LASF31
+ 803 01f3 01       		.byte	0x1
+ 804 01f4 E001     		.2byte	0x1e0
+ 805 01f6 77000000 		.4byte	0x77
+ 806 01fa 2C000000 		.4byte	.LLST1
+ 807 01fe 0C       		.uleb128 0xc
+ 808 01ff 0A000000 		.4byte	.LVL7
+ 809 0203 70030000 		.4byte	0x370
+ 810 0207 0D       		.uleb128 0xd
+ 811 0208 01       		.uleb128 0x1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 29
+
+
+ 812 0209 51       		.byte	0x51
+ 813 020a 03       		.uleb128 0x3
+ 814 020b F3       		.byte	0xf3
+ 815 020c 01       		.uleb128 0x1
+ 816 020d 50       		.byte	0x50
+ 817 020e 0D       		.uleb128 0xd
+ 818 020f 01       		.uleb128 0x1
+ 819 0210 50       		.byte	0x50
+ 820 0211 05       		.uleb128 0x5
+ 821 0212 0C       		.byte	0xc
+ 822 0213 00640040 		.4byte	0x40006400
+ 823 0217 00       		.byte	0
+ 824 0218 00       		.byte	0
+ 825 0219 0A       		.uleb128 0xa
+ 826 021a 74040000 		.4byte	.LASF32
+ 827 021e 01       		.byte	0x1
+ 828 021f FC01     		.2byte	0x1fc
+ 829 0221 77000000 		.4byte	0x77
+ 830 0225 00000000 		.4byte	.LFB13
+ 831 0229 18000000 		.4byte	.LFE13-.LFB13
+ 832 022d 01       		.uleb128 0x1
+ 833 022e 9C       		.byte	0x9c
+ 834 022f 07       		.uleb128 0x7
+ 835 0230 91000000 		.4byte	.LASF33
+ 836 0234 01       		.byte	0x1
+ 837 0235 3602     		.2byte	0x236
+ 838 0237 00000000 		.4byte	.LFB14
+ 839 023b 1C000000 		.4byte	.LFE14-.LFB14
+ 840 023f 01       		.uleb128 0x1
+ 841 0240 9C       		.byte	0x9c
+ 842 0241 56020000 		.4byte	0x256
+ 843 0245 0B       		.uleb128 0xb
+ 844 0246 7E000000 		.4byte	.LASF34
+ 845 024a 01       		.byte	0x1
+ 846 024b 3602     		.2byte	0x236
+ 847 024d 6B000000 		.4byte	0x6b
+ 848 0251 58000000 		.4byte	.LLST2
+ 849 0255 00       		.byte	0
+ 850 0256 09       		.uleb128 0x9
+ 851 0257 B3040000 		.4byte	.LASF35
+ 852 025b 01       		.byte	0x1
+ 853 025c 7E02     		.2byte	0x27e
+ 854 025e 00000000 		.4byte	.LFB15
+ 855 0262 10000000 		.4byte	.LFE15-.LFB15
+ 856 0266 01       		.uleb128 0x1
+ 857 0267 9C       		.byte	0x9c
+ 858 0268 09       		.uleb128 0x9
+ 859 0269 3B000000 		.4byte	.LASF36
+ 860 026d 01       		.byte	0x1
+ 861 026e 9402     		.2byte	0x294
+ 862 0270 00000000 		.4byte	.LFB16
+ 863 0274 10000000 		.4byte	.LFE16-.LFB16
+ 864 0278 01       		.uleb128 0x1
+ 865 0279 9C       		.byte	0x9c
+ 866 027a 07       		.uleb128 0x7
+ 867 027b 7B030000 		.4byte	.LASF37
+ 868 027f 01       		.byte	0x1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 30
+
+
+ 869 0280 FB02     		.2byte	0x2fb
+ 870 0282 00000000 		.4byte	.LFB17
+ 871 0286 14000000 		.4byte	.LFE17-.LFB17
+ 872 028a 01       		.uleb128 0x1
+ 873 028b 9C       		.byte	0x9c
+ 874 028c A3020000 		.4byte	0x2a3
+ 875 0290 0E       		.uleb128 0xe
+ 876 0291 08000000 		.4byte	.LVL12
+ 877 0295 C2010000 		.4byte	0x1c2
+ 878 0299 0E       		.uleb128 0xe
+ 879 029a 0C000000 		.4byte	.LVL13
+ 880 029e 1A010000 		.4byte	0x11a
+ 881 02a2 00       		.byte	0
+ 882 02a3 0F       		.uleb128 0xf
+ 883 02a4 22000000 		.4byte	.LASF38
+ 884 02a8 01       		.byte	0x1
+ 885 02a9 2B       		.byte	0x2b
+ 886 02aa 00000000 		.4byte	.LFB0
+ 887 02ae 40000000 		.4byte	.LFE0-.LFB0
+ 888 02b2 01       		.uleb128 0x1
+ 889 02b3 9C       		.byte	0x9c
+ 890 02b4 37030000 		.4byte	0x337
+ 891 02b8 10       		.uleb128 0x10
+ 892 02b9 80020000 		.4byte	.LASF43
+ 893 02bd 01       		.byte	0x1
+ 894 02be 2F       		.byte	0x2f
+ 895 02bf 6B000000 		.4byte	0x6b
+ 896 02c3 76000000 		.4byte	.LLST3
+ 897 02c7 11       		.uleb128 0x11
+ 898 02c8 0A000000 		.4byte	.LVL14
+ 899 02cc 81010000 		.4byte	0x181
+ 900 02d0 DB020000 		.4byte	0x2db
+ 901 02d4 0D       		.uleb128 0xd
+ 902 02d5 01       		.uleb128 0x1
+ 903 02d6 50       		.byte	0x50
+ 904 02d7 02       		.uleb128 0x2
+ 905 02d8 74       		.byte	0x74
+ 906 02d9 00       		.sleb128 0
+ 907 02da 00       		.byte	0
+ 908 02db 11       		.uleb128 0x11
+ 909 02dc 10000000 		.4byte	.LVL15
+ 910 02e0 D8010000 		.4byte	0x1d8
+ 911 02e4 EF020000 		.4byte	0x2ef
+ 912 02e8 0D       		.uleb128 0xd
+ 913 02e9 01       		.uleb128 0x1
+ 914 02ea 50       		.byte	0x50
+ 915 02eb 02       		.uleb128 0x2
+ 916 02ec 74       		.byte	0x74
+ 917 02ed 00       		.sleb128 0
+ 918 02ee 00       		.byte	0
+ 919 02ef 11       		.uleb128 0x11
+ 920 02f0 16000000 		.4byte	.LVL16
+ 921 02f4 2F020000 		.4byte	0x22f
+ 922 02f8 03030000 		.4byte	0x303
+ 923 02fc 0D       		.uleb128 0xd
+ 924 02fd 01       		.uleb128 0x1
+ 925 02fe 50       		.byte	0x50
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 31
+
+
+ 926 02ff 02       		.uleb128 0x2
+ 927 0300 09       		.byte	0x9
+ 928 0301 80       		.byte	0x80
+ 929 0302 00       		.byte	0
+ 930 0303 0E       		.uleb128 0xe
+ 931 0304 1A000000 		.4byte	.LVL17
+ 932 0308 8D030000 		.4byte	0x38d
+ 933 030c 0E       		.uleb128 0xe
+ 934 030d 28000000 		.4byte	.LVL18
+ 935 0311 98030000 		.4byte	0x398
+ 936 0315 0E       		.uleb128 0xe
+ 937 0316 2C000000 		.4byte	.LVL19
+ 938 031a 56020000 		.4byte	0x256
+ 939 031e 0E       		.uleb128 0xe
+ 940 031f 30000000 		.4byte	.LVL20
+ 941 0323 7A020000 		.4byte	0x27a
+ 942 0327 0C       		.uleb128 0xc
+ 943 0328 36000000 		.4byte	.LVL21
+ 944 032c E3000000 		.4byte	0xe3
+ 945 0330 0D       		.uleb128 0xd
+ 946 0331 01       		.uleb128 0x1
+ 947 0332 50       		.byte	0x50
+ 948 0333 01       		.uleb128 0x1
+ 949 0334 35       		.byte	0x35
+ 950 0335 00       		.byte	0
+ 951 0336 00       		.byte	0
+ 952 0337 0F       		.uleb128 0xf
+ 953 0338 4C040000 		.4byte	.LASF39
+ 954 033c 01       		.byte	0x1
+ 955 033d D7       		.byte	0xd7
+ 956 033e 00000000 		.4byte	.LFB2
+ 957 0342 1C000000 		.4byte	.LFE2-.LFB2
+ 958 0346 01       		.uleb128 0x1
+ 959 0347 9C       		.byte	0x9c
+ 960 0348 5F030000 		.4byte	0x35f
+ 961 034c 0E       		.uleb128 0xe
+ 962 034d 0C000000 		.4byte	.LVL22
+ 963 0351 A3020000 		.4byte	0x2a3
+ 964 0355 0E       		.uleb128 0xe
+ 965 0356 16000000 		.4byte	.LVL23
+ 966 035a C1000000 		.4byte	0xc1
+ 967 035e 00       		.byte	0
+ 968 035f 12       		.uleb128 0x12
+ 969 0360 00000000 		.4byte	.LASF44
+ 970 0364 01       		.byte	0x1
+ 971 0365 1A       		.byte	0x1a
+ 972 0366 6B000000 		.4byte	0x6b
+ 973 036a 05       		.uleb128 0x5
+ 974 036b 03       		.byte	0x3
+ 975 036c 00000000 		.4byte	RC_Connection_Timer_initVar
+ 976 0370 13       		.uleb128 0x13
+ 977 0371 37040000 		.4byte	.LASF45
+ 978 0375 02       		.byte	0x2
+ 979 0376 D501     		.2byte	0x1d5
+ 980 0378 87030000 		.4byte	0x387
+ 981 037c 14       		.uleb128 0x14
+ 982 037d 87030000 		.4byte	0x387
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 32
+
+
+ 983 0381 14       		.uleb128 0x14
+ 984 0382 77000000 		.4byte	0x77
+ 985 0386 00       		.byte	0
+ 986 0387 15       		.uleb128 0x15
+ 987 0388 04       		.byte	0x4
+ 988 0389 B5000000 		.4byte	0xb5
+ 989 038d 16       		.uleb128 0x16
+ 990 038e DC030000 		.4byte	.LASF46
+ 991 0392 03       		.byte	0x3
+ 992 0393 7D       		.byte	0x7d
+ 993 0394 6B000000 		.4byte	0x6b
+ 994 0398 17       		.uleb128 0x17
+ 995 0399 A6030000 		.4byte	.LASF47
+ 996 039d 03       		.byte	0x3
+ 997 039e 7E       		.byte	0x7e
+ 998 039f 14       		.uleb128 0x14
+ 999 03a0 6B000000 		.4byte	0x6b
+ 1000 03a4 00       		.byte	0
+ 1001 03a5 00       		.byte	0
+ 1002              		.section	.debug_abbrev,"",%progbits
+ 1003              	.Ldebug_abbrev0:
+ 1004 0000 01       		.uleb128 0x1
+ 1005 0001 11       		.uleb128 0x11
+ 1006 0002 01       		.byte	0x1
+ 1007 0003 25       		.uleb128 0x25
+ 1008 0004 0E       		.uleb128 0xe
+ 1009 0005 13       		.uleb128 0x13
+ 1010 0006 0B       		.uleb128 0xb
+ 1011 0007 03       		.uleb128 0x3
+ 1012 0008 0E       		.uleb128 0xe
+ 1013 0009 1B       		.uleb128 0x1b
+ 1014 000a 0E       		.uleb128 0xe
+ 1015 000b 55       		.uleb128 0x55
+ 1016 000c 17       		.uleb128 0x17
+ 1017 000d 11       		.uleb128 0x11
+ 1018 000e 01       		.uleb128 0x1
+ 1019 000f 10       		.uleb128 0x10
+ 1020 0010 17       		.uleb128 0x17
+ 1021 0011 00       		.byte	0
+ 1022 0012 00       		.byte	0
+ 1023 0013 02       		.uleb128 0x2
+ 1024 0014 24       		.uleb128 0x24
+ 1025 0015 00       		.byte	0
+ 1026 0016 0B       		.uleb128 0xb
+ 1027 0017 0B       		.uleb128 0xb
+ 1028 0018 3E       		.uleb128 0x3e
+ 1029 0019 0B       		.uleb128 0xb
+ 1030 001a 03       		.uleb128 0x3
+ 1031 001b 0E       		.uleb128 0xe
+ 1032 001c 00       		.byte	0
+ 1033 001d 00       		.byte	0
+ 1034 001e 03       		.uleb128 0x3
+ 1035 001f 24       		.uleb128 0x24
+ 1036 0020 00       		.byte	0
+ 1037 0021 0B       		.uleb128 0xb
+ 1038 0022 0B       		.uleb128 0xb
+ 1039 0023 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 33
+
+
+ 1040 0024 0B       		.uleb128 0xb
+ 1041 0025 03       		.uleb128 0x3
+ 1042 0026 08       		.uleb128 0x8
+ 1043 0027 00       		.byte	0
+ 1044 0028 00       		.byte	0
+ 1045 0029 04       		.uleb128 0x4
+ 1046 002a 16       		.uleb128 0x16
+ 1047 002b 00       		.byte	0
+ 1048 002c 03       		.uleb128 0x3
+ 1049 002d 0E       		.uleb128 0xe
+ 1050 002e 3A       		.uleb128 0x3a
+ 1051 002f 0B       		.uleb128 0xb
+ 1052 0030 3B       		.uleb128 0x3b
+ 1053 0031 05       		.uleb128 0x5
+ 1054 0032 49       		.uleb128 0x49
+ 1055 0033 13       		.uleb128 0x13
+ 1056 0034 00       		.byte	0
+ 1057 0035 00       		.byte	0
+ 1058 0036 05       		.uleb128 0x5
+ 1059 0037 35       		.uleb128 0x35
+ 1060 0038 00       		.byte	0
+ 1061 0039 49       		.uleb128 0x49
+ 1062 003a 13       		.uleb128 0x13
+ 1063 003b 00       		.byte	0
+ 1064 003c 00       		.byte	0
+ 1065 003d 06       		.uleb128 0x6
+ 1066 003e 2E       		.uleb128 0x2e
+ 1067 003f 00       		.byte	0
+ 1068 0040 3F       		.uleb128 0x3f
+ 1069 0041 19       		.uleb128 0x19
+ 1070 0042 03       		.uleb128 0x3
+ 1071 0043 0E       		.uleb128 0xe
+ 1072 0044 3A       		.uleb128 0x3a
+ 1073 0045 0B       		.uleb128 0xb
+ 1074 0046 3B       		.uleb128 0x3b
+ 1075 0047 0B       		.uleb128 0xb
+ 1076 0048 27       		.uleb128 0x27
+ 1077 0049 19       		.uleb128 0x19
+ 1078 004a 11       		.uleb128 0x11
+ 1079 004b 01       		.uleb128 0x1
+ 1080 004c 12       		.uleb128 0x12
+ 1081 004d 06       		.uleb128 0x6
+ 1082 004e 40       		.uleb128 0x40
+ 1083 004f 18       		.uleb128 0x18
+ 1084 0050 9742     		.uleb128 0x2117
+ 1085 0052 19       		.uleb128 0x19
+ 1086 0053 00       		.byte	0
+ 1087 0054 00       		.byte	0
+ 1088 0055 07       		.uleb128 0x7
+ 1089 0056 2E       		.uleb128 0x2e
+ 1090 0057 01       		.byte	0x1
+ 1091 0058 3F       		.uleb128 0x3f
+ 1092 0059 19       		.uleb128 0x19
+ 1093 005a 03       		.uleb128 0x3
+ 1094 005b 0E       		.uleb128 0xe
+ 1095 005c 3A       		.uleb128 0x3a
+ 1096 005d 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 34
+
+
+ 1097 005e 3B       		.uleb128 0x3b
+ 1098 005f 05       		.uleb128 0x5
+ 1099 0060 27       		.uleb128 0x27
+ 1100 0061 19       		.uleb128 0x19
+ 1101 0062 11       		.uleb128 0x11
+ 1102 0063 01       		.uleb128 0x1
+ 1103 0064 12       		.uleb128 0x12
+ 1104 0065 06       		.uleb128 0x6
+ 1105 0066 40       		.uleb128 0x40
+ 1106 0067 18       		.uleb128 0x18
+ 1107 0068 9742     		.uleb128 0x2117
+ 1108 006a 19       		.uleb128 0x19
+ 1109 006b 01       		.uleb128 0x1
+ 1110 006c 13       		.uleb128 0x13
+ 1111 006d 00       		.byte	0
+ 1112 006e 00       		.byte	0
+ 1113 006f 08       		.uleb128 0x8
+ 1114 0070 05       		.uleb128 0x5
+ 1115 0071 00       		.byte	0
+ 1116 0072 03       		.uleb128 0x3
+ 1117 0073 0E       		.uleb128 0xe
+ 1118 0074 3A       		.uleb128 0x3a
+ 1119 0075 0B       		.uleb128 0xb
+ 1120 0076 3B       		.uleb128 0x3b
+ 1121 0077 05       		.uleb128 0x5
+ 1122 0078 49       		.uleb128 0x49
+ 1123 0079 13       		.uleb128 0x13
+ 1124 007a 02       		.uleb128 0x2
+ 1125 007b 18       		.uleb128 0x18
+ 1126 007c 00       		.byte	0
+ 1127 007d 00       		.byte	0
+ 1128 007e 09       		.uleb128 0x9
+ 1129 007f 2E       		.uleb128 0x2e
+ 1130 0080 00       		.byte	0
+ 1131 0081 3F       		.uleb128 0x3f
+ 1132 0082 19       		.uleb128 0x19
+ 1133 0083 03       		.uleb128 0x3
+ 1134 0084 0E       		.uleb128 0xe
+ 1135 0085 3A       		.uleb128 0x3a
+ 1136 0086 0B       		.uleb128 0xb
+ 1137 0087 3B       		.uleb128 0x3b
+ 1138 0088 05       		.uleb128 0x5
+ 1139 0089 27       		.uleb128 0x27
+ 1140 008a 19       		.uleb128 0x19
+ 1141 008b 11       		.uleb128 0x11
+ 1142 008c 01       		.uleb128 0x1
+ 1143 008d 12       		.uleb128 0x12
+ 1144 008e 06       		.uleb128 0x6
+ 1145 008f 40       		.uleb128 0x40
+ 1146 0090 18       		.uleb128 0x18
+ 1147 0091 9742     		.uleb128 0x2117
+ 1148 0093 19       		.uleb128 0x19
+ 1149 0094 00       		.byte	0
+ 1150 0095 00       		.byte	0
+ 1151 0096 0A       		.uleb128 0xa
+ 1152 0097 2E       		.uleb128 0x2e
+ 1153 0098 00       		.byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 35
+
+
+ 1154 0099 3F       		.uleb128 0x3f
+ 1155 009a 19       		.uleb128 0x19
+ 1156 009b 03       		.uleb128 0x3
+ 1157 009c 0E       		.uleb128 0xe
+ 1158 009d 3A       		.uleb128 0x3a
+ 1159 009e 0B       		.uleb128 0xb
+ 1160 009f 3B       		.uleb128 0x3b
+ 1161 00a0 05       		.uleb128 0x5
+ 1162 00a1 27       		.uleb128 0x27
+ 1163 00a2 19       		.uleb128 0x19
+ 1164 00a3 49       		.uleb128 0x49
+ 1165 00a4 13       		.uleb128 0x13
+ 1166 00a5 11       		.uleb128 0x11
+ 1167 00a6 01       		.uleb128 0x1
+ 1168 00a7 12       		.uleb128 0x12
+ 1169 00a8 06       		.uleb128 0x6
+ 1170 00a9 40       		.uleb128 0x40
+ 1171 00aa 18       		.uleb128 0x18
+ 1172 00ab 9742     		.uleb128 0x2117
+ 1173 00ad 19       		.uleb128 0x19
+ 1174 00ae 00       		.byte	0
+ 1175 00af 00       		.byte	0
+ 1176 00b0 0B       		.uleb128 0xb
+ 1177 00b1 05       		.uleb128 0x5
+ 1178 00b2 00       		.byte	0
+ 1179 00b3 03       		.uleb128 0x3
+ 1180 00b4 0E       		.uleb128 0xe
+ 1181 00b5 3A       		.uleb128 0x3a
+ 1182 00b6 0B       		.uleb128 0xb
+ 1183 00b7 3B       		.uleb128 0x3b
+ 1184 00b8 05       		.uleb128 0x5
+ 1185 00b9 49       		.uleb128 0x49
+ 1186 00ba 13       		.uleb128 0x13
+ 1187 00bb 02       		.uleb128 0x2
+ 1188 00bc 17       		.uleb128 0x17
+ 1189 00bd 00       		.byte	0
+ 1190 00be 00       		.byte	0
+ 1191 00bf 0C       		.uleb128 0xc
+ 1192 00c0 898201   		.uleb128 0x4109
+ 1193 00c3 01       		.byte	0x1
+ 1194 00c4 11       		.uleb128 0x11
+ 1195 00c5 01       		.uleb128 0x1
+ 1196 00c6 31       		.uleb128 0x31
+ 1197 00c7 13       		.uleb128 0x13
+ 1198 00c8 00       		.byte	0
+ 1199 00c9 00       		.byte	0
+ 1200 00ca 0D       		.uleb128 0xd
+ 1201 00cb 8A8201   		.uleb128 0x410a
+ 1202 00ce 00       		.byte	0
+ 1203 00cf 02       		.uleb128 0x2
+ 1204 00d0 18       		.uleb128 0x18
+ 1205 00d1 9142     		.uleb128 0x2111
+ 1206 00d3 18       		.uleb128 0x18
+ 1207 00d4 00       		.byte	0
+ 1208 00d5 00       		.byte	0
+ 1209 00d6 0E       		.uleb128 0xe
+ 1210 00d7 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 36
+
+
+ 1211 00da 00       		.byte	0
+ 1212 00db 11       		.uleb128 0x11
+ 1213 00dc 01       		.uleb128 0x1
+ 1214 00dd 31       		.uleb128 0x31
+ 1215 00de 13       		.uleb128 0x13
+ 1216 00df 00       		.byte	0
+ 1217 00e0 00       		.byte	0
+ 1218 00e1 0F       		.uleb128 0xf
+ 1219 00e2 2E       		.uleb128 0x2e
+ 1220 00e3 01       		.byte	0x1
+ 1221 00e4 3F       		.uleb128 0x3f
+ 1222 00e5 19       		.uleb128 0x19
+ 1223 00e6 03       		.uleb128 0x3
+ 1224 00e7 0E       		.uleb128 0xe
+ 1225 00e8 3A       		.uleb128 0x3a
+ 1226 00e9 0B       		.uleb128 0xb
+ 1227 00ea 3B       		.uleb128 0x3b
+ 1228 00eb 0B       		.uleb128 0xb
+ 1229 00ec 27       		.uleb128 0x27
+ 1230 00ed 19       		.uleb128 0x19
+ 1231 00ee 11       		.uleb128 0x11
+ 1232 00ef 01       		.uleb128 0x1
+ 1233 00f0 12       		.uleb128 0x12
+ 1234 00f1 06       		.uleb128 0x6
+ 1235 00f2 40       		.uleb128 0x40
+ 1236 00f3 18       		.uleb128 0x18
+ 1237 00f4 9742     		.uleb128 0x2117
+ 1238 00f6 19       		.uleb128 0x19
+ 1239 00f7 01       		.uleb128 0x1
+ 1240 00f8 13       		.uleb128 0x13
+ 1241 00f9 00       		.byte	0
+ 1242 00fa 00       		.byte	0
+ 1243 00fb 10       		.uleb128 0x10
+ 1244 00fc 34       		.uleb128 0x34
+ 1245 00fd 00       		.byte	0
+ 1246 00fe 03       		.uleb128 0x3
+ 1247 00ff 0E       		.uleb128 0xe
+ 1248 0100 3A       		.uleb128 0x3a
+ 1249 0101 0B       		.uleb128 0xb
+ 1250 0102 3B       		.uleb128 0x3b
+ 1251 0103 0B       		.uleb128 0xb
+ 1252 0104 49       		.uleb128 0x49
+ 1253 0105 13       		.uleb128 0x13
+ 1254 0106 02       		.uleb128 0x2
+ 1255 0107 17       		.uleb128 0x17
+ 1256 0108 00       		.byte	0
+ 1257 0109 00       		.byte	0
+ 1258 010a 11       		.uleb128 0x11
+ 1259 010b 898201   		.uleb128 0x4109
+ 1260 010e 01       		.byte	0x1
+ 1261 010f 11       		.uleb128 0x11
+ 1262 0110 01       		.uleb128 0x1
+ 1263 0111 31       		.uleb128 0x31
+ 1264 0112 13       		.uleb128 0x13
+ 1265 0113 01       		.uleb128 0x1
+ 1266 0114 13       		.uleb128 0x13
+ 1267 0115 00       		.byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 37
+
+
+ 1268 0116 00       		.byte	0
+ 1269 0117 12       		.uleb128 0x12
+ 1270 0118 34       		.uleb128 0x34
+ 1271 0119 00       		.byte	0
+ 1272 011a 03       		.uleb128 0x3
+ 1273 011b 0E       		.uleb128 0xe
+ 1274 011c 3A       		.uleb128 0x3a
+ 1275 011d 0B       		.uleb128 0xb
+ 1276 011e 3B       		.uleb128 0x3b
+ 1277 011f 0B       		.uleb128 0xb
+ 1278 0120 49       		.uleb128 0x49
+ 1279 0121 13       		.uleb128 0x13
+ 1280 0122 3F       		.uleb128 0x3f
+ 1281 0123 19       		.uleb128 0x19
+ 1282 0124 02       		.uleb128 0x2
+ 1283 0125 18       		.uleb128 0x18
+ 1284 0126 00       		.byte	0
+ 1285 0127 00       		.byte	0
+ 1286 0128 13       		.uleb128 0x13
+ 1287 0129 2E       		.uleb128 0x2e
+ 1288 012a 01       		.byte	0x1
+ 1289 012b 3F       		.uleb128 0x3f
+ 1290 012c 19       		.uleb128 0x19
+ 1291 012d 03       		.uleb128 0x3
+ 1292 012e 0E       		.uleb128 0xe
+ 1293 012f 3A       		.uleb128 0x3a
+ 1294 0130 0B       		.uleb128 0xb
+ 1295 0131 3B       		.uleb128 0x3b
+ 1296 0132 05       		.uleb128 0x5
+ 1297 0133 27       		.uleb128 0x27
+ 1298 0134 19       		.uleb128 0x19
+ 1299 0135 3C       		.uleb128 0x3c
+ 1300 0136 19       		.uleb128 0x19
+ 1301 0137 01       		.uleb128 0x1
+ 1302 0138 13       		.uleb128 0x13
+ 1303 0139 00       		.byte	0
+ 1304 013a 00       		.byte	0
+ 1305 013b 14       		.uleb128 0x14
+ 1306 013c 05       		.uleb128 0x5
+ 1307 013d 00       		.byte	0
+ 1308 013e 49       		.uleb128 0x49
+ 1309 013f 13       		.uleb128 0x13
+ 1310 0140 00       		.byte	0
+ 1311 0141 00       		.byte	0
+ 1312 0142 15       		.uleb128 0x15
+ 1313 0143 0F       		.uleb128 0xf
+ 1314 0144 00       		.byte	0
+ 1315 0145 0B       		.uleb128 0xb
+ 1316 0146 0B       		.uleb128 0xb
+ 1317 0147 49       		.uleb128 0x49
+ 1318 0148 13       		.uleb128 0x13
+ 1319 0149 00       		.byte	0
+ 1320 014a 00       		.byte	0
+ 1321 014b 16       		.uleb128 0x16
+ 1322 014c 2E       		.uleb128 0x2e
+ 1323 014d 00       		.byte	0
+ 1324 014e 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 38
+
+
+ 1325 014f 19       		.uleb128 0x19
+ 1326 0150 03       		.uleb128 0x3
+ 1327 0151 0E       		.uleb128 0xe
+ 1328 0152 3A       		.uleb128 0x3a
+ 1329 0153 0B       		.uleb128 0xb
+ 1330 0154 3B       		.uleb128 0x3b
+ 1331 0155 0B       		.uleb128 0xb
+ 1332 0156 27       		.uleb128 0x27
+ 1333 0157 19       		.uleb128 0x19
+ 1334 0158 49       		.uleb128 0x49
+ 1335 0159 13       		.uleb128 0x13
+ 1336 015a 3C       		.uleb128 0x3c
+ 1337 015b 19       		.uleb128 0x19
+ 1338 015c 00       		.byte	0
+ 1339 015d 00       		.byte	0
+ 1340 015e 17       		.uleb128 0x17
+ 1341 015f 2E       		.uleb128 0x2e
+ 1342 0160 01       		.byte	0x1
+ 1343 0161 3F       		.uleb128 0x3f
+ 1344 0162 19       		.uleb128 0x19
+ 1345 0163 03       		.uleb128 0x3
+ 1346 0164 0E       		.uleb128 0xe
+ 1347 0165 3A       		.uleb128 0x3a
+ 1348 0166 0B       		.uleb128 0xb
+ 1349 0167 3B       		.uleb128 0x3b
+ 1350 0168 0B       		.uleb128 0xb
+ 1351 0169 27       		.uleb128 0x27
+ 1352 016a 19       		.uleb128 0x19
+ 1353 016b 3C       		.uleb128 0x3c
+ 1354 016c 19       		.uleb128 0x19
+ 1355 016d 00       		.byte	0
+ 1356 016e 00       		.byte	0
+ 1357 016f 00       		.byte	0
+ 1358              		.section	.debug_loc,"",%progbits
+ 1359              	.Ldebug_loc0:
+ 1360              	.LLST0:
+ 1361 0000 00000000 		.4byte	.LVL2
+ 1362 0004 06000000 		.4byte	.LVL3
+ 1363 0008 0100     		.2byte	0x1
+ 1364 000a 50       		.byte	0x50
+ 1365 000b 06000000 		.4byte	.LVL3
+ 1366 000f 09000000 		.4byte	.LVL4-1
+ 1367 0013 0100     		.2byte	0x1
+ 1368 0015 51       		.byte	0x51
+ 1369 0016 09000000 		.4byte	.LVL4-1
+ 1370 001a 10000000 		.4byte	.LFE10
+ 1371 001e 0400     		.2byte	0x4
+ 1372 0020 F3       		.byte	0xf3
+ 1373 0021 01       		.uleb128 0x1
+ 1374 0022 50       		.byte	0x50
+ 1375 0023 9F       		.byte	0x9f
+ 1376 0024 00000000 		.4byte	0
+ 1377 0028 00000000 		.4byte	0
+ 1378              	.LLST1:
+ 1379 002c 00000000 		.4byte	.LVL5
+ 1380 0030 06000000 		.4byte	.LVL6
+ 1381 0034 0100     		.2byte	0x1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 39
+
+
+ 1382 0036 50       		.byte	0x50
+ 1383 0037 06000000 		.4byte	.LVL6
+ 1384 003b 09000000 		.4byte	.LVL7-1
+ 1385 003f 0100     		.2byte	0x1
+ 1386 0041 51       		.byte	0x51
+ 1387 0042 09000000 		.4byte	.LVL7-1
+ 1388 0046 10000000 		.4byte	.LFE12
+ 1389 004a 0400     		.2byte	0x4
+ 1390 004c F3       		.byte	0xf3
+ 1391 004d 01       		.uleb128 0x1
+ 1392 004e 50       		.byte	0x50
+ 1393 004f 9F       		.byte	0x9f
+ 1394 0050 00000000 		.4byte	0
+ 1395 0054 00000000 		.4byte	0
+ 1396              	.LLST2:
+ 1397 0058 00000000 		.4byte	.LVL8
+ 1398 005c 02000000 		.4byte	.LVL9
+ 1399 0060 0100     		.2byte	0x1
+ 1400 0062 50       		.byte	0x50
+ 1401 0063 02000000 		.4byte	.LVL9
+ 1402 0067 14000000 		.4byte	.LVL11
+ 1403 006b 0100     		.2byte	0x1
+ 1404 006d 50       		.byte	0x50
+ 1405 006e 00000000 		.4byte	0
+ 1406 0072 00000000 		.4byte	0
+ 1407              	.LLST3:
+ 1408 0076 1A000000 		.4byte	.LVL17
+ 1409 007a 27000000 		.4byte	.LVL18-1
+ 1410 007e 0100     		.2byte	0x1
+ 1411 0080 50       		.byte	0x50
+ 1412 0081 00000000 		.4byte	0
+ 1413 0085 00000000 		.4byte	0
+ 1414              		.section	.debug_aranges,"",%progbits
+ 1415 0000 A4000000 		.4byte	0xa4
+ 1416 0004 0200     		.2byte	0x2
+ 1417 0006 00000000 		.4byte	.Ldebug_info0
+ 1418 000a 04       		.byte	0x4
+ 1419 000b 00       		.byte	0
+ 1420 000c 0000     		.2byte	0
+ 1421 000e 0000     		.2byte	0
+ 1422 0010 00000000 		.4byte	.LFB1
+ 1423 0014 10000000 		.4byte	.LFE1-.LFB1
+ 1424 0018 00000000 		.4byte	.LFB3
+ 1425 001c 10000000 		.4byte	.LFE3-.LFB3
+ 1426 0020 00000000 		.4byte	.LFB4
+ 1427 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1428 0028 00000000 		.4byte	.LFB5
+ 1429 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1430 0030 00000000 		.4byte	.LFB6
+ 1431 0034 0C000000 		.4byte	.LFE6-.LFB6
+ 1432 0038 00000000 		.4byte	.LFB7
+ 1433 003c 0C000000 		.4byte	.LFE7-.LFB7
+ 1434 0040 00000000 		.4byte	.LFB8
+ 1435 0044 0C000000 		.4byte	.LFE8-.LFB8
+ 1436 0048 00000000 		.4byte	.LFB9
+ 1437 004c 10000000 		.4byte	.LFE9-.LFB9
+ 1438 0050 00000000 		.4byte	.LFB10
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 40
+
+
+ 1439 0054 10000000 		.4byte	.LFE10-.LFB10
+ 1440 0058 00000000 		.4byte	.LFB11
+ 1441 005c 10000000 		.4byte	.LFE11-.LFB11
+ 1442 0060 00000000 		.4byte	.LFB12
+ 1443 0064 10000000 		.4byte	.LFE12-.LFB12
+ 1444 0068 00000000 		.4byte	.LFB13
+ 1445 006c 18000000 		.4byte	.LFE13-.LFB13
+ 1446 0070 00000000 		.4byte	.LFB14
+ 1447 0074 1C000000 		.4byte	.LFE14-.LFB14
+ 1448 0078 00000000 		.4byte	.LFB15
+ 1449 007c 10000000 		.4byte	.LFE15-.LFB15
+ 1450 0080 00000000 		.4byte	.LFB16
+ 1451 0084 10000000 		.4byte	.LFE16-.LFB16
+ 1452 0088 00000000 		.4byte	.LFB17
+ 1453 008c 14000000 		.4byte	.LFE17-.LFB17
+ 1454 0090 00000000 		.4byte	.LFB0
+ 1455 0094 40000000 		.4byte	.LFE0-.LFB0
+ 1456 0098 00000000 		.4byte	.LFB2
+ 1457 009c 1C000000 		.4byte	.LFE2-.LFB2
+ 1458 00a0 00000000 		.4byte	0
+ 1459 00a4 00000000 		.4byte	0
+ 1460              		.section	.debug_ranges,"",%progbits
+ 1461              	.Ldebug_ranges0:
+ 1462 0000 00000000 		.4byte	.LFB1
+ 1463 0004 10000000 		.4byte	.LFE1
+ 1464 0008 00000000 		.4byte	.LFB3
+ 1465 000c 10000000 		.4byte	.LFE3
+ 1466 0010 00000000 		.4byte	.LFB4
+ 1467 0014 0C000000 		.4byte	.LFE4
+ 1468 0018 00000000 		.4byte	.LFB5
+ 1469 001c 0C000000 		.4byte	.LFE5
+ 1470 0020 00000000 		.4byte	.LFB6
+ 1471 0024 0C000000 		.4byte	.LFE6
+ 1472 0028 00000000 		.4byte	.LFB7
+ 1473 002c 0C000000 		.4byte	.LFE7
+ 1474 0030 00000000 		.4byte	.LFB8
+ 1475 0034 0C000000 		.4byte	.LFE8
+ 1476 0038 00000000 		.4byte	.LFB9
+ 1477 003c 10000000 		.4byte	.LFE9
+ 1478 0040 00000000 		.4byte	.LFB10
+ 1479 0044 10000000 		.4byte	.LFE10
+ 1480 0048 00000000 		.4byte	.LFB11
+ 1481 004c 10000000 		.4byte	.LFE11
+ 1482 0050 00000000 		.4byte	.LFB12
+ 1483 0054 10000000 		.4byte	.LFE12
+ 1484 0058 00000000 		.4byte	.LFB13
+ 1485 005c 18000000 		.4byte	.LFE13
+ 1486 0060 00000000 		.4byte	.LFB14
+ 1487 0064 1C000000 		.4byte	.LFE14
+ 1488 0068 00000000 		.4byte	.LFB15
+ 1489 006c 10000000 		.4byte	.LFE15
+ 1490 0070 00000000 		.4byte	.LFB16
+ 1491 0074 10000000 		.4byte	.LFE16
+ 1492 0078 00000000 		.4byte	.LFB17
+ 1493 007c 14000000 		.4byte	.LFE17
+ 1494 0080 00000000 		.4byte	.LFB0
+ 1495 0084 40000000 		.4byte	.LFE0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 41
+
+
+ 1496 0088 00000000 		.4byte	.LFB2
+ 1497 008c 1C000000 		.4byte	.LFE2
+ 1498 0090 00000000 		.4byte	0
+ 1499 0094 00000000 		.4byte	0
+ 1500              		.section	.debug_line,"",%progbits
+ 1501              	.Ldebug_line0:
+ 1502 0000 B4010000 		.section	.debug_str,"MS",%progbits,1
+ 1502      02005D00 
+ 1502      00000201 
+ 1502      FB0E0D00 
+ 1502      01010101 
+ 1503              	.LASF44:
+ 1504 0000 52435F43 		.ascii	"RC_Connection_Timer_initVar\000"
+ 1504      6F6E6E65 
+ 1504      6374696F 
+ 1504      6E5F5469 
+ 1504      6D65725F 
+ 1505              	.LASF15:
+ 1506 001c 72656733 		.ascii	"reg32\000"
+ 1506      3200
+ 1507              	.LASF38:
+ 1508 0022 52435F43 		.ascii	"RC_Connection_Timer_Init\000"
+ 1508      6F6E6E65 
+ 1508      6374696F 
+ 1508      6E5F5469 
+ 1508      6D65725F 
+ 1509              	.LASF36:
+ 1510 003b 52435F43 		.ascii	"RC_Connection_Timer_DisableTrigger\000"
+ 1510      6F6E6E65 
+ 1510      6374696F 
+ 1510      6E5F5469 
+ 1510      6D65725F 
+ 1511              	.LASF27:
+ 1512 005e 52435F43 		.ascii	"RC_Connection_Timer_WritePeriod\000"
+ 1512      6F6E6E65 
+ 1512      6374696F 
+ 1512      6E5F5469 
+ 1512      6D65725F 
+ 1513              	.LASF34:
+ 1514 007e 63617074 		.ascii	"captureMode\000"
+ 1514      7572654D 
+ 1514      6F646500 
+ 1515              	.LASF28:
+ 1516 008a 70657269 		.ascii	"period\000"
+ 1516      6F6400
+ 1517              	.LASF33:
+ 1518 0091 52435F43 		.ascii	"RC_Connection_Timer_SetCaptureMode\000"
+ 1518      6F6E6E65 
+ 1518      6374696F 
+ 1518      6E5F5469 
+ 1518      6D65725F 
+ 1519              	.LASF23:
+ 1520 00b4 52435F43 		.ascii	"RC_Connection_Timer_WriteControlRegister\000"
+ 1520      6F6E6E65 
+ 1520      6374696F 
+ 1520      6E5F5469 
+ 1520      6D65725F 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 42
+
+
+ 1521              	.LASF20:
+ 1522 00dd 52435F43 		.ascii	"RC_Connection_Timer_ReadStatusRegister\000"
+ 1522      6F6E6E65 
+ 1522      6374696F 
+ 1522      6E5F5469 
+ 1522      6D65725F 
+ 1523              	.LASF19:
+ 1524 0104 52435F43 		.ascii	"RC_Connection_Timer_SoftwareCapture\000"
+ 1524      6F6E6E65 
+ 1524      6374696F 
+ 1524      6E5F5469 
+ 1524      6D65725F 
+ 1525              	.LASF11:
+ 1526 0128 666C6F61 		.ascii	"float\000"
+ 1526      7400
+ 1527              	.LASF31:
+ 1528 012e 636F756E 		.ascii	"counter\000"
+ 1528      74657200 
+ 1529              	.LASF7:
+ 1530 0136 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1530      206C6F6E 
+ 1530      6720756E 
+ 1530      7369676E 
+ 1530      65642069 
+ 1531              	.LASF1:
+ 1532 014d 756E7369 		.ascii	"unsigned char\000"
+ 1532      676E6564 
+ 1532      20636861 
+ 1532      7200
+ 1533              	.LASF14:
+ 1534 015b 72656738 		.ascii	"reg8\000"
+ 1534      00
+ 1535              	.LASF22:
+ 1536 0160 52435F43 		.ascii	"RC_Connection_Timer_SetInterruptMode\000"
+ 1536      6F6E6E65 
+ 1536      6374696F 
+ 1536      6E5F5469 
+ 1536      6D65725F 
+ 1537              	.LASF42:
+ 1538 0185 433A5C55 		.ascii	"C:\\Users\\Michael\\Dropbox (MIT)\\College\\Senior "
+ 1538      73657273 
+ 1538      5C4D6963 
+ 1538      6861656C 
+ 1538      5C44726F 
+ 1539 01b3 59656172 		.ascii	"Year\\6.115 - Microcomputer Project Laboratory\\6.1"
+ 1539      5C362E31 
+ 1539      3135202D 
+ 1539      204D6963 
+ 1539      726F636F 
+ 1540 01e4 3135202D 		.ascii	"15 - Final Project\\Software\\PSoC Creator\\Ball.cy"
+ 1540      2046696E 
+ 1540      616C2050 
+ 1540      726F6A65 
+ 1540      63745C53 
+ 1541 0214 64736E00 		.ascii	"dsn\000"
+ 1542              	.LASF5:
+ 1543 0218 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 43
+
+
+ 1543      20756E73 
+ 1543      69676E65 
+ 1543      6420696E 
+ 1543      7400
+ 1544              	.LASF9:
+ 1545 022a 75696E74 		.ascii	"uint8\000"
+ 1545      3800
+ 1546              	.LASF25:
+ 1547 0230 636F6E74 		.ascii	"control\000"
+ 1547      726F6C00 
+ 1548              	.LASF18:
+ 1549 0238 52435F43 		.ascii	"RC_Connection_Timer_Stop\000"
+ 1549      6F6E6E65 
+ 1549      6374696F 
+ 1549      6E5F5469 
+ 1549      6D65725F 
+ 1550              	.LASF41:
+ 1551 0251 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\RC_Connection_Timer.c\000"
+ 1551      6E657261 
+ 1551      7465645F 
+ 1551      536F7572 
+ 1551      63655C50 
+ 1552              	.LASF43:
+ 1553 0280 52435F43 		.ascii	"RC_Connection_Timer_interruptState\000"
+ 1553      6F6E6E65 
+ 1553      6374696F 
+ 1553      6E5F5469 
+ 1553      6D65725F 
+ 1554              	.LASF30:
+ 1555 02a3 52435F43 		.ascii	"RC_Connection_Timer_WriteCounter\000"
+ 1555      6F6E6E65 
+ 1555      6374696F 
+ 1555      6E5F5469 
+ 1555      6D65725F 
+ 1556              	.LASF17:
+ 1557 02c4 52435F43 		.ascii	"RC_Connection_Timer_Enable\000"
+ 1557      6F6E6E65 
+ 1557      6374696F 
+ 1557      6E5F5469 
+ 1557      6D65725F 
+ 1558              	.LASF12:
+ 1559 02df 646F7562 		.ascii	"double\000"
+ 1559      6C6500
+ 1560              	.LASF10:
+ 1561 02e6 75696E74 		.ascii	"uint32\000"
+ 1561      333200
+ 1562              	.LASF40:
+ 1563 02ed 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1563      4320342E 
+ 1563      392E3320 
+ 1563      32303135 
+ 1563      30333033 
+ 1564 0320 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1564      20726576 
+ 1564      6973696F 
+ 1564      6E203232 
+ 1564      31323230 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 44
+
+
+ 1565 0353 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1565      66756E63 
+ 1565      74696F6E 
+ 1565      2D736563 
+ 1565      74696F6E 
+ 1566              	.LASF37:
+ 1567 037b 52435F43 		.ascii	"RC_Connection_Timer_ClearFIFO\000"
+ 1567      6F6E6E65 
+ 1567      6374696F 
+ 1567      6E5F5469 
+ 1567      6D65725F 
+ 1568              	.LASF8:
+ 1569 0399 756E7369 		.ascii	"unsigned int\000"
+ 1569      676E6564 
+ 1569      20696E74 
+ 1569      00
+ 1570              	.LASF47:
+ 1571 03a6 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1571      69744372 
+ 1571      69746963 
+ 1571      616C5365 
+ 1571      6374696F 
+ 1572              	.LASF29:
+ 1573 03bc 52435F43 		.ascii	"RC_Connection_Timer_ReadCapture\000"
+ 1573      6F6E6E65 
+ 1573      6374696F 
+ 1573      6E5F5469 
+ 1573      6D65725F 
+ 1574              	.LASF46:
+ 1575 03dc 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1575      74657243 
+ 1575      72697469 
+ 1575      63616C53 
+ 1575      65637469 
+ 1576              	.LASF26:
+ 1577 03f3 52435F43 		.ascii	"RC_Connection_Timer_ReadPeriod\000"
+ 1577      6F6E6E65 
+ 1577      6374696F 
+ 1577      6E5F5469 
+ 1577      6D65725F 
+ 1578              	.LASF16:
+ 1579 0412 73697A65 		.ascii	"sizetype\000"
+ 1579      74797065 
+ 1579      00
+ 1580              	.LASF6:
+ 1581 041b 6C6F6E67 		.ascii	"long long int\000"
+ 1581      206C6F6E 
+ 1581      6720696E 
+ 1581      7400
+ 1582              	.LASF24:
+ 1583 0429 696E7465 		.ascii	"interruptMode\000"
+ 1583      72727570 
+ 1583      744D6F64 
+ 1583      6500
+ 1584              	.LASF45:
+ 1585 0437 43795365 		.ascii	"CySetReg24\000"
+ 1585      74526567 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccB3e8lK.s 			page 45
+
+
+ 1585      323400
+ 1586              	.LASF2:
+ 1587 0442 73686F72 		.ascii	"short int\000"
+ 1587      7420696E 
+ 1587      7400
+ 1588              	.LASF39:
+ 1589 044c 52435F43 		.ascii	"RC_Connection_Timer_Start\000"
+ 1589      6F6E6E65 
+ 1589      6374696F 
+ 1589      6E5F5469 
+ 1589      6D65725F 
+ 1590              	.LASF4:
+ 1591 0466 6C6F6E67 		.ascii	"long int\000"
+ 1591      20696E74 
+ 1591      00
+ 1592              	.LASF13:
+ 1593 046f 63686172 		.ascii	"char\000"
+ 1593      00
+ 1594              	.LASF32:
+ 1595 0474 52435F43 		.ascii	"RC_Connection_Timer_ReadCounter\000"
+ 1595      6F6E6E65 
+ 1595      6374696F 
+ 1595      6E5F5469 
+ 1595      6D65725F 
+ 1596              	.LASF0:
+ 1597 0494 7369676E 		.ascii	"signed char\000"
+ 1597      65642063 
+ 1597      68617200 
+ 1598              	.LASF3:
+ 1599 04a0 73686F72 		.ascii	"short unsigned int\000"
+ 1599      7420756E 
+ 1599      7369676E 
+ 1599      65642069 
+ 1599      6E7400
+ 1600              	.LASF35:
+ 1601 04b3 52435F43 		.ascii	"RC_Connection_Timer_EnableTrigger\000"
+ 1601      6F6E6E65 
+ 1601      6374696F 
+ 1601      6E5F5469 
+ 1601      6D65725F 
+ 1602              	.LASF21:
+ 1603 04d5 52435F43 		.ascii	"RC_Connection_Timer_ReadControlRegister\000"
+ 1603      6F6E6E65 
+ 1603      6374696F 
+ 1603      6E5F5469 
+ 1603      6D65725F 
+ 1604              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
