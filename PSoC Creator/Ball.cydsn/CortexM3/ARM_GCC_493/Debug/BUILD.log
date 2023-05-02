@@ -1,8 +1,13 @@
---------------- Build Started: 05/01/2023 23:27:15 Project: Ball, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
+--------------- Build Started: 05/01/2023 23:43:17 Project: Ball, Configuration: ARM GCC 4.9-2015-q1-update Debug ---------------
 The code generation step is up to date.
 arm-none-eabi-gcc.exe -mcpu=cortex-m3 -mthumb -Wno-main -I. -IGenerated_Source\PSoC5 -Wa,-alh=.\CortexM3\ARM_GCC_493\Debug/main.lst -g -D DEBUG -Wall -ffunction-sections -Og -ffat-lto-objects -c .\main.c -o .\CortexM3\ARM_GCC_493\Debug\main.o
+.\main.c: In function 'main':
+.\main.c:73:13: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+             sprintf(debug, "[%ld] %d %d %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value);
+             ^
+.\main.c:73:13: warning: incompatible implicit declaration of built-in function 'sprintf'
 .\main.c: In function 'run_motor':
-.\main.c:81:9: warning: implicit declaration of function 'abs' [-Wimplicit-function-declaration]
+.\main.c:88:9: warning: implicit declaration of function 'abs' [-Wimplicit-function-declaration]
          Motor_A_PWM_WriteCompare1(abs(motor_pwm));
          ^
 arm-none-eabi-ar.exe -rs .\CortexM3\ARM_GCC_493\Debug\Ball.a .\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o .\CortexM3\ARM_GCC_493\Debug\Motor_A_PWM.o .\CortexM3\ARM_GCC_493\Debug\Motor_A_PWM_PM.o .\CortexM3\ARM_GCC_493\Debug\Motor_A_Output_In1.o .\CortexM3\ARM_GCC_493\Debug\Motor_A_Output_In2.o .\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o .\CortexM3\ARM_GCC_493\Debug\CyDmac.o .\CortexM3\ARM_GCC_493\Debug\CyFlash.o .\CortexM3\ARM_GCC_493\Debug\CyLib.o .\CortexM3\ARM_GCC_493\Debug\cyPm.o .\CortexM3\ARM_GCC_493\Debug\CySpc.o .\CortexM3\ARM_GCC_493\Debug\cyutils.o .\CortexM3\ARM_GCC_493\Debug\USBUART.o .\CortexM3\ARM_GCC_493\Debug\USBUART_audio.o .\CortexM3\ARM_GCC_493\Debug\USBUART_boot.o .\CortexM3\ARM_GCC_493\Debug\USBUART_cdc.o .\CortexM3\ARM_GCC_493\Debug\USBUART_cls.o .\CortexM3\ARM_GCC_493\Debug\USBUART_descr.o .\CortexM3\ARM_GCC_493\Debug\USBUART_drv.o .\CortexM3\ARM_GCC_493\Debug\USBUART_episr.o .\CortexM3\ARM_GCC_493\Debug\USBUART_hid.o .\CortexM3\ARM_GCC_493\Debug\USBUART_pm.o .\CortexM3\ARM_GCC_493\Debug\USBUART_std.o .\CortexM3\ARM_GCC_493\Debug\USBUART_vnd.o .\CortexM3\ARM_GCC_493\Debug\USBUART_midi.o .\CortexM3\ARM_GCC_493\Debug\USBUART_msc.o .\CortexM3\ARM_GCC_493\Debug\USBUART_Dm.o .\CortexM3\ARM_GCC_493\Debug\USBUART_Dp.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch2_Timer.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch2_Timer_PM.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch2_Timer_Interrupt.o .\CortexM3\ARM_GCC_493\Debug\Clock.o .\CortexM3\ARM_GCC_493\Debug\Clock_Millis_Interrupt.o .\CortexM3\ARM_GCC_493\Debug\Clock_Millis.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch1.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch1_Timer.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch1_Timer_PM.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch2.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch1_Timer_Interrupt.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch4_Timer.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch4_Timer_PM.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch4.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch4_Timer_Interrupt.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch3_Timer.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch3_Timer_PM.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch3.o .\CortexM3\ARM_GCC_493\Debug\RC_Ch3_Timer_Interrupt.o
@@ -11,5 +16,5 @@ arm-none-eabi-gcc.exe -Wl,--start-group -o .\CortexM3\ARM_GCC_493\Debug\Ball.elf
 cyelftool.exe -C "C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\CortexM3\ARM_GCC_493\Debug\Ball.elf" --flash_row_size 256 --flash_size 262144
 cyelftool.exe -S "C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\CortexM3\ARM_GCC_493\Debug\Ball.elf"
 Flash used: 11776 of 262144 bytes (4.5%).
-SRAM used: 2893 of 65536 bytes (4.4%). Stack: 2048 bytes. Heap: 128 bytes.
---------------- Build Succeeded: 05/01/2023 23:27:16 ---------------
+SRAM used: 2901 of 65536 bytes (4.4%). Stack: 2048 bytes. Heap: 128 bytes.
+--------------- Build Succeeded: 05/01/2023 23:43:18 ---------------

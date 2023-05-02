@@ -304,51 +304,6 @@
 <VisibleNodeIds>
 <v>Ball-000</v>
 <v>Ball-000\Ball</v>
-<v>Ball-000\Ball\CortexM3</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_Millis.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_Millis_Interrupt.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\main.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\milliseconds.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_A_Output_In1.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_A_Output_In2.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_A_PWM.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\Motor_A_PWM_PM.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\rc_ch.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch1.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch1_Timer.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch1_Timer_Interrupt.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch1_Timer_PM.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch2.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch2_Timer.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch2_Timer_Interrupt.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch2_Timer_PM.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch3.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch3_Timer.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch3_Timer_Interrupt.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch3_Timer_PM.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch4.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch4_Timer.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch4_Timer_Interrupt.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\RC_Ch4_Timer_PM.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_audio.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_boot.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_cdc.lst</v>
-<v>Ball-000\Ball\CortexM3\ARM_GCC_493\Debug\Listing Files\USBUART_cls.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>

@@ -64,9 +64,16 @@ int main()
     for(;;)
     {
         get_rc_ch_value(&rc_ch1);
-        //get_rc_ch_value(&rc_ch2);
-        //get_rc_ch_value(&rc_ch3);
-        //get_rc_ch_value(&rc_ch4);
+        get_rc_ch_value(&rc_ch2);
+        get_rc_ch_value(&rc_ch3);
+        get_rc_ch_value(&rc_ch4);
+
+        if (rc_ch1.value != 0 || rc_ch2.value != 0 || rc_ch3.value != 0 || rc_ch3.value != 0) {
+            char debug[64] = "";
+            sprintf(debug, "[%ld] %d %d %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value);
+            USBUART_PutString(debug);
+        }
+        
         
         /*if (rc_ch2.connected && rc_ch2.value != 0) {
             run_motor(rc_ch2.value);

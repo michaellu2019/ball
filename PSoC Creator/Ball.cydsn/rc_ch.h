@@ -32,8 +32,6 @@ typedef struct rc_ch {
     int16 value;
 } RC_CH;
 
-void rc_ch_timer_isr_handler(uint8 ch_number);
-
 void init_rc_channels();
 
 void construct_rc_ch(RC_CH* rc_ch, uint8 ch_number);
