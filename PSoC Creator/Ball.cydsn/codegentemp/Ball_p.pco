@@ -1,58 +1,48 @@
 dont_use_io iocell 1 0
 dont_use_io iocell 1 1
 dont_use_io iocell 1 3
-set_location "\RC_Ch2_Timer:TimerUDB:trig_fall_detected\" macrocell 2 4 1 2
-set_location "\Motor_A_PWM:PWMUDB:genblk8:stsreg\" statusicell 2 2 4 
-set_location "\RC_Connection_Timer:TimerUDB:capture_last\" macrocell 2 4 1 1
-set_location "\RC_Ch2_Timer:TimerUDB:int_capt_count_0\" macrocell 2 3 0 3
-set_location "\Motor_A_PWM:PWMUDB:runmode_enable\" macrocell 2 2 0 3
-set_location "\RC_Connection_Timer:TimerUDB:trig_rise_detected\" macrocell 2 4 1 0
-set_location "Net_156" macrocell 2 2 0 2
-set_location "\RC_Connection_Timer:TimerUDB:capt_fifo_load\" macrocell 2 4 0 2
-set_location "\Motor_A_PWM:PWMUDB:status_2\" macrocell 2 2 1 0
-set_location "\RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\" datapathcell 3 5 2 
-set_location "\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\" datapathcell 3 3 2 
-set_location "\RC_Connection_Timer:TimerUDB:sT24:timerdp:u2\" datapathcell 3 4 2 
-set_location "\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u2\" datapathcell 3 2 2 
-set_location "Net_140" macrocell 2 2 1 1
-set_location "\Motor_A_PWM:PWMUDB:sP8:pwmdp:u0\" datapathcell 2 2 2 
-set_location "\RC_Ch2_Timer:TimerUDB:int_capt_count_1\" macrocell 2 3 1 0
-set_location "\RC_Connection_Timer:TimerUDB:sT24:timerdp:u0\" datapathcell 2 5 2 
-set_location "\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\" datapathcell 2 3 2 
-set_location "\Motor_A_PWM:PWMUDB:status_0\" macrocell 2 2 1 3
-set_location "\RC_Connection_Timer:TimerUDB:status_tc\" macrocell 2 4 0 3
-set_location "\RC_Ch2_Timer:TimerUDB:status_tc\" macrocell 2 3 0 1
-set_location "\RC_Ch2_Timer:TimerUDB:rstSts:stsreg\" statusicell 2 3 4 
-set_location "\RC_Connection_Timer:TimerUDB:rstSts:stsreg\" statusicell 3 4 4 
-set_location "\RC_Ch2_Timer:TimerUDB:capt_int_temp\" macrocell 2 3 1 1
-set_location "\Motor_A_PWM:PWMUDB:prevCompare2\" macrocell 2 2 0 1
-set_location "\RC_Ch2_Timer:TimerUDB:trig_rise_detected\" macrocell 2 4 1 3
-set_location "\Motor_A_PWM:PWMUDB:status_1\" macrocell 2 2 0 0
-set_location "\RC_Connection_Timer:TimerUDB:trig_fall_detected\" macrocell 2 4 0 1
-set_location "\RC_Ch2_Timer:TimerUDB:capt_fifo_load\" macrocell 2 3 0 2
-set_location "\Motor_A_PWM:PWMUDB:prevCompare1\" macrocell 2 2 1 2
-set_location "\RC_Ch2_Timer:TimerUDB:trig_reg\" macrocell 2 3 0 0
-set_location "\RC_Connection_Timer:TimerUDB:trig_reg\" macrocell 2 4 0 0
+set_location "\Motor_A_PWM:PWMUDB:genblk8:stsreg\" statusicell 0 1 4 
+set_location "\RC_Ch2_Timer:TimerUDB:int_capt_count_0\" macrocell 3 5 1 2
+set_location "\Motor_A_PWM:PWMUDB:status_0\" macrocell 0 1 1 1
+set_location "\Motor_A_PWM:PWMUDB:runmode_enable\" macrocell 0 1 0 1
+set_location "\Motor_A_PWM:PWMUDB:status_1\" macrocell 0 1 1 3
+set_location "\RC_Ch2_Timer:TimerUDB:int_capt_count_1\" macrocell 2 5 0 0
+set_location "\Motor_A_PWM:PWMUDB:sP8:pwmdp:u0\" datapathcell 0 1 2 
+set_location "\RC_Ch2_Timer:TimerUDB:capt_fifo_load\" macrocell 3 5 0 2
+set_location "\RC_Ch2_Timer:TimerUDB:status_tc\" macrocell 3 5 0 3
+set_location "\RC_Ch2_Timer:TimerUDB:rstSts:stsreg\" statusicell 3 4 4 
+set_location "\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\" datapathcell 2 5 2 
+set_location "\RC_Ch2_Timer:TimerUDB:trig_rise_detected\" macrocell 3 5 0 1
+set_location "\RC_Ch2_Timer:TimerUDB:capt_int_temp\" macrocell 2 5 0 1
+set_location "\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\" datapathcell 3 5 2 
+set_location "\Motor_A_PWM:PWMUDB:prevCompare1\" macrocell 0 1 1 0
+set_location "Net_156" macrocell 0 1 0 3
+set_location "\RC_Ch2_Timer:TimerUDB:capture_last\" macrocell 3 5 1 1
+set_location "\RC_Ch2_Timer:TimerUDB:trig_fall_detected\" macrocell 3 5 1 0
+set_location "\Motor_A_PWM:PWMUDB:status_2\" macrocell 0 1 0 2
+set_location "\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u2\" datapathcell 3 4 2 
+set_location "\Motor_A_PWM:PWMUDB:prevCompare2\" macrocell 0 1 1 2
+set_location "Net_140" macrocell 0 1 0 0
+set_location "\RC_Ch2_Timer:TimerUDB:trig_reg\" macrocell 3 5 0 0
 set_io "Motor_A_Output_In1(0)" iocell 1 7
-set_location "\Motor_A_PWM:PWMUDB:genblk1:ctrlreg\" controlcell 2 2 6 
-set_location "ClockBlock" clockblockcell -1 -1 0
+set_location "\Motor_A_PWM:PWMUDB:genblk1:ctrlreg\" controlcell 0 1 6 
+set_location "Clock_Millis_Interrupt" interrupt -1 -1 0
 set_location "\USBUART:ep_0\" interrupt -1 -1 24
 set_location "\USBUART:ep_2\" interrupt -1 -1 3
 set_location "\USBUART:ep_1\" interrupt -1 -1 2
 set_location "\USBUART:ep_3\" interrupt -1 -1 4
 set_location "\USBUART:dp_int\" interrupt -1 -1 12
-set_location "RC_Connection_Timer_Interrupt" interrupt -1 -1 1
-set_location "RC_Ch2_Timer_Interrupt" interrupt -1 -1 0
+set_location "RC_Ch2_Timer_Interrupt" interrupt -1 -1 1
 set_location "\USBUART:Dp\" logicalport -1 -1 8
-set_location "\RC_Connection_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 2 4 6 
 set_location "\USBUART:bus_reset\" interrupt -1 -1 23
 set_location "\USBUART:arb_int\" interrupt -1 -1 22
 set_location "\USBUART:sof_int\" interrupt -1 -1 21
+set_io "RC_Ch_2(0)" iocell 0 0
 set_location "\USBUART:USB\" usbcell -1 -1 0
+set_location "ClockBlock" clockblockcell -1 -1 0
 set_io "Motor_A_Output_In2(0)" iocell 1 6
-set_location "\RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 2 3 6 
 # Note: port 15 is the logical name for port 8
 set_io "\USBUART:Dm(0)\" iocell 15 7
-set_io "RC_Ch_2(0)" iocell 0 0
+set_location "\RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\" controlcell 3 5 6 
 # Note: port 15 is the logical name for port 8
 set_io "\USBUART:Dp(0)\" iocell 15 6

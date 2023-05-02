@@ -1,13 +1,13 @@
-Loading plugins phase: Elapsed time ==> 0s.146ms
+Loading plugins phase: Elapsed time ==> 0s.218ms
 Initializing data phase: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Ball.cyprj -d CY8C5888LTI-LP097 -s C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 1s.107ms
+Elaboration phase: Elapsed time ==> 1s.828ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.029ms
+HDL generation phase: Elapsed time ==> 0s.041ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -41,7 +41,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Micha
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Apr 30 21:47:53 2023
+Mon May 01 20:02:57 2023
 
 
 ======================================================================
@@ -51,7 +51,7 @@ Options  :    -yv2 -q10 Ball.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Apr 30 21:47:53 2023
+Mon May 01 20:02:57 2023
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.v'
@@ -95,7 +95,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Micha
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Apr 30 21:47:53 2023
+Mon May 01 20:02:57 2023
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -131,7 +131,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Micha
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Apr 30 21:47:53 2023
+Mon May 01 20:02:57 2023
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -295,15 +295,6 @@ Detecting unused logic.
 	\Motor_A_PWM:Net_113\
 	\Motor_A_PWM:Net_107\
 	\Motor_A_PWM:Net_114\
-	\RC_Connection_Timer:Net_260\
-	Net_1141
-	\RC_Connection_Timer:Net_53\
-	\RC_Connection_Timer:TimerUDB:ctrl_ic_1\
-	\RC_Connection_Timer:TimerUDB:ctrl_ic_0\
-	Net_1140
-	\RC_Connection_Timer:TimerUDB:zeros_3\
-	\RC_Connection_Timer:Net_102\
-	\RC_Connection_Timer:Net_266\
 	\USBUART:dma_complete_0\
 	\USBUART:Net_1922\
 	\USBUART:dma_complete_1\
@@ -382,7 +373,7 @@ Detecting unused logic.
 	\Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_3\
 	\Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_2\
 
-Deleted 187 User equations/components.
+Deleted 178 User equations/components.
 Deleted 30 Synthesized equations/components.
 
 ------------------------------------------------------
@@ -436,13 +427,6 @@ Aliasing \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_2\ to zero
 Aliasing \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\ to one
 Aliasing tmpOE__Motor_A_Output_In1_net_0 to one
 Aliasing tmpOE__Motor_A_Output_In2_net_0 to one
-Aliasing \RC_Connection_Timer:TimerUDB:ctrl_tmode_1\ to one
-Aliasing \RC_Connection_Timer:TimerUDB:ctrl_tmode_0\ to zero
-Aliasing Net_1138 to zero
-Aliasing \RC_Connection_Timer:TimerUDB:status_6\ to zero
-Aliasing \RC_Connection_Timer:TimerUDB:status_5\ to zero
-Aliasing \RC_Connection_Timer:TimerUDB:status_4\ to zero
-Aliasing \RC_Connection_Timer:TimerUDB:status_0\ to \RC_Connection_Timer:TimerUDB:tc_i\
 Aliasing \USBUART:tmpOE__Dm_net_0\ to one
 Aliasing \USBUART:tmpOE__Dp_net_0\ to one
 Aliasing tmpOE__RC_Ch_2_net_0 to one
@@ -464,12 +448,8 @@ Aliasing \Motor_A_PWM:PWMUDB:prevCapture\\D\ to zero
 Aliasing \Motor_A_PWM:PWMUDB:trig_last\\D\ to zero
 Aliasing \Motor_A_PWM:PWMUDB:ltch_kill_reg\\D\ to one
 Aliasing \Motor_A_PWM:PWMUDB:tc_i_reg\\D\ to \Motor_A_PWM:PWMUDB:status_2\
-Aliasing \RC_Connection_Timer:TimerUDB:hwEnable_reg\\D\ to \RC_Connection_Timer:TimerUDB:run_mode\
-Aliasing \RC_Connection_Timer:TimerUDB:capture_out_reg_i\\D\ to \RC_Connection_Timer:TimerUDB:capt_fifo_load_int\
-Aliasing \RC_Connection_Timer:TimerUDB:trig_last\\D\ to \RC_Connection_Timer:TimerUDB:capture_last\\D\
-Aliasing \RC_Ch2_Timer:TimerUDB:capture_last\\D\ to \RC_Connection_Timer:TimerUDB:capture_last\\D\
 Aliasing \RC_Ch2_Timer:TimerUDB:hwEnable_reg\\D\ to \RC_Ch2_Timer:TimerUDB:run_mode\
-Aliasing \RC_Ch2_Timer:TimerUDB:trig_last\\D\ to \RC_Connection_Timer:TimerUDB:capture_last\\D\
+Aliasing \RC_Ch2_Timer:TimerUDB:trig_last\\D\ to \RC_Ch2_Timer:TimerUDB:capture_last\\D\
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:ctrl_enable\[16] = \Motor_A_PWM:PWMUDB:control_7\[8]
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:hwCapture\[26] = zero[7]
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:hwEnable\[27] = \Motor_A_PWM:PWMUDB:control_7\[8]
@@ -539,111 +519,83 @@ Removing Lhs of wire \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\[329]
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\[330] = one[4]
 Removing Lhs of wire tmpOE__Motor_A_Output_In1_net_0[339] = one[4]
 Removing Lhs of wire tmpOE__Motor_A_Output_In2_net_0[345] = one[4]
-Removing Rhs of wire Net_1117[351] = \RC_Connection_Timer:Net_55\[352]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:ctrl_enable\[369] = \RC_Connection_Timer:TimerUDB:control_7\[361]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:ctrl_ten\[370] = \RC_Connection_Timer:TimerUDB:control_4\[364]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:ctrl_cmode_1\[371] = \RC_Connection_Timer:TimerUDB:control_6\[362]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:ctrl_cmode_0\[372] = \RC_Connection_Timer:TimerUDB:control_5\[363]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:ctrl_tmode_1\[373] = one[4]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:ctrl_tmode_0\[374] = zero[7]
-Removing Rhs of wire \RC_Connection_Timer:TimerUDB:timer_enable\[381] = \RC_Connection_Timer:TimerUDB:runmode_enable\[393]
-Removing Rhs of wire \RC_Connection_Timer:TimerUDB:run_mode\[382] = \RC_Connection_Timer:TimerUDB:hwEnable\[383]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:run_mode\[382] = \RC_Connection_Timer:TimerUDB:control_7\[361]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:tc_i\[387] = \RC_Connection_Timer:TimerUDB:status_tc\[384]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:capt_fifo_load_int\[392] = \RC_Connection_Timer:TimerUDB:capt_fifo_load\[380]
-Removing Lhs of wire Net_1138[396] = zero[7]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:status_6\[400] = zero[7]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:status_5\[401] = zero[7]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:status_4\[402] = zero[7]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:status_0\[403] = \RC_Connection_Timer:TimerUDB:status_tc\[384]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:status_1\[404] = \RC_Connection_Timer:TimerUDB:capt_fifo_load\[380]
-Removing Rhs of wire \RC_Connection_Timer:TimerUDB:status_2\[405] = \RC_Connection_Timer:TimerUDB:fifo_full\[406]
-Removing Rhs of wire \RC_Connection_Timer:TimerUDB:status_3\[407] = \RC_Connection_Timer:TimerUDB:fifo_nempty\[408]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:cs_addr_2\[410] = zero[7]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:cs_addr_1\[411] = \RC_Connection_Timer:TimerUDB:trig_reg\[399]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:cs_addr_0\[412] = \RC_Connection_Timer:TimerUDB:per_zero\[386]
-Removing Lhs of wire \USBUART:tmpOE__Dm_net_0\[546] = one[4]
-Removing Lhs of wire \USBUART:tmpOE__Dp_net_0\[553] = one[4]
-Removing Lhs of wire tmpOE__RC_Ch_2_net_0[605] = one[4]
-Removing Lhs of wire Net_12[610] = zero[7]
-Removing Rhs of wire Net_919[612] = \RC_Ch2_Timer:Net_55\[613]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_enable\[629] = \RC_Ch2_Timer:TimerUDB:control_7\[621]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_ten\[630] = \RC_Ch2_Timer:TimerUDB:control_4\[624]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_cmode_1\[631] = one[4]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_cmode_0\[632] = zero[7]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_tmode_1\[633] = zero[7]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_tmode_0\[634] = one[4]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_ic_1\[635] = \RC_Ch2_Timer:TimerUDB:control_1\[627]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_ic_0\[636] = \RC_Ch2_Timer:TimerUDB:control_0\[628]
-Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:timer_enable\[640] = \RC_Ch2_Timer:TimerUDB:runmode_enable\[713]
-Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:run_mode\[641] = \RC_Ch2_Timer:TimerUDB:hwEnable\[642]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:run_mode\[641] = \RC_Ch2_Timer:TimerUDB:control_7\[621]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:tc_i\[646] = \RC_Ch2_Timer:TimerUDB:status_tc\[643]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_2\[652] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:xeq\[691]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_3_1\[653] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:s_1\[708]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_3_0\[655] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:s_0\[709]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:capt_fifo_load_int\[657] = \RC_Ch2_Timer:TimerUDB:capt_int_temp\[656]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newa_1\[658] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_1\[659]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_1\[659] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[651]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newa_0\[660] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_0\[661]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_0\[661] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[654]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newb_1\[662] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_1\[663]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_1\[663] = \RC_Ch2_Timer:TimerUDB:control_1\[627]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newb_0\[664] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_0\[665]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_0\[665] = \RC_Ch2_Timer:TimerUDB:control_0\[628]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:dataa_1\[666] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[651]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:dataa_0\[667] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[654]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:datab_1\[668] = \RC_Ch2_Timer:TimerUDB:control_1\[627]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:datab_0\[669] = \RC_Ch2_Timer:TimerUDB:control_0\[628]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:a_1\[670] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[651]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:a_0\[671] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[654]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:b_1\[672] = \RC_Ch2_Timer:TimerUDB:control_1\[627]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:b_0\[673] = \RC_Ch2_Timer:TimerUDB:control_0\[628]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:aeqb_0\[676] = one[4]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:eq_0\[677] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:xnor_array_0\[675]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:eqi_0\[679] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:eq_1\[678]
-Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:xeq\[691] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:aeqb_1\[680]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:a_1\[702] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[651]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN4_1\[703] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[651]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:a_0\[704] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[654]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN4_0\[705] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[654]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_0\[711] = one[4]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_0\[712] = one[4]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_6\[719] = zero[7]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_5\[720] = zero[7]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_4\[721] = zero[7]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_0\[722] = \RC_Ch2_Timer:TimerUDB:status_tc\[643]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_1\[723] = \RC_Ch2_Timer:TimerUDB:capt_int_temp\[656]
-Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:status_2\[724] = \RC_Ch2_Timer:TimerUDB:fifo_full\[725]
-Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:status_3\[726] = \RC_Ch2_Timer:TimerUDB:fifo_nempty\[727]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:cs_addr_2\[729] = zero[7]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:cs_addr_1\[730] = \RC_Ch2_Timer:TimerUDB:trig_reg\[718]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:cs_addr_0\[731] = \RC_Ch2_Timer:TimerUDB:per_zero\[645]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:min_kill_reg\\D\[862] = one[4]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:prevCapture\\D\[863] = zero[7]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:trig_last\\D\[864] = zero[7]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:ltch_kill_reg\\D\[867] = one[4]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:prevCompare1\\D\[870] = \Motor_A_PWM:PWMUDB:cmp1\[68]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:prevCompare2\\D\[871] = \Motor_A_PWM:PWMUDB:cmp2\[71]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:cmp1_status_reg\\D\[872] = \Motor_A_PWM:PWMUDB:cmp1_status\[69]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:cmp2_status_reg\\D\[873] = \Motor_A_PWM:PWMUDB:cmp2_status\[72]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm_i_reg\\D\[875] = \Motor_A_PWM:PWMUDB:pwm_i\[121]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm1_i_reg\\D\[876] = \Motor_A_PWM:PWMUDB:pwm1_i\[123]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm2_i_reg\\D\[877] = \Motor_A_PWM:PWMUDB:pwm2_i\[125]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:tc_i_reg\\D\[878] = \Motor_A_PWM:PWMUDB:status_2\[63]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:capture_last\\D\[879] = Net_1049[378]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:tc_reg_i\\D\[880] = \RC_Connection_Timer:TimerUDB:status_tc\[384]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:hwEnable_reg\\D\[881] = \RC_Connection_Timer:TimerUDB:control_7\[361]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:capture_out_reg_i\\D\[882] = \RC_Connection_Timer:TimerUDB:capt_fifo_load\[380]
-Removing Lhs of wire \RC_Connection_Timer:TimerUDB:trig_last\\D\[883] = Net_1049[378]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:capture_last\\D\[886] = Net_1049[378]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:tc_reg_i\\D\[887] = \RC_Ch2_Timer:TimerUDB:status_tc\[643]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:hwEnable_reg\\D\[888] = \RC_Ch2_Timer:TimerUDB:control_7\[621]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:capture_out_reg_i\\D\[889] = \RC_Ch2_Timer:TimerUDB:capt_fifo_load\[639]
-Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:trig_last\\D\[893] = Net_1049[378]
+Removing Lhs of wire \USBUART:tmpOE__Dm_net_0\[353] = one[4]
+Removing Lhs of wire \USBUART:tmpOE__Dp_net_0\[360] = one[4]
+Removing Lhs of wire tmpOE__RC_Ch_2_net_0[412] = one[4]
+Removing Lhs of wire Net_12[419] = zero[7]
+Removing Rhs of wire Net_919[421] = \RC_Ch2_Timer:Net_55\[422]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_enable\[438] = \RC_Ch2_Timer:TimerUDB:control_7\[430]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_ten\[439] = \RC_Ch2_Timer:TimerUDB:control_4\[433]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_cmode_1\[440] = one[4]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_cmode_0\[441] = zero[7]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_tmode_1\[442] = zero[7]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_tmode_0\[443] = one[4]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_ic_1\[444] = \RC_Ch2_Timer:TimerUDB:control_1\[436]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:ctrl_ic_0\[445] = \RC_Ch2_Timer:TimerUDB:control_0\[437]
+Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:timer_enable\[449] = \RC_Ch2_Timer:TimerUDB:runmode_enable\[522]
+Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:run_mode\[450] = \RC_Ch2_Timer:TimerUDB:hwEnable\[451]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:run_mode\[450] = \RC_Ch2_Timer:TimerUDB:control_7\[430]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:tc_i\[455] = \RC_Ch2_Timer:TimerUDB:status_tc\[452]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:cmp_vv_vv_MODGEN_2\[461] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:xeq\[500]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_3_1\[462] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:s_1\[517]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:add_vv_vv_MODGEN_3_0\[464] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:s_0\[518]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:capt_fifo_load_int\[466] = \RC_Ch2_Timer:TimerUDB:capt_int_temp\[465]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newa_1\[467] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_1\[468]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_1\[468] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[460]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newa_0\[469] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_0\[470]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN2_0\[470] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[463]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newb_1\[471] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_1\[472]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_1\[472] = \RC_Ch2_Timer:TimerUDB:control_1\[436]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:newb_0\[473] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_0\[474]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN3_0\[474] = \RC_Ch2_Timer:TimerUDB:control_0\[437]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:dataa_1\[475] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[460]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:dataa_0\[476] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[463]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:datab_1\[477] = \RC_Ch2_Timer:TimerUDB:control_1\[436]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:datab_0\[478] = \RC_Ch2_Timer:TimerUDB:control_0\[437]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:a_1\[479] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[460]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:a_0\[480] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[463]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:b_1\[481] = \RC_Ch2_Timer:TimerUDB:control_1\[436]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:b_0\[482] = \RC_Ch2_Timer:TimerUDB:control_0\[437]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:aeqb_0\[485] = one[4]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:eq_0\[486] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:xnor_array_0\[484]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:eqi_0\[488] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:eq_1\[487]
+Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:xeq\[500] = \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_2:g1:a0:gx:u0:aeqb_1\[489]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:a_1\[511] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[460]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN4_1\[512] = \RC_Ch2_Timer:TimerUDB:int_capt_count_1\[460]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:a_0\[513] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[463]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODIN4_0\[514] = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\[463]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_0\[520] = one[4]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:sIntCapCount:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_0\[521] = one[4]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_6\[528] = zero[7]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_5\[529] = zero[7]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_4\[530] = zero[7]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_0\[531] = \RC_Ch2_Timer:TimerUDB:status_tc\[452]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:status_1\[532] = \RC_Ch2_Timer:TimerUDB:capt_int_temp\[465]
+Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:status_2\[533] = \RC_Ch2_Timer:TimerUDB:fifo_full\[534]
+Removing Rhs of wire \RC_Ch2_Timer:TimerUDB:status_3\[535] = \RC_Ch2_Timer:TimerUDB:fifo_nempty\[536]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:cs_addr_2\[538] = zero[7]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:cs_addr_1\[539] = \RC_Ch2_Timer:TimerUDB:trig_reg\[527]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:cs_addr_0\[540] = \RC_Ch2_Timer:TimerUDB:per_zero\[454]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:min_kill_reg\\D\[674] = one[4]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:prevCapture\\D\[675] = zero[7]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:trig_last\\D\[676] = zero[7]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:ltch_kill_reg\\D\[679] = one[4]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:prevCompare1\\D\[682] = \Motor_A_PWM:PWMUDB:cmp1\[68]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:prevCompare2\\D\[683] = \Motor_A_PWM:PWMUDB:cmp2\[71]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:cmp1_status_reg\\D\[684] = \Motor_A_PWM:PWMUDB:cmp1_status\[69]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:cmp2_status_reg\\D\[685] = \Motor_A_PWM:PWMUDB:cmp2_status\[72]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm_i_reg\\D\[687] = \Motor_A_PWM:PWMUDB:pwm_i\[121]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm1_i_reg\\D\[688] = \Motor_A_PWM:PWMUDB:pwm1_i\[123]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm2_i_reg\\D\[689] = \Motor_A_PWM:PWMUDB:pwm2_i\[125]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:tc_i_reg\\D\[690] = \Motor_A_PWM:PWMUDB:status_2\[63]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:capture_last\\D\[691] = Net_1049[413]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:tc_reg_i\\D\[692] = \RC_Ch2_Timer:TimerUDB:status_tc\[452]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:hwEnable_reg\\D\[693] = \RC_Ch2_Timer:TimerUDB:control_7\[430]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:capture_out_reg_i\\D\[694] = \RC_Ch2_Timer:TimerUDB:capt_fifo_load\[448]
+Removing Lhs of wire \RC_Ch2_Timer:TimerUDB:trig_last\\D\[698] = Net_1049[413]
 
 ------------------------------------------------------
-Aliased 0 equations, 171 wires.
+Aliased 0 equations, 143 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -678,13 +630,6 @@ Note:  Expanding virtual equation for '\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:
 
 Note:  Expanding virtual equation for '\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\' (cost = 0):
 \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\ <= ((\Motor_A_PWM:PWMUDB:dith_count_1\ and \Motor_A_PWM:PWMUDB:dith_count_0\));
-
-Note:  Expanding virtual equation for '\RC_Connection_Timer:TimerUDB:fifo_load_polarized\' (cost = 2):
-\RC_Connection_Timer:TimerUDB:fifo_load_polarized\ <= ((not \RC_Connection_Timer:TimerUDB:capture_last\ and \RC_Connection_Timer:TimerUDB:control_5\ and Net_1049)
-	OR (not Net_1049 and \RC_Connection_Timer:TimerUDB:control_6\ and \RC_Connection_Timer:TimerUDB:capture_last\));
-
-Note:  Expanding virtual equation for '\RC_Connection_Timer:TimerUDB:trigger_polarized\' (cost = 0):
-\RC_Connection_Timer:TimerUDB:trigger_polarized\ <= (\RC_Connection_Timer:TimerUDB:trig_fall_detected\);
 
 Note:  Expanding virtual equation for '\RC_Ch2_Timer:TimerUDB:fifo_load_polarized\' (cost = 1):
 \RC_Ch2_Timer:TimerUDB:fifo_load_polarized\ <= ((not Net_1049 and \RC_Ch2_Timer:TimerUDB:capture_last\));
@@ -734,9 +679,6 @@ Note:  Expanding virtual equation for '\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:
 Note:  Expanding virtual equation for '\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\' (cost = 0):
 \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\ <=  ('0') ;
 
-Note:  Expanding virtual equation for '\RC_Connection_Timer:TimerUDB:trigger_enable\' (cost = 3):
-\RC_Connection_Timer:TimerUDB:trigger_enable\ <= ((\RC_Connection_Timer:TimerUDB:control_4\ and \RC_Connection_Timer:TimerUDB:trig_fall_detected\));
-
 Note:  Expanding virtual equation for '\RC_Ch2_Timer:TimerUDB:trigger_enable\' (cost = 3):
 \RC_Ch2_Timer:TimerUDB:trigger_enable\ <= ((\RC_Ch2_Timer:TimerUDB:control_4\ and \RC_Ch2_Timer:TimerUDB:trig_rise_detected\));
 
@@ -755,9 +697,6 @@ Note:  Expanding virtual equation for '\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:
 
 Note:  Expanding virtual equation for '\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\' (cost = 0):
 \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\ <=  ('0') ;
-
-Note:  Expanding virtual equation for '\RC_Connection_Timer:TimerUDB:timer_enable\' (cost = 3):
-\RC_Connection_Timer:TimerUDB:timer_enable\ <= ((\RC_Connection_Timer:TimerUDB:control_7\ and \RC_Connection_Timer:TimerUDB:control_4\ and \RC_Connection_Timer:TimerUDB:trig_fall_detected\));
 
 Note:  Expanding virtual equation for '\RC_Ch2_Timer:TimerUDB:timer_enable\' (cost = 2):
 \RC_Ch2_Timer:TimerUDB:timer_enable\ <= ((\RC_Ch2_Timer:TimerUDB:control_7\ and \RC_Ch2_Timer:TimerUDB:control_4\ and \RC_Ch2_Timer:TimerUDB:trig_rise_detected\));
@@ -817,7 +756,7 @@ Substituting virtuals - pass 8:
 ----------------------------------------------------------
 Circuit simplification results:
 
-	Expanded 42 signals.
+	Expanded 38 signals.
 	Turned 1 signals into soft nodes.
 	Maximum default expansion cost was set at 3.
 ----------------------------------------------------------
@@ -836,8 +775,8 @@ Removing Lhs of wire \Motor_A_PWM:PWMUDB:pwm_i\[121] = zero[7]
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\[300] = zero[7]
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\[310] = zero[7]
 Removing Lhs of wire \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\[320] = zero[7]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:runmode_enable\\D\[865] = \Motor_A_PWM:PWMUDB:control_7\[8]
-Removing Lhs of wire \Motor_A_PWM:PWMUDB:final_kill_reg\\D\[874] = zero[7]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:runmode_enable\\D\[677] = \Motor_A_PWM:PWMUDB:control_7\[8]
+Removing Lhs of wire \Motor_A_PWM:PWMUDB:final_kill_reg\\D\[686] = zero[7]
 
 ------------------------------------------------------
 Aliased 0 equations, 7 wires.
@@ -870,14 +809,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\warp\bin/warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya "-.fftprj=C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Ball.cyprj" -dcpsoc3 Ball.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 0s.716ms
+Warp synthesis phase: Elapsed time ==> 0s.930ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Sunday, 30 April 2023 21:47:53
+cyp3fit: V3.3.0.9604, Family: PSoC3, Started at: Monday, 01 May 2023 20:02:58
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Ball.cyprj -d CY8C5888LTI-LP097 Ball.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.012ms
+Design parsing phase: Elapsed time ==> 0s.007ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -888,26 +827,19 @@ Design parsing phase: Elapsed time ==> 0s.012ms
     Converted constant MacroCell: \Motor_A_PWM:PWMUDB:trig_last\ from registered to combinatorial
     Converted constant MacroCell: \Motor_A_PWM:PWMUDB:status_5\ from registered to combinatorial
     Converted constant MacroCell: \Motor_A_PWM:PWMUDB:pwm_i_reg\ from registered to combinatorial
-Assigning clock timer_clock to clock BUS_CLK because it is a pass-through
+Assigning clock Bus_Clock to clock BUS_CLK because it is a pass-through
 <CYPRESSTAG name="Global Clock Selection" icon="FILE_RPT_TECHM">
-    Digital Clock 0: Automatic-assigning  clock 'Clock_1'. Fanout=1, Signal=Net_48
+    Digital Clock 0: Automatic-assigning  clock 'Clock'. Fanout=1, Signal=Net_48
+    Digital Clock 1: Automatic-assigning  clock 'Clock_Millis'. Fanout=1, Signal=Net_1143
 </CYPRESSTAG>
 
 Removing unused cells resulting from optimization
 Done removing unused cells.
 <CYPRESSTAG name="UDB Clock/Enable Remapping Results">
     UDB Clk/Enable \Motor_A_PWM:PWMUDB:clock_enable_block\: with output requested to be synchronous
-        ClockIn: Clock_1 was determined to be a global clock that is synchronous to BUS_CLK
+        ClockIn: Clock was determined to be a global clock that is synchronous to BUS_CLK
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
-        ClockOut: Clock_1, EnableOut: Constant 1
-    UDB Clk/Enable \RC_Connection_Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
-        ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
-        EnableIn: Constant 1 was determined to be synchronous to ClockIn
-        ClockOut: BUS_CLK, EnableOut: Constant 1
-    UDB Clk/Enable \RC_Connection_Timer:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\: with output requested to be synchronous
-        ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
-        EnableIn: Constant 1 was determined to be synchronous to ClockIn
-        ClockOut: BUS_CLK, EnableOut: Constant 1
+        ClockOut: Clock, EnableOut: Constant 1
     UDB Clk/Enable \RC_Ch2_Timer:TimerUDB:clock_enable_block\: with output requested to be synchronous
         ClockIn: BUS_CLK was determined to be a global clock that is synchronous to BUS_CLK
         EnableIn: Constant 1 was determined to be synchronous to ClockIn
@@ -925,7 +857,7 @@ Done removing unused cells.
 <CYPRESSTAG name="Duplicate Macrocell detection">
 
 Removing duplicate macrocells
-    Removing \RC_Ch2_Timer:TimerUDB:trig_last\, Duplicate of \RC_Connection_Timer:TimerUDB:capture_last\ 
+    Removing \RC_Ch2_Timer:TimerUDB:trig_last\, Duplicate of \RC_Ch2_Timer:TimerUDB:capture_last\ 
     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_last\, Mode=(D-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
@@ -937,32 +869,6 @@ Removing duplicate macrocells
               Net_1049
         );
         Output = \RC_Ch2_Timer:TimerUDB:trig_last\ (fanout=2)
-
-    Removing \RC_Ch2_Timer:TimerUDB:capture_last\, Duplicate of \RC_Connection_Timer:TimerUDB:capture_last\ 
-    MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capture_last\, Mode=(D-Register)
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_1049
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:capture_last\ (fanout=1)
-
-    Removing \RC_Connection_Timer:TimerUDB:trig_last\, Duplicate of \RC_Connection_Timer:TimerUDB:capture_last\ 
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_last\, Mode=(D-Register)
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_1049
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_last\ (fanout=2)
 
 End removing duplicate macrocells: used 1 pass
 </CYPRESSTAG>
@@ -1193,59 +1099,15 @@ Design Equations
         );
         Output = \Motor_A_PWM:PWMUDB:status_2\ (fanout=1)
 
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial)
-        Total # of inputs        : 7
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_6\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * !Net_1049 * 
-              \RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-            + \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_5\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * Net_1049 * 
-              !\RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:capt_fifo_load\ (fanout=4)
-
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:status_tc\, Mode=(Combinatorial)
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:per_zero\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:status_tc\ (fanout=1)
-
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_reg\, Mode=(Combinatorial)
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_reg\ (fanout=3)
-
     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial)
         Total # of inputs        : 5
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !Net_1049 * \RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              !Net_1049 * \RC_Ch2_Timer:TimerUDB:control_7\ * 
               \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:capture_last\ * 
               \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
         );
         Output = \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ (fanout=6)
@@ -1367,7 +1229,7 @@ Design Equations
         );
         Output = Net_156 (fanout=1)
 
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:capture_last\, Mode=(D-Register)
+    MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capture_last\, Mode=(D-Register)
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -1377,41 +1239,7 @@ Design Equations
         (
               Net_1049
         );
-        Output = \RC_Connection_Timer:TimerUDB:capture_last\ (fanout=6)
-
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_rise_detected\, Mode=(D-Register)
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * Net_1049 * 
-              !\RC_Connection_Timer:TimerUDB:capture_last\
-            + \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:trig_rise_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_rise_detected\ (fanout=1)
-
-    MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_fall_detected\, Mode=(D-Register)
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * !Net_1049 * 
-              \RC_Connection_Timer:TimerUDB:capture_last\
-            + \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_fall_detected\ (fanout=4)
+        Output = \RC_Ch2_Timer:TimerUDB:capture_last\ (fanout=3)
 
     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:int_capt_count_1\, Mode=(T-Register)
         Total # of inputs        : 5
@@ -1496,9 +1324,9 @@ Design Equations
             Clock Enable: True
         Main Equation            : 2 pterms
         (
-              Net_1049 * !\RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\
+              Net_1049 * \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              !\RC_Ch2_Timer:TimerUDB:capture_last\
             + \RC_Ch2_Timer:TimerUDB:control_7\ * 
               \RC_Ch2_Timer:TimerUDB:control_4\ * 
               \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
@@ -1513,9 +1341,9 @@ Design Equations
             Clock Enable: True
         Main Equation            : 2 pterms
         (
-              !Net_1049 * \RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\
+              !Net_1049 * \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:capture_last\
             + \RC_Ch2_Timer:TimerUDB:control_7\ * 
               \RC_Ch2_Timer:TimerUDB:control_4\ * 
               \RC_Ch2_Timer:TimerUDB:trig_fall_detected\
@@ -1563,116 +1391,6 @@ Design Equations
         }
         Clock Polarity: Active High
         Clock Enable: True
-
-    datapathcell: Name =\RC_Connection_Timer:TimerUDB:sT24:timerdp:u0\
-        PORT MAP (
-            clock => ClockBlock_BUS_CLK ,
-            cs_addr_1 => \RC_Connection_Timer:TimerUDB:trig_reg\ ,
-            cs_addr_0 => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-            f0_load => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-            chain_out => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry0\ );
-        Properties:
-        {
-            a0_init = "00000000"
-            a1_init = "00000000"
-            ce0_sync = 1
-            ce1_sync = 1
-            cl0_sync = 1
-            cl1_sync = 1
-            cmsb_sync = 1
-            co_msb_sync = 1
-            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
-            d0_init = "00000000"
-            d1_init = "00000000"
-            f0_blk_sync = 1
-            f0_bus_sync = 1
-            f1_blk_sync = 1
-            f1_bus_sync = 1
-            ff0_sync = 1
-            ff1_sync = 1
-            ov_msb_sync = 1
-            so_sync = 1
-            z0_sync = 1
-            z1_sync = 1
-        }
-        Clock Polarity: Active High
-        Clock Enable: True
-        Next in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\
-
-    datapathcell: Name =\RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\
-        PORT MAP (
-            clock => ClockBlock_BUS_CLK ,
-            cs_addr_1 => \RC_Connection_Timer:TimerUDB:trig_reg\ ,
-            cs_addr_0 => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-            f0_load => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-            chain_in => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry0\ ,
-            chain_out => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry1\ );
-        Properties:
-        {
-            a0_init = "00000000"
-            a1_init = "00000000"
-            ce0_sync = 1
-            ce1_sync = 1
-            cl0_sync = 1
-            cl1_sync = 1
-            cmsb_sync = 1
-            co_msb_sync = 1
-            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-            d0_init = "00000000"
-            d1_init = "00000000"
-            f0_blk_sync = 1
-            f0_bus_sync = 1
-            f1_blk_sync = 1
-            f1_bus_sync = 1
-            ff0_sync = 1
-            ff1_sync = 1
-            ov_msb_sync = 1
-            so_sync = 1
-            z0_sync = 1
-            z1_sync = 1
-        }
-        Clock Polarity: Active High
-        Clock Enable: True
-        Previous in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u0\
-        Next in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u2\
-
-    datapathcell: Name =\RC_Connection_Timer:TimerUDB:sT24:timerdp:u2\
-        PORT MAP (
-            clock => ClockBlock_BUS_CLK ,
-            cs_addr_1 => \RC_Connection_Timer:TimerUDB:trig_reg\ ,
-            cs_addr_0 => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-            f0_load => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-            z0_comb => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-            f0_bus_stat_comb => \RC_Connection_Timer:TimerUDB:status_3\ ,
-            f0_blk_stat_comb => \RC_Connection_Timer:TimerUDB:status_2\ ,
-            chain_in => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry1\ );
-        Properties:
-        {
-            a0_init = "00000000"
-            a1_init = "00000000"
-            ce0_sync = 1
-            ce1_sync = 1
-            cl0_sync = 1
-            cl1_sync = 1
-            cmsb_sync = 1
-            co_msb_sync = 1
-            cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-            d0_init = "00000000"
-            d1_init = "00000000"
-            f0_blk_sync = 1
-            f0_bus_sync = 1
-            f1_blk_sync = 1
-            f1_bus_sync = 1
-            ff0_sync = 1
-            ff1_sync = 1
-            ov_msb_sync = 1
-            so_sync = 1
-            z0_sync = 1
-            z1_sync = 1
-        }
-        Clock Polarity: Active High
-        Clock Enable: True
-        Previous in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\
 
     datapathcell: Name =\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\
         PORT MAP (
@@ -1808,23 +1526,6 @@ Design Equations
         Clock Polarity: Active High
         Clock Enable: True
 
-    statusicell: Name =\RC_Connection_Timer:TimerUDB:rstSts:stsreg\
-        PORT MAP (
-            clock => ClockBlock_BUS_CLK ,
-            status_3 => \RC_Connection_Timer:TimerUDB:status_3\ ,
-            status_2 => \RC_Connection_Timer:TimerUDB:status_2\ ,
-            status_1 => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-            status_0 => \RC_Connection_Timer:TimerUDB:status_tc\ ,
-            interrupt => Net_1117 );
-        Properties:
-        {
-            cy_force_order = 1
-            cy_int_mask = "1111111"
-            cy_md_select = "0000011"
-        }
-        Clock Polarity: Active High
-        Clock Enable: True
-
     statusicell: Name =\RC_Ch2_Timer:TimerUDB:rstSts:stsreg\
         PORT MAP (
             clock => ClockBlock_BUS_CLK ,
@@ -1872,28 +1573,6 @@ Design Equations
         Clock Polarity: Active High
         Clock Enable: True
 
-    controlcell: Name =\RC_Connection_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
-        PORT MAP (
-            clock => ClockBlock_BUS_CLK ,
-            control_7 => \RC_Connection_Timer:TimerUDB:control_7\ ,
-            control_6 => \RC_Connection_Timer:TimerUDB:control_6\ ,
-            control_5 => \RC_Connection_Timer:TimerUDB:control_5\ ,
-            control_4 => \RC_Connection_Timer:TimerUDB:control_4\ ,
-            control_3 => \RC_Connection_Timer:TimerUDB:control_3\ ,
-            control_2 => \RC_Connection_Timer:TimerUDB:control_2\ ,
-            control_1 => \RC_Connection_Timer:TimerUDB:control_1\ ,
-            control_0 => \RC_Connection_Timer:TimerUDB:control_0\ );
-        Properties:
-        {
-            cy_ctrl_mode_0 = "11111111"
-            cy_ctrl_mode_1 = "00000000"
-            cy_ext_reset = 0
-            cy_force_order = 1
-            cy_init_value = "00000000"
-        }
-        Clock Polarity: Active High
-        Clock Enable: True
-
     controlcell: Name =\RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
         PORT MAP (
             clock => ClockBlock_BUS_CLK ,
@@ -1925,14 +1604,6 @@ Design Equations
     ------------------------------------------------------------
     Interrupt listing
     ------------------------------------------------------------
-
-    interrupt: Name =RC_Connection_Timer_Interrupt
-        PORT MAP (
-            interrupt => Net_1117 );
-        Properties:
-        {
-            int_type = "10"
-        }
 
     interrupt: Name =\USBUART:dp_int\
         PORT MAP (
@@ -2005,6 +1676,14 @@ Design Equations
         {
             int_type = "10"
         }
+
+    interrupt: Name =Clock_Millis_Interrupt
+        PORT MAP (
+            interrupt => Net_1143_local );
+        Properties:
+        {
+            int_type = "10"
+        }
     </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Technology mapping summary" expanded>
@@ -2015,7 +1694,7 @@ Technology mapping summary
 
 Resource Type                 : Used : Free :  Max :  % Used
 ============================================================
-Digital Clocks                :    1 :    7 :    8 : 12.50 %
+Digital Clocks                :    2 :    6 :    8 : 25.00 %
 Analog Clocks                 :    0 :    4 :    4 :  0.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
@@ -2028,14 +1707,14 @@ USB                           :    1 :    0 :    1 : 100.00 %
 DMA Channels                  :    0 :   24 :   24 :  0.00 %
 Timer                         :    0 :    4 :    4 :  0.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :   22 :  170 :  192 : 11.46 %
-  Unique P-terms              :   33 :  351 :  384 :  8.59 %
-  Total P-terms               :   35 :      :      :        
-  Datapath Cells              :    7 :   17 :   24 : 29.17 %
-  Status Cells                :    3 :   21 :   24 : 12.50 %
-    StatusI Registers         :    3 :      :      :        
-  Control Cells               :    3 :   21 :   24 : 12.50 %
-    Control Registers         :    3 :      :      :        
+  Macrocells                  :   17 :  175 :  192 :  8.85 %
+  Unique P-terms              :   26 :  358 :  384 :  6.77 %
+  Total P-terms               :   27 :      :      :        
+  Datapath Cells              :    4 :   20 :   24 : 16.67 %
+  Status Cells                :    2 :   22 :   24 :  8.33 %
+    StatusI Registers         :    2 :      :      :        
+  Control Cells               :    2 :   22 :   24 :  8.33 %
+    Control Registers         :    2 :      :      :        
 Opamp                         :    0 :    4 :    4 :  0.00 %
 Comparator                    :    0 :    4 :    4 :  0.00 %
 Delta-Sigma ADC               :    0 :    1 :    1 :  0.00 %
@@ -2045,8 +1724,8 @@ Analog (SC/CT) Blocks         :    0 :    4 :    4 :  0.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.033ms
-Tech mapping phase: Elapsed time ==> 0s.078ms
+Technology Mapping: Elapsed time ==> 0s.048ms
+Tech mapping phase: Elapsed time ==> 0s.120ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -2056,7 +1735,7 @@ IO_0@[IOP=(0)][IoId=(0)] : RC_Ch_2(0) (fixed)
 IO_7@[IOP=(15)][IoId=(7)] : \USBUART:Dm(0)\ (fixed)
 IO_6@[IOP=(15)][IoId=(6)] : \USBUART:Dp(0)\ (fixed)
 USB[0]@[FFB(USB,0)] : \USBUART:USB\
-Analog Placement phase: Elapsed time ==> 0s.009ms
+Analog Placement phase: Elapsed time ==> 0s.031ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Analog Routing phase: Elapsed time ==> 0s.000ms
@@ -2074,11 +1753,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.224ms
+Analog Code Generation phase: Elapsed time ==> 0s.320ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 0.4 sec.
+I2076: Total run-time: 0.5 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -2089,15 +1768,15 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :    6 :   42 :   48 :  12.50%
+                     PLDs :    5 :   43 :   48 :  10.42%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            6.83
-                   Pterms :            5.67
-               Macrocells :            3.67
+                   Inputs :            6.00
+                   Pterms :            5.20
+               Macrocells :            3.40
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
@@ -2115,7 +1794,7 @@ Partitioning: Elapsed time ==> 0s.016ms
 Annealing: Elapsed time ==> 0s.000ms
 <CYPRESSTAG name="Simulated Annealing Results">
 The seed used for moves was 114161200.
-Inital cost was 302, final cost is 302 (0.00% improvement).</CYPRESSTAG>
+Inital cost was 233, final cost is 233 (0.00% improvement).</CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -2125,7 +1804,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :          8 :       3.88 :       2.75
+                 UDB :          4 :       6.00 :       4.25
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -2133,101 +1812,10 @@ Final Placement Summary
 Component Placement Details
 ------------------------------------------------------------
 UDB [UDB=(0,0)] is empty.
-UDB [UDB=(0,1)] is empty.
-UDB [UDB=(0,2)] is empty.
-UDB [UDB=(0,3)] is empty.
-UDB [UDB=(0,4)] is empty.
-UDB [UDB=(0,5)] is empty.
-UDB [UDB=(1,0)] is empty.
-UDB [UDB=(1,1)] is empty.
-UDB [UDB=(1,2)] is empty.
-UDB [UDB=(1,3)] is empty.
-UDB [UDB=(1,4)] is empty.
-UDB [UDB=(1,5)] is empty.
-UDB [UDB=(2,0)] is empty.
-UDB [UDB=(2,1)] is empty.
-UDB [UDB=(2,2)] contents:
-LAB@[UDB=(2,2)][LB=0] #macrocells=4, #inputs=4, #pterms=4
+UDB [UDB=(0,1)] contents:
+LAB@[UDB=(0,1)][LB=0] #macrocells=4, #inputs=5, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:status_1\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_48) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\Motor_A_PWM:PWMUDB:prevCompare2\ * 
-              \Motor_A_PWM:PWMUDB:cmp2_less\
-        );
-        Output = \Motor_A_PWM:PWMUDB:status_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:prevCompare2\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_48) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Motor_A_PWM:PWMUDB:cmp2_less\
-        );
-        Output = \Motor_A_PWM:PWMUDB:prevCompare2\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=Net_156, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_48) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Motor_A_PWM:PWMUDB:runmode_enable\ * 
-              \Motor_A_PWM:PWMUDB:cmp2_less\
-        );
-        Output = Net_156 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (Net_48) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Motor_A_PWM:PWMUDB:control_7\
-        );
-        Output = \Motor_A_PWM:PWMUDB:runmode_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,2)][LB=1] #macrocells=4, #inputs=4, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:status_2\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \Motor_A_PWM:PWMUDB:runmode_enable\ * \Motor_A_PWM:PWMUDB:tc_i\
-        );
-        Output = \Motor_A_PWM:PWMUDB:status_2\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_140, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=1]
+    [McSlotId=0]:     MacroCell: Name=Net_140, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -2243,7 +1831,54 @@ LAB@[UDB=(2,2)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:prevCompare1\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_48) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Motor_A_PWM:PWMUDB:control_7\
+        );
+        Output = \Motor_A_PWM:PWMUDB:runmode_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:status_2\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Motor_A_PWM:PWMUDB:runmode_enable\ * \Motor_A_PWM:PWMUDB:tc_i\
+        );
+        Output = \Motor_A_PWM:PWMUDB:status_2\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=Net_156, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_48) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Motor_A_PWM:PWMUDB:runmode_enable\ * 
+              \Motor_A_PWM:PWMUDB:cmp2_less\
+        );
+        Output = Net_156 (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(0,1)][LB=1] #macrocells=4, #inputs=4, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:prevCompare1\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -2258,7 +1893,7 @@ LAB@[UDB=(2,2)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:status_0\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=3]
+    [McSlotId=1]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:status_0\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -2270,6 +1905,37 @@ LAB@[UDB=(2,2)][LB=1] #macrocells=4, #inputs=4, #pterms=4
               \Motor_A_PWM:PWMUDB:cmp1_less\
         );
         Output = \Motor_A_PWM:PWMUDB:status_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:prevCompare2\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_48) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \Motor_A_PWM:PWMUDB:cmp2_less\
+        );
+        Output = \Motor_A_PWM:PWMUDB:prevCompare2\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\Motor_A_PWM:PWMUDB:status_1\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (Net_48) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\Motor_A_PWM:PWMUDB:prevCompare2\ * 
+              \Motor_A_PWM:PWMUDB:cmp2_less\
+        );
+        Output = \Motor_A_PWM:PWMUDB:status_1\ (fanout=1)
         Properties               : 
         {
         }
@@ -2349,84 +2015,25 @@ controlcell: Name =\Motor_A_PWM:PWMUDB:genblk1:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=4, #inputs=11, #pterms=6
+UDB [UDB=(0,2)] is empty.
+UDB [UDB=(0,3)] is empty.
+UDB [UDB=(0,4)] is empty.
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] is empty.
+UDB [UDB=(1,1)] is empty.
+UDB [UDB=(1,2)] is empty.
+UDB [UDB=(1,3)] is empty.
+UDB [UDB=(1,4)] is empty.
+UDB [UDB=(1,5)] is empty.
+UDB [UDB=(2,0)] is empty.
+UDB [UDB=(2,1)] is empty.
+UDB [UDB=(2,2)] is empty.
+UDB [UDB=(2,3)] is empty.
+UDB [UDB=(2,4)] is empty.
+UDB [UDB=(2,5)] contents:
+LAB@[UDB=(2,5)][LB=0] #macrocells=2, #inputs=5, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_reg\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\ * 
-              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:trig_reg\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\ * 
-              \RC_Ch2_Timer:TimerUDB:per_zero\ * 
-              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:status_tc\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=2]
-        Total # of inputs        : 5
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !Net_1049 * \RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\ * 
-              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ (fanout=6)
-        Properties               : 
-        {
-            soft = 1
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:int_capt_count_0\, Mode=(T-Register) @ [UDB=(2,3)][LB=0][MC=3]
-        Total # of inputs        : 5
-        Total # of product terms : 3
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        !(
-              !\RC_Ch2_Timer:TimerUDB:control_1\ * 
-              !\RC_Ch2_Timer:TimerUDB:control_0\ * 
-              !\RC_Ch2_Timer:TimerUDB:int_capt_count_1\ * 
-              !\RC_Ch2_Timer:TimerUDB:int_capt_count_0\
-            + \RC_Ch2_Timer:TimerUDB:control_1\ * 
-              !\RC_Ch2_Timer:TimerUDB:control_0\ * 
-              \RC_Ch2_Timer:TimerUDB:int_capt_count_1\ * 
-              !\RC_Ch2_Timer:TimerUDB:int_capt_count_0\
-            + !\RC_Ch2_Timer:TimerUDB:capt_fifo_load\
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\ (fanout=3)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,3)][LB=1] #macrocells=2, #inputs=5, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(2,3)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:int_capt_count_1\, Mode=(T-Register) @ [UDB=(2,5)][LB=0][MC=0]
         Total # of inputs        : 5
         Total # of product terms : 4
         List of special equations: 
@@ -2453,7 +2060,7 @@ LAB@[UDB=(2,3)][LB=1] #macrocells=2, #inputs=5, #pterms=8
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capt_int_temp\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=1]
         Total # of inputs        : 5
         Total # of product terms : 4
         List of special equations: 
@@ -2526,261 +2133,11 @@ datapathcell: Name =\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\
     Clock Enable: True
     Next in chain : \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\
 
-statusicell: Name =\RC_Ch2_Timer:TimerUDB:rstSts:stsreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        status_3 => \RC_Ch2_Timer:TimerUDB:status_3\ ,
-        status_2 => \RC_Ch2_Timer:TimerUDB:status_2\ ,
-        status_1 => \RC_Ch2_Timer:TimerUDB:capt_int_temp\ ,
-        status_0 => \RC_Ch2_Timer:TimerUDB:status_tc\ ,
-        interrupt => Net_919 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0000011"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-controlcell: Name =\RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        control_7 => \RC_Ch2_Timer:TimerUDB:control_7\ ,
-        control_6 => \RC_Ch2_Timer:TimerUDB:control_6\ ,
-        control_5 => \RC_Ch2_Timer:TimerUDB:control_5\ ,
-        control_4 => \RC_Ch2_Timer:TimerUDB:control_4\ ,
-        control_3 => \RC_Ch2_Timer:TimerUDB:control_3\ ,
-        control_2 => \RC_Ch2_Timer:TimerUDB:control_2\ ,
-        control_1 => \RC_Ch2_Timer:TimerUDB:control_1\ ,
-        control_0 => \RC_Ch2_Timer:TimerUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,4)] contents:
-LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=8, #pterms=5
-{
-    [McSlotId=0]:     MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_reg\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_reg\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_fall_detected\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * !Net_1049 * 
-              \RC_Connection_Timer:TimerUDB:capture_last\
-            + \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_fall_detected\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\RC_Connection_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=2]
-        Total # of inputs        : 7
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_6\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * !Net_1049 * 
-              \RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-            + \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_5\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * Net_1049 * 
-              !\RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:capt_fifo_load\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\RC_Connection_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=3]
-        Total # of inputs        : 4
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:per_zero\ * 
-              \RC_Connection_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:status_tc\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,4)][LB=1] #macrocells=4, #inputs=9, #pterms=7
-{
-    [McSlotId=0]:     MacroCell: Name=\RC_Connection_Timer:TimerUDB:trig_rise_detected\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=0]
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * Net_1049 * 
-              !\RC_Connection_Timer:TimerUDB:capture_last\
-            + \RC_Connection_Timer:TimerUDB:control_7\ * 
-              \RC_Connection_Timer:TimerUDB:control_4\ * 
-              \RC_Connection_Timer:TimerUDB:trig_rise_detected\
-        );
-        Output = \RC_Connection_Timer:TimerUDB:trig_rise_detected\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\RC_Connection_Timer:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_1049
-        );
-        Output = \RC_Connection_Timer:TimerUDB:capture_last\ (fanout=6)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_fall_detected\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=2]
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !Net_1049 * \RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\
-            + \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\ * 
-              \RC_Ch2_Timer:TimerUDB:trig_fall_detected\
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_rise_detected\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=3]
-        Total # of inputs        : 5
-        Total # of product terms : 2
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              Net_1049 * !\RC_Connection_Timer:TimerUDB:capture_last\ * 
-              \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\
-            + \RC_Ch2_Timer:TimerUDB:control_7\ * 
-              \RC_Ch2_Timer:TimerUDB:control_4\ * 
-              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
-        );
-        Output = \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ (fanout=4)
-        Properties               : 
-        {
-        }
-}
-
-controlcell: Name =\RC_Connection_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        control_7 => \RC_Connection_Timer:TimerUDB:control_7\ ,
-        control_6 => \RC_Connection_Timer:TimerUDB:control_6\ ,
-        control_5 => \RC_Connection_Timer:TimerUDB:control_5\ ,
-        control_4 => \RC_Connection_Timer:TimerUDB:control_4\ ,
-        control_3 => \RC_Connection_Timer:TimerUDB:control_3\ ,
-        control_2 => \RC_Connection_Timer:TimerUDB:control_2\ ,
-        control_1 => \RC_Connection_Timer:TimerUDB:control_1\ ,
-        control_0 => \RC_Connection_Timer:TimerUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(2,5)] contents:
-datapathcell: Name =\RC_Connection_Timer:TimerUDB:sT24:timerdp:u0\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_1 => \RC_Connection_Timer:TimerUDB:trig_reg\ ,
-        cs_addr_0 => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-        f0_load => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-        chain_out => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry0\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111000000000000000000000001000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\
-
 UDB [UDB=(3,0)] is empty.
 UDB [UDB=(3,1)] is empty.
-UDB [UDB=(3,2)] contents:
+UDB [UDB=(3,2)] is empty.
+UDB [UDB=(3,3)] is empty.
+UDB [UDB=(3,4)] contents:
 datapathcell: Name =\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u2\
     PORT MAP (
         clock => ClockBlock_BUS_CLK ,
@@ -2819,7 +2176,158 @@ datapathcell: Name =\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u2\
     Clock Enable: True
     Previous in chain : \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\
 
-UDB [UDB=(3,3)] contents:
+statusicell: Name =\RC_Ch2_Timer:TimerUDB:rstSts:stsreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        status_3 => \RC_Ch2_Timer:TimerUDB:status_3\ ,
+        status_2 => \RC_Ch2_Timer:TimerUDB:status_2\ ,
+        status_1 => \RC_Ch2_Timer:TimerUDB:capt_int_temp\ ,
+        status_0 => \RC_Ch2_Timer:TimerUDB:status_tc\ ,
+        interrupt => Net_919 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "1111111"
+        cy_md_select = "0000011"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,5)] contents:
+LAB@[UDB=(3,5)][LB=0] #macrocells=4, #inputs=6, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_reg\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:trig_reg\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_rise_detected\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=1]
+        Total # of inputs        : 5
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_1049 * \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              !\RC_Ch2_Timer:TimerUDB:capture_last\
+            + \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capt_fifo_load\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=2]
+        Total # of inputs        : 5
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !Net_1049 * \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:capture_last\ * 
+              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ (fanout=6)
+        Properties               : 
+        {
+            soft = 1
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:status_tc\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=3]
+        Total # of inputs        : 4
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:per_zero\ * 
+              \RC_Ch2_Timer:TimerUDB:trig_rise_detected\
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:status_tc\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,5)][LB=1] #macrocells=3, #inputs=10, #pterms=6
+{
+    [McSlotId=0]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:trig_fall_detected\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=0]
+        Total # of inputs        : 5
+        Total # of product terms : 2
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !Net_1049 * \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:capture_last\
+            + \RC_Ch2_Timer:TimerUDB:control_7\ * 
+              \RC_Ch2_Timer:TimerUDB:control_4\ * 
+              \RC_Ch2_Timer:TimerUDB:trig_fall_detected\
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:capture_last\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_1049
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:capture_last\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\RC_Ch2_Timer:TimerUDB:int_capt_count_0\, Mode=(T-Register) @ [UDB=(3,5)][LB=1][MC=2]
+        Total # of inputs        : 5
+        Total # of product terms : 3
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        !(
+              !\RC_Ch2_Timer:TimerUDB:control_1\ * 
+              !\RC_Ch2_Timer:TimerUDB:control_0\ * 
+              !\RC_Ch2_Timer:TimerUDB:int_capt_count_1\ * 
+              !\RC_Ch2_Timer:TimerUDB:int_capt_count_0\
+            + \RC_Ch2_Timer:TimerUDB:control_1\ * 
+              !\RC_Ch2_Timer:TimerUDB:control_0\ * 
+              \RC_Ch2_Timer:TimerUDB:int_capt_count_1\ * 
+              !\RC_Ch2_Timer:TimerUDB:int_capt_count_0\
+            + !\RC_Ch2_Timer:TimerUDB:capt_fifo_load\
+        );
+        Output = \RC_Ch2_Timer:TimerUDB:int_capt_count_0\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
 datapathcell: Name =\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\
     PORT MAP (
         clock => ClockBlock_BUS_CLK ,
@@ -2857,113 +2365,41 @@ datapathcell: Name =\RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\
     Previous in chain : \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\
     Next in chain : \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u2\
 
-UDB [UDB=(3,4)] contents:
-datapathcell: Name =\RC_Connection_Timer:TimerUDB:sT24:timerdp:u2\
+controlcell: Name =\RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\
     PORT MAP (
         clock => ClockBlock_BUS_CLK ,
-        cs_addr_1 => \RC_Connection_Timer:TimerUDB:trig_reg\ ,
-        cs_addr_0 => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-        f0_load => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-        z0_comb => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-        f0_bus_stat_comb => \RC_Connection_Timer:TimerUDB:status_3\ ,
-        f0_blk_stat_comb => \RC_Connection_Timer:TimerUDB:status_2\ ,
-        chain_in => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry1\ );
+        control_7 => \RC_Ch2_Timer:TimerUDB:control_7\ ,
+        control_6 => \RC_Ch2_Timer:TimerUDB:control_6\ ,
+        control_5 => \RC_Ch2_Timer:TimerUDB:control_5\ ,
+        control_4 => \RC_Ch2_Timer:TimerUDB:control_4\ ,
+        control_3 => \RC_Ch2_Timer:TimerUDB:control_3\ ,
+        control_2 => \RC_Ch2_Timer:TimerUDB:control_2\ ,
+        control_1 => \RC_Ch2_Timer:TimerUDB:control_1\ ,
+        control_0 => \RC_Ch2_Timer:TimerUDB:control_0\ );
     Properties:
     {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\
-
-statusicell: Name =\RC_Connection_Timer:TimerUDB:rstSts:stsreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        status_3 => \RC_Connection_Timer:TimerUDB:status_3\ ,
-        status_2 => \RC_Connection_Timer:TimerUDB:status_2\ ,
-        status_1 => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-        status_0 => \RC_Connection_Timer:TimerUDB:status_tc\ ,
-        interrupt => Net_1117 );
-    Properties:
-    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
         cy_force_order = 1
-        cy_int_mask = "1111111"
-        cy_md_select = "0000011"
+        cy_init_value = "00000000"
     }
     Clock Polarity: Active High
     Clock Enable: True
-
-UDB [UDB=(3,5)] contents:
-datapathcell: Name =\RC_Connection_Timer:TimerUDB:sT24:timerdp:u1\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_1 => \RC_Connection_Timer:TimerUDB:trig_reg\ ,
-        cs_addr_0 => \RC_Connection_Timer:TimerUDB:per_zero\ ,
-        f0_load => \RC_Connection_Timer:TimerUDB:capt_fifo_load\ ,
-        chain_in => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry0\ ,
-        chain_out => \RC_Connection_Timer:TimerUDB:sT24:timerdp:carry1\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u0\
-    Next in chain : \RC_Connection_Timer:TimerUDB:sT24:timerdp:u2\
 
 Intr container @ [IntrContainer=(0)]: 
   Intr@ [IntrContainer=(0)][IntrId=(0)] 
-    interrupt: Name =RC_Ch2_Timer_Interrupt
+    interrupt: Name =Clock_Millis_Interrupt
         PORT MAP (
-            interrupt => Net_919 );
+            interrupt => Net_1143_local );
         Properties:
         {
             int_type = "10"
         }
   Intr@ [IntrContainer=(0)][IntrId=(1)] 
-    interrupt: Name =RC_Connection_Timer_Interrupt
+    interrupt: Name =RC_Ch2_Timer_Interrupt
         PORT MAP (
-            interrupt => Net_1117 );
+            interrupt => Net_919 );
         Properties:
         {
             int_type = "10"
@@ -3330,7 +2766,9 @@ Clock group 0:
             clk_bus_glb => ClockBlock_BUS_CLK ,
             clk_bus => ClockBlock_BUS_CLK_local ,
             dclk_glb_0 => Net_48 ,
-            dclk_0 => Net_48_local );
+            dclk_0 => Net_48_local ,
+            dclk_glb_1 => Net_1143 ,
+            dclk_1 => Net_1143_local );
         Properties:
         {
         }
@@ -3404,32 +2842,32 @@ Port | Pin | Fixed |      Type |       Drive Mode |                  Name | Conn
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.001ms
-Digital Placement phase: Elapsed time ==> 0s.622ms
+Digital component placer commit/Report: Elapsed time ==> 0s.008ms
+Digital Placement phase: Elapsed time ==> 0s.792ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 0s.877ms
+Digital Routing phase: Elapsed time ==> 1s.175ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream and API generation">
-Bitstream and API generation phase: Elapsed time ==> 0s.102ms
+Bitstream and API generation phase: Elapsed time ==> 0s.151ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream verification">
-Bitstream verification phase: Elapsed time ==> 0s.027ms
+Bitstream verification phase: Elapsed time ==> 0s.039ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in Ball_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.199ms
+Static timing analysis phase: Elapsed time ==> 0s.256ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.104ms
+Design database save phase: Elapsed time ==> 0s.135ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 2s.268ms
+cydsfit: Elapsed time ==> 3s.055ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 2s.289ms
-API generation phase: Elapsed time ==> 1s.199ms
-Dependency generation phase: Elapsed time ==> 0s.032ms
+Fitter phase: Elapsed time ==> 3s.087ms
+API generation phase: Elapsed time ==> 1s.448ms
+Dependency generation phase: Elapsed time ==> 0s.016ms
 Cleanup phase: Elapsed time ==> 0s.000ms

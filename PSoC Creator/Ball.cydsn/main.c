@@ -18,6 +18,7 @@
 */
 
 #include <project.h>
+#include "milliseconds.h"
 
 #define DEBUG 1
 char debug_data_buf[64] = "";
@@ -32,6 +33,10 @@ static volatile uint32 rc_timer_count;
 static uint8 rc_timer_int_flag = 0;
 uint32 last_rc_timer_count = 0;
 
+const int RC_TIMEOUT = 50;
+uint32 last_rc_connection = 0;
+uint8 rc_connected = 0;
+
 static volatile uint32 rc_connection_timer_count;
 static uint8 rc_connection_timer_int_flag = 0;
 
@@ -39,19 +44,6 @@ const int MAX_MOTOR_PWM_VALUE = 240;
 const int MIN_MOTOR_PWM_VALUE = 0;
 
 int16 motor_pwm = 0;
-
-CY_ISR(RC_Connection_ISR_Handler)
-{
-    rc_connection_timer_int_flag = RC_Connection_Timer_ReadStatusRegister();	//	Read and clear interrupt status      
-    if(rc_connection_timer_int_flag & RC_Connection_Timer_STATUS_CAPTURE)
-        rc_connection_timer_count = RC_TIMER_PERIOD - RC_Connection_Timer_ReadCapture();    
-    if(rc_connection_timer_int_flag & RC_Connection_Timer_STATUS_TC)			//	Did we overflow??
-        rc_connection_timer_count = 0;
-   
-    RC_Connection_Timer_Stop();
-    RC_Connection_Timer_WriteCounter(RC_TIMER_PERIOD);
-    USBUART_PutString("FCK...");
-}
 
 CY_ISR(RC_Ch2_Timer_ISR_Handler)
 {
@@ -77,11 +69,10 @@ int main()
     
     while (USBUART_GetConfiguration() == 0) {}
     USBUART_PutString("Init...");
+    
+    init_milliseconds();
        
     Motor_A_PWM_Start();
-    
-    RC_Connection_Timer_Interrupt_StartEx(RC_Connection_ISR_Handler);
-    RC_Connection_Timer_Start();
     
     RC_Ch2_Timer_Interrupt_StartEx(RC_Ch2_Timer_ISR_Handler);
     RC_Ch2_Timer_Start();
@@ -94,40 +85,26 @@ int main()
     
     for(;;)
     {
-        /* Place your application code here. */
-        /*Motor_A_PWM_WriteCompare1(compare_value);
-        Motor_A_PWM_WriteCompare2(0);
-        CyDelay(1000);
-        compare_value = 0;
-        Motor_A_PWM_WriteCompare1(compare_value);
-        Motor_A_PWM_WriteCompare2(0);
-        CyDelay(1000);
-        compare_value = 64;
-        sprintf(data_buf, "Forward PWM: %d\r\n", compare_value);
-        USBUART_PutString(data_buf);
-        
-        Motor_A_PWM_WriteCompare1(0);
-        Motor_A_PWM_WriteCompare2(compare_value);
-        CyDelay(1000);
-        compare_value = 0;
-        Motor_A_PWM_WriteCompare1(0);
-        Motor_A_PWM_WriteCompare2(compare_value);
-        CyDelay(1000);
-        compare_value = 127;
-        
-        sprintf(data_buf, "Reverse PWM: %d\r\n", compare_value);
-        USBUART_PutString(data_buf);*/
-        
         get_rc_value();
-        run_motor();
-        
-        //sprintf(debug_data_buf, "RC: %ld --> Motor: %d \r\n", rc_timer_count, motor_pwm);
-        //USBUART_PutString(debug_data_buf);
+        if (rc_connected) {
+            run_motor(motor_pwm);
+        } else {
+            run_motor(0);
+        }
     }
 }
 
 void get_rc_value() {
-    if (rc_timer_int_flag) {
+    if (RC_Ch_2_Read()) {
+        last_rc_connection = MILLISECONDS;
+        rc_connected = 1;
+    } else {
+        if (MILLISECONDS - last_rc_connection > RC_TIMEOUT) {
+            rc_connected = 0;
+        }
+    }
+    
+    if (rc_connected && rc_timer_int_flag) {
         rc_timer_count = (rc_timer_count < RC_TIMER_MIN_VALUE || rc_timer_count > RC_TIMER_MAX_VALUE) ? 
                             last_rc_timer_count : rc_timer_count;
         if (abs(RC_TIMER_MID_VALUE - rc_timer_count) < RC_TIMER_MID_TOLERANCE) {
@@ -142,7 +119,7 @@ void get_rc_value() {
         RC_Ch2_Timer_Start();
         
         if (motor_pwm != 0) {
-            sprintf(debug_data_buf, "RC: %ld --> Motor: %d \r\n", rc_timer_count, motor_pwm);
+            sprintf(debug_data_buf, "[%ld] (%d) RC: %ld --> Motor: %d \r\n", MILLISECONDS, rc_connected, rc_timer_count, motor_pwm);
             USBUART_PutString(debug_data_buf);
         }
     } else {
@@ -150,7 +127,7 @@ void get_rc_value() {
     }
 }
 
-void run_motor() {
+void run_motor(motor_pwm) {
     if (motor_pwm < 0) {
         Motor_A_PWM_WriteCompare1(abs(motor_pwm));
         Motor_A_PWM_WriteCompare2(0);

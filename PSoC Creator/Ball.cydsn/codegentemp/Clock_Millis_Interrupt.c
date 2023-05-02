@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RC_Connection_Timer_Interrupt.c  
+* File Name: Clock_Millis_Interrupt.c  
 * Version 1.70
 *
 *  Description:
@@ -18,15 +18,15 @@
 
 #include <cydevice_trm.h>
 #include <CyLib.h>
-#include <RC_Connection_Timer_Interrupt.h>
+#include <Clock_Millis_Interrupt.h>
 #include "cyapicallbacks.h"
 
-#if !defined(RC_Connection_Timer_Interrupt__REMOVED) /* Check for removal by optimization */
+#if !defined(Clock_Millis_Interrupt__REMOVED) /* Check for removal by optimization */
 
 /*******************************************************************************
 *  Place your includes, defines and code here 
 ********************************************************************************/
-/* `#START RC_Connection_Timer_Interrupt_intc` */
+/* `#START Clock_Millis_Interrupt_intc` */
 
 /* `#END` */
 
@@ -42,7 +42,7 @@ CY_ISR_PROTO(IntDefaultHandler);
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_Start
+* Function Name: Clock_Millis_Interrupt_Start
 ********************************************************************************
 *
 * Summary:
@@ -58,24 +58,24 @@ CY_ISR_PROTO(IntDefaultHandler);
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_Start(void)
+void Clock_Millis_Interrupt_Start(void)
 {
     /* For all we know the interrupt is active. */
-    RC_Connection_Timer_Interrupt_Disable();
+    Clock_Millis_Interrupt_Disable();
 
-    /* Set the ISR to point to the RC_Connection_Timer_Interrupt Interrupt. */
-    RC_Connection_Timer_Interrupt_SetVector(&RC_Connection_Timer_Interrupt_Interrupt);
+    /* Set the ISR to point to the Clock_Millis_Interrupt Interrupt. */
+    Clock_Millis_Interrupt_SetVector(&Clock_Millis_Interrupt_Interrupt);
 
     /* Set the priority. */
-    RC_Connection_Timer_Interrupt_SetPriority((uint8)RC_Connection_Timer_Interrupt_INTC_PRIOR_NUMBER);
+    Clock_Millis_Interrupt_SetPriority((uint8)Clock_Millis_Interrupt_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    RC_Connection_Timer_Interrupt_Enable();
+    Clock_Millis_Interrupt_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_StartEx
+* Function Name: Clock_Millis_Interrupt_StartEx
 ********************************************************************************
 *
 * Summary:
@@ -101,24 +101,24 @@ void RC_Connection_Timer_Interrupt_Start(void)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_StartEx(cyisraddress address)
+void Clock_Millis_Interrupt_StartEx(cyisraddress address)
 {
     /* For all we know the interrupt is active. */
-    RC_Connection_Timer_Interrupt_Disable();
+    Clock_Millis_Interrupt_Disable();
 
-    /* Set the ISR to point to the RC_Connection_Timer_Interrupt Interrupt. */
-    RC_Connection_Timer_Interrupt_SetVector(address);
+    /* Set the ISR to point to the Clock_Millis_Interrupt Interrupt. */
+    Clock_Millis_Interrupt_SetVector(address);
 
     /* Set the priority. */
-    RC_Connection_Timer_Interrupt_SetPriority((uint8)RC_Connection_Timer_Interrupt_INTC_PRIOR_NUMBER);
+    Clock_Millis_Interrupt_SetPriority((uint8)Clock_Millis_Interrupt_INTC_PRIOR_NUMBER);
 
     /* Enable it. */
-    RC_Connection_Timer_Interrupt_Enable();
+    Clock_Millis_Interrupt_Enable();
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_Stop
+* Function Name: Clock_Millis_Interrupt_Stop
 ********************************************************************************
 *
 * Summary:
@@ -131,22 +131,22 @@ void RC_Connection_Timer_Interrupt_StartEx(cyisraddress address)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_Stop(void)
+void Clock_Millis_Interrupt_Stop(void)
 {
     /* Disable this interrupt. */
-    RC_Connection_Timer_Interrupt_Disable();
+    Clock_Millis_Interrupt_Disable();
 
     /* Set the ISR to point to the passive one. */
-    RC_Connection_Timer_Interrupt_SetVector(&IntDefaultHandler);
+    Clock_Millis_Interrupt_SetVector(&IntDefaultHandler);
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_Interrupt
+* Function Name: Clock_Millis_Interrupt_Interrupt
 ********************************************************************************
 *
 * Summary:
-*   The default Interrupt Service Routine for RC_Connection_Timer_Interrupt.
+*   The default Interrupt Service Routine for Clock_Millis_Interrupt.
 *
 *   Add custom code between the coments to keep the next version of this file
 *   from over writting your code.
@@ -157,27 +157,27 @@ void RC_Connection_Timer_Interrupt_Stop(void)
 *   None
 *
 *******************************************************************************/
-CY_ISR(RC_Connection_Timer_Interrupt_Interrupt)
+CY_ISR(Clock_Millis_Interrupt_Interrupt)
 {
-    #ifdef RC_Connection_Timer_Interrupt_INTERRUPT_INTERRUPT_CALLBACK
-        RC_Connection_Timer_Interrupt_Interrupt_InterruptCallback();
-    #endif /* RC_Connection_Timer_Interrupt_INTERRUPT_INTERRUPT_CALLBACK */ 
+    #ifdef Clock_Millis_Interrupt_INTERRUPT_INTERRUPT_CALLBACK
+        Clock_Millis_Interrupt_Interrupt_InterruptCallback();
+    #endif /* Clock_Millis_Interrupt_INTERRUPT_INTERRUPT_CALLBACK */ 
 
     /*  Place your Interrupt code here. */
-    /* `#START RC_Connection_Timer_Interrupt_Interrupt` */
+    /* `#START Clock_Millis_Interrupt_Interrupt` */
 
     /* `#END` */
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_SetVector
+* Function Name: Clock_Millis_Interrupt_SetVector
 ********************************************************************************
 *
 * Summary:
-*   Change the ISR vector for the Interrupt. Note calling RC_Connection_Timer_Interrupt_Start
+*   Change the ISR vector for the Interrupt. Note calling Clock_Millis_Interrupt_Start
 *   will override any effect this method would have had. To set the vector 
-*   before the component has been started use RC_Connection_Timer_Interrupt_StartEx instead.
+*   before the component has been started use Clock_Millis_Interrupt_StartEx instead.
 * 
 *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
 *   used to provide consistent definition across compilers:
@@ -197,18 +197,18 @@ CY_ISR(RC_Connection_Timer_Interrupt_Interrupt)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_SetVector(cyisraddress address)
+void Clock_Millis_Interrupt_SetVector(cyisraddress address)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    ramVectorTable[CYINT_IRQ_BASE + (uint32)RC_Connection_Timer_Interrupt__INTC_NUMBER] = address;
+    ramVectorTable[CYINT_IRQ_BASE + (uint32)Clock_Millis_Interrupt__INTC_NUMBER] = address;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_GetVector
+* Function Name: Clock_Millis_Interrupt_GetVector
 ********************************************************************************
 *
 * Summary:
@@ -221,26 +221,26 @@ void RC_Connection_Timer_Interrupt_SetVector(cyisraddress address)
 *   Address of the ISR in the interrupt vector table.
 *
 *******************************************************************************/
-cyisraddress RC_Connection_Timer_Interrupt_GetVector(void)
+cyisraddress Clock_Millis_Interrupt_GetVector(void)
 {
     cyisraddress * ramVectorTable;
 
     ramVectorTable = (cyisraddress *) *CYINT_VECT_TABLE;
 
-    return ramVectorTable[CYINT_IRQ_BASE + (uint32)RC_Connection_Timer_Interrupt__INTC_NUMBER];
+    return ramVectorTable[CYINT_IRQ_BASE + (uint32)Clock_Millis_Interrupt__INTC_NUMBER];
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_SetPriority
+* Function Name: Clock_Millis_Interrupt_SetPriority
 ********************************************************************************
 *
 * Summary:
 *   Sets the Priority of the Interrupt. 
 *
-*   Note calling RC_Connection_Timer_Interrupt_Start or RC_Connection_Timer_Interrupt_StartEx will 
+*   Note calling Clock_Millis_Interrupt_Start or Clock_Millis_Interrupt_StartEx will 
 *   override any effect this API would have had. This API should only be called
-*   after RC_Connection_Timer_Interrupt_Start or RC_Connection_Timer_Interrupt_StartEx has been called. 
+*   after Clock_Millis_Interrupt_Start or Clock_Millis_Interrupt_StartEx has been called. 
 *   To set the initial priority for the component, use the Design-Wide Resources
 *   Interrupt Editor.
 *
@@ -255,14 +255,14 @@ cyisraddress RC_Connection_Timer_Interrupt_GetVector(void)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_SetPriority(uint8 priority)
+void Clock_Millis_Interrupt_SetPriority(uint8 priority)
 {
-    *RC_Connection_Timer_Interrupt_INTC_PRIOR = priority << 5;
+    *Clock_Millis_Interrupt_INTC_PRIOR = priority << 5;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_GetPriority
+* Function Name: Clock_Millis_Interrupt_GetPriority
 ********************************************************************************
 *
 * Summary:
@@ -277,19 +277,19 @@ void RC_Connection_Timer_Interrupt_SetPriority(uint8 priority)
 *    PSoC 4: Priority is from 0 to 3.
 *
 *******************************************************************************/
-uint8 RC_Connection_Timer_Interrupt_GetPriority(void)
+uint8 Clock_Millis_Interrupt_GetPriority(void)
 {
     uint8 priority;
 
 
-    priority = *RC_Connection_Timer_Interrupt_INTC_PRIOR >> 5;
+    priority = *Clock_Millis_Interrupt_INTC_PRIOR >> 5;
 
     return priority;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_Enable
+* Function Name: Clock_Millis_Interrupt_Enable
 ********************************************************************************
 *
 * Summary:
@@ -304,15 +304,15 @@ uint8 RC_Connection_Timer_Interrupt_GetPriority(void)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_Enable(void)
+void Clock_Millis_Interrupt_Enable(void)
 {
     /* Enable the general interrupt. */
-    *RC_Connection_Timer_Interrupt_INTC_SET_EN = RC_Connection_Timer_Interrupt__INTC_MASK;
+    *Clock_Millis_Interrupt_INTC_SET_EN = Clock_Millis_Interrupt__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_GetState
+* Function Name: Clock_Millis_Interrupt_GetState
 ********************************************************************************
 *
 * Summary:
@@ -325,15 +325,15 @@ void RC_Connection_Timer_Interrupt_Enable(void)
 *   1 if enabled, 0 if disabled.
 *
 *******************************************************************************/
-uint8 RC_Connection_Timer_Interrupt_GetState(void)
+uint8 Clock_Millis_Interrupt_GetState(void)
 {
     /* Get the state of the general interrupt. */
-    return ((*RC_Connection_Timer_Interrupt_INTC_SET_EN & (uint32)RC_Connection_Timer_Interrupt__INTC_MASK) != 0u) ? 1u:0u;
+    return ((*Clock_Millis_Interrupt_INTC_SET_EN & (uint32)Clock_Millis_Interrupt__INTC_MASK) != 0u) ? 1u:0u;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_Disable
+* Function Name: Clock_Millis_Interrupt_Disable
 ********************************************************************************
 *
 * Summary:
@@ -346,15 +346,15 @@ uint8 RC_Connection_Timer_Interrupt_GetState(void)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_Disable(void)
+void Clock_Millis_Interrupt_Disable(void)
 {
     /* Disable the general interrupt. */
-    *RC_Connection_Timer_Interrupt_INTC_CLR_EN = RC_Connection_Timer_Interrupt__INTC_MASK;
+    *Clock_Millis_Interrupt_INTC_CLR_EN = Clock_Millis_Interrupt__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_SetPending
+* Function Name: Clock_Millis_Interrupt_SetPending
 ********************************************************************************
 *
 * Summary:
@@ -373,14 +373,14 @@ void RC_Connection_Timer_Interrupt_Disable(void)
 *   interrupts).
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_SetPending(void)
+void Clock_Millis_Interrupt_SetPending(void)
 {
-    *RC_Connection_Timer_Interrupt_INTC_SET_PD = RC_Connection_Timer_Interrupt__INTC_MASK;
+    *Clock_Millis_Interrupt_INTC_SET_PD = Clock_Millis_Interrupt__INTC_MASK;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Connection_Timer_Interrupt_ClearPending
+* Function Name: Clock_Millis_Interrupt_ClearPending
 ********************************************************************************
 *
 * Summary:
@@ -398,9 +398,9 @@ void RC_Connection_Timer_Interrupt_SetPending(void)
 *   None
 *
 *******************************************************************************/
-void RC_Connection_Timer_Interrupt_ClearPending(void)
+void Clock_Millis_Interrupt_ClearPending(void)
 {
-    *RC_Connection_Timer_Interrupt_INTC_CLR_PD = RC_Connection_Timer_Interrupt__INTC_MASK;
+    *Clock_Millis_Interrupt_INTC_CLR_PD = Clock_Millis_Interrupt__INTC_MASK;
 }
 
 #endif /* End check for removal by optimization */
