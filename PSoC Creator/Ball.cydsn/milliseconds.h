@@ -14,7 +14,7 @@
  * Commercial license available
  * ========================================
 */
-#include <project.h>
+#include "project.h"
     
 // the following counter can be used to start things on 1 millisecond boundaries
 extern volatile uint16 ms, seconds, minutes, hours;    

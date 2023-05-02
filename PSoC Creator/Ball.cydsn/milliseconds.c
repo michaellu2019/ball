@@ -12,7 +12,7 @@
  * Commercial license available
  * ========================================
 */
-#include <project.h>
+#include "project.h"
 
 volatile uint32 MILLISECONDS;
 volatile uint16 ms, seconds, minutes, hours;

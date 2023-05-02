@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RC_Ch_2.h  
+* File Name: RC_Ch3.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_RC_Ch_2_ALIASES_H) /* Pins RC_Ch_2_ALIASES_H */
-#define CY_PINS_RC_Ch_2_ALIASES_H
+#if !defined(CY_PINS_RC_Ch3_ALIASES_H) /* Pins RC_Ch3_ALIASES_H */
+#define CY_PINS_RC_Ch3_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define RC_Ch_2_0			(RC_Ch_2__0__PC)
-#define RC_Ch_2_0_INTR	((uint16)((uint16)0x0001u << RC_Ch_2__0__SHIFT))
+#define RC_Ch3_0			(RC_Ch3__0__PC)
+#define RC_Ch3_0_INTR	((uint16)((uint16)0x0001u << RC_Ch3__0__SHIFT))
 
-#define RC_Ch_2_INTR_ALL	 ((uint16)(RC_Ch_2_0_INTR))
+#define RC_Ch3_INTR_ALL	 ((uint16)(RC_Ch3_0_INTR))
 
-#endif /* End Pins RC_Ch_2_ALIASES_H */
+#endif /* End Pins RC_Ch3_ALIASES_H */
 
 
 /* [] END OF FILE */

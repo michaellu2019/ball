@@ -1,11 +1,30 @@
 # DO NOT DELETE
-Clock_1.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock_1.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock_1.h \
+Clock.o:  \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
+Clock_Millis.o:  \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock_Millis.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock_Millis.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
+Clock_Millis_Interrupt.o:  \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock_Millis_Interrupt.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Clock_Millis_Interrupt.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/cyapicallbacks.h
 Cm3Start.o:  \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/Cm3Start.c \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyDmac.h \
@@ -100,101 +119,48 @@ Motor_A_PWM_PM.o:  \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_Count_1.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Count_1.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Count_1.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Count_1_aliases.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cypins.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_Count_2.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Count_2.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Count_2.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Count_2_aliases.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cypins.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_Counter.o:  \
+RC_Ch2_Timer.o:  \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Counter.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Counter.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch2_Timer.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch2_Timer.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_Counter_PM.o:  \
+RC_Ch2_Timer_Interrupt.o:  \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Counter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Counter_PM.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_PWM.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_PWM.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_PWM.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_PWM_PM.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_PWM.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_PWM_PM.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_Timer.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Timer.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Timer.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
-RC_Timer_Interrupt.o:  \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Timer_Interrupt.c \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Timer_Interrupt.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch2_Timer_Interrupt.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch2_Timer_Interrupt.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/cyapicallbacks.h
-RC_Timer_PM.o:  \
+RC_Ch2_Timer_PM.o:  \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyFlash.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyLib.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CySpc.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Timer.h \
-   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Timer_PM.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch2_Timer.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch2_Timer_PM.c \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyPm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
+RC_Ch_2.o:  \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch_2.c \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch_2.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/RC_Ch_2_aliases.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cydevice_trm.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cyfitter.h \
+   C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cypins.h \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/cytypes.h
 USBUART.o:  \
    C:/Users/Michael/Dropbox\ (MIT)/College/Senior\ Year/6.115\ -\ Microcomputer\ Project\ Laboratory/6.115\ -\ Final\ Project/Software/PSoC\ Creator/Ball.cydsn/Generated_Source/PSoC5/CyDmac.h \

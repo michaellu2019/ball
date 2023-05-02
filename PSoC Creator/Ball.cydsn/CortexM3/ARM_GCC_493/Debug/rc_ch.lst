@@ -1,0 +1,2977 @@
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"rc_ch.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.rc_ch_timer_isr_handler,"ax",%progbits
+  19              		.align	2
+  20              		.global	rc_ch_timer_isr_handler
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	rc_ch_timer_isr_handler, %function
+  24              	rc_ch_timer_isr_handler:
+  25              	.LFB67:
+  26              		.file 1 ".\\rc_ch.c"
+   1:.\rc_ch.c     **** /* ========================================
+   2:.\rc_ch.c     ****  *
+   3:.\rc_ch.c     ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\rc_ch.c     ****  * All Rights Reserved
+   5:.\rc_ch.c     ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\rc_ch.c     ****  *
+   7:.\rc_ch.c     ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\rc_ch.c     ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\rc_ch.c     ****  *
+  10:.\rc_ch.c     ****  * ========================================
+  11:.\rc_ch.c     **** */
+  12:.\rc_ch.c     **** #include "project.h"
+  13:.\rc_ch.c     **** #include "milliseconds.h"
+  14:.\rc_ch.c     **** #include "rc_ch.h"
+  15:.\rc_ch.c     **** 
+  16:.\rc_ch.c     **** const int RC_TIMER_PERIOD = 500000 - 1;
+  17:.\rc_ch.c     **** const int RC_TIMER_MAX_VALUE = 45000;
+  18:.\rc_ch.c     **** const int RC_TIMER_MID_VALUE = 33000;
+  19:.\rc_ch.c     **** const int RC_TIMER_MIN_VALUE = 24000;
+  20:.\rc_ch.c     **** const int RC_TIMER_MID_TOLERANCE = 600;
+  21:.\rc_ch.c     **** const int RC_CONNECTION_TIMEOUT = 50;
+  22:.\rc_ch.c     **** 
+  23:.\rc_ch.c     **** const int RC_MAX_VALUE = 240;
+  24:.\rc_ch.c     **** const int RC_MIN_VALUE = 0;
+  25:.\rc_ch.c     **** 
+  26:.\rc_ch.c     **** static volatile uint32 isr_rc_timer_count[NUM_RC_CHANNELS];
+  27:.\rc_ch.c     **** static uint8 isr_rc_timer_int_flag[NUM_RC_CHANNELS];
+  28:.\rc_ch.c     **** 
+  29:.\rc_ch.c     **** CY_ISR(RC_Ch1_Timer_ISR_Handler)
+  30:.\rc_ch.c     **** {
+  31:.\rc_ch.c     ****     rc_ch_timer_isr_handler(1);
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 2
+
+
+  32:.\rc_ch.c     **** }
+  33:.\rc_ch.c     **** 
+  34:.\rc_ch.c     **** CY_ISR(RC_Ch2_Timer_ISR_Handler)
+  35:.\rc_ch.c     **** {
+  36:.\rc_ch.c     ****     rc_ch_timer_isr_handler(2);
+  37:.\rc_ch.c     **** }
+  38:.\rc_ch.c     **** 
+  39:.\rc_ch.c     **** CY_ISR(RC_Ch3_Timer_ISR_Handler)
+  40:.\rc_ch.c     **** {
+  41:.\rc_ch.c     ****     rc_ch_timer_isr_handler(3);
+  42:.\rc_ch.c     **** }
+  43:.\rc_ch.c     **** 
+  44:.\rc_ch.c     **** CY_ISR(RC_Ch4_Timer_ISR_Handler)
+  45:.\rc_ch.c     **** {
+  46:.\rc_ch.c     ****     rc_ch_timer_isr_handler(4);
+  47:.\rc_ch.c     **** }
+  48:.\rc_ch.c     **** 
+  49:.\rc_ch.c     **** void rc_ch_timer_isr_handler(uint8 ch_number) {
+  27              		.loc 1 49 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              	.LVL0:
+  32 0000 38B5     		push	{r3, r4, r5, lr}
+  33              		.cfi_def_cfa_offset 16
+  34              		.cfi_offset 3, -16
+  35              		.cfi_offset 4, -12
+  36              		.cfi_offset 5, -8
+  37              		.cfi_offset 14, -4
+  38 0002 0446     		mov	r4, r0
+  50:.\rc_ch.c     ****     isr_rc_timer_int_flag[ch_number - 1] = ch_number == 1 ? RC_Ch1_Timer_ReadStatusRegister() : 
+  39              		.loc 1 50 0
+  40 0004 451E     		subs	r5, r0, #1
+  41 0006 0128     		cmp	r0, #1
+  42 0008 02D1     		bne	.L2
+  43              		.loc 1 50 0 is_stmt 0 discriminator 1
+  44 000a FFF7FEFF 		bl	RC_Ch1_Timer_ReadStatusRegister
+  45              	.LVL1:
+  46 000e 0BE0     		b	.L3
+  47              	.LVL2:
+  48              	.L2:
+  49              		.loc 1 50 0 discriminator 2
+  50 0010 0228     		cmp	r0, #2
+  51 0012 02D1     		bne	.L4
+  52              		.loc 1 50 0 discriminator 4
+  53 0014 FFF7FEFF 		bl	RC_Ch2_Timer_ReadStatusRegister
+  54              	.LVL3:
+  55 0018 06E0     		b	.L3
+  56              	.LVL4:
+  57              	.L4:
+  58              		.loc 1 50 0 discriminator 5
+  59 001a 0328     		cmp	r0, #3
+  60 001c 02D1     		bne	.L6
+  61              		.loc 1 50 0 discriminator 7
+  62 001e FFF7FEFF 		bl	RC_Ch3_Timer_ReadStatusRegister
+  63              	.LVL5:
+  64 0022 01E0     		b	.L3
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 3
+
+
+  65              	.LVL6:
+  66              	.L6:
+  67              		.loc 1 50 0 discriminator 8
+  68 0024 FFF7FEFF 		bl	RC_Ch4_Timer_ReadStatusRegister
+  69              	.LVL7:
+  70              	.L3:
+  71              		.loc 1 50 0 discriminator 12
+  72 0028 1C4B     		ldr	r3, .L15
+  73 002a 5855     		strb	r0, [r3, r5]
+  74              	.LVL8:
+  51:.\rc_ch.c     ****                                            ch_number == 2 ? RC_Ch2_Timer_ReadStatusRegister() : 
+  52:.\rc_ch.c     ****                                            ch_number == 3 ? RC_Ch3_Timer_ReadStatusRegister() : 
+  53:.\rc_ch.c     ****                                                             RC_Ch4_Timer_ReadStatusRegister(); 
+  54:.\rc_ch.c     ****     const uint8 rc_ch_timer_status_capture = ch_number == 1 ? RC_Ch1_Timer_STATUS_CAPTURE : 
+  55:.\rc_ch.c     ****                                              ch_number == 2 ? RC_Ch2_Timer_STATUS_CAPTURE : 
+  56:.\rc_ch.c     ****                                              ch_number == 3 ? RC_Ch3_Timer_STATUS_CAPTURE : 
+  57:.\rc_ch.c     ****                                                               RC_Ch4_Timer_STATUS_CAPTURE;
+  58:.\rc_ch.c     ****     const uint8 rc_ch_timer_status_tc = ch_number == 1 ? RC_Ch1_Timer_STATUS_TC : 
+  59:.\rc_ch.c     ****                                         ch_number == 2 ? RC_Ch2_Timer_STATUS_TC : 
+  60:.\rc_ch.c     ****                                         ch_number == 3 ? RC_Ch3_Timer_STATUS_TC : 
+  61:.\rc_ch.c     ****                                                          RC_Ch4_Timer_STATUS_TC;
+  62:.\rc_ch.c     ****                                                         
+  63:.\rc_ch.c     ****     if (isr_rc_timer_int_flag[ch_number - 1] & rc_ch_timer_status_capture)
+  75              		.loc 1 63 0 is_stmt 1 discriminator 12
+  76 002c 10F0020F 		tst	r0, #2
+  77 0030 09D0     		beq	.L8
+  64:.\rc_ch.c     ****         isr_rc_timer_count[ch_number - 1] = RC_TIMER_PERIOD - RC_Ch2_Timer_ReadCapture();    
+  78              		.loc 1 64 0
+  79 0032 FFF7FEFF 		bl	RC_Ch2_Timer_ReadCapture
+  80              	.LVL9:
+  81 0036 C0F5F420 		rsb	r0, r0, #499712
+  82 003a 00F21F10 		addw	r0, r0, #287
+  83 003e 174B     		ldr	r3, .L15
+  84 0040 03EB8503 		add	r3, r3, r5, lsl #2
+  85 0044 5860     		str	r0, [r3, #4]
+  86              	.L8:
+  65:.\rc_ch.c     ****     if (isr_rc_timer_int_flag[ch_number - 1] & rc_ch_timer_status_tc)
+  87              		.loc 1 65 0
+  88 0046 154B     		ldr	r3, .L15
+  89 0048 5B5D     		ldrb	r3, [r3, r5]	@ zero_extendqisi2
+  90 004a 13F0010F 		tst	r3, #1
+  91 004e 04D0     		beq	.L9
+  66:.\rc_ch.c     ****         isr_rc_timer_count[ch_number - 1] = 0;
+  92              		.loc 1 66 0
+  93 0050 124B     		ldr	r3, .L15
+  94 0052 03EB8505 		add	r5, r3, r5, lsl #2
+  95 0056 0023     		movs	r3, #0
+  96 0058 6B60     		str	r3, [r5, #4]
+  97              	.L9:
+  67:.\rc_ch.c     ****     
+  68:.\rc_ch.c     ****     if (ch_number == 1) {
+  98              		.loc 1 68 0
+  99 005a 012C     		cmp	r4, #1
+ 100 005c 05D1     		bne	.L10
+  69:.\rc_ch.c     ****         RC_Ch1_Timer_Stop();
+ 101              		.loc 1 69 0
+ 102 005e FFF7FEFF 		bl	RC_Ch1_Timer_Stop
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 4
+
+
+ 103              	.LVL10:
+  70:.\rc_ch.c     ****         RC_Ch1_Timer_WriteCounter(RC_TIMER_PERIOD);
+ 104              		.loc 1 70 0
+ 105 0062 0F48     		ldr	r0, .L15+4
+ 106 0064 FFF7FEFF 		bl	RC_Ch1_Timer_WriteCounter
+ 107              	.LVL11:
+ 108 0068 38BD     		pop	{r3, r4, r5, pc}
+ 109              	.L10:
+  71:.\rc_ch.c     ****     } else if (ch_number == 2) {
+ 110              		.loc 1 71 0
+ 111 006a 022C     		cmp	r4, #2
+ 112 006c 05D1     		bne	.L12
+  72:.\rc_ch.c     ****         RC_Ch2_Timer_Stop();
+ 113              		.loc 1 72 0
+ 114 006e FFF7FEFF 		bl	RC_Ch2_Timer_Stop
+ 115              	.LVL12:
+  73:.\rc_ch.c     ****         RC_Ch2_Timer_WriteCounter(RC_TIMER_PERIOD);
+ 116              		.loc 1 73 0
+ 117 0072 0B48     		ldr	r0, .L15+4
+ 118 0074 FFF7FEFF 		bl	RC_Ch2_Timer_WriteCounter
+ 119              	.LVL13:
+ 120 0078 38BD     		pop	{r3, r4, r5, pc}
+ 121              	.L12:
+  74:.\rc_ch.c     ****     } else if (ch_number == 3) {
+ 122              		.loc 1 74 0
+ 123 007a 032C     		cmp	r4, #3
+ 124 007c 05D1     		bne	.L13
+  75:.\rc_ch.c     ****         RC_Ch3_Timer_Stop();
+ 125              		.loc 1 75 0
+ 126 007e FFF7FEFF 		bl	RC_Ch3_Timer_Stop
+ 127              	.LVL14:
+  76:.\rc_ch.c     ****         RC_Ch3_Timer_WriteCounter(RC_TIMER_PERIOD);
+ 128              		.loc 1 76 0
+ 129 0082 0748     		ldr	r0, .L15+4
+ 130 0084 FFF7FEFF 		bl	RC_Ch3_Timer_WriteCounter
+ 131              	.LVL15:
+ 132 0088 38BD     		pop	{r3, r4, r5, pc}
+ 133              	.L13:
+  77:.\rc_ch.c     ****     } else if (ch_number == 4) {
+ 134              		.loc 1 77 0
+ 135 008a 042C     		cmp	r4, #4
+ 136 008c 04D1     		bne	.L1
+  78:.\rc_ch.c     ****         RC_Ch4_Timer_Stop();
+ 137              		.loc 1 78 0
+ 138 008e FFF7FEFF 		bl	RC_Ch4_Timer_Stop
+ 139              	.LVL16:
+  79:.\rc_ch.c     ****         RC_Ch4_Timer_WriteCounter(RC_TIMER_PERIOD);
+ 140              		.loc 1 79 0
+ 141 0092 0348     		ldr	r0, .L15+4
+ 142 0094 FFF7FEFF 		bl	RC_Ch4_Timer_WriteCounter
+ 143              	.LVL17:
+ 144              	.L1:
+ 145 0098 38BD     		pop	{r3, r4, r5, pc}
+ 146              	.L16:
+ 147 009a 00BF     		.align	2
+ 148              	.L15:
+ 149 009c 00000000 		.word	.LANCHOR0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 5
+
+
+ 150 00a0 1FA10700 		.word	499999
+ 151              		.cfi_endproc
+ 152              	.LFE67:
+ 153              		.size	rc_ch_timer_isr_handler, .-rc_ch_timer_isr_handler
+ 154              		.section	.text.RC_Ch1_Timer_ISR_Handler,"ax",%progbits
+ 155              		.align	2
+ 156              		.global	RC_Ch1_Timer_ISR_Handler
+ 157              		.thumb
+ 158              		.thumb_func
+ 159              		.type	RC_Ch1_Timer_ISR_Handler, %function
+ 160              	RC_Ch1_Timer_ISR_Handler:
+ 161              	.LFB63:
+  30:.\rc_ch.c     ****     rc_ch_timer_isr_handler(1);
+ 162              		.loc 1 30 0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166 0000 08B5     		push	{r3, lr}
+ 167              		.cfi_def_cfa_offset 8
+ 168              		.cfi_offset 3, -8
+ 169              		.cfi_offset 14, -4
+  31:.\rc_ch.c     **** }
+ 170              		.loc 1 31 0
+ 171 0002 0120     		movs	r0, #1
+ 172 0004 FFF7FEFF 		bl	rc_ch_timer_isr_handler
+ 173              	.LVL18:
+ 174 0008 08BD     		pop	{r3, pc}
+ 175              		.cfi_endproc
+ 176              	.LFE63:
+ 177              		.size	RC_Ch1_Timer_ISR_Handler, .-RC_Ch1_Timer_ISR_Handler
+ 178 000a 00BF     		.section	.text.RC_Ch2_Timer_ISR_Handler,"ax",%progbits
+ 179              		.align	2
+ 180              		.global	RC_Ch2_Timer_ISR_Handler
+ 181              		.thumb
+ 182              		.thumb_func
+ 183              		.type	RC_Ch2_Timer_ISR_Handler, %function
+ 184              	RC_Ch2_Timer_ISR_Handler:
+ 185              	.LFB64:
+  35:.\rc_ch.c     ****     rc_ch_timer_isr_handler(2);
+ 186              		.loc 1 35 0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 0
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190 0000 08B5     		push	{r3, lr}
+ 191              		.cfi_def_cfa_offset 8
+ 192              		.cfi_offset 3, -8
+ 193              		.cfi_offset 14, -4
+  36:.\rc_ch.c     **** }
+ 194              		.loc 1 36 0
+ 195 0002 0220     		movs	r0, #2
+ 196 0004 FFF7FEFF 		bl	rc_ch_timer_isr_handler
+ 197              	.LVL19:
+ 198 0008 08BD     		pop	{r3, pc}
+ 199              		.cfi_endproc
+ 200              	.LFE64:
+ 201              		.size	RC_Ch2_Timer_ISR_Handler, .-RC_Ch2_Timer_ISR_Handler
+ 202 000a 00BF     		.section	.text.RC_Ch3_Timer_ISR_Handler,"ax",%progbits
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 6
+
+
+ 203              		.align	2
+ 204              		.global	RC_Ch3_Timer_ISR_Handler
+ 205              		.thumb
+ 206              		.thumb_func
+ 207              		.type	RC_Ch3_Timer_ISR_Handler, %function
+ 208              	RC_Ch3_Timer_ISR_Handler:
+ 209              	.LFB65:
+  40:.\rc_ch.c     ****     rc_ch_timer_isr_handler(3);
+ 210              		.loc 1 40 0
+ 211              		.cfi_startproc
+ 212              		@ args = 0, pretend = 0, frame = 0
+ 213              		@ frame_needed = 0, uses_anonymous_args = 0
+ 214 0000 08B5     		push	{r3, lr}
+ 215              		.cfi_def_cfa_offset 8
+ 216              		.cfi_offset 3, -8
+ 217              		.cfi_offset 14, -4
+  41:.\rc_ch.c     **** }
+ 218              		.loc 1 41 0
+ 219 0002 0320     		movs	r0, #3
+ 220 0004 FFF7FEFF 		bl	rc_ch_timer_isr_handler
+ 221              	.LVL20:
+ 222 0008 08BD     		pop	{r3, pc}
+ 223              		.cfi_endproc
+ 224              	.LFE65:
+ 225              		.size	RC_Ch3_Timer_ISR_Handler, .-RC_Ch3_Timer_ISR_Handler
+ 226 000a 00BF     		.section	.text.RC_Ch4_Timer_ISR_Handler,"ax",%progbits
+ 227              		.align	2
+ 228              		.global	RC_Ch4_Timer_ISR_Handler
+ 229              		.thumb
+ 230              		.thumb_func
+ 231              		.type	RC_Ch4_Timer_ISR_Handler, %function
+ 232              	RC_Ch4_Timer_ISR_Handler:
+ 233              	.LFB66:
+  45:.\rc_ch.c     ****     rc_ch_timer_isr_handler(4);
+ 234              		.loc 1 45 0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238 0000 08B5     		push	{r3, lr}
+ 239              		.cfi_def_cfa_offset 8
+ 240              		.cfi_offset 3, -8
+ 241              		.cfi_offset 14, -4
+  46:.\rc_ch.c     **** }
+ 242              		.loc 1 46 0
+ 243 0002 0420     		movs	r0, #4
+ 244 0004 FFF7FEFF 		bl	rc_ch_timer_isr_handler
+ 245              	.LVL21:
+ 246 0008 08BD     		pop	{r3, pc}
+ 247              		.cfi_endproc
+ 248              	.LFE66:
+ 249              		.size	RC_Ch4_Timer_ISR_Handler, .-RC_Ch4_Timer_ISR_Handler
+ 250 000a 00BF     		.section	.text.init_rc_channels,"ax",%progbits
+ 251              		.align	2
+ 252              		.global	init_rc_channels
+ 253              		.thumb
+ 254              		.thumb_func
+ 255              		.type	init_rc_channels, %function
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 7
+
+
+ 256              	init_rc_channels:
+ 257              	.LFB68:
+  80:.\rc_ch.c     ****     }
+  81:.\rc_ch.c     **** }
+  82:.\rc_ch.c     **** 
+  83:.\rc_ch.c     **** void init_rc_channels() {
+ 258              		.loc 1 83 0
+ 259              		.cfi_startproc
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262 0000 08B5     		push	{r3, lr}
+ 263              		.cfi_def_cfa_offset 8
+ 264              		.cfi_offset 3, -8
+ 265              		.cfi_offset 14, -4
+  84:.\rc_ch.c     ****     RC_Ch1_Timer_Interrupt_StartEx(RC_Ch1_Timer_ISR_Handler);
+ 266              		.loc 1 84 0
+ 267 0002 0A48     		ldr	r0, .L27
+ 268 0004 FFF7FEFF 		bl	RC_Ch1_Timer_Interrupt_StartEx
+ 269              	.LVL22:
+  85:.\rc_ch.c     ****     RC_Ch1_Timer_Start();
+ 270              		.loc 1 85 0
+ 271 0008 FFF7FEFF 		bl	RC_Ch1_Timer_Start
+ 272              	.LVL23:
+  86:.\rc_ch.c     ****     RC_Ch2_Timer_Interrupt_StartEx(RC_Ch2_Timer_ISR_Handler);
+ 273              		.loc 1 86 0
+ 274 000c 0848     		ldr	r0, .L27+4
+ 275 000e FFF7FEFF 		bl	RC_Ch2_Timer_Interrupt_StartEx
+ 276              	.LVL24:
+  87:.\rc_ch.c     ****     RC_Ch2_Timer_Start();
+ 277              		.loc 1 87 0
+ 278 0012 FFF7FEFF 		bl	RC_Ch2_Timer_Start
+ 279              	.LVL25:
+  88:.\rc_ch.c     ****     RC_Ch3_Timer_Interrupt_StartEx(RC_Ch3_Timer_ISR_Handler);
+ 280              		.loc 1 88 0
+ 281 0016 0748     		ldr	r0, .L27+8
+ 282 0018 FFF7FEFF 		bl	RC_Ch3_Timer_Interrupt_StartEx
+ 283              	.LVL26:
+  89:.\rc_ch.c     ****     RC_Ch3_Timer_Start();
+ 284              		.loc 1 89 0
+ 285 001c FFF7FEFF 		bl	RC_Ch3_Timer_Start
+ 286              	.LVL27:
+  90:.\rc_ch.c     ****     RC_Ch4_Timer_Interrupt_StartEx(RC_Ch4_Timer_ISR_Handler);
+ 287              		.loc 1 90 0
+ 288 0020 0548     		ldr	r0, .L27+12
+ 289 0022 FFF7FEFF 		bl	RC_Ch4_Timer_Interrupt_StartEx
+ 290              	.LVL28:
+  91:.\rc_ch.c     ****     RC_Ch4_Timer_Start();
+ 291              		.loc 1 91 0
+ 292 0026 FFF7FEFF 		bl	RC_Ch4_Timer_Start
+ 293              	.LVL29:
+ 294 002a 08BD     		pop	{r3, pc}
+ 295              	.L28:
+ 296              		.align	2
+ 297              	.L27:
+ 298 002c 00000000 		.word	RC_Ch1_Timer_ISR_Handler
+ 299 0030 00000000 		.word	RC_Ch2_Timer_ISR_Handler
+ 300 0034 00000000 		.word	RC_Ch3_Timer_ISR_Handler
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 8
+
+
+ 301 0038 00000000 		.word	RC_Ch4_Timer_ISR_Handler
+ 302              		.cfi_endproc
+ 303              	.LFE68:
+ 304              		.size	init_rc_channels, .-init_rc_channels
+ 305              		.section	.text.construct_rc_ch,"ax",%progbits
+ 306              		.align	2
+ 307              		.global	construct_rc_ch
+ 308              		.thumb
+ 309              		.thumb_func
+ 310              		.type	construct_rc_ch, %function
+ 311              	construct_rc_ch:
+ 312              	.LFB69:
+  92:.\rc_ch.c     **** }
+  93:.\rc_ch.c     **** 
+  94:.\rc_ch.c     **** void construct_rc_ch(RC_CH* rc_ch, uint8 ch_number) {
+ 313              		.loc 1 94 0
+ 314              		.cfi_startproc
+ 315              		@ args = 0, pretend = 0, frame = 0
+ 316              		@ frame_needed = 0, uses_anonymous_args = 0
+ 317              		@ link register save eliminated.
+ 318              	.LVL30:
+  95:.\rc_ch.c     ****     rc_ch->ch_number = ch_number;
+ 319              		.loc 1 95 0
+ 320 0000 0170     		strb	r1, [r0]
+  96:.\rc_ch.c     ****     rc_ch->connected = 0;
+ 321              		.loc 1 96 0
+ 322 0002 0023     		movs	r3, #0
+ 323 0004 4370     		strb	r3, [r0, #1]
+  97:.\rc_ch.c     ****     rc_ch->value = 0;
+ 324              		.loc 1 97 0
+ 325 0006 8381     		strh	r3, [r0, #12]	@ movhi
+  98:.\rc_ch.c     ****     rc_ch->last_connected = 0;
+ 326              		.loc 1 98 0
+ 327 0008 4360     		str	r3, [r0, #4]
+  99:.\rc_ch.c     ****     rc_ch->last_timer_count = 0;
+ 328              		.loc 1 99 0
+ 329 000a 8360     		str	r3, [r0, #8]
+ 330 000c 7047     		bx	lr
+ 331              		.cfi_endproc
+ 332              	.LFE69:
+ 333              		.size	construct_rc_ch, .-construct_rc_ch
+ 334 000e 00BF     		.section	.text.get_rc_ch_value,"ax",%progbits
+ 335              		.align	2
+ 336              		.global	get_rc_ch_value
+ 337              		.thumb
+ 338              		.thumb_func
+ 339              		.type	get_rc_ch_value, %function
+ 340              	get_rc_ch_value:
+ 341              	.LFB70:
+ 100:.\rc_ch.c     **** }
+ 101:.\rc_ch.c     **** 
+ 102:.\rc_ch.c     **** void get_rc_ch_value(RC_CH* rc_ch) {
+ 342              		.loc 1 102 0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 64
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346              	.LVL31:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 9
+
+
+ 347 0000 30B5     		push	{r4, r5, lr}
+ 348              		.cfi_def_cfa_offset 12
+ 349              		.cfi_offset 4, -12
+ 350              		.cfi_offset 5, -8
+ 351              		.cfi_offset 14, -4
+ 352 0002 93B0     		sub	sp, sp, #76
+ 353              		.cfi_def_cfa_offset 88
+ 354 0004 0446     		mov	r4, r0
+ 355              	.LVL32:
+ 103:.\rc_ch.c     ****     int16 ch_value = 0;
+ 104:.\rc_ch.c     ****     uint8 rc_ch_read_value = rc_ch->ch_number == 1 ? RC_Ch1_Read() :
+ 356              		.loc 1 104 0
+ 357 0006 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 358 0008 012B     		cmp	r3, #1
+ 359 000a 02D1     		bne	.L31
+ 360              		.loc 1 104 0 is_stmt 0 discriminator 1
+ 361 000c FFF7FEFF 		bl	RC_Ch1_Read
+ 362              	.LVL33:
+ 363 0010 0BE0     		b	.L32
+ 364              	.LVL34:
+ 365              	.L31:
+ 366              		.loc 1 104 0 discriminator 2
+ 367 0012 022B     		cmp	r3, #2
+ 368 0014 02D1     		bne	.L33
+ 369              		.loc 1 104 0 discriminator 4
+ 370 0016 FFF7FEFF 		bl	RC_Ch2_Read
+ 371              	.LVL35:
+ 372 001a 06E0     		b	.L32
+ 373              	.LVL36:
+ 374              	.L33:
+ 375              		.loc 1 104 0 discriminator 5
+ 376 001c 032B     		cmp	r3, #3
+ 377 001e 02D1     		bne	.L35
+ 378              		.loc 1 104 0 discriminator 7
+ 379 0020 FFF7FEFF 		bl	RC_Ch3_Read
+ 380              	.LVL37:
+ 381 0024 01E0     		b	.L32
+ 382              	.LVL38:
+ 383              	.L35:
+ 384              		.loc 1 104 0 discriminator 8
+ 385 0026 FFF7FEFF 		bl	RC_Ch4_Read
+ 386              	.LVL39:
+ 387              	.L32:
+ 105:.\rc_ch.c     ****                              rc_ch->ch_number == 2 ? RC_Ch2_Read() :
+ 106:.\rc_ch.c     ****                              rc_ch->ch_number == 3 ? RC_Ch3_Read() :
+ 107:.\rc_ch.c     ****                                                      RC_Ch4_Read();
+ 108:.\rc_ch.c     ****     if (rc_ch_read_value) {
+ 388              		.loc 1 108 0 is_stmt 1 discriminator 12
+ 389 002a 28B1     		cbz	r0, .L37
+ 109:.\rc_ch.c     ****         rc_ch->last_connected = MILLISECONDS;
+ 390              		.loc 1 109 0
+ 391 002c 3D4B     		ldr	r3, .L52
+ 392 002e 1B68     		ldr	r3, [r3]
+ 393 0030 6360     		str	r3, [r4, #4]
+ 110:.\rc_ch.c     ****         rc_ch->connected = 1;
+ 394              		.loc 1 110 0
+ 395 0032 0123     		movs	r3, #1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 10
+
+
+ 396 0034 6370     		strb	r3, [r4, #1]
+ 397 0036 07E0     		b	.L38
+ 398              	.L37:
+ 111:.\rc_ch.c     ****     } else {
+ 112:.\rc_ch.c     ****         if (MILLISECONDS - rc_ch->last_connected > RC_CONNECTION_TIMEOUT) {
+ 399              		.loc 1 112 0
+ 400 0038 3A4B     		ldr	r3, .L52
+ 401 003a 1B68     		ldr	r3, [r3]
+ 402 003c 6268     		ldr	r2, [r4, #4]
+ 403 003e 9B1A     		subs	r3, r3, r2
+ 404 0040 322B     		cmp	r3, #50
+ 405 0042 01D9     		bls	.L38
+ 113:.\rc_ch.c     ****             rc_ch->connected = 0;
+ 406              		.loc 1 113 0
+ 407 0044 0023     		movs	r3, #0
+ 408 0046 6370     		strb	r3, [r4, #1]
+ 409              	.L38:
+ 114:.\rc_ch.c     ****         }
+ 115:.\rc_ch.c     ****     }
+ 116:.\rc_ch.c     ****     
+ 117:.\rc_ch.c     ****     if (rc_ch->connected && isr_rc_timer_int_flag[rc_ch->ch_number - 1]) {
+ 410              		.loc 1 117 0
+ 411 0048 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 412 004a 002B     		cmp	r3, #0
+ 413 004c 67D0     		beq	.L30
+ 414              		.loc 1 117 0 is_stmt 0 discriminator 1
+ 415 004e 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 416 0050 013B     		subs	r3, r3, #1
+ 417 0052 354A     		ldr	r2, .L52+4
+ 418 0054 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+ 419 0056 002A     		cmp	r2, #0
+ 420 0058 61D0     		beq	.L30
+ 421              	.LBB2:
+ 118:.\rc_ch.c     ****         uint32 rc_ch_timer_count = (isr_rc_timer_count[rc_ch->ch_number - 1] < RC_TIMER_MIN_VALUE |
+ 422              		.loc 1 118 0 is_stmt 1
+ 423 005a 334A     		ldr	r2, .L52+4
+ 424 005c 02EB8302 		add	r2, r2, r3, lsl #2
+ 425 0060 5168     		ldr	r1, [r2, #4]
+ 119:.\rc_ch.c     ****                                     isr_rc_timer_count[rc_ch->ch_number - 1] > RC_TIMER_MAX_VALUE) 
+ 120:.\rc_ch.c     ****                                     rc_ch->last_timer_count : isr_rc_timer_count[rc_ch->ch_number -
+ 426              		.loc 1 120 0
+ 427 0062 45F6BF52 		movw	r2, #23999
+ 428 0066 9142     		cmp	r1, r2
+ 429 0068 07D9     		bls	.L40
+ 119:.\rc_ch.c     ****                                     isr_rc_timer_count[rc_ch->ch_number - 1] > RC_TIMER_MAX_VALUE) 
+ 430              		.loc 1 119 0
+ 431 006a 2F4A     		ldr	r2, .L52+4
+ 432 006c 02EB8302 		add	r2, r2, r3, lsl #2
+ 433 0070 5168     		ldr	r1, [r2, #4]
+ 118:.\rc_ch.c     ****         uint32 rc_ch_timer_count = (isr_rc_timer_count[rc_ch->ch_number - 1] < RC_TIMER_MIN_VALUE |
+ 434              		.loc 1 118 0
+ 435 0072 4AF6C872 		movw	r2, #45000
+ 436 0076 9142     		cmp	r1, r2
+ 437 0078 01D9     		bls	.L41
+ 438              	.L40:
+ 439              		.loc 1 120 0 discriminator 1
+ 440 007a A568     		ldr	r5, [r4, #8]
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 11
+
+
+ 441 007c 03E0     		b	.L42
+ 442              	.L41:
+ 443              		.loc 1 120 0 is_stmt 0
+ 444 007e 2A4A     		ldr	r2, .L52+4
+ 445 0080 02EB8302 		add	r2, r2, r3, lsl #2
+ 446 0084 5568     		ldr	r5, [r2, #4]
+ 447              	.L42:
+ 448              	.LVL40:
+ 121:.\rc_ch.c     ****         if (abs(RC_TIMER_MID_VALUE - rc_ch_timer_count) < RC_TIMER_MID_TOLERANCE) {
+ 449              		.loc 1 121 0 is_stmt 1
+ 450 0086 C5F50042 		rsb	r2, r5, #32768
+ 451 008a E832     		adds	r2, r2, #232
+ 452 008c 12F5167F 		cmn	r2, #600
+ 453 0090 05DD     		ble	.L43
+ 454              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 455 0092 B2F5167F 		cmp	r2, #600
+ 456 0096 02DA     		bge	.L43
+ 122:.\rc_ch.c     ****             rc_ch->value = RC_MIN_VALUE;
+ 457              		.loc 1 122 0 is_stmt 1
+ 458 0098 0022     		movs	r2, #0
+ 459 009a A281     		strh	r2, [r4, #12]	@ movhi
+ 460 009c 11E0     		b	.L44
+ 461              	.L43:
+ 462              	.LBB3:
+ 123:.\rc_ch.c     ****         } else {
+ 124:.\rc_ch.c     ****             const int RC_TIMER_AMPLITUDE = rc_ch_timer_count > RC_TIMER_MID_VALUE ? RC_TIMER_MAX_VA
+ 463              		.loc 1 124 0
+ 464 009e 48F2E802 		movw	r2, #33000
+ 465 00a2 9542     		cmp	r5, r2
+ 466 00a4 02D9     		bls	.L50
+ 467 00a6 42F6E061 		movw	r1, #12000
+ 468 00aa 01E0     		b	.L45
+ 469              	.L50:
+ 470 00ac 42F22831 		movw	r1, #9000
+ 471              	.L45:
+ 472              	.LVL41:
+ 125:.\rc_ch.c     ****             rc_ch->value = (RC_MAX_VALUE - RC_MIN_VALUE) * ((int32) rc_ch_timer_count - RC_TIMER_MI
+ 473              		.loc 1 125 0 discriminator 4
+ 474 00b0 A5F50042 		sub	r2, r5, #32768
+ 475 00b4 E83A     		subs	r2, r2, #232
+ 476 00b6 C2EB0212 		rsb	r2, r2, r2, lsl #4
+ 477 00ba 1201     		lsls	r2, r2, #4
+ 478 00bc 92FBF1F2 		sdiv	r2, r2, r1
+ 479 00c0 A281     		strh	r2, [r4, #12]	@ movhi
+ 480              	.LVL42:
+ 481              	.L44:
+ 482              	.LBE3:
+ 126:.\rc_ch.c     ****             //USBUART_PutString("fc\r\n");
+ 127:.\rc_ch.c     ****         }
+ 128:.\rc_ch.c     ****         
+ 129:.\rc_ch.c     ****         rc_ch->last_timer_count = rc_ch_timer_count;
+ 483              		.loc 1 129 0
+ 484 00c2 A560     		str	r5, [r4, #8]
+ 130:.\rc_ch.c     ****         isr_rc_timer_int_flag[rc_ch->ch_number - 1] = 0;
+ 485              		.loc 1 130 0
+ 486 00c4 0021     		movs	r1, #0
+ 487 00c6 184A     		ldr	r2, .L52+4
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 12
+
+
+ 488 00c8 D154     		strb	r1, [r2, r3]
+ 131:.\rc_ch.c     ****         
+ 132:.\rc_ch.c     ****         if (rc_ch->ch_number == 1)
+ 489              		.loc 1 132 0
+ 490 00ca 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 491 00cc 012B     		cmp	r3, #1
+ 492 00ce 01D1     		bne	.L46
+ 133:.\rc_ch.c     ****             RC_Ch1_Timer_Start();
+ 493              		.loc 1 133 0
+ 494 00d0 FFF7FEFF 		bl	RC_Ch1_Timer_Start
+ 495              	.LVL43:
+ 496              	.L46:
+ 134:.\rc_ch.c     ****         if (rc_ch->ch_number == 2)
+ 497              		.loc 1 134 0
+ 498 00d4 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 499 00d6 022B     		cmp	r3, #2
+ 500 00d8 01D1     		bne	.L47
+ 135:.\rc_ch.c     ****             RC_Ch2_Timer_Start();
+ 501              		.loc 1 135 0
+ 502 00da FFF7FEFF 		bl	RC_Ch2_Timer_Start
+ 503              	.LVL44:
+ 504              	.L47:
+ 136:.\rc_ch.c     ****         if (rc_ch->ch_number == 3)
+ 505              		.loc 1 136 0
+ 506 00de 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 507 00e0 032B     		cmp	r3, #3
+ 508 00e2 01D1     		bne	.L48
+ 137:.\rc_ch.c     ****             RC_Ch3_Timer_Start();
+ 509              		.loc 1 137 0
+ 510 00e4 FFF7FEFF 		bl	RC_Ch3_Timer_Start
+ 511              	.LVL45:
+ 512              	.L48:
+ 138:.\rc_ch.c     ****         if (rc_ch->ch_number == 4)
+ 513              		.loc 1 138 0
+ 514 00e8 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 515 00ea 042B     		cmp	r3, #4
+ 516 00ec 01D1     		bne	.L49
+ 139:.\rc_ch.c     ****             RC_Ch4_Timer_Start();
+ 517              		.loc 1 139 0
+ 518 00ee FFF7FEFF 		bl	RC_Ch4_Timer_Start
+ 519              	.LVL46:
+ 520              	.L49:
+ 140:.\rc_ch.c     ****         
+ 141:.\rc_ch.c     ****         if (rc_ch->value != 0) {
+ 521              		.loc 1 141 0
+ 522 00f2 A389     		ldrh	r3, [r4, #12]
+ 523 00f4 9BB1     		cbz	r3, .L30
+ 524              	.LBB4:
+ 142:.\rc_ch.c     ****             char debug[64] = "";
+ 525              		.loc 1 142 0
+ 526 00f6 0021     		movs	r1, #0
+ 527 00f8 0291     		str	r1, [sp, #8]
+ 528 00fa 03A8     		add	r0, sp, #12
+ 529 00fc 3C22     		movs	r2, #60
+ 530 00fe FFF7FEFF 		bl	memset
+ 531              	.LVL47:
+ 143:.\rc_ch.c     ****             sprintf(debug, "[%ld] RC CH %d: %ld --> %d \r\n", MILLISECONDS, rc_ch->ch_number, rc_ch
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 13
+
+
+ 532              		.loc 1 143 0
+ 533 0102 084B     		ldr	r3, .L52
+ 534 0104 1A68     		ldr	r2, [r3]
+ 535 0106 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 536 0108 A189     		ldrh	r1, [r4, #12]
+ 537 010a 0095     		str	r5, [sp]
+ 538 010c 09B2     		sxth	r1, r1
+ 539 010e 0191     		str	r1, [sp, #4]
+ 540 0110 02A8     		add	r0, sp, #8
+ 541 0112 0649     		ldr	r1, .L52+8
+ 542 0114 FFF7FEFF 		bl	sprintf
+ 543              	.LVL48:
+ 144:.\rc_ch.c     ****             USBUART_PutString(debug);
+ 544              		.loc 1 144 0
+ 545 0118 02A8     		add	r0, sp, #8
+ 546 011a FFF7FEFF 		bl	USBUART_PutString
+ 547              	.LVL49:
+ 548              	.L30:
+ 549              	.LBE4:
+ 550              	.LBE2:
+ 145:.\rc_ch.c     ****         }
+ 146:.\rc_ch.c     ****     }
+ 147:.\rc_ch.c     **** }
+ 551              		.loc 1 147 0
+ 552 011e 13B0     		add	sp, sp, #76
+ 553              		.cfi_def_cfa_offset 12
+ 554              		@ sp needed
+ 555 0120 30BD     		pop	{r4, r5, pc}
+ 556              	.LVL50:
+ 557              	.L53:
+ 558 0122 00BF     		.align	2
+ 559              	.L52:
+ 560 0124 00000000 		.word	MILLISECONDS
+ 561 0128 00000000 		.word	.LANCHOR0
+ 562 012c 00000000 		.word	.LC0
+ 563              		.cfi_endproc
+ 564              	.LFE70:
+ 565              		.size	get_rc_ch_value, .-get_rc_ch_value
+ 566              		.global	RC_MIN_VALUE
+ 567              		.global	RC_MAX_VALUE
+ 568              		.global	RC_CONNECTION_TIMEOUT
+ 569              		.global	RC_TIMER_MID_TOLERANCE
+ 570              		.global	RC_TIMER_MIN_VALUE
+ 571              		.global	RC_TIMER_MID_VALUE
+ 572              		.global	RC_TIMER_MAX_VALUE
+ 573              		.global	RC_TIMER_PERIOD
+ 574              		.section	.rodata
+ 575              		.align	2
+ 576              		.type	RC_MIN_VALUE, %object
+ 577              		.size	RC_MIN_VALUE, 4
+ 578              	RC_MIN_VALUE:
+ 579 0000 00000000 		.space	4
+ 580              		.type	RC_MAX_VALUE, %object
+ 581              		.size	RC_MAX_VALUE, 4
+ 582              	RC_MAX_VALUE:
+ 583 0004 F0000000 		.word	240
+ 584              		.type	RC_CONNECTION_TIMEOUT, %object
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 14
+
+
+ 585              		.size	RC_CONNECTION_TIMEOUT, 4
+ 586              	RC_CONNECTION_TIMEOUT:
+ 587 0008 32000000 		.word	50
+ 588              		.type	RC_TIMER_MID_TOLERANCE, %object
+ 589              		.size	RC_TIMER_MID_TOLERANCE, 4
+ 590              	RC_TIMER_MID_TOLERANCE:
+ 591 000c 58020000 		.word	600
+ 592              		.type	RC_TIMER_MIN_VALUE, %object
+ 593              		.size	RC_TIMER_MIN_VALUE, 4
+ 594              	RC_TIMER_MIN_VALUE:
+ 595 0010 C05D0000 		.word	24000
+ 596              		.type	RC_TIMER_MID_VALUE, %object
+ 597              		.size	RC_TIMER_MID_VALUE, 4
+ 598              	RC_TIMER_MID_VALUE:
+ 599 0014 E8800000 		.word	33000
+ 600              		.type	RC_TIMER_MAX_VALUE, %object
+ 601              		.size	RC_TIMER_MAX_VALUE, 4
+ 602              	RC_TIMER_MAX_VALUE:
+ 603 0018 C8AF0000 		.word	45000
+ 604              		.type	RC_TIMER_PERIOD, %object
+ 605              		.size	RC_TIMER_PERIOD, 4
+ 606              	RC_TIMER_PERIOD:
+ 607 001c 1FA10700 		.word	499999
+ 608              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 609              		.align	2
+ 610              	.LC0:
+ 611 0000 5B256C64 		.ascii	"[%ld] RC CH %d: %ld --> %d \015\012\000"
+ 611      5D205243 
+ 611      20434820 
+ 611      25643A20 
+ 611      256C6420 
+ 612 001e 0000     		.bss
+ 613              		.align	2
+ 614              		.set	.LANCHOR0,. + 0
+ 615              		.type	isr_rc_timer_int_flag, %object
+ 616              		.size	isr_rc_timer_int_flag, 4
+ 617              	isr_rc_timer_int_flag:
+ 618 0000 00000000 		.space	4
+ 619              		.type	isr_rc_timer_count, %object
+ 620              		.size	isr_rc_timer_count, 16
+ 621              	isr_rc_timer_count:
+ 622 0004 00000000 		.space	16
+ 622      00000000 
+ 622      00000000 
+ 622      00000000 
+ 623              		.text
+ 624              	.Letext0:
+ 625              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 626              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 627              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 628              		.file 5 ".\\rc_ch.h"
+ 629              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 630              		.file 7 ".\\milliseconds.h"
+ 631              		.file 8 "Generated_Source\\PSoC5/RC_Ch1_Timer.h"
+ 632              		.file 9 "Generated_Source\\PSoC5/RC_Ch2_Timer.h"
+ 633              		.file 10 "Generated_Source\\PSoC5/RC_Ch3_Timer.h"
+ 634              		.file 11 "Generated_Source\\PSoC5/RC_Ch4_Timer.h"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 15
+
+
+ 635              		.file 12 "Generated_Source\\PSoC5/RC_Ch1_Timer_Interrupt.h"
+ 636              		.file 13 "Generated_Source\\PSoC5/RC_Ch2_Timer_Interrupt.h"
+ 637              		.file 14 "Generated_Source\\PSoC5/RC_Ch3_Timer_Interrupt.h"
+ 638              		.file 15 "Generated_Source\\PSoC5/RC_Ch4_Timer_Interrupt.h"
+ 639              		.file 16 "<built-in>"
+ 640              		.file 17 "Generated_Source\\PSoC5/USBUART_cdc.h"
+ 641              		.file 18 "Generated_Source\\PSoC5/RC_Ch1.h"
+ 642              		.file 19 "Generated_Source\\PSoC5/RC_Ch2.h"
+ 643              		.file 20 "Generated_Source\\PSoC5/RC_Ch3.h"
+ 644              		.file 21 "Generated_Source\\PSoC5/RC_Ch4.h"
+ 645              		.section	.debug_info,"",%progbits
+ 646              	.Ldebug_info0:
+ 647 0000 78070000 		.4byte	0x778
+ 648 0004 0400     		.2byte	0x4
+ 649 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 650 000a 04       		.byte	0x4
+ 651 000b 01       		.uleb128 0x1
+ 652 000c D5030000 		.4byte	.LASF82
+ 653 0010 01       		.byte	0x1
+ 654 0011 88040000 		.4byte	.LASF83
+ 655 0015 7E020000 		.4byte	.LASF84
+ 656 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 657 001d 00000000 		.4byte	0
+ 658 0021 00000000 		.4byte	.Ldebug_line0
+ 659 0025 02       		.uleb128 0x2
+ 660 0026 01       		.byte	0x1
+ 661 0027 06       		.byte	0x6
+ 662 0028 24030000 		.4byte	.LASF0
+ 663 002c 02       		.uleb128 0x2
+ 664 002d 01       		.byte	0x1
+ 665 002e 08       		.byte	0x8
+ 666 002f 25020000 		.4byte	.LASF1
+ 667 0033 02       		.uleb128 0x2
+ 668 0034 02       		.byte	0x2
+ 669 0035 05       		.byte	0x5
+ 670 0036 6C000000 		.4byte	.LASF2
+ 671 003a 02       		.uleb128 0x2
+ 672 003b 02       		.byte	0x2
+ 673 003c 07       		.byte	0x7
+ 674 003d A3030000 		.4byte	.LASF3
+ 675 0041 03       		.uleb128 0x3
+ 676 0042 9E050000 		.4byte	.LASF9
+ 677 0046 02       		.byte	0x2
+ 678 0047 3F       		.byte	0x3f
+ 679 0048 4C000000 		.4byte	0x4c
+ 680 004c 02       		.uleb128 0x2
+ 681 004d 04       		.byte	0x4
+ 682 004e 05       		.byte	0x5
+ 683 004f AE010000 		.4byte	.LASF4
+ 684 0053 02       		.uleb128 0x2
+ 685 0054 04       		.byte	0x4
+ 686 0055 07       		.byte	0x7
+ 687 0056 03050000 		.4byte	.LASF5
+ 688 005a 02       		.uleb128 0x2
+ 689 005b 08       		.byte	0x8
+ 690 005c 05       		.byte	0x5
+ 691 005d 71010000 		.4byte	.LASF6
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 16
+
+
+ 692 0061 02       		.uleb128 0x2
+ 693 0062 08       		.byte	0x8
+ 694 0063 07       		.byte	0x7
+ 695 0064 30030000 		.4byte	.LASF7
+ 696 0068 04       		.uleb128 0x4
+ 697 0069 04       		.byte	0x4
+ 698 006a 05       		.byte	0x5
+ 699 006b 696E7400 		.ascii	"int\000"
+ 700 006f 02       		.uleb128 0x2
+ 701 0070 04       		.byte	0x4
+ 702 0071 07       		.byte	0x7
+ 703 0072 69030000 		.4byte	.LASF8
+ 704 0076 03       		.uleb128 0x3
+ 705 0077 80040000 		.4byte	.LASF10
+ 706 007b 03       		.byte	0x3
+ 707 007c 2C       		.byte	0x2c
+ 708 007d 41000000 		.4byte	0x41
+ 709 0081 05       		.uleb128 0x5
+ 710 0082 F2000000 		.4byte	.LASF11
+ 711 0086 04       		.byte	0x4
+ 712 0087 9201     		.2byte	0x192
+ 713 0089 2C000000 		.4byte	0x2c
+ 714 008d 05       		.uleb128 0x5
+ 715 008e E3040000 		.4byte	.LASF12
+ 716 0092 04       		.byte	0x4
+ 717 0093 9401     		.2byte	0x194
+ 718 0095 53000000 		.4byte	0x53
+ 719 0099 05       		.uleb128 0x5
+ 720 009a EC000000 		.4byte	.LASF13
+ 721 009e 04       		.byte	0x4
+ 722 009f 9601     		.2byte	0x196
+ 723 00a1 33000000 		.4byte	0x33
+ 724 00a5 05       		.uleb128 0x5
+ 725 00a6 22050000 		.4byte	.LASF14
+ 726 00aa 04       		.byte	0x4
+ 727 00ab 9701     		.2byte	0x197
+ 728 00ad 4C000000 		.4byte	0x4c
+ 729 00b1 02       		.uleb128 0x2
+ 730 00b2 04       		.byte	0x4
+ 731 00b3 04       		.byte	0x4
+ 732 00b4 4C010000 		.4byte	.LASF15
+ 733 00b8 02       		.uleb128 0x2
+ 734 00b9 08       		.byte	0x8
+ 735 00ba 04       		.byte	0x4
+ 736 00bb E1050000 		.4byte	.LASF16
+ 737 00bf 05       		.uleb128 0x5
+ 738 00c0 98000000 		.4byte	.LASF17
+ 739 00c4 04       		.byte	0x4
+ 740 00c5 A301     		.2byte	0x1a3
+ 741 00c7 CB000000 		.4byte	0xcb
+ 742 00cb 02       		.uleb128 0x2
+ 743 00cc 01       		.byte	0x1
+ 744 00cd 08       		.byte	0x8
+ 745 00ce BF030000 		.4byte	.LASF18
+ 746 00d2 06       		.uleb128 0x6
+ 747 00d3 8D000000 		.4byte	0x8d
+ 748 00d7 05       		.uleb128 0x5
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 17
+
+
+ 749 00d8 5F020000 		.4byte	.LASF19
+ 750 00dc 04       		.byte	0x4
+ 751 00dd 4E02     		.2byte	0x24e
+ 752 00df E3000000 		.4byte	0xe3
+ 753 00e3 07       		.uleb128 0x7
+ 754 00e4 04       		.byte	0x4
+ 755 00e5 E9000000 		.4byte	0xe9
+ 756 00e9 08       		.uleb128 0x8
+ 757 00ea 02       		.uleb128 0x2
+ 758 00eb 04       		.byte	0x4
+ 759 00ec 07       		.byte	0x7
+ 760 00ed 76000000 		.4byte	.LASF20
+ 761 00f1 09       		.uleb128 0x9
+ 762 00f2 04       		.byte	0x4
+ 763 00f3 07       		.uleb128 0x7
+ 764 00f4 04       		.byte	0x4
+ 765 00f5 CB000000 		.4byte	0xcb
+ 766 00f9 07       		.uleb128 0x7
+ 767 00fa 04       		.byte	0x4
+ 768 00fb FF000000 		.4byte	0xff
+ 769 00ff 0A       		.uleb128 0xa
+ 770 0100 CB000000 		.4byte	0xcb
+ 771 0104 0B       		.uleb128 0xb
+ 772 0105 81000000 		.4byte	0x81
+ 773 0109 14010000 		.4byte	0x114
+ 774 010d 0C       		.uleb128 0xc
+ 775 010e EA000000 		.4byte	0xea
+ 776 0112 03       		.byte	0x3
+ 777 0113 00       		.byte	0
+ 778 0114 0D       		.uleb128 0xd
+ 779 0115 39000000 		.4byte	.LASF35
+ 780 0119 10       		.byte	0x10
+ 781 011a 05       		.byte	0x5
+ 782 011b 1B       		.byte	0x1b
+ 783 011c 5D010000 		.4byte	0x15d
+ 784 0120 0E       		.uleb128 0xe
+ 785 0121 3F000000 		.4byte	.LASF21
+ 786 0125 05       		.byte	0x5
+ 787 0126 1C       		.byte	0x1c
+ 788 0127 81000000 		.4byte	0x81
+ 789 012b 00       		.byte	0
+ 790 012c 0E       		.uleb128 0xe
+ 791 012d F8000000 		.4byte	.LASF22
+ 792 0131 05       		.byte	0x5
+ 793 0132 1D       		.byte	0x1d
+ 794 0133 81000000 		.4byte	0x81
+ 795 0137 01       		.byte	0x1
+ 796 0138 0E       		.uleb128 0xe
+ 797 0139 42050000 		.4byte	.LASF23
+ 798 013d 05       		.byte	0x5
+ 799 013e 1E       		.byte	0x1e
+ 800 013f 8D000000 		.4byte	0x8d
+ 801 0143 04       		.byte	0x4
+ 802 0144 0E       		.uleb128 0xe
+ 803 0145 5B000000 		.4byte	.LASF24
+ 804 0149 05       		.byte	0x5
+ 805 014a 1F       		.byte	0x1f
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 18
+
+
+ 806 014b 8D000000 		.4byte	0x8d
+ 807 014f 08       		.byte	0x8
+ 808 0150 0E       		.uleb128 0xe
+ 809 0151 AE000000 		.4byte	.LASF25
+ 810 0155 05       		.byte	0x5
+ 811 0156 20       		.byte	0x20
+ 812 0157 99000000 		.4byte	0x99
+ 813 015b 0C       		.byte	0xc
+ 814 015c 00       		.byte	0
+ 815 015d 03       		.uleb128 0x3
+ 816 015e A1010000 		.4byte	.LASF26
+ 817 0162 05       		.byte	0x5
+ 818 0163 21       		.byte	0x21
+ 819 0164 14010000 		.4byte	0x114
+ 820 0168 0F       		.uleb128 0xf
+ 821 0169 A5040000 		.4byte	.LASF29
+ 822 016d 01       		.byte	0x1
+ 823 016e 31       		.byte	0x31
+ 824 016f 00000000 		.4byte	.LFB67
+ 825 0173 A4000000 		.4byte	.LFE67-.LFB67
+ 826 0177 01       		.uleb128 0x1
+ 827 0178 9C       		.byte	0x9c
+ 828 0179 4E020000 		.4byte	0x24e
+ 829 017d 10       		.uleb128 0x10
+ 830 017e 3F000000 		.4byte	.LASF21
+ 831 0182 01       		.byte	0x1
+ 832 0183 31       		.byte	0x31
+ 833 0184 81000000 		.4byte	0x81
+ 834 0188 00000000 		.4byte	.LLST0
+ 835 018c 11       		.uleb128 0x11
+ 836 018d B7010000 		.4byte	.LASF27
+ 837 0191 01       		.byte	0x1
+ 838 0192 36       		.byte	0x36
+ 839 0193 4E020000 		.4byte	0x24e
+ 840 0197 02       		.byte	0x2
+ 841 0198 11       		.uleb128 0x11
+ 842 0199 7D060000 		.4byte	.LASF28
+ 843 019d 01       		.byte	0x1
+ 844 019e 3A       		.byte	0x3a
+ 845 019f 4E020000 		.4byte	0x24e
+ 846 01a3 01       		.byte	0x1
+ 847 01a4 12       		.uleb128 0x12
+ 848 01a5 0E000000 		.4byte	.LVL1
+ 849 01a9 04060000 		.4byte	0x604
+ 850 01ad 12       		.uleb128 0x12
+ 851 01ae 18000000 		.4byte	.LVL3
+ 852 01b2 0F060000 		.4byte	0x60f
+ 853 01b6 12       		.uleb128 0x12
+ 854 01b7 22000000 		.4byte	.LVL5
+ 855 01bb 1A060000 		.4byte	0x61a
+ 856 01bf 12       		.uleb128 0x12
+ 857 01c0 28000000 		.4byte	.LVL7
+ 858 01c4 25060000 		.4byte	0x625
+ 859 01c8 12       		.uleb128 0x12
+ 860 01c9 36000000 		.4byte	.LVL9
+ 861 01cd 30060000 		.4byte	0x630
+ 862 01d1 12       		.uleb128 0x12
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 19
+
+
+ 863 01d2 62000000 		.4byte	.LVL10
+ 864 01d6 3B060000 		.4byte	0x63b
+ 865 01da 13       		.uleb128 0x13
+ 866 01db 68000000 		.4byte	.LVL11
+ 867 01df 42060000 		.4byte	0x642
+ 868 01e3 F1010000 		.4byte	0x1f1
+ 869 01e7 14       		.uleb128 0x14
+ 870 01e8 01       		.uleb128 0x1
+ 871 01e9 50       		.byte	0x50
+ 872 01ea 05       		.uleb128 0x5
+ 873 01eb 0C       		.byte	0xc
+ 874 01ec 1FA10700 		.4byte	0x7a11f
+ 875 01f0 00       		.byte	0
+ 876 01f1 12       		.uleb128 0x12
+ 877 01f2 72000000 		.4byte	.LVL12
+ 878 01f6 53060000 		.4byte	0x653
+ 879 01fa 13       		.uleb128 0x13
+ 880 01fb 78000000 		.4byte	.LVL13
+ 881 01ff 5A060000 		.4byte	0x65a
+ 882 0203 11020000 		.4byte	0x211
+ 883 0207 14       		.uleb128 0x14
+ 884 0208 01       		.uleb128 0x1
+ 885 0209 50       		.byte	0x50
+ 886 020a 05       		.uleb128 0x5
+ 887 020b 0C       		.byte	0xc
+ 888 020c 1FA10700 		.4byte	0x7a11f
+ 889 0210 00       		.byte	0
+ 890 0211 12       		.uleb128 0x12
+ 891 0212 82000000 		.4byte	.LVL14
+ 892 0216 6B060000 		.4byte	0x66b
+ 893 021a 13       		.uleb128 0x13
+ 894 021b 88000000 		.4byte	.LVL15
+ 895 021f 72060000 		.4byte	0x672
+ 896 0223 31020000 		.4byte	0x231
+ 897 0227 14       		.uleb128 0x14
+ 898 0228 01       		.uleb128 0x1
+ 899 0229 50       		.byte	0x50
+ 900 022a 05       		.uleb128 0x5
+ 901 022b 0C       		.byte	0xc
+ 902 022c 1FA10700 		.4byte	0x7a11f
+ 903 0230 00       		.byte	0
+ 904 0231 12       		.uleb128 0x12
+ 905 0232 92000000 		.4byte	.LVL16
+ 906 0236 83060000 		.4byte	0x683
+ 907 023a 15       		.uleb128 0x15
+ 908 023b 98000000 		.4byte	.LVL17
+ 909 023f 8A060000 		.4byte	0x68a
+ 910 0243 14       		.uleb128 0x14
+ 911 0244 01       		.uleb128 0x1
+ 912 0245 50       		.byte	0x50
+ 913 0246 05       		.uleb128 0x5
+ 914 0247 0C       		.byte	0xc
+ 915 0248 1FA10700 		.4byte	0x7a11f
+ 916 024c 00       		.byte	0
+ 917 024d 00       		.byte	0
+ 918 024e 0A       		.uleb128 0xa
+ 919 024f 81000000 		.4byte	0x81
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 20
+
+
+ 920 0253 0F       		.uleb128 0xf
+ 921 0254 00000000 		.4byte	.LASF30
+ 922 0258 01       		.byte	0x1
+ 923 0259 1D       		.byte	0x1d
+ 924 025a 00000000 		.4byte	.LFB63
+ 925 025e 0A000000 		.4byte	.LFE63-.LFB63
+ 926 0262 01       		.uleb128 0x1
+ 927 0263 9C       		.byte	0x9c
+ 928 0264 78020000 		.4byte	0x278
+ 929 0268 15       		.uleb128 0x15
+ 930 0269 08000000 		.4byte	.LVL18
+ 931 026d 68010000 		.4byte	0x168
+ 932 0271 14       		.uleb128 0x14
+ 933 0272 01       		.uleb128 0x1
+ 934 0273 50       		.byte	0x50
+ 935 0274 01       		.uleb128 0x1
+ 936 0275 31       		.byte	0x31
+ 937 0276 00       		.byte	0
+ 938 0277 00       		.byte	0
+ 939 0278 0F       		.uleb128 0xf
+ 940 0279 7F000000 		.4byte	.LASF31
+ 941 027d 01       		.byte	0x1
+ 942 027e 22       		.byte	0x22
+ 943 027f 00000000 		.4byte	.LFB64
+ 944 0283 0A000000 		.4byte	.LFE64-.LFB64
+ 945 0287 01       		.uleb128 0x1
+ 946 0288 9C       		.byte	0x9c
+ 947 0289 9D020000 		.4byte	0x29d
+ 948 028d 15       		.uleb128 0x15
+ 949 028e 08000000 		.4byte	.LVL19
+ 950 0292 68010000 		.4byte	0x168
+ 951 0296 14       		.uleb128 0x14
+ 952 0297 01       		.uleb128 0x1
+ 953 0298 50       		.byte	0x50
+ 954 0299 01       		.uleb128 0x1
+ 955 029a 32       		.byte	0x32
+ 956 029b 00       		.byte	0
+ 957 029c 00       		.byte	0
+ 958 029d 0F       		.uleb128 0xf
+ 959 029e D3000000 		.4byte	.LASF32
+ 960 02a2 01       		.byte	0x1
+ 961 02a3 27       		.byte	0x27
+ 962 02a4 00000000 		.4byte	.LFB65
+ 963 02a8 0A000000 		.4byte	.LFE65-.LFB65
+ 964 02ac 01       		.uleb128 0x1
+ 965 02ad 9C       		.byte	0x9c
+ 966 02ae C2020000 		.4byte	0x2c2
+ 967 02b2 15       		.uleb128 0x15
+ 968 02b3 08000000 		.4byte	.LVL20
+ 969 02b7 68010000 		.4byte	0x168
+ 970 02bb 14       		.uleb128 0x14
+ 971 02bc 01       		.uleb128 0x1
+ 972 02bd 50       		.byte	0x50
+ 973 02be 01       		.uleb128 0x1
+ 974 02bf 33       		.byte	0x33
+ 975 02c0 00       		.byte	0
+ 976 02c1 00       		.byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 21
+
+
+ 977 02c2 0F       		.uleb128 0xf
+ 978 02c3 33010000 		.4byte	.LASF33
+ 979 02c7 01       		.byte	0x1
+ 980 02c8 2C       		.byte	0x2c
+ 981 02c9 00000000 		.4byte	.LFB66
+ 982 02cd 0A000000 		.4byte	.LFE66-.LFB66
+ 983 02d1 01       		.uleb128 0x1
+ 984 02d2 9C       		.byte	0x9c
+ 985 02d3 E7020000 		.4byte	0x2e7
+ 986 02d7 15       		.uleb128 0x15
+ 987 02d8 08000000 		.4byte	.LVL21
+ 988 02dc 68010000 		.4byte	0x168
+ 989 02e0 14       		.uleb128 0x14
+ 990 02e1 01       		.uleb128 0x1
+ 991 02e2 50       		.byte	0x50
+ 992 02e3 01       		.uleb128 0x1
+ 993 02e4 34       		.byte	0x34
+ 994 02e5 00       		.byte	0
+ 995 02e6 00       		.byte	0
+ 996 02e7 16       		.uleb128 0x16
+ 997 02e8 C4030000 		.4byte	.LASF85
+ 998 02ec 01       		.byte	0x1
+ 999 02ed 53       		.byte	0x53
+ 1000 02ee 00000000 		.4byte	.LFB68
+ 1001 02f2 3C000000 		.4byte	.LFE68-.LFB68
+ 1002 02f6 01       		.uleb128 0x1
+ 1003 02f7 9C       		.byte	0x9c
+ 1004 02f8 7D030000 		.4byte	0x37d
+ 1005 02fc 13       		.uleb128 0x13
+ 1006 02fd 08000000 		.4byte	.LVL22
+ 1007 0301 9B060000 		.4byte	0x69b
+ 1008 0305 13030000 		.4byte	0x313
+ 1009 0309 14       		.uleb128 0x14
+ 1010 030a 01       		.uleb128 0x1
+ 1011 030b 50       		.byte	0x50
+ 1012 030c 05       		.uleb128 0x5
+ 1013 030d 03       		.byte	0x3
+ 1014 030e 00000000 		.4byte	RC_Ch1_Timer_ISR_Handler
+ 1015 0312 00       		.byte	0
+ 1016 0313 12       		.uleb128 0x12
+ 1017 0314 0C000000 		.4byte	.LVL23
+ 1018 0318 AC060000 		.4byte	0x6ac
+ 1019 031c 13       		.uleb128 0x13
+ 1020 031d 12000000 		.4byte	.LVL24
+ 1021 0321 B3060000 		.4byte	0x6b3
+ 1022 0325 33030000 		.4byte	0x333
+ 1023 0329 14       		.uleb128 0x14
+ 1024 032a 01       		.uleb128 0x1
+ 1025 032b 50       		.byte	0x50
+ 1026 032c 05       		.uleb128 0x5
+ 1027 032d 03       		.byte	0x3
+ 1028 032e 00000000 		.4byte	RC_Ch2_Timer_ISR_Handler
+ 1029 0332 00       		.byte	0
+ 1030 0333 12       		.uleb128 0x12
+ 1031 0334 16000000 		.4byte	.LVL25
+ 1032 0338 C4060000 		.4byte	0x6c4
+ 1033 033c 13       		.uleb128 0x13
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 22
+
+
+ 1034 033d 1C000000 		.4byte	.LVL26
+ 1035 0341 CB060000 		.4byte	0x6cb
+ 1036 0345 53030000 		.4byte	0x353
+ 1037 0349 14       		.uleb128 0x14
+ 1038 034a 01       		.uleb128 0x1
+ 1039 034b 50       		.byte	0x50
+ 1040 034c 05       		.uleb128 0x5
+ 1041 034d 03       		.byte	0x3
+ 1042 034e 00000000 		.4byte	RC_Ch3_Timer_ISR_Handler
+ 1043 0352 00       		.byte	0
+ 1044 0353 12       		.uleb128 0x12
+ 1045 0354 20000000 		.4byte	.LVL27
+ 1046 0358 DC060000 		.4byte	0x6dc
+ 1047 035c 13       		.uleb128 0x13
+ 1048 035d 26000000 		.4byte	.LVL28
+ 1049 0361 E3060000 		.4byte	0x6e3
+ 1050 0365 73030000 		.4byte	0x373
+ 1051 0369 14       		.uleb128 0x14
+ 1052 036a 01       		.uleb128 0x1
+ 1053 036b 50       		.byte	0x50
+ 1054 036c 05       		.uleb128 0x5
+ 1055 036d 03       		.byte	0x3
+ 1056 036e 00000000 		.4byte	RC_Ch4_Timer_ISR_Handler
+ 1057 0372 00       		.byte	0
+ 1058 0373 12       		.uleb128 0x12
+ 1059 0374 2A000000 		.4byte	.LVL29
+ 1060 0378 F4060000 		.4byte	0x6f4
+ 1061 037c 00       		.byte	0
+ 1062 037d 0F       		.uleb128 0xf
+ 1063 037e 9E000000 		.4byte	.LASF34
+ 1064 0382 01       		.byte	0x1
+ 1065 0383 5E       		.byte	0x5e
+ 1066 0384 00000000 		.4byte	.LFB69
+ 1067 0388 0E000000 		.4byte	.LFE69-.LFB69
+ 1068 038c 01       		.uleb128 0x1
+ 1069 038d 9C       		.byte	0x9c
+ 1070 038e AD030000 		.4byte	0x3ad
+ 1071 0392 17       		.uleb128 0x17
+ 1072 0393 39000000 		.4byte	.LASF35
+ 1073 0397 01       		.byte	0x1
+ 1074 0398 5E       		.byte	0x5e
+ 1075 0399 AD030000 		.4byte	0x3ad
+ 1076 039d 01       		.uleb128 0x1
+ 1077 039e 50       		.byte	0x50
+ 1078 039f 17       		.uleb128 0x17
+ 1079 03a0 3F000000 		.4byte	.LASF21
+ 1080 03a4 01       		.byte	0x1
+ 1081 03a5 5E       		.byte	0x5e
+ 1082 03a6 81000000 		.4byte	0x81
+ 1083 03aa 01       		.uleb128 0x1
+ 1084 03ab 51       		.byte	0x51
+ 1085 03ac 00       		.byte	0
+ 1086 03ad 07       		.uleb128 0x7
+ 1087 03ae 04       		.byte	0x4
+ 1088 03af 5D010000 		.4byte	0x15d
+ 1089 03b3 0F       		.uleb128 0xf
+ 1090 03b4 63040000 		.4byte	.LASF36
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 23
+
+
+ 1091 03b8 01       		.byte	0x1
+ 1092 03b9 66       		.byte	0x66
+ 1093 03ba 00000000 		.4byte	.LFB70
+ 1094 03be 30010000 		.4byte	.LFE70-.LFB70
+ 1095 03c2 01       		.uleb128 0x1
+ 1096 03c3 9C       		.byte	0x9c
+ 1097 03c4 14050000 		.4byte	0x514
+ 1098 03c8 10       		.uleb128 0x10
+ 1099 03c9 39000000 		.4byte	.LASF35
+ 1100 03cd 01       		.byte	0x1
+ 1101 03ce 66       		.byte	0x66
+ 1102 03cf AD030000 		.4byte	0x3ad
+ 1103 03d3 6C000000 		.4byte	.LLST1
+ 1104 03d7 11       		.uleb128 0x11
+ 1105 03d8 B6030000 		.4byte	.LASF37
+ 1106 03dc 01       		.byte	0x1
+ 1107 03dd 67       		.byte	0x67
+ 1108 03de 99000000 		.4byte	0x99
+ 1109 03e2 00       		.byte	0
+ 1110 03e3 18       		.uleb128 0x18
+ 1111 03e4 6B050000 		.4byte	.LASF38
+ 1112 03e8 01       		.byte	0x1
+ 1113 03e9 68       		.byte	0x68
+ 1114 03ea 81000000 		.4byte	0x81
+ 1115 03ee DA000000 		.4byte	.LLST2
+ 1116 03f2 19       		.uleb128 0x19
+ 1117 03f3 5A000000 		.4byte	.LBB2
+ 1118 03f7 C4000000 		.4byte	.LBE2-.LBB2
+ 1119 03fb EF040000 		.4byte	0x4ef
+ 1120 03ff 18       		.uleb128 0x18
+ 1121 0400 21060000 		.4byte	.LASF39
+ 1122 0404 01       		.byte	0x1
+ 1123 0405 76       		.byte	0x76
+ 1124 0406 8D000000 		.4byte	0x8d
+ 1125 040a ED000000 		.4byte	.LLST3
+ 1126 040e 1A       		.uleb128 0x1a
+ 1127 040f 61627300 		.ascii	"abs\000"
+ 1128 0413 10       		.byte	0x10
+ 1129 0414 00       		.byte	0
+ 1130 0415 68000000 		.4byte	0x68
+ 1131 0419 1F040000 		.4byte	0x41f
+ 1132 041d 1B       		.uleb128 0x1b
+ 1133 041e 00       		.byte	0
+ 1134 041f 19       		.uleb128 0x19
+ 1135 0420 9E000000 		.4byte	.LBB3
+ 1136 0424 24000000 		.4byte	.LBE3-.LBB3
+ 1137 0428 3C040000 		.4byte	0x43c
+ 1138 042c 18       		.uleb128 0x18
+ 1139 042d 5E010000 		.4byte	.LASF40
+ 1140 0431 01       		.byte	0x1
+ 1141 0432 7C       		.byte	0x7c
+ 1142 0433 14050000 		.4byte	0x514
+ 1143 0437 00010000 		.4byte	.LLST4
+ 1144 043b 00       		.byte	0
+ 1145 043c 19       		.uleb128 0x19
+ 1146 043d F6000000 		.4byte	.LBB4
+ 1147 0441 28000000 		.4byte	.LBE4-.LBB4
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 24
+
+
+ 1148 0445 CA040000 		.4byte	0x4ca
+ 1149 0449 1C       		.uleb128 0x1c
+ 1150 044a 9D030000 		.4byte	.LASF41
+ 1151 044e 01       		.byte	0x1
+ 1152 044f 8E       		.byte	0x8e
+ 1153 0450 19050000 		.4byte	0x519
+ 1154 0454 03       		.uleb128 0x3
+ 1155 0455 91       		.byte	0x91
+ 1156 0456 B07F     		.sleb128 -80
+ 1157 0458 1D       		.uleb128 0x1d
+ 1158 0459 95030000 		.4byte	.LASF76
+ 1159 045d 10       		.byte	0x10
+ 1160 045e 00       		.byte	0
+ 1161 045f 68000000 		.4byte	0x68
+ 1162 0463 73040000 		.4byte	0x473
+ 1163 0467 1E       		.uleb128 0x1e
+ 1164 0468 F3000000 		.4byte	0xf3
+ 1165 046c 1E       		.uleb128 0x1e
+ 1166 046d F9000000 		.4byte	0xf9
+ 1167 0471 1B       		.uleb128 0x1b
+ 1168 0472 00       		.byte	0
+ 1169 0473 13       		.uleb128 0x13
+ 1170 0474 02010000 		.4byte	.LVL47
+ 1171 0478 FB060000 		.4byte	0x6fb
+ 1172 047c 93040000 		.4byte	0x493
+ 1173 0480 14       		.uleb128 0x14
+ 1174 0481 01       		.uleb128 0x1
+ 1175 0482 52       		.byte	0x52
+ 1176 0483 02       		.uleb128 0x2
+ 1177 0484 08       		.byte	0x8
+ 1178 0485 3C       		.byte	0x3c
+ 1179 0486 14       		.uleb128 0x14
+ 1180 0487 01       		.uleb128 0x1
+ 1181 0488 51       		.byte	0x51
+ 1182 0489 01       		.uleb128 0x1
+ 1183 048a 30       		.byte	0x30
+ 1184 048b 14       		.uleb128 0x14
+ 1185 048c 01       		.uleb128 0x1
+ 1186 048d 50       		.byte	0x50
+ 1187 048e 03       		.uleb128 0x3
+ 1188 048f 91       		.byte	0x91
+ 1189 0490 B47F     		.sleb128 -76
+ 1190 0492 00       		.byte	0
+ 1191 0493 13       		.uleb128 0x13
+ 1192 0494 18010000 		.4byte	.LVL48
+ 1193 0498 18070000 		.4byte	0x718
+ 1194 049c B8040000 		.4byte	0x4b8
+ 1195 04a0 14       		.uleb128 0x14
+ 1196 04a1 01       		.uleb128 0x1
+ 1197 04a2 51       		.byte	0x51
+ 1198 04a3 05       		.uleb128 0x5
+ 1199 04a4 03       		.byte	0x3
+ 1200 04a5 00000000 		.4byte	.LC0
+ 1201 04a9 14       		.uleb128 0x14
+ 1202 04aa 01       		.uleb128 0x1
+ 1203 04ab 50       		.byte	0x50
+ 1204 04ac 03       		.uleb128 0x3
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 25
+
+
+ 1205 04ad 91       		.byte	0x91
+ 1206 04ae B07F     		.sleb128 -80
+ 1207 04b0 14       		.uleb128 0x14
+ 1208 04b1 02       		.uleb128 0x2
+ 1209 04b2 7D       		.byte	0x7d
+ 1210 04b3 00       		.sleb128 0
+ 1211 04b4 02       		.uleb128 0x2
+ 1212 04b5 75       		.byte	0x75
+ 1213 04b6 00       		.sleb128 0
+ 1214 04b7 00       		.byte	0
+ 1215 04b8 15       		.uleb128 0x15
+ 1216 04b9 1E010000 		.4byte	.LVL49
+ 1217 04bd 33070000 		.4byte	0x733
+ 1218 04c1 14       		.uleb128 0x14
+ 1219 04c2 01       		.uleb128 0x1
+ 1220 04c3 50       		.byte	0x50
+ 1221 04c4 03       		.uleb128 0x3
+ 1222 04c5 91       		.byte	0x91
+ 1223 04c6 B07F     		.sleb128 -80
+ 1224 04c8 00       		.byte	0
+ 1225 04c9 00       		.byte	0
+ 1226 04ca 12       		.uleb128 0x12
+ 1227 04cb D4000000 		.4byte	.LVL43
+ 1228 04cf AC060000 		.4byte	0x6ac
+ 1229 04d3 12       		.uleb128 0x12
+ 1230 04d4 DE000000 		.4byte	.LVL44
+ 1231 04d8 C4060000 		.4byte	0x6c4
+ 1232 04dc 12       		.uleb128 0x12
+ 1233 04dd E8000000 		.4byte	.LVL45
+ 1234 04e1 DC060000 		.4byte	0x6dc
+ 1235 04e5 12       		.uleb128 0x12
+ 1236 04e6 F2000000 		.4byte	.LVL46
+ 1237 04ea F4060000 		.4byte	0x6f4
+ 1238 04ee 00       		.byte	0
+ 1239 04ef 12       		.uleb128 0x12
+ 1240 04f0 10000000 		.4byte	.LVL33
+ 1241 04f4 4F070000 		.4byte	0x74f
+ 1242 04f8 12       		.uleb128 0x12
+ 1243 04f9 1A000000 		.4byte	.LVL35
+ 1244 04fd 5A070000 		.4byte	0x75a
+ 1245 0501 12       		.uleb128 0x12
+ 1246 0502 24000000 		.4byte	.LVL37
+ 1247 0506 65070000 		.4byte	0x765
+ 1248 050a 12       		.uleb128 0x12
+ 1249 050b 2A000000 		.4byte	.LVL39
+ 1250 050f 70070000 		.4byte	0x770
+ 1251 0513 00       		.byte	0
+ 1252 0514 0A       		.uleb128 0xa
+ 1253 0515 68000000 		.4byte	0x68
+ 1254 0519 0B       		.uleb128 0xb
+ 1255 051a CB000000 		.4byte	0xcb
+ 1256 051e 29050000 		.4byte	0x529
+ 1257 0522 0C       		.uleb128 0xc
+ 1258 0523 EA000000 		.4byte	0xea
+ 1259 0527 3F       		.byte	0x3f
+ 1260 0528 00       		.byte	0
+ 1261 0529 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 26
+
+
+ 1262 052a 8D000000 		.4byte	0x8d
+ 1263 052e 39050000 		.4byte	0x539
+ 1264 0532 0C       		.uleb128 0xc
+ 1265 0533 EA000000 		.4byte	0xea
+ 1266 0537 03       		.byte	0x3
+ 1267 0538 00       		.byte	0
+ 1268 0539 1C       		.uleb128 0x1c
+ 1269 053a BD040000 		.4byte	.LASF42
+ 1270 053e 01       		.byte	0x1
+ 1271 053f 1A       		.byte	0x1a
+ 1272 0540 4A050000 		.4byte	0x54a
+ 1273 0544 05       		.uleb128 0x5
+ 1274 0545 03       		.byte	0x3
+ 1275 0546 04000000 		.4byte	isr_rc_timer_count
+ 1276 054a 06       		.uleb128 0x6
+ 1277 054b 29050000 		.4byte	0x529
+ 1278 054f 1C       		.uleb128 0x1c
+ 1279 0550 88050000 		.4byte	.LASF43
+ 1280 0554 01       		.byte	0x1
+ 1281 0555 1B       		.byte	0x1b
+ 1282 0556 04010000 		.4byte	0x104
+ 1283 055a 05       		.uleb128 0x5
+ 1284 055b 03       		.byte	0x3
+ 1285 055c 00000000 		.4byte	isr_rc_timer_int_flag
+ 1286 0560 1F       		.uleb128 0x1f
+ 1287 0561 51050000 		.4byte	.LASF44
+ 1288 0565 06       		.byte	0x6
+ 1289 0566 9606     		.2byte	0x696
+ 1290 0568 6C050000 		.4byte	0x56c
+ 1291 056c 06       		.uleb128 0x6
+ 1292 056d 76000000 		.4byte	0x76
+ 1293 0571 20       		.uleb128 0x20
+ 1294 0572 15050000 		.4byte	.LASF45
+ 1295 0576 07       		.byte	0x7
+ 1296 0577 15       		.byte	0x15
+ 1297 0578 D2000000 		.4byte	0xd2
+ 1298 057c 21       		.uleb128 0x21
+ 1299 057d 59030000 		.4byte	.LASF46
+ 1300 0581 01       		.byte	0x1
+ 1301 0582 10       		.byte	0x10
+ 1302 0583 14050000 		.4byte	0x514
+ 1303 0587 05       		.uleb128 0x5
+ 1304 0588 03       		.byte	0x3
+ 1305 0589 00000000 		.4byte	RC_TIMER_PERIOD
+ 1306 058d 21       		.uleb128 0x21
+ 1307 058e 11030000 		.4byte	.LASF47
+ 1308 0592 01       		.byte	0x1
+ 1309 0593 11       		.byte	0x11
+ 1310 0594 14050000 		.4byte	0x514
+ 1311 0598 05       		.uleb128 0x5
+ 1312 0599 03       		.byte	0x3
+ 1313 059a 00000000 		.4byte	RC_TIMER_MAX_VALUE
+ 1314 059e 21       		.uleb128 0x21
+ 1315 059f F2010000 		.4byte	.LASF48
+ 1316 05a3 01       		.byte	0x1
+ 1317 05a4 12       		.byte	0x12
+ 1318 05a5 14050000 		.4byte	0x514
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 27
+
+
+ 1319 05a9 05       		.uleb128 0x5
+ 1320 05aa 03       		.byte	0x3
+ 1321 05ab 00000000 		.4byte	RC_TIMER_MID_VALUE
+ 1322 05af 21       		.uleb128 0x21
+ 1323 05b0 B4050000 		.4byte	.LASF49
+ 1324 05b4 01       		.byte	0x1
+ 1325 05b5 13       		.byte	0x13
+ 1326 05b6 14050000 		.4byte	0x514
+ 1327 05ba 05       		.uleb128 0x5
+ 1328 05bb 03       		.byte	0x3
+ 1329 05bc 00000000 		.4byte	RC_TIMER_MIN_VALUE
+ 1330 05c0 21       		.uleb128 0x21
+ 1331 05c1 46060000 		.4byte	.LASF50
+ 1332 05c5 01       		.byte	0x1
+ 1333 05c6 14       		.byte	0x14
+ 1334 05c7 14050000 		.4byte	0x514
+ 1335 05cb 05       		.uleb128 0x5
+ 1336 05cc 03       		.byte	0x3
+ 1337 05cd 00000000 		.4byte	RC_TIMER_MID_TOLERANCE
+ 1338 05d1 21       		.uleb128 0x21
+ 1339 05d2 7F010000 		.4byte	.LASF51
+ 1340 05d6 01       		.byte	0x1
+ 1341 05d7 15       		.byte	0x15
+ 1342 05d8 14050000 		.4byte	0x514
+ 1343 05dc 05       		.uleb128 0x5
+ 1344 05dd 03       		.byte	0x3
+ 1345 05de 00000000 		.4byte	RC_CONNECTION_TIMEOUT
+ 1346 05e2 21       		.uleb128 0x21
+ 1347 05e3 73040000 		.4byte	.LASF52
+ 1348 05e7 01       		.byte	0x1
+ 1349 05e8 17       		.byte	0x17
+ 1350 05e9 14050000 		.4byte	0x514
+ 1351 05ed 05       		.uleb128 0x5
+ 1352 05ee 03       		.byte	0x3
+ 1353 05ef 00000000 		.4byte	RC_MAX_VALUE
+ 1354 05f3 21       		.uleb128 0x21
+ 1355 05f4 5E050000 		.4byte	.LASF53
+ 1356 05f8 01       		.byte	0x1
+ 1357 05f9 18       		.byte	0x18
+ 1358 05fa 14050000 		.4byte	0x514
+ 1359 05fe 05       		.uleb128 0x5
+ 1360 05ff 03       		.byte	0x3
+ 1361 0600 00000000 		.4byte	RC_MIN_VALUE
+ 1362 0604 22       		.uleb128 0x22
+ 1363 0605 D2010000 		.4byte	.LASF54
+ 1364 0609 08       		.byte	0x8
+ 1365 060a 5E       		.byte	0x5e
+ 1366 060b 81000000 		.4byte	0x81
+ 1367 060f 22       		.uleb128 0x22
+ 1368 0610 05020000 		.4byte	.LASF55
+ 1369 0614 09       		.byte	0x9
+ 1370 0615 5E       		.byte	0x5e
+ 1371 0616 81000000 		.4byte	0x81
+ 1372 061a 22       		.uleb128 0x22
+ 1373 061b 5D060000 		.4byte	.LASF56
+ 1374 061f 0A       		.byte	0xa
+ 1375 0620 5E       		.byte	0x5e
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 28
+
+
+ 1376 0621 81000000 		.4byte	0x81
+ 1377 0625 22       		.uleb128 0x22
+ 1378 0626 19000000 		.4byte	.LASF57
+ 1379 062a 0B       		.byte	0xb
+ 1380 062b 5E       		.byte	0x5e
+ 1381 062c 81000000 		.4byte	0x81
+ 1382 0630 22       		.uleb128 0x22
+ 1383 0631 EA040000 		.4byte	.LASF58
+ 1384 0635 09       		.byte	0x9
+ 1385 0636 6B       		.byte	0x6b
+ 1386 0637 8D000000 		.4byte	0x8d
+ 1387 063b 23       		.uleb128 0x23
+ 1388 063c 33020000 		.4byte	.LASF60
+ 1389 0640 08       		.byte	0x8
+ 1390 0641 5B       		.byte	0x5b
+ 1391 0642 24       		.uleb128 0x24
+ 1392 0643 45020000 		.4byte	.LASF59
+ 1393 0647 08       		.byte	0x8
+ 1394 0648 6A       		.byte	0x6a
+ 1395 0649 53060000 		.4byte	0x653
+ 1396 064d 1E       		.uleb128 0x1e
+ 1397 064e 8D000000 		.4byte	0x8d
+ 1398 0652 00       		.byte	0
+ 1399 0653 23       		.uleb128 0x23
+ 1400 0654 6C020000 		.4byte	.LASF61
+ 1401 0658 09       		.byte	0x9
+ 1402 0659 5B       		.byte	0x5b
+ 1403 065a 24       		.uleb128 0x24
+ 1404 065b E8050000 		.4byte	.LASF62
+ 1405 065f 09       		.byte	0x9
+ 1406 0660 6A       		.byte	0x6a
+ 1407 0661 6B060000 		.4byte	0x66b
+ 1408 0665 1E       		.uleb128 0x1e
+ 1409 0666 8D000000 		.4byte	0x8d
+ 1410 066a 00       		.byte	0
+ 1411 066b 23       		.uleb128 0x23
+ 1412 066c 47030000 		.4byte	.LASF63
+ 1413 0670 0A       		.byte	0xa
+ 1414 0671 5B       		.byte	0x5b
+ 1415 0672 24       		.uleb128 0x24
+ 1416 0673 C7050000 		.4byte	.LASF64
+ 1417 0677 0A       		.byte	0xa
+ 1418 0678 6A       		.byte	0x6a
+ 1419 0679 83060000 		.4byte	0x683
+ 1420 067d 1E       		.uleb128 0x1e
+ 1421 067e 8D000000 		.4byte	0x8d
+ 1422 0682 00       		.byte	0
+ 1423 0683 23       		.uleb128 0x23
+ 1424 0684 49000000 		.4byte	.LASF65
+ 1425 0688 0B       		.byte	0xb
+ 1426 0689 5B       		.byte	0x5b
+ 1427 068a 24       		.uleb128 0x24
+ 1428 068b 28050000 		.4byte	.LASF66
+ 1429 068f 0B       		.byte	0xb
+ 1430 0690 6A       		.byte	0x6a
+ 1431 0691 9B060000 		.4byte	0x69b
+ 1432 0695 1E       		.uleb128 0x1e
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 29
+
+
+ 1433 0696 8D000000 		.4byte	0x8d
+ 1434 069a 00       		.byte	0
+ 1435 069b 24       		.uleb128 0x24
+ 1436 069c 02010000 		.4byte	.LASF67
+ 1437 06a0 0C       		.byte	0xc
+ 1438 06a1 18       		.byte	0x18
+ 1439 06a2 AC060000 		.4byte	0x6ac
+ 1440 06a6 1E       		.uleb128 0x1e
+ 1441 06a7 D7000000 		.4byte	0xd7
+ 1442 06ab 00       		.byte	0
+ 1443 06ac 23       		.uleb128 0x23
+ 1444 06ad 92040000 		.4byte	.LASF68
+ 1445 06b1 08       		.byte	0x8
+ 1446 06b2 5A       		.byte	0x5a
+ 1447 06b3 24       		.uleb128 0x24
+ 1448 06b4 02060000 		.4byte	.LASF69
+ 1449 06b8 0D       		.byte	0xd
+ 1450 06b9 18       		.byte	0x18
+ 1451 06ba C4060000 		.4byte	0x6c4
+ 1452 06be 1E       		.uleb128 0x1e
+ 1453 06bf D7000000 		.4byte	0xd7
+ 1454 06c3 00       		.byte	0
+ 1455 06c4 23       		.uleb128 0x23
+ 1456 06c5 33060000 		.4byte	.LASF70
+ 1457 06c9 09       		.byte	0x9
+ 1458 06ca 5A       		.byte	0x5a
+ 1459 06cb 24       		.uleb128 0x24
+ 1460 06cc 76030000 		.4byte	.LASF71
+ 1461 06d0 0E       		.byte	0xe
+ 1462 06d1 18       		.byte	0x18
+ 1463 06d2 DC060000 		.4byte	0x6dc
+ 1464 06d6 1E       		.uleb128 0x1e
+ 1465 06d7 D7000000 		.4byte	0xd7
+ 1466 06db 00       		.byte	0
+ 1467 06dc 23       		.uleb128 0x23
+ 1468 06dd D0040000 		.4byte	.LASF72
+ 1469 06e1 0A       		.byte	0xa
+ 1470 06e2 5A       		.byte	0x5a
+ 1471 06e3 24       		.uleb128 0x24
+ 1472 06e4 B4000000 		.4byte	.LASF73
+ 1473 06e8 0F       		.byte	0xf
+ 1474 06e9 18       		.byte	0x18
+ 1475 06ea F4060000 		.4byte	0x6f4
+ 1476 06ee 1E       		.uleb128 0x1e
+ 1477 06ef D7000000 		.4byte	0xd7
+ 1478 06f3 00       		.byte	0
+ 1479 06f4 23       		.uleb128 0x23
+ 1480 06f5 93060000 		.4byte	.LASF74
+ 1481 06f9 0B       		.byte	0xb
+ 1482 06fa 5A       		.byte	0x5a
+ 1483 06fb 25       		.uleb128 0x25
+ 1484 06fc A7010000 		.4byte	.LASF75
+ 1485 0700 F1000000 		.4byte	0xf1
+ 1486 0704 18070000 		.4byte	0x718
+ 1487 0708 1E       		.uleb128 0x1e
+ 1488 0709 F1000000 		.4byte	0xf1
+ 1489 070d 1E       		.uleb128 0x1e
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 30
+
+
+ 1490 070e 68000000 		.4byte	0x68
+ 1491 0712 1E       		.uleb128 0x1e
+ 1492 0713 EA000000 		.4byte	0xea
+ 1493 0717 00       		.byte	0
+ 1494 0718 1D       		.uleb128 0x1d
+ 1495 0719 95030000 		.4byte	.LASF76
+ 1496 071d 10       		.byte	0x10
+ 1497 071e 00       		.byte	0
+ 1498 071f 68000000 		.4byte	0x68
+ 1499 0723 33070000 		.4byte	0x733
+ 1500 0727 1E       		.uleb128 0x1e
+ 1501 0728 F3000000 		.4byte	0xf3
+ 1502 072c 1E       		.uleb128 0x1e
+ 1503 072d F9000000 		.4byte	0xf9
+ 1504 0731 1B       		.uleb128 0x1b
+ 1505 0732 00       		.byte	0
+ 1506 0733 24       		.uleb128 0x24
+ 1507 0734 21010000 		.4byte	.LASF77
+ 1508 0738 11       		.byte	0x11
+ 1509 0739 24       		.byte	0x24
+ 1510 073a 44070000 		.4byte	0x744
+ 1511 073e 1E       		.uleb128 0x1e
+ 1512 073f 44070000 		.4byte	0x744
+ 1513 0743 00       		.byte	0
+ 1514 0744 07       		.uleb128 0x7
+ 1515 0745 04       		.byte	0x4
+ 1516 0746 4A070000 		.4byte	0x74a
+ 1517 074a 0A       		.uleb128 0xa
+ 1518 074b BF000000 		.4byte	0xbf
+ 1519 074f 22       		.uleb128 0x22
+ 1520 0750 95010000 		.4byte	.LASF78
+ 1521 0754 12       		.byte	0x12
+ 1522 0755 29       		.byte	0x29
+ 1523 0756 81000000 		.4byte	0x81
+ 1524 075a 22       		.uleb128 0x22
+ 1525 075b A8050000 		.4byte	.LASF79
+ 1526 075f 13       		.byte	0x13
+ 1527 0760 29       		.byte	0x29
+ 1528 0761 81000000 		.4byte	0x81
+ 1529 0765 22       		.uleb128 0x22
+ 1530 0766 52010000 		.4byte	.LASF80
+ 1531 076a 14       		.byte	0x14
+ 1532 076b 29       		.byte	0x29
+ 1533 076c 81000000 		.4byte	0x81
+ 1534 0770 22       		.uleb128 0x22
+ 1535 0771 7C050000 		.4byte	.LASF81
+ 1536 0775 15       		.byte	0x15
+ 1537 0776 29       		.byte	0x29
+ 1538 0777 81000000 		.4byte	0x81
+ 1539 077b 00       		.byte	0
+ 1540              		.section	.debug_abbrev,"",%progbits
+ 1541              	.Ldebug_abbrev0:
+ 1542 0000 01       		.uleb128 0x1
+ 1543 0001 11       		.uleb128 0x11
+ 1544 0002 01       		.byte	0x1
+ 1545 0003 25       		.uleb128 0x25
+ 1546 0004 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 31
+
+
+ 1547 0005 13       		.uleb128 0x13
+ 1548 0006 0B       		.uleb128 0xb
+ 1549 0007 03       		.uleb128 0x3
+ 1550 0008 0E       		.uleb128 0xe
+ 1551 0009 1B       		.uleb128 0x1b
+ 1552 000a 0E       		.uleb128 0xe
+ 1553 000b 55       		.uleb128 0x55
+ 1554 000c 17       		.uleb128 0x17
+ 1555 000d 11       		.uleb128 0x11
+ 1556 000e 01       		.uleb128 0x1
+ 1557 000f 10       		.uleb128 0x10
+ 1558 0010 17       		.uleb128 0x17
+ 1559 0011 00       		.byte	0
+ 1560 0012 00       		.byte	0
+ 1561 0013 02       		.uleb128 0x2
+ 1562 0014 24       		.uleb128 0x24
+ 1563 0015 00       		.byte	0
+ 1564 0016 0B       		.uleb128 0xb
+ 1565 0017 0B       		.uleb128 0xb
+ 1566 0018 3E       		.uleb128 0x3e
+ 1567 0019 0B       		.uleb128 0xb
+ 1568 001a 03       		.uleb128 0x3
+ 1569 001b 0E       		.uleb128 0xe
+ 1570 001c 00       		.byte	0
+ 1571 001d 00       		.byte	0
+ 1572 001e 03       		.uleb128 0x3
+ 1573 001f 16       		.uleb128 0x16
+ 1574 0020 00       		.byte	0
+ 1575 0021 03       		.uleb128 0x3
+ 1576 0022 0E       		.uleb128 0xe
+ 1577 0023 3A       		.uleb128 0x3a
+ 1578 0024 0B       		.uleb128 0xb
+ 1579 0025 3B       		.uleb128 0x3b
+ 1580 0026 0B       		.uleb128 0xb
+ 1581 0027 49       		.uleb128 0x49
+ 1582 0028 13       		.uleb128 0x13
+ 1583 0029 00       		.byte	0
+ 1584 002a 00       		.byte	0
+ 1585 002b 04       		.uleb128 0x4
+ 1586 002c 24       		.uleb128 0x24
+ 1587 002d 00       		.byte	0
+ 1588 002e 0B       		.uleb128 0xb
+ 1589 002f 0B       		.uleb128 0xb
+ 1590 0030 3E       		.uleb128 0x3e
+ 1591 0031 0B       		.uleb128 0xb
+ 1592 0032 03       		.uleb128 0x3
+ 1593 0033 08       		.uleb128 0x8
+ 1594 0034 00       		.byte	0
+ 1595 0035 00       		.byte	0
+ 1596 0036 05       		.uleb128 0x5
+ 1597 0037 16       		.uleb128 0x16
+ 1598 0038 00       		.byte	0
+ 1599 0039 03       		.uleb128 0x3
+ 1600 003a 0E       		.uleb128 0xe
+ 1601 003b 3A       		.uleb128 0x3a
+ 1602 003c 0B       		.uleb128 0xb
+ 1603 003d 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 32
+
+
+ 1604 003e 05       		.uleb128 0x5
+ 1605 003f 49       		.uleb128 0x49
+ 1606 0040 13       		.uleb128 0x13
+ 1607 0041 00       		.byte	0
+ 1608 0042 00       		.byte	0
+ 1609 0043 06       		.uleb128 0x6
+ 1610 0044 35       		.uleb128 0x35
+ 1611 0045 00       		.byte	0
+ 1612 0046 49       		.uleb128 0x49
+ 1613 0047 13       		.uleb128 0x13
+ 1614 0048 00       		.byte	0
+ 1615 0049 00       		.byte	0
+ 1616 004a 07       		.uleb128 0x7
+ 1617 004b 0F       		.uleb128 0xf
+ 1618 004c 00       		.byte	0
+ 1619 004d 0B       		.uleb128 0xb
+ 1620 004e 0B       		.uleb128 0xb
+ 1621 004f 49       		.uleb128 0x49
+ 1622 0050 13       		.uleb128 0x13
+ 1623 0051 00       		.byte	0
+ 1624 0052 00       		.byte	0
+ 1625 0053 08       		.uleb128 0x8
+ 1626 0054 15       		.uleb128 0x15
+ 1627 0055 00       		.byte	0
+ 1628 0056 27       		.uleb128 0x27
+ 1629 0057 19       		.uleb128 0x19
+ 1630 0058 00       		.byte	0
+ 1631 0059 00       		.byte	0
+ 1632 005a 09       		.uleb128 0x9
+ 1633 005b 0F       		.uleb128 0xf
+ 1634 005c 00       		.byte	0
+ 1635 005d 0B       		.uleb128 0xb
+ 1636 005e 0B       		.uleb128 0xb
+ 1637 005f 00       		.byte	0
+ 1638 0060 00       		.byte	0
+ 1639 0061 0A       		.uleb128 0xa
+ 1640 0062 26       		.uleb128 0x26
+ 1641 0063 00       		.byte	0
+ 1642 0064 49       		.uleb128 0x49
+ 1643 0065 13       		.uleb128 0x13
+ 1644 0066 00       		.byte	0
+ 1645 0067 00       		.byte	0
+ 1646 0068 0B       		.uleb128 0xb
+ 1647 0069 01       		.uleb128 0x1
+ 1648 006a 01       		.byte	0x1
+ 1649 006b 49       		.uleb128 0x49
+ 1650 006c 13       		.uleb128 0x13
+ 1651 006d 01       		.uleb128 0x1
+ 1652 006e 13       		.uleb128 0x13
+ 1653 006f 00       		.byte	0
+ 1654 0070 00       		.byte	0
+ 1655 0071 0C       		.uleb128 0xc
+ 1656 0072 21       		.uleb128 0x21
+ 1657 0073 00       		.byte	0
+ 1658 0074 49       		.uleb128 0x49
+ 1659 0075 13       		.uleb128 0x13
+ 1660 0076 2F       		.uleb128 0x2f
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 33
+
+
+ 1661 0077 0B       		.uleb128 0xb
+ 1662 0078 00       		.byte	0
+ 1663 0079 00       		.byte	0
+ 1664 007a 0D       		.uleb128 0xd
+ 1665 007b 13       		.uleb128 0x13
+ 1666 007c 01       		.byte	0x1
+ 1667 007d 03       		.uleb128 0x3
+ 1668 007e 0E       		.uleb128 0xe
+ 1669 007f 0B       		.uleb128 0xb
+ 1670 0080 0B       		.uleb128 0xb
+ 1671 0081 3A       		.uleb128 0x3a
+ 1672 0082 0B       		.uleb128 0xb
+ 1673 0083 3B       		.uleb128 0x3b
+ 1674 0084 0B       		.uleb128 0xb
+ 1675 0085 01       		.uleb128 0x1
+ 1676 0086 13       		.uleb128 0x13
+ 1677 0087 00       		.byte	0
+ 1678 0088 00       		.byte	0
+ 1679 0089 0E       		.uleb128 0xe
+ 1680 008a 0D       		.uleb128 0xd
+ 1681 008b 00       		.byte	0
+ 1682 008c 03       		.uleb128 0x3
+ 1683 008d 0E       		.uleb128 0xe
+ 1684 008e 3A       		.uleb128 0x3a
+ 1685 008f 0B       		.uleb128 0xb
+ 1686 0090 3B       		.uleb128 0x3b
+ 1687 0091 0B       		.uleb128 0xb
+ 1688 0092 49       		.uleb128 0x49
+ 1689 0093 13       		.uleb128 0x13
+ 1690 0094 38       		.uleb128 0x38
+ 1691 0095 0B       		.uleb128 0xb
+ 1692 0096 00       		.byte	0
+ 1693 0097 00       		.byte	0
+ 1694 0098 0F       		.uleb128 0xf
+ 1695 0099 2E       		.uleb128 0x2e
+ 1696 009a 01       		.byte	0x1
+ 1697 009b 3F       		.uleb128 0x3f
+ 1698 009c 19       		.uleb128 0x19
+ 1699 009d 03       		.uleb128 0x3
+ 1700 009e 0E       		.uleb128 0xe
+ 1701 009f 3A       		.uleb128 0x3a
+ 1702 00a0 0B       		.uleb128 0xb
+ 1703 00a1 3B       		.uleb128 0x3b
+ 1704 00a2 0B       		.uleb128 0xb
+ 1705 00a3 27       		.uleb128 0x27
+ 1706 00a4 19       		.uleb128 0x19
+ 1707 00a5 11       		.uleb128 0x11
+ 1708 00a6 01       		.uleb128 0x1
+ 1709 00a7 12       		.uleb128 0x12
+ 1710 00a8 06       		.uleb128 0x6
+ 1711 00a9 40       		.uleb128 0x40
+ 1712 00aa 18       		.uleb128 0x18
+ 1713 00ab 9742     		.uleb128 0x2117
+ 1714 00ad 19       		.uleb128 0x19
+ 1715 00ae 01       		.uleb128 0x1
+ 1716 00af 13       		.uleb128 0x13
+ 1717 00b0 00       		.byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 34
+
+
+ 1718 00b1 00       		.byte	0
+ 1719 00b2 10       		.uleb128 0x10
+ 1720 00b3 05       		.uleb128 0x5
+ 1721 00b4 00       		.byte	0
+ 1722 00b5 03       		.uleb128 0x3
+ 1723 00b6 0E       		.uleb128 0xe
+ 1724 00b7 3A       		.uleb128 0x3a
+ 1725 00b8 0B       		.uleb128 0xb
+ 1726 00b9 3B       		.uleb128 0x3b
+ 1727 00ba 0B       		.uleb128 0xb
+ 1728 00bb 49       		.uleb128 0x49
+ 1729 00bc 13       		.uleb128 0x13
+ 1730 00bd 02       		.uleb128 0x2
+ 1731 00be 17       		.uleb128 0x17
+ 1732 00bf 00       		.byte	0
+ 1733 00c0 00       		.byte	0
+ 1734 00c1 11       		.uleb128 0x11
+ 1735 00c2 34       		.uleb128 0x34
+ 1736 00c3 00       		.byte	0
+ 1737 00c4 03       		.uleb128 0x3
+ 1738 00c5 0E       		.uleb128 0xe
+ 1739 00c6 3A       		.uleb128 0x3a
+ 1740 00c7 0B       		.uleb128 0xb
+ 1741 00c8 3B       		.uleb128 0x3b
+ 1742 00c9 0B       		.uleb128 0xb
+ 1743 00ca 49       		.uleb128 0x49
+ 1744 00cb 13       		.uleb128 0x13
+ 1745 00cc 1C       		.uleb128 0x1c
+ 1746 00cd 0B       		.uleb128 0xb
+ 1747 00ce 00       		.byte	0
+ 1748 00cf 00       		.byte	0
+ 1749 00d0 12       		.uleb128 0x12
+ 1750 00d1 898201   		.uleb128 0x4109
+ 1751 00d4 00       		.byte	0
+ 1752 00d5 11       		.uleb128 0x11
+ 1753 00d6 01       		.uleb128 0x1
+ 1754 00d7 31       		.uleb128 0x31
+ 1755 00d8 13       		.uleb128 0x13
+ 1756 00d9 00       		.byte	0
+ 1757 00da 00       		.byte	0
+ 1758 00db 13       		.uleb128 0x13
+ 1759 00dc 898201   		.uleb128 0x4109
+ 1760 00df 01       		.byte	0x1
+ 1761 00e0 11       		.uleb128 0x11
+ 1762 00e1 01       		.uleb128 0x1
+ 1763 00e2 31       		.uleb128 0x31
+ 1764 00e3 13       		.uleb128 0x13
+ 1765 00e4 01       		.uleb128 0x1
+ 1766 00e5 13       		.uleb128 0x13
+ 1767 00e6 00       		.byte	0
+ 1768 00e7 00       		.byte	0
+ 1769 00e8 14       		.uleb128 0x14
+ 1770 00e9 8A8201   		.uleb128 0x410a
+ 1771 00ec 00       		.byte	0
+ 1772 00ed 02       		.uleb128 0x2
+ 1773 00ee 18       		.uleb128 0x18
+ 1774 00ef 9142     		.uleb128 0x2111
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 35
+
+
+ 1775 00f1 18       		.uleb128 0x18
+ 1776 00f2 00       		.byte	0
+ 1777 00f3 00       		.byte	0
+ 1778 00f4 15       		.uleb128 0x15
+ 1779 00f5 898201   		.uleb128 0x4109
+ 1780 00f8 01       		.byte	0x1
+ 1781 00f9 11       		.uleb128 0x11
+ 1782 00fa 01       		.uleb128 0x1
+ 1783 00fb 31       		.uleb128 0x31
+ 1784 00fc 13       		.uleb128 0x13
+ 1785 00fd 00       		.byte	0
+ 1786 00fe 00       		.byte	0
+ 1787 00ff 16       		.uleb128 0x16
+ 1788 0100 2E       		.uleb128 0x2e
+ 1789 0101 01       		.byte	0x1
+ 1790 0102 3F       		.uleb128 0x3f
+ 1791 0103 19       		.uleb128 0x19
+ 1792 0104 03       		.uleb128 0x3
+ 1793 0105 0E       		.uleb128 0xe
+ 1794 0106 3A       		.uleb128 0x3a
+ 1795 0107 0B       		.uleb128 0xb
+ 1796 0108 3B       		.uleb128 0x3b
+ 1797 0109 0B       		.uleb128 0xb
+ 1798 010a 11       		.uleb128 0x11
+ 1799 010b 01       		.uleb128 0x1
+ 1800 010c 12       		.uleb128 0x12
+ 1801 010d 06       		.uleb128 0x6
+ 1802 010e 40       		.uleb128 0x40
+ 1803 010f 18       		.uleb128 0x18
+ 1804 0110 9742     		.uleb128 0x2117
+ 1805 0112 19       		.uleb128 0x19
+ 1806 0113 01       		.uleb128 0x1
+ 1807 0114 13       		.uleb128 0x13
+ 1808 0115 00       		.byte	0
+ 1809 0116 00       		.byte	0
+ 1810 0117 17       		.uleb128 0x17
+ 1811 0118 05       		.uleb128 0x5
+ 1812 0119 00       		.byte	0
+ 1813 011a 03       		.uleb128 0x3
+ 1814 011b 0E       		.uleb128 0xe
+ 1815 011c 3A       		.uleb128 0x3a
+ 1816 011d 0B       		.uleb128 0xb
+ 1817 011e 3B       		.uleb128 0x3b
+ 1818 011f 0B       		.uleb128 0xb
+ 1819 0120 49       		.uleb128 0x49
+ 1820 0121 13       		.uleb128 0x13
+ 1821 0122 02       		.uleb128 0x2
+ 1822 0123 18       		.uleb128 0x18
+ 1823 0124 00       		.byte	0
+ 1824 0125 00       		.byte	0
+ 1825 0126 18       		.uleb128 0x18
+ 1826 0127 34       		.uleb128 0x34
+ 1827 0128 00       		.byte	0
+ 1828 0129 03       		.uleb128 0x3
+ 1829 012a 0E       		.uleb128 0xe
+ 1830 012b 3A       		.uleb128 0x3a
+ 1831 012c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 36
+
+
+ 1832 012d 3B       		.uleb128 0x3b
+ 1833 012e 0B       		.uleb128 0xb
+ 1834 012f 49       		.uleb128 0x49
+ 1835 0130 13       		.uleb128 0x13
+ 1836 0131 02       		.uleb128 0x2
+ 1837 0132 17       		.uleb128 0x17
+ 1838 0133 00       		.byte	0
+ 1839 0134 00       		.byte	0
+ 1840 0135 19       		.uleb128 0x19
+ 1841 0136 0B       		.uleb128 0xb
+ 1842 0137 01       		.byte	0x1
+ 1843 0138 11       		.uleb128 0x11
+ 1844 0139 01       		.uleb128 0x1
+ 1845 013a 12       		.uleb128 0x12
+ 1846 013b 06       		.uleb128 0x6
+ 1847 013c 01       		.uleb128 0x1
+ 1848 013d 13       		.uleb128 0x13
+ 1849 013e 00       		.byte	0
+ 1850 013f 00       		.byte	0
+ 1851 0140 1A       		.uleb128 0x1a
+ 1852 0141 2E       		.uleb128 0x2e
+ 1853 0142 01       		.byte	0x1
+ 1854 0143 3F       		.uleb128 0x3f
+ 1855 0144 19       		.uleb128 0x19
+ 1856 0145 03       		.uleb128 0x3
+ 1857 0146 08       		.uleb128 0x8
+ 1858 0147 3A       		.uleb128 0x3a
+ 1859 0148 0B       		.uleb128 0xb
+ 1860 0149 3B       		.uleb128 0x3b
+ 1861 014a 0B       		.uleb128 0xb
+ 1862 014b 49       		.uleb128 0x49
+ 1863 014c 13       		.uleb128 0x13
+ 1864 014d 3C       		.uleb128 0x3c
+ 1865 014e 19       		.uleb128 0x19
+ 1866 014f 01       		.uleb128 0x1
+ 1867 0150 13       		.uleb128 0x13
+ 1868 0151 00       		.byte	0
+ 1869 0152 00       		.byte	0
+ 1870 0153 1B       		.uleb128 0x1b
+ 1871 0154 18       		.uleb128 0x18
+ 1872 0155 00       		.byte	0
+ 1873 0156 00       		.byte	0
+ 1874 0157 00       		.byte	0
+ 1875 0158 1C       		.uleb128 0x1c
+ 1876 0159 34       		.uleb128 0x34
+ 1877 015a 00       		.byte	0
+ 1878 015b 03       		.uleb128 0x3
+ 1879 015c 0E       		.uleb128 0xe
+ 1880 015d 3A       		.uleb128 0x3a
+ 1881 015e 0B       		.uleb128 0xb
+ 1882 015f 3B       		.uleb128 0x3b
+ 1883 0160 0B       		.uleb128 0xb
+ 1884 0161 49       		.uleb128 0x49
+ 1885 0162 13       		.uleb128 0x13
+ 1886 0163 02       		.uleb128 0x2
+ 1887 0164 18       		.uleb128 0x18
+ 1888 0165 00       		.byte	0
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 37
+
+
+ 1889 0166 00       		.byte	0
+ 1890 0167 1D       		.uleb128 0x1d
+ 1891 0168 2E       		.uleb128 0x2e
+ 1892 0169 01       		.byte	0x1
+ 1893 016a 3F       		.uleb128 0x3f
+ 1894 016b 19       		.uleb128 0x19
+ 1895 016c 03       		.uleb128 0x3
+ 1896 016d 0E       		.uleb128 0xe
+ 1897 016e 3A       		.uleb128 0x3a
+ 1898 016f 0B       		.uleb128 0xb
+ 1899 0170 3B       		.uleb128 0x3b
+ 1900 0171 0B       		.uleb128 0xb
+ 1901 0172 27       		.uleb128 0x27
+ 1902 0173 19       		.uleb128 0x19
+ 1903 0174 49       		.uleb128 0x49
+ 1904 0175 13       		.uleb128 0x13
+ 1905 0176 3C       		.uleb128 0x3c
+ 1906 0177 19       		.uleb128 0x19
+ 1907 0178 01       		.uleb128 0x1
+ 1908 0179 13       		.uleb128 0x13
+ 1909 017a 00       		.byte	0
+ 1910 017b 00       		.byte	0
+ 1911 017c 1E       		.uleb128 0x1e
+ 1912 017d 05       		.uleb128 0x5
+ 1913 017e 00       		.byte	0
+ 1914 017f 49       		.uleb128 0x49
+ 1915 0180 13       		.uleb128 0x13
+ 1916 0181 00       		.byte	0
+ 1917 0182 00       		.byte	0
+ 1918 0183 1F       		.uleb128 0x1f
+ 1919 0184 34       		.uleb128 0x34
+ 1920 0185 00       		.byte	0
+ 1921 0186 03       		.uleb128 0x3
+ 1922 0187 0E       		.uleb128 0xe
+ 1923 0188 3A       		.uleb128 0x3a
+ 1924 0189 0B       		.uleb128 0xb
+ 1925 018a 3B       		.uleb128 0x3b
+ 1926 018b 05       		.uleb128 0x5
+ 1927 018c 49       		.uleb128 0x49
+ 1928 018d 13       		.uleb128 0x13
+ 1929 018e 3F       		.uleb128 0x3f
+ 1930 018f 19       		.uleb128 0x19
+ 1931 0190 3C       		.uleb128 0x3c
+ 1932 0191 19       		.uleb128 0x19
+ 1933 0192 00       		.byte	0
+ 1934 0193 00       		.byte	0
+ 1935 0194 20       		.uleb128 0x20
+ 1936 0195 34       		.uleb128 0x34
+ 1937 0196 00       		.byte	0
+ 1938 0197 03       		.uleb128 0x3
+ 1939 0198 0E       		.uleb128 0xe
+ 1940 0199 3A       		.uleb128 0x3a
+ 1941 019a 0B       		.uleb128 0xb
+ 1942 019b 3B       		.uleb128 0x3b
+ 1943 019c 0B       		.uleb128 0xb
+ 1944 019d 49       		.uleb128 0x49
+ 1945 019e 13       		.uleb128 0x13
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 38
+
+
+ 1946 019f 3F       		.uleb128 0x3f
+ 1947 01a0 19       		.uleb128 0x19
+ 1948 01a1 3C       		.uleb128 0x3c
+ 1949 01a2 19       		.uleb128 0x19
+ 1950 01a3 00       		.byte	0
+ 1951 01a4 00       		.byte	0
+ 1952 01a5 21       		.uleb128 0x21
+ 1953 01a6 34       		.uleb128 0x34
+ 1954 01a7 00       		.byte	0
+ 1955 01a8 03       		.uleb128 0x3
+ 1956 01a9 0E       		.uleb128 0xe
+ 1957 01aa 3A       		.uleb128 0x3a
+ 1958 01ab 0B       		.uleb128 0xb
+ 1959 01ac 3B       		.uleb128 0x3b
+ 1960 01ad 0B       		.uleb128 0xb
+ 1961 01ae 49       		.uleb128 0x49
+ 1962 01af 13       		.uleb128 0x13
+ 1963 01b0 3F       		.uleb128 0x3f
+ 1964 01b1 19       		.uleb128 0x19
+ 1965 01b2 02       		.uleb128 0x2
+ 1966 01b3 18       		.uleb128 0x18
+ 1967 01b4 00       		.byte	0
+ 1968 01b5 00       		.byte	0
+ 1969 01b6 22       		.uleb128 0x22
+ 1970 01b7 2E       		.uleb128 0x2e
+ 1971 01b8 00       		.byte	0
+ 1972 01b9 3F       		.uleb128 0x3f
+ 1973 01ba 19       		.uleb128 0x19
+ 1974 01bb 03       		.uleb128 0x3
+ 1975 01bc 0E       		.uleb128 0xe
+ 1976 01bd 3A       		.uleb128 0x3a
+ 1977 01be 0B       		.uleb128 0xb
+ 1978 01bf 3B       		.uleb128 0x3b
+ 1979 01c0 0B       		.uleb128 0xb
+ 1980 01c1 27       		.uleb128 0x27
+ 1981 01c2 19       		.uleb128 0x19
+ 1982 01c3 49       		.uleb128 0x49
+ 1983 01c4 13       		.uleb128 0x13
+ 1984 01c5 3C       		.uleb128 0x3c
+ 1985 01c6 19       		.uleb128 0x19
+ 1986 01c7 00       		.byte	0
+ 1987 01c8 00       		.byte	0
+ 1988 01c9 23       		.uleb128 0x23
+ 1989 01ca 2E       		.uleb128 0x2e
+ 1990 01cb 00       		.byte	0
+ 1991 01cc 3F       		.uleb128 0x3f
+ 1992 01cd 19       		.uleb128 0x19
+ 1993 01ce 03       		.uleb128 0x3
+ 1994 01cf 0E       		.uleb128 0xe
+ 1995 01d0 3A       		.uleb128 0x3a
+ 1996 01d1 0B       		.uleb128 0xb
+ 1997 01d2 3B       		.uleb128 0x3b
+ 1998 01d3 0B       		.uleb128 0xb
+ 1999 01d4 27       		.uleb128 0x27
+ 2000 01d5 19       		.uleb128 0x19
+ 2001 01d6 3C       		.uleb128 0x3c
+ 2002 01d7 19       		.uleb128 0x19
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 39
+
+
+ 2003 01d8 00       		.byte	0
+ 2004 01d9 00       		.byte	0
+ 2005 01da 24       		.uleb128 0x24
+ 2006 01db 2E       		.uleb128 0x2e
+ 2007 01dc 01       		.byte	0x1
+ 2008 01dd 3F       		.uleb128 0x3f
+ 2009 01de 19       		.uleb128 0x19
+ 2010 01df 03       		.uleb128 0x3
+ 2011 01e0 0E       		.uleb128 0xe
+ 2012 01e1 3A       		.uleb128 0x3a
+ 2013 01e2 0B       		.uleb128 0xb
+ 2014 01e3 3B       		.uleb128 0x3b
+ 2015 01e4 0B       		.uleb128 0xb
+ 2016 01e5 27       		.uleb128 0x27
+ 2017 01e6 19       		.uleb128 0x19
+ 2018 01e7 3C       		.uleb128 0x3c
+ 2019 01e8 19       		.uleb128 0x19
+ 2020 01e9 01       		.uleb128 0x1
+ 2021 01ea 13       		.uleb128 0x13
+ 2022 01eb 00       		.byte	0
+ 2023 01ec 00       		.byte	0
+ 2024 01ed 25       		.uleb128 0x25
+ 2025 01ee 2E       		.uleb128 0x2e
+ 2026 01ef 01       		.byte	0x1
+ 2027 01f0 3F       		.uleb128 0x3f
+ 2028 01f1 19       		.uleb128 0x19
+ 2029 01f2 03       		.uleb128 0x3
+ 2030 01f3 0E       		.uleb128 0xe
+ 2031 01f4 27       		.uleb128 0x27
+ 2032 01f5 19       		.uleb128 0x19
+ 2033 01f6 49       		.uleb128 0x49
+ 2034 01f7 13       		.uleb128 0x13
+ 2035 01f8 34       		.uleb128 0x34
+ 2036 01f9 19       		.uleb128 0x19
+ 2037 01fa 3C       		.uleb128 0x3c
+ 2038 01fb 19       		.uleb128 0x19
+ 2039 01fc 01       		.uleb128 0x1
+ 2040 01fd 13       		.uleb128 0x13
+ 2041 01fe 00       		.byte	0
+ 2042 01ff 00       		.byte	0
+ 2043 0200 00       		.byte	0
+ 2044              		.section	.debug_loc,"",%progbits
+ 2045              	.Ldebug_loc0:
+ 2046              	.LLST0:
+ 2047 0000 00000000 		.4byte	.LVL0
+ 2048 0004 0D000000 		.4byte	.LVL1-1
+ 2049 0008 0100     		.2byte	0x1
+ 2050 000a 50       		.byte	0x50
+ 2051 000b 0D000000 		.4byte	.LVL1-1
+ 2052 000f 10000000 		.4byte	.LVL2
+ 2053 0013 0400     		.2byte	0x4
+ 2054 0015 F3       		.byte	0xf3
+ 2055 0016 01       		.uleb128 0x1
+ 2056 0017 50       		.byte	0x50
+ 2057 0018 9F       		.byte	0x9f
+ 2058 0019 10000000 		.4byte	.LVL2
+ 2059 001d 17000000 		.4byte	.LVL3-1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 40
+
+
+ 2060 0021 0100     		.2byte	0x1
+ 2061 0023 50       		.byte	0x50
+ 2062 0024 17000000 		.4byte	.LVL3-1
+ 2063 0028 1A000000 		.4byte	.LVL4
+ 2064 002c 0400     		.2byte	0x4
+ 2065 002e F3       		.byte	0xf3
+ 2066 002f 01       		.uleb128 0x1
+ 2067 0030 50       		.byte	0x50
+ 2068 0031 9F       		.byte	0x9f
+ 2069 0032 1A000000 		.4byte	.LVL4
+ 2070 0036 21000000 		.4byte	.LVL5-1
+ 2071 003a 0100     		.2byte	0x1
+ 2072 003c 50       		.byte	0x50
+ 2073 003d 21000000 		.4byte	.LVL5-1
+ 2074 0041 24000000 		.4byte	.LVL6
+ 2075 0045 0400     		.2byte	0x4
+ 2076 0047 F3       		.byte	0xf3
+ 2077 0048 01       		.uleb128 0x1
+ 2078 0049 50       		.byte	0x50
+ 2079 004a 9F       		.byte	0x9f
+ 2080 004b 24000000 		.4byte	.LVL6
+ 2081 004f 27000000 		.4byte	.LVL7-1
+ 2082 0053 0100     		.2byte	0x1
+ 2083 0055 50       		.byte	0x50
+ 2084 0056 27000000 		.4byte	.LVL7-1
+ 2085 005a A4000000 		.4byte	.LFE67
+ 2086 005e 0400     		.2byte	0x4
+ 2087 0060 F3       		.byte	0xf3
+ 2088 0061 01       		.uleb128 0x1
+ 2089 0062 50       		.byte	0x50
+ 2090 0063 9F       		.byte	0x9f
+ 2091 0064 00000000 		.4byte	0
+ 2092 0068 00000000 		.4byte	0
+ 2093              	.LLST1:
+ 2094 006c 00000000 		.4byte	.LVL31
+ 2095 0070 0F000000 		.4byte	.LVL33-1
+ 2096 0074 0100     		.2byte	0x1
+ 2097 0076 50       		.byte	0x50
+ 2098 0077 0F000000 		.4byte	.LVL33-1
+ 2099 007b 12000000 		.4byte	.LVL34
+ 2100 007f 0100     		.2byte	0x1
+ 2101 0081 54       		.byte	0x54
+ 2102 0082 12000000 		.4byte	.LVL34
+ 2103 0086 19000000 		.4byte	.LVL35-1
+ 2104 008a 0100     		.2byte	0x1
+ 2105 008c 50       		.byte	0x50
+ 2106 008d 19000000 		.4byte	.LVL35-1
+ 2107 0091 1C000000 		.4byte	.LVL36
+ 2108 0095 0100     		.2byte	0x1
+ 2109 0097 54       		.byte	0x54
+ 2110 0098 1C000000 		.4byte	.LVL36
+ 2111 009c 23000000 		.4byte	.LVL37-1
+ 2112 00a0 0100     		.2byte	0x1
+ 2113 00a2 50       		.byte	0x50
+ 2114 00a3 23000000 		.4byte	.LVL37-1
+ 2115 00a7 26000000 		.4byte	.LVL38
+ 2116 00ab 0100     		.2byte	0x1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 41
+
+
+ 2117 00ad 54       		.byte	0x54
+ 2118 00ae 26000000 		.4byte	.LVL38
+ 2119 00b2 29000000 		.4byte	.LVL39-1
+ 2120 00b6 0100     		.2byte	0x1
+ 2121 00b8 50       		.byte	0x50
+ 2122 00b9 29000000 		.4byte	.LVL39-1
+ 2123 00bd 22010000 		.4byte	.LVL50
+ 2124 00c1 0100     		.2byte	0x1
+ 2125 00c3 54       		.byte	0x54
+ 2126 00c4 22010000 		.4byte	.LVL50
+ 2127 00c8 30010000 		.4byte	.LFE70
+ 2128 00cc 0400     		.2byte	0x4
+ 2129 00ce F3       		.byte	0xf3
+ 2130 00cf 01       		.uleb128 0x1
+ 2131 00d0 50       		.byte	0x50
+ 2132 00d1 9F       		.byte	0x9f
+ 2133 00d2 00000000 		.4byte	0
+ 2134 00d6 00000000 		.4byte	0
+ 2135              	.LLST2:
+ 2136 00da 2A000000 		.4byte	.LVL39
+ 2137 00de D3000000 		.4byte	.LVL43-1
+ 2138 00e2 0100     		.2byte	0x1
+ 2139 00e4 50       		.byte	0x50
+ 2140 00e5 00000000 		.4byte	0
+ 2141 00e9 00000000 		.4byte	0
+ 2142              	.LLST3:
+ 2143 00ed 86000000 		.4byte	.LVL40
+ 2144 00f1 1E010000 		.4byte	.LVL49
+ 2145 00f5 0100     		.2byte	0x1
+ 2146 00f7 55       		.byte	0x55
+ 2147 00f8 00000000 		.4byte	0
+ 2148 00fc 00000000 		.4byte	0
+ 2149              	.LLST4:
+ 2150 0100 B0000000 		.4byte	.LVL41
+ 2151 0104 C2000000 		.4byte	.LVL42
+ 2152 0108 0100     		.2byte	0x1
+ 2153 010a 51       		.byte	0x51
+ 2154 010b 00000000 		.4byte	0
+ 2155 010f 00000000 		.4byte	0
+ 2156              		.section	.debug_aranges,"",%progbits
+ 2157 0000 54000000 		.4byte	0x54
+ 2158 0004 0200     		.2byte	0x2
+ 2159 0006 00000000 		.4byte	.Ldebug_info0
+ 2160 000a 04       		.byte	0x4
+ 2161 000b 00       		.byte	0
+ 2162 000c 0000     		.2byte	0
+ 2163 000e 0000     		.2byte	0
+ 2164 0010 00000000 		.4byte	.LFB67
+ 2165 0014 A4000000 		.4byte	.LFE67-.LFB67
+ 2166 0018 00000000 		.4byte	.LFB63
+ 2167 001c 0A000000 		.4byte	.LFE63-.LFB63
+ 2168 0020 00000000 		.4byte	.LFB64
+ 2169 0024 0A000000 		.4byte	.LFE64-.LFB64
+ 2170 0028 00000000 		.4byte	.LFB65
+ 2171 002c 0A000000 		.4byte	.LFE65-.LFB65
+ 2172 0030 00000000 		.4byte	.LFB66
+ 2173 0034 0A000000 		.4byte	.LFE66-.LFB66
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 42
+
+
+ 2174 0038 00000000 		.4byte	.LFB68
+ 2175 003c 3C000000 		.4byte	.LFE68-.LFB68
+ 2176 0040 00000000 		.4byte	.LFB69
+ 2177 0044 0E000000 		.4byte	.LFE69-.LFB69
+ 2178 0048 00000000 		.4byte	.LFB70
+ 2179 004c 30010000 		.4byte	.LFE70-.LFB70
+ 2180 0050 00000000 		.4byte	0
+ 2181 0054 00000000 		.4byte	0
+ 2182              		.section	.debug_ranges,"",%progbits
+ 2183              	.Ldebug_ranges0:
+ 2184 0000 00000000 		.4byte	.LFB67
+ 2185 0004 A4000000 		.4byte	.LFE67
+ 2186 0008 00000000 		.4byte	.LFB63
+ 2187 000c 0A000000 		.4byte	.LFE63
+ 2188 0010 00000000 		.4byte	.LFB64
+ 2189 0014 0A000000 		.4byte	.LFE64
+ 2190 0018 00000000 		.4byte	.LFB65
+ 2191 001c 0A000000 		.4byte	.LFE65
+ 2192 0020 00000000 		.4byte	.LFB66
+ 2193 0024 0A000000 		.4byte	.LFE66
+ 2194 0028 00000000 		.4byte	.LFB68
+ 2195 002c 3C000000 		.4byte	.LFE68
+ 2196 0030 00000000 		.4byte	.LFB69
+ 2197 0034 0E000000 		.4byte	.LFE69
+ 2198 0038 00000000 		.4byte	.LFB70
+ 2199 003c 30010000 		.4byte	.LFE70
+ 2200 0040 00000000 		.4byte	0
+ 2201 0044 00000000 		.4byte	0
+ 2202              		.section	.debug_line,"",%progbits
+ 2203              	.Ldebug_line0:
+ 2204 0000 9C030000 		.section	.debug_str,"MS",%progbits,1
+ 2204      02007202 
+ 2204      00000201 
+ 2204      FB0E0D00 
+ 2204      01010101 
+ 2205              	.LASF30:
+ 2206 0000 52435F43 		.ascii	"RC_Ch1_Timer_ISR_Handler\000"
+ 2206      68315F54 
+ 2206      696D6572 
+ 2206      5F495352 
+ 2206      5F48616E 
+ 2207              	.LASF57:
+ 2208 0019 52435F43 		.ascii	"RC_Ch4_Timer_ReadStatusRegister\000"
+ 2208      68345F54 
+ 2208      696D6572 
+ 2208      5F526561 
+ 2208      64537461 
+ 2209              	.LASF35:
+ 2210 0039 72635F63 		.ascii	"rc_ch\000"
+ 2210      6800
+ 2211              	.LASF21:
+ 2212 003f 63685F6E 		.ascii	"ch_number\000"
+ 2212      756D6265 
+ 2212      7200
+ 2213              	.LASF65:
+ 2214 0049 52435F43 		.ascii	"RC_Ch4_Timer_Stop\000"
+ 2214      68345F54 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 43
+
+
+ 2214      696D6572 
+ 2214      5F53746F 
+ 2214      7000
+ 2215              	.LASF24:
+ 2216 005b 6C617374 		.ascii	"last_timer_count\000"
+ 2216      5F74696D 
+ 2216      65725F63 
+ 2216      6F756E74 
+ 2216      00
+ 2217              	.LASF2:
+ 2218 006c 73686F72 		.ascii	"short int\000"
+ 2218      7420696E 
+ 2218      7400
+ 2219              	.LASF20:
+ 2220 0076 73697A65 		.ascii	"sizetype\000"
+ 2220      74797065 
+ 2220      00
+ 2221              	.LASF31:
+ 2222 007f 52435F43 		.ascii	"RC_Ch2_Timer_ISR_Handler\000"
+ 2222      68325F54 
+ 2222      696D6572 
+ 2222      5F495352 
+ 2222      5F48616E 
+ 2223              	.LASF17:
+ 2224 0098 63686172 		.ascii	"char8\000"
+ 2224      3800
+ 2225              	.LASF34:
+ 2226 009e 636F6E73 		.ascii	"construct_rc_ch\000"
+ 2226      74727563 
+ 2226      745F7263 
+ 2226      5F636800 
+ 2227              	.LASF25:
+ 2228 00ae 76616C75 		.ascii	"value\000"
+ 2228      6500
+ 2229              	.LASF73:
+ 2230 00b4 52435F43 		.ascii	"RC_Ch4_Timer_Interrupt_StartEx\000"
+ 2230      68345F54 
+ 2230      696D6572 
+ 2230      5F496E74 
+ 2230      65727275 
+ 2231              	.LASF32:
+ 2232 00d3 52435F43 		.ascii	"RC_Ch3_Timer_ISR_Handler\000"
+ 2232      68335F54 
+ 2232      696D6572 
+ 2232      5F495352 
+ 2232      5F48616E 
+ 2233              	.LASF13:
+ 2234 00ec 696E7431 		.ascii	"int16\000"
+ 2234      3600
+ 2235              	.LASF11:
+ 2236 00f2 75696E74 		.ascii	"uint8\000"
+ 2236      3800
+ 2237              	.LASF22:
+ 2238 00f8 636F6E6E 		.ascii	"connected\000"
+ 2238      65637465 
+ 2238      6400
+ 2239              	.LASF67:
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 44
+
+
+ 2240 0102 52435F43 		.ascii	"RC_Ch1_Timer_Interrupt_StartEx\000"
+ 2240      68315F54 
+ 2240      696D6572 
+ 2240      5F496E74 
+ 2240      65727275 
+ 2241              	.LASF77:
+ 2242 0121 55534255 		.ascii	"USBUART_PutString\000"
+ 2242      4152545F 
+ 2242      50757453 
+ 2242      7472696E 
+ 2242      6700
+ 2243              	.LASF33:
+ 2244 0133 52435F43 		.ascii	"RC_Ch4_Timer_ISR_Handler\000"
+ 2244      68345F54 
+ 2244      696D6572 
+ 2244      5F495352 
+ 2244      5F48616E 
+ 2245              	.LASF15:
+ 2246 014c 666C6F61 		.ascii	"float\000"
+ 2246      7400
+ 2247              	.LASF80:
+ 2248 0152 52435F43 		.ascii	"RC_Ch3_Read\000"
+ 2248      68335F52 
+ 2248      65616400 
+ 2249              	.LASF40:
+ 2250 015e 52435F54 		.ascii	"RC_TIMER_AMPLITUDE\000"
+ 2250      494D4552 
+ 2250      5F414D50 
+ 2250      4C495455 
+ 2250      444500
+ 2251              	.LASF6:
+ 2252 0171 6C6F6E67 		.ascii	"long long int\000"
+ 2252      206C6F6E 
+ 2252      6720696E 
+ 2252      7400
+ 2253              	.LASF51:
+ 2254 017f 52435F43 		.ascii	"RC_CONNECTION_TIMEOUT\000"
+ 2254      4F4E4E45 
+ 2254      4354494F 
+ 2254      4E5F5449 
+ 2254      4D454F55 
+ 2255              	.LASF78:
+ 2256 0195 52435F43 		.ascii	"RC_Ch1_Read\000"
+ 2256      68315F52 
+ 2256      65616400 
+ 2257              	.LASF26:
+ 2258 01a1 52435F43 		.ascii	"RC_CH\000"
+ 2258      4800
+ 2259              	.LASF75:
+ 2260 01a7 6D656D73 		.ascii	"memset\000"
+ 2260      657400
+ 2261              	.LASF4:
+ 2262 01ae 6C6F6E67 		.ascii	"long int\000"
+ 2262      20696E74 
+ 2262      00
+ 2263              	.LASF27:
+ 2264 01b7 72635F63 		.ascii	"rc_ch_timer_status_capture\000"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 45
+
+
+ 2264      685F7469 
+ 2264      6D65725F 
+ 2264      73746174 
+ 2264      75735F63 
+ 2265              	.LASF54:
+ 2266 01d2 52435F43 		.ascii	"RC_Ch1_Timer_ReadStatusRegister\000"
+ 2266      68315F54 
+ 2266      696D6572 
+ 2266      5F526561 
+ 2266      64537461 
+ 2267              	.LASF48:
+ 2268 01f2 52435F54 		.ascii	"RC_TIMER_MID_VALUE\000"
+ 2268      494D4552 
+ 2268      5F4D4944 
+ 2268      5F56414C 
+ 2268      554500
+ 2269              	.LASF55:
+ 2270 0205 52435F43 		.ascii	"RC_Ch2_Timer_ReadStatusRegister\000"
+ 2270      68325F54 
+ 2270      696D6572 
+ 2270      5F526561 
+ 2270      64537461 
+ 2271              	.LASF1:
+ 2272 0225 756E7369 		.ascii	"unsigned char\000"
+ 2272      676E6564 
+ 2272      20636861 
+ 2272      7200
+ 2273              	.LASF60:
+ 2274 0233 52435F43 		.ascii	"RC_Ch1_Timer_Stop\000"
+ 2274      68315F54 
+ 2274      696D6572 
+ 2274      5F53746F 
+ 2274      7000
+ 2275              	.LASF59:
+ 2276 0245 52435F43 		.ascii	"RC_Ch1_Timer_WriteCounter\000"
+ 2276      68315F54 
+ 2276      696D6572 
+ 2276      5F577269 
+ 2276      7465436F 
+ 2277              	.LASF19:
+ 2278 025f 63796973 		.ascii	"cyisraddress\000"
+ 2278      72616464 
+ 2278      72657373 
+ 2278      00
+ 2279              	.LASF61:
+ 2280 026c 52435F43 		.ascii	"RC_Ch2_Timer_Stop\000"
+ 2280      68325F54 
+ 2280      696D6572 
+ 2280      5F53746F 
+ 2280      7000
+ 2281              	.LASF84:
+ 2282 027e 433A5C55 		.ascii	"C:\\Users\\Michael\\Dropbox (MIT)\\College\\Senior "
+ 2282      73657273 
+ 2282      5C4D6963 
+ 2282      6861656C 
+ 2282      5C44726F 
+ 2283 02ac 59656172 		.ascii	"Year\\6.115 - Microcomputer Project Laboratory\\6.1"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 46
+
+
+ 2283      5C362E31 
+ 2283      3135202D 
+ 2283      204D6963 
+ 2283      726F636F 
+ 2284 02dd 3135202D 		.ascii	"15 - Final Project\\Software\\PSoC Creator\\Ball.cy"
+ 2284      2046696E 
+ 2284      616C2050 
+ 2284      726F6A65 
+ 2284      63745C53 
+ 2285 030d 64736E00 		.ascii	"dsn\000"
+ 2286              	.LASF47:
+ 2287 0311 52435F54 		.ascii	"RC_TIMER_MAX_VALUE\000"
+ 2287      494D4552 
+ 2287      5F4D4158 
+ 2287      5F56414C 
+ 2287      554500
+ 2288              	.LASF0:
+ 2289 0324 7369676E 		.ascii	"signed char\000"
+ 2289      65642063 
+ 2289      68617200 
+ 2290              	.LASF7:
+ 2291 0330 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2291      206C6F6E 
+ 2291      6720756E 
+ 2291      7369676E 
+ 2291      65642069 
+ 2292              	.LASF63:
+ 2293 0347 52435F43 		.ascii	"RC_Ch3_Timer_Stop\000"
+ 2293      68335F54 
+ 2293      696D6572 
+ 2293      5F53746F 
+ 2293      7000
+ 2294              	.LASF46:
+ 2295 0359 52435F54 		.ascii	"RC_TIMER_PERIOD\000"
+ 2295      494D4552 
+ 2295      5F504552 
+ 2295      494F4400 
+ 2296              	.LASF8:
+ 2297 0369 756E7369 		.ascii	"unsigned int\000"
+ 2297      676E6564 
+ 2297      20696E74 
+ 2297      00
+ 2298              	.LASF71:
+ 2299 0376 52435F43 		.ascii	"RC_Ch3_Timer_Interrupt_StartEx\000"
+ 2299      68335F54 
+ 2299      696D6572 
+ 2299      5F496E74 
+ 2299      65727275 
+ 2300              	.LASF76:
+ 2301 0395 73707269 		.ascii	"sprintf\000"
+ 2301      6E746600 
+ 2302              	.LASF41:
+ 2303 039d 64656275 		.ascii	"debug\000"
+ 2303      6700
+ 2304              	.LASF3:
+ 2305 03a3 73686F72 		.ascii	"short unsigned int\000"
+ 2305      7420756E 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 47
+
+
+ 2305      7369676E 
+ 2305      65642069 
+ 2305      6E7400
+ 2306              	.LASF37:
+ 2307 03b6 63685F76 		.ascii	"ch_value\000"
+ 2307      616C7565 
+ 2307      00
+ 2308              	.LASF18:
+ 2309 03bf 63686172 		.ascii	"char\000"
+ 2309      00
+ 2310              	.LASF85:
+ 2311 03c4 696E6974 		.ascii	"init_rc_channels\000"
+ 2311      5F72635F 
+ 2311      6368616E 
+ 2311      6E656C73 
+ 2311      00
+ 2312              	.LASF82:
+ 2313 03d5 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 2313      4320342E 
+ 2313      392E3320 
+ 2313      32303135 
+ 2313      30333033 
+ 2314 0408 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 2314      20726576 
+ 2314      6973696F 
+ 2314      6E203232 
+ 2314      31323230 
+ 2315 043b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 2315      66756E63 
+ 2315      74696F6E 
+ 2315      2D736563 
+ 2315      74696F6E 
+ 2316              	.LASF36:
+ 2317 0463 6765745F 		.ascii	"get_rc_ch_value\000"
+ 2317      72635F63 
+ 2317      685F7661 
+ 2317      6C756500 
+ 2318              	.LASF52:
+ 2319 0473 52435F4D 		.ascii	"RC_MAX_VALUE\000"
+ 2319      41585F56 
+ 2319      414C5545 
+ 2319      00
+ 2320              	.LASF10:
+ 2321 0480 696E7433 		.ascii	"int32_t\000"
+ 2321      325F7400 
+ 2322              	.LASF83:
+ 2323 0488 2E5C7263 		.ascii	".\\rc_ch.c\000"
+ 2323      5F63682E 
+ 2323      6300
+ 2324              	.LASF68:
+ 2325 0492 52435F43 		.ascii	"RC_Ch1_Timer_Start\000"
+ 2325      68315F54 
+ 2325      696D6572 
+ 2325      5F537461 
+ 2325      727400
+ 2326              	.LASF29:
+ 2327 04a5 72635F63 		.ascii	"rc_ch_timer_isr_handler\000"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 48
+
+
+ 2327      685F7469 
+ 2327      6D65725F 
+ 2327      6973725F 
+ 2327      68616E64 
+ 2328              	.LASF42:
+ 2329 04bd 6973725F 		.ascii	"isr_rc_timer_count\000"
+ 2329      72635F74 
+ 2329      696D6572 
+ 2329      5F636F75 
+ 2329      6E7400
+ 2330              	.LASF72:
+ 2331 04d0 52435F43 		.ascii	"RC_Ch3_Timer_Start\000"
+ 2331      68335F54 
+ 2331      696D6572 
+ 2331      5F537461 
+ 2331      727400
+ 2332              	.LASF12:
+ 2333 04e3 75696E74 		.ascii	"uint32\000"
+ 2333      333200
+ 2334              	.LASF58:
+ 2335 04ea 52435F43 		.ascii	"RC_Ch2_Timer_ReadCapture\000"
+ 2335      68325F54 
+ 2335      696D6572 
+ 2335      5F526561 
+ 2335      64436170 
+ 2336              	.LASF5:
+ 2337 0503 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2337      20756E73 
+ 2337      69676E65 
+ 2337      6420696E 
+ 2337      7400
+ 2338              	.LASF45:
+ 2339 0515 4D494C4C 		.ascii	"MILLISECONDS\000"
+ 2339      49534543 
+ 2339      4F4E4453 
+ 2339      00
+ 2340              	.LASF14:
+ 2341 0522 696E7433 		.ascii	"int32\000"
+ 2341      3200
+ 2342              	.LASF66:
+ 2343 0528 52435F43 		.ascii	"RC_Ch4_Timer_WriteCounter\000"
+ 2343      68345F54 
+ 2343      696D6572 
+ 2343      5F577269 
+ 2343      7465436F 
+ 2344              	.LASF23:
+ 2345 0542 6C617374 		.ascii	"last_connected\000"
+ 2345      5F636F6E 
+ 2345      6E656374 
+ 2345      656400
+ 2346              	.LASF44:
+ 2347 0551 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2347      52784275 
+ 2347      66666572 
+ 2347      00
+ 2348              	.LASF53:
+ 2349 055e 52435F4D 		.ascii	"RC_MIN_VALUE\000"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 49
+
+
+ 2349      494E5F56 
+ 2349      414C5545 
+ 2349      00
+ 2350              	.LASF38:
+ 2351 056b 72635F63 		.ascii	"rc_ch_read_value\000"
+ 2351      685F7265 
+ 2351      61645F76 
+ 2351      616C7565 
+ 2351      00
+ 2352              	.LASF81:
+ 2353 057c 52435F43 		.ascii	"RC_Ch4_Read\000"
+ 2353      68345F52 
+ 2353      65616400 
+ 2354              	.LASF43:
+ 2355 0588 6973725F 		.ascii	"isr_rc_timer_int_flag\000"
+ 2355      72635F74 
+ 2355      696D6572 
+ 2355      5F696E74 
+ 2355      5F666C61 
+ 2356              	.LASF9:
+ 2357 059e 5F5F696E 		.ascii	"__int32_t\000"
+ 2357      7433325F 
+ 2357      7400
+ 2358              	.LASF79:
+ 2359 05a8 52435F43 		.ascii	"RC_Ch2_Read\000"
+ 2359      68325F52 
+ 2359      65616400 
+ 2360              	.LASF49:
+ 2361 05b4 52435F54 		.ascii	"RC_TIMER_MIN_VALUE\000"
+ 2361      494D4552 
+ 2361      5F4D494E 
+ 2361      5F56414C 
+ 2361      554500
+ 2362              	.LASF64:
+ 2363 05c7 52435F43 		.ascii	"RC_Ch3_Timer_WriteCounter\000"
+ 2363      68335F54 
+ 2363      696D6572 
+ 2363      5F577269 
+ 2363      7465436F 
+ 2364              	.LASF16:
+ 2365 05e1 646F7562 		.ascii	"double\000"
+ 2365      6C6500
+ 2366              	.LASF62:
+ 2367 05e8 52435F43 		.ascii	"RC_Ch2_Timer_WriteCounter\000"
+ 2367      68325F54 
+ 2367      696D6572 
+ 2367      5F577269 
+ 2367      7465436F 
+ 2368              	.LASF69:
+ 2369 0602 52435F43 		.ascii	"RC_Ch2_Timer_Interrupt_StartEx\000"
+ 2369      68325F54 
+ 2369      696D6572 
+ 2369      5F496E74 
+ 2369      65727275 
+ 2370              	.LASF39:
+ 2371 0621 72635F63 		.ascii	"rc_ch_timer_count\000"
+ 2371      685F7469 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc7hH7aq.s 			page 50
+
+
+ 2371      6D65725F 
+ 2371      636F756E 
+ 2371      7400
+ 2372              	.LASF70:
+ 2373 0633 52435F43 		.ascii	"RC_Ch2_Timer_Start\000"
+ 2373      68325F54 
+ 2373      696D6572 
+ 2373      5F537461 
+ 2373      727400
+ 2374              	.LASF50:
+ 2375 0646 52435F54 		.ascii	"RC_TIMER_MID_TOLERANCE\000"
+ 2375      494D4552 
+ 2375      5F4D4944 
+ 2375      5F544F4C 
+ 2375      4552414E 
+ 2376              	.LASF56:
+ 2377 065d 52435F43 		.ascii	"RC_Ch3_Timer_ReadStatusRegister\000"
+ 2377      68335F54 
+ 2377      696D6572 
+ 2377      5F526561 
+ 2377      64537461 
+ 2378              	.LASF28:
+ 2379 067d 72635F63 		.ascii	"rc_ch_timer_status_tc\000"
+ 2379      685F7469 
+ 2379      6D65725F 
+ 2379      73746174 
+ 2379      75735F74 
+ 2380              	.LASF74:
+ 2381 0693 52435F43 		.ascii	"RC_Ch4_Timer_Start\000"
+ 2381      68345F54 
+ 2381      696D6572 
+ 2381      5F537461 
+ 2381      727400
+ 2382              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

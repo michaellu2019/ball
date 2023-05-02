@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: RC_Ch_2.c  
+* File Name: RC_Ch3.c  
 * Version 2.20
 *
 * Description:
@@ -15,15 +15,15 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "RC_Ch_2.h"
+#include "RC_Ch3.h"
 
 /* APIs are not generated for P15[7:6] on PSoC 5 */
 #if !(CY_PSOC5A &&\
-	 RC_Ch_2__PORT == 15 && ((RC_Ch_2__MASK & 0xC0) != 0))
+	 RC_Ch3__PORT == 15 && ((RC_Ch3__MASK & 0xC0) != 0))
 
 
 /*******************************************************************************
-* Function Name: RC_Ch_2_Write
+* Function Name: RC_Ch3_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -52,17 +52,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet RC_Ch_2_SUT.c usage_RC_Ch_2_Write
+*  \snippet RC_Ch3_SUT.c usage_RC_Ch3_Write
 *******************************************************************************/
-void RC_Ch_2_Write(uint8 value)
+void RC_Ch3_Write(uint8 value)
 {
-    uint8 staticBits = (RC_Ch_2_DR & (uint8)(~RC_Ch_2_MASK));
-    RC_Ch_2_DR = staticBits | ((uint8)(value << RC_Ch_2_SHIFT) & RC_Ch_2_MASK);
+    uint8 staticBits = (RC_Ch3_DR & (uint8)(~RC_Ch3_MASK));
+    RC_Ch3_DR = staticBits | ((uint8)(value << RC_Ch3_SHIFT) & RC_Ch3_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Ch_2_SetDriveMode
+* Function Name: RC_Ch3_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -85,16 +85,16 @@ void RC_Ch_2_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet RC_Ch_2_SUT.c usage_RC_Ch_2_SetDriveMode
+*  \snippet RC_Ch3_SUT.c usage_RC_Ch3_SetDriveMode
 *******************************************************************************/
-void RC_Ch_2_SetDriveMode(uint8 mode)
+void RC_Ch3_SetDriveMode(uint8 mode)
 {
-	CyPins_SetPinDriveMode(RC_Ch_2_0, mode);
+	CyPins_SetPinDriveMode(RC_Ch3_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Ch_2_Read
+* Function Name: RC_Ch3_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -108,16 +108,16 @@ void RC_Ch_2_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet RC_Ch_2_SUT.c usage_RC_Ch_2_Read  
+*  \snippet RC_Ch3_SUT.c usage_RC_Ch3_Read  
 *******************************************************************************/
-uint8 RC_Ch_2_Read(void)
+uint8 RC_Ch3_Read(void)
 {
-    return (RC_Ch_2_PS & RC_Ch_2_MASK) >> RC_Ch_2_SHIFT;
+    return (RC_Ch3_PS & RC_Ch3_MASK) >> RC_Ch3_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: RC_Ch_2_ReadDataReg
+* Function Name: RC_Ch3_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -126,8 +126,8 @@ uint8 RC_Ch_2_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred RC_Ch_2_Read() API because the 
-* RC_Ch_2_ReadDataReg() reads the data register instead of the status 
+* preferred RC_Ch3_Read() API because the 
+* RC_Ch3_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -136,19 +136,19 @@ uint8 RC_Ch_2_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet RC_Ch_2_SUT.c usage_RC_Ch_2_ReadDataReg 
+*  \snippet RC_Ch3_SUT.c usage_RC_Ch3_ReadDataReg 
 *******************************************************************************/
-uint8 RC_Ch_2_ReadDataReg(void)
+uint8 RC_Ch3_ReadDataReg(void)
 {
-    return (RC_Ch_2_DR & RC_Ch_2_MASK) >> RC_Ch_2_SHIFT;
+    return (RC_Ch3_DR & RC_Ch3_MASK) >> RC_Ch3_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(RC_Ch_2_INTSTAT) 
+#if defined(RC_Ch3_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: RC_Ch_2_SetInterruptMode
+    * Function Name: RC_Ch3_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -161,12 +161,12 @@ uint8 RC_Ch_2_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use RC_Ch_2_INTR_ALL to configure the
+    *  component. Or you may use RC_Ch3_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - RC_Ch_2_0_INTR       (First pin in the list)
-    *  - RC_Ch_2_1_INTR       (Second pin in the list)
+    *  - RC_Ch3_0_INTR       (First pin in the list)
+    *  - RC_Ch3_1_INTR       (Second pin in the list)
     *  - ...
-    *  - RC_Ch_2_INTR_ALL     (All pins in Pins component)
+    *  - RC_Ch3_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -182,19 +182,19 @@ uint8 RC_Ch_2_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet RC_Ch_2_SUT.c usage_RC_Ch_2_SetInterruptMode
+    *  \snippet RC_Ch3_SUT.c usage_RC_Ch3_SetInterruptMode
     *******************************************************************************/
-    void RC_Ch_2_SetInterruptMode(uint16 position, uint16 mode)
+    void RC_Ch3_SetInterruptMode(uint16 position, uint16 mode)
     {
-		if((position & RC_Ch_2_0_INTR) != 0u) 
+		if((position & RC_Ch3_0_INTR) != 0u) 
 		{ 
-			 RC_Ch_2_0_INTTYPE_REG = (uint8)mode; 
+			 RC_Ch3_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: RC_Ch_2_ClearInterrupt
+    * Function Name: RC_Ch3_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -211,11 +211,11 @@ uint8 RC_Ch_2_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet RC_Ch_2_SUT.c usage_RC_Ch_2_ClearInterrupt
+    *  \snippet RC_Ch3_SUT.c usage_RC_Ch3_ClearInterrupt
     *******************************************************************************/
-    uint8 RC_Ch_2_ClearInterrupt(void)
+    uint8 RC_Ch3_ClearInterrupt(void)
     {
-        return (RC_Ch_2_INTSTAT & RC_Ch_2_MASK) >> RC_Ch_2_SHIFT;
+        return (RC_Ch3_INTSTAT & RC_Ch3_MASK) >> RC_Ch3_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 
