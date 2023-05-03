@@ -134,6 +134,11 @@ void get_rc_ch_value(RC_CH* rc_ch) {
             rc_ch->value = (RC_MAX_VALUE - RC_MIN_VALUE) * ((int32) rc_ch_timer_count - RC_TIMER_MID_VALUE)/RC_TIMER_AMPLITUDE;
         }
         
+        if (rc_ch->value < -RC_MAX_VALUE)
+            rc_ch->value = -RC_MAX_VALUE;
+        if (rc_ch->value > RC_MAX_VALUE)
+            rc_ch->value = RC_MAX_VALUE;
+        
         rc_ch->last_timer_count = rc_ch_timer_count;
         isr_rc_timer_int_flag = 0;
         

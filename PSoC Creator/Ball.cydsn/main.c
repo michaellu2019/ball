@@ -21,6 +21,8 @@
 #include "project.h"
 #include "milliseconds.h"
 #include "rc_ch.h"
+#include "dc_motor.h"
+#include "imu.h"
 
 #define DEBUG 1
 char debug_data_buf[64] = "";
@@ -34,8 +36,6 @@ char debug_data_buf[64] = "";
  * Channel 6: Left Knob
 */
 
-void run_motor();
-
 int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
@@ -48,10 +48,13 @@ int main()
     
     init_milliseconds();
        
-    Motor_A_PWM_Start();
+    init_dc_motors();
+    DC_MOTOR drive_dc_motor;
+    construct_dc_motor(&drive_dc_motor, DRIVE_DC_MOTOR);
+    DC_MOTOR pendulum_dc_motor;
+    construct_dc_motor(&pendulum_dc_motor, PENDULUM_DC_MOTOR);
     
     init_rc_channels();
-    
     RC_CH rc_ch1;
     construct_rc_ch(&rc_ch1, 1);
     RC_CH rc_ch2;
@@ -61,38 +64,36 @@ int main()
     RC_CH rc_ch4;
     construct_rc_ch(&rc_ch4, 4);
     
+    init_imu();
+    IMU imu;
+    construct_imu(&imu);
+    
     for(;;)
     {
         get_rc_ch_value(&rc_ch1);
         get_rc_ch_value(&rc_ch2);
         get_rc_ch_value(&rc_ch3);
         get_rc_ch_value(&rc_ch4);
+        
+        if (rc_ch2.connected && rc_ch2.value != 0) {
+            run_motor(&drive_dc_motor, rc_ch2.value);
+        } else {
+            run_motor(&drive_dc_motor, 0);
+        }
+        if (rc_ch1.connected && rc_ch1.value != 0) {
+            run_motor(&pendulum_dc_motor, rc_ch1.value);
+        } else {
+            run_motor(&pendulum_dc_motor, 0);
+        }
+        
+        get_imu_values(&imu);
 
         if (rc_ch1.value != 0 || rc_ch2.value != 0 || rc_ch3.value != 0 || rc_ch3.value != 0) {
             char debug[64] = "";
-            sprintf(debug, "[%ld] %d %d %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value);
+            sprintf(debug, "[%ld] %d %d %d %d - %d %d %d %d %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value,
+                                                                         (int) imu.ax, (int) imu.ay, (int) imu.az, (int) imu.gx, (int) imu.gy, (int) imu.gz);
             USBUART_PutString(debug);
         }
-        
-        
-        /*if (rc_ch2.connected && rc_ch2.value != 0) {
-            run_motor(rc_ch2.value);
-        } else {
-            run_motor(0);
-        }*/
-    }
-}
-
-void run_motor(motor_pwm) {
-    if (motor_pwm < 0) {
-        Motor_A_PWM_WriteCompare1(abs(motor_pwm));
-        Motor_A_PWM_WriteCompare2(0);
-    } else if (motor_pwm > 0) {
-        Motor_A_PWM_WriteCompare1(0);
-        Motor_A_PWM_WriteCompare2(motor_pwm);
-    } else {
-        Motor_A_PWM_WriteCompare1(0);
-        Motor_A_PWM_WriteCompare2(0);
     }
 }
 

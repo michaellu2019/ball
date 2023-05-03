@@ -1,0 +1,1348 @@
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"imu.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text.init_imu,"ax",%progbits
+  19              		.align	2
+  20              		.global	init_imu
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	init_imu, %function
+  24              	init_imu:
+  25              	.LFB63:
+  26              		.file 1 ".\\imu.c"
+   1:.\imu.c       **** /* ========================================
+   2:.\imu.c       ****  *
+   3:.\imu.c       ****  * Copyright YOUR COMPANY, THE YEAR
+   4:.\imu.c       ****  * All Rights Reserved
+   5:.\imu.c       ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:.\imu.c       ****  *
+   7:.\imu.c       ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+   8:.\imu.c       ****  * WHICH IS THE PROPERTY OF your company.
+   9:.\imu.c       ****  *
+  10:.\imu.c       ****  * ========================================
+  11:.\imu.c       **** */
+  12:.\imu.c       **** #include "project.h"
+  13:.\imu.c       **** #include "imu.h"
+  14:.\imu.c       **** #include "mpu6050.h"
+  15:.\imu.c       **** 
+  16:.\imu.c       **** const float IMU_SCALE = 1600.0;
+  17:.\imu.c       **** 
+  18:.\imu.c       **** void init_imu() {
+  27              		.loc 1 18 0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              		.cfi_def_cfa_offset 8
+  33              		.cfi_offset 3, -8
+  34              		.cfi_offset 14, -4
+  19:.\imu.c       ****     MPU6050_I2C_Start();
+  35              		.loc 1 19 0
+  36 0002 FFF7FEFF 		bl	MPU6050_I2C_Start
+  37              	.LVL0:
+  20:.\imu.c       ****     MPU6050_init();
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 2
+
+
+  38              		.loc 1 20 0
+  39 0006 FFF7FEFF 		bl	MPU6050_init
+  40              	.LVL1:
+  21:.\imu.c       ****     MPU6050_initialize();
+  41              		.loc 1 21 0
+  42 000a FFF7FEFF 		bl	MPU6050_initialize
+  43              	.LVL2:
+  22:.\imu.c       ****     MPU6050_setDLPFMode(IMU_DLP_MODE);
+  44              		.loc 1 22 0
+  45 000e 0620     		movs	r0, #6
+  46 0010 FFF7FEFF 		bl	MPU6050_setDLPFMode
+  47              	.LVL3:
+  48 0014 08BD     		pop	{r3, pc}
+  49              		.cfi_endproc
+  50              	.LFE63:
+  51              		.size	init_imu, .-init_imu
+  52 0016 00BF     		.section	.text.construct_imu,"ax",%progbits
+  53              		.align	2
+  54              		.global	construct_imu
+  55              		.thumb
+  56              		.thumb_func
+  57              		.type	construct_imu, %function
+  58              	construct_imu:
+  59              	.LFB64:
+  23:.\imu.c       **** }
+  24:.\imu.c       **** 
+  25:.\imu.c       **** void construct_imu(IMU* imu) {
+  60              		.loc 1 25 0
+  61              		.cfi_startproc
+  62              		@ args = 0, pretend = 0, frame = 0
+  63              		@ frame_needed = 0, uses_anonymous_args = 0
+  64              		@ link register save eliminated.
+  65              	.LVL4:
+  26:.\imu.c       ****     imu->ax = 0;
+  66              		.loc 1 26 0
+  67 0000 0023     		movs	r3, #0
+  68 0002 0360     		str	r3, [r0]	@ float
+  27:.\imu.c       ****     imu->ay = 0;
+  69              		.loc 1 27 0
+  70 0004 4360     		str	r3, [r0, #4]	@ float
+  28:.\imu.c       ****     imu->az = 0;
+  71              		.loc 1 28 0
+  72 0006 8360     		str	r3, [r0, #8]	@ float
+  29:.\imu.c       ****     imu->gx = 0;
+  73              		.loc 1 29 0
+  74 0008 C360     		str	r3, [r0, #12]	@ float
+  30:.\imu.c       ****     imu->gy = 0;
+  75              		.loc 1 30 0
+  76 000a 0361     		str	r3, [r0, #16]	@ float
+  31:.\imu.c       ****     imu->gz = 0;
+  77              		.loc 1 31 0
+  78 000c 4361     		str	r3, [r0, #20]	@ float
+  79 000e 7047     		bx	lr
+  80              		.cfi_endproc
+  81              	.LFE64:
+  82              		.size	construct_imu, .-construct_imu
+  83              		.global	__aeabi_i2f
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 3
+
+
+  84              		.global	__aeabi_fdiv
+  85              		.section	.text.get_imu_values,"ax",%progbits
+  86              		.align	2
+  87              		.global	get_imu_values
+  88              		.thumb
+  89              		.thumb_func
+  90              		.type	get_imu_values, %function
+  91              	get_imu_values:
+  92              	.LFB65:
+  32:.\imu.c       **** }
+  33:.\imu.c       **** 
+  34:.\imu.c       **** void get_imu_values(IMU* imu) {
+  93              		.loc 1 34 0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 16
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97              	.LVL5:
+  98 0000 10B5     		push	{r4, lr}
+  99              		.cfi_def_cfa_offset 8
+ 100              		.cfi_offset 4, -8
+ 101              		.cfi_offset 14, -4
+ 102 0002 86B0     		sub	sp, sp, #24
+ 103              		.cfi_def_cfa_offset 32
+ 104 0004 0446     		mov	r4, r0
+  35:.\imu.c       ****     int16 ax, ay, az;
+  36:.\imu.c       ****     int16 gx, gy, gz;
+  37:.\imu.c       ****     MPU6050_getMotion6(&ay, &ax, &az, &gx, &gy, &gz);
+ 105              		.loc 1 37 0
+ 106 0006 0DF10E03 		add	r3, sp, #14
+ 107 000a 0093     		str	r3, [sp]
+ 108 000c 03AB     		add	r3, sp, #12
+ 109 000e 0193     		str	r3, [sp, #4]
+ 110 0010 05A8     		add	r0, sp, #20
+ 111              	.LVL6:
+ 112 0012 0DF11601 		add	r1, sp, #22
+ 113 0016 0DF11202 		add	r2, sp, #18
+ 114 001a 04AB     		add	r3, sp, #16
+ 115 001c FFF7FEFF 		bl	MPU6050_getMotion6
+ 116              	.LVL7:
+  38:.\imu.c       ****     imu->ax = ax/IMU_SCALE;
+ 117              		.loc 1 38 0
+ 118 0020 BDF91600 		ldrsh	r0, [sp, #22]
+ 119 0024 FFF7FEFF 		bl	__aeabi_i2f
+ 120              	.LVL8:
+ 121 0028 1649     		ldr	r1, .L6
+ 122 002a FFF7FEFF 		bl	__aeabi_fdiv
+ 123              	.LVL9:
+ 124 002e 2060     		str	r0, [r4]	@ float
+  39:.\imu.c       ****     imu->ay = ay/IMU_SCALE;
+ 125              		.loc 1 39 0
+ 126 0030 BDF91400 		ldrsh	r0, [sp, #20]
+ 127 0034 FFF7FEFF 		bl	__aeabi_i2f
+ 128              	.LVL10:
+ 129 0038 1249     		ldr	r1, .L6
+ 130 003a FFF7FEFF 		bl	__aeabi_fdiv
+ 131              	.LVL11:
+ 132 003e 6060     		str	r0, [r4, #4]	@ float
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 4
+
+
+  40:.\imu.c       ****     imu->az = az/IMU_SCALE;
+ 133              		.loc 1 40 0
+ 134 0040 BDF91200 		ldrsh	r0, [sp, #18]
+ 135 0044 FFF7FEFF 		bl	__aeabi_i2f
+ 136              	.LVL12:
+ 137 0048 0E49     		ldr	r1, .L6
+ 138 004a FFF7FEFF 		bl	__aeabi_fdiv
+ 139              	.LVL13:
+ 140 004e A060     		str	r0, [r4, #8]	@ float
+  41:.\imu.c       ****     imu->gx = gx/IMU_SCALE;
+ 141              		.loc 1 41 0
+ 142 0050 BDF91000 		ldrsh	r0, [sp, #16]
+ 143 0054 FFF7FEFF 		bl	__aeabi_i2f
+ 144              	.LVL14:
+ 145 0058 0A49     		ldr	r1, .L6
+ 146 005a FFF7FEFF 		bl	__aeabi_fdiv
+ 147              	.LVL15:
+ 148 005e E060     		str	r0, [r4, #12]	@ float
+  42:.\imu.c       ****     imu->gy = gy/IMU_SCALE;
+ 149              		.loc 1 42 0
+ 150 0060 BDF90E00 		ldrsh	r0, [sp, #14]
+ 151 0064 FFF7FEFF 		bl	__aeabi_i2f
+ 152              	.LVL16:
+ 153 0068 0649     		ldr	r1, .L6
+ 154 006a FFF7FEFF 		bl	__aeabi_fdiv
+ 155              	.LVL17:
+ 156 006e 2061     		str	r0, [r4, #16]	@ float
+  43:.\imu.c       ****     imu->gz = gz/IMU_SCALE;
+ 157              		.loc 1 43 0
+ 158 0070 BDF90C00 		ldrsh	r0, [sp, #12]
+ 159 0074 FFF7FEFF 		bl	__aeabi_i2f
+ 160              	.LVL18:
+ 161 0078 0249     		ldr	r1, .L6
+ 162 007a FFF7FEFF 		bl	__aeabi_fdiv
+ 163              	.LVL19:
+ 164 007e 6061     		str	r0, [r4, #20]	@ float
+  44:.\imu.c       **** }
+ 165              		.loc 1 44 0
+ 166 0080 06B0     		add	sp, sp, #24
+ 167              		.cfi_def_cfa_offset 8
+ 168              		@ sp needed
+ 169 0082 10BD     		pop	{r4, pc}
+ 170              	.LVL20:
+ 171              	.L7:
+ 172              		.align	2
+ 173              	.L6:
+ 174 0084 0000C844 		.word	1153957888
+ 175              		.cfi_endproc
+ 176              	.LFE65:
+ 177              		.size	get_imu_values, .-get_imu_values
+ 178              		.comm	buffer,22,4
+ 179              		.comm	devAddr,1,1
+ 180              		.global	IMU_SCALE
+ 181              		.section	.rodata
+ 182              		.align	2
+ 183              		.type	IMU_SCALE, %object
+ 184              		.size	IMU_SCALE, 4
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 5
+
+
+ 185              	IMU_SCALE:
+ 186 0000 0000C844 		.word	1153957888
+ 187              		.text
+ 188              	.Letext0:
+ 189              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 190              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 191              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 192              		.file 5 ".\\imu.h"
+ 193              		.file 6 "Generated_Source\\PSoC5/core_cm3.h"
+ 194              		.file 7 ".\\mpu6050.h"
+ 195              		.file 8 "Generated_Source\\PSoC5/MPU6050_I2C.h"
+ 196              		.section	.debug_info,"",%progbits
+ 197              	.Ldebug_info0:
+ 198 0000 F9020000 		.4byte	0x2f9
+ 199 0004 0400     		.2byte	0x4
+ 200 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 201 000a 04       		.byte	0x4
+ 202 000b 01       		.uleb128 0x1
+ 203 000c 76010000 		.4byte	.LASF30
+ 204 0010 01       		.byte	0x1
+ 205 0011 1E000000 		.4byte	.LASF31
+ 206 0015 D1000000 		.4byte	.LASF32
+ 207 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 208 001d 00000000 		.4byte	0
+ 209 0021 00000000 		.4byte	.Ldebug_line0
+ 210 0025 02       		.uleb128 0x2
+ 211 0026 01       		.byte	0x1
+ 212 0027 06       		.byte	0x6
+ 213 0028 51000000 		.4byte	.LASF0
+ 214 002c 03       		.uleb128 0x3
+ 215 002d 00000000 		.4byte	.LASF2
+ 216 0031 02       		.byte	0x2
+ 217 0032 1D       		.byte	0x1d
+ 218 0033 37000000 		.4byte	0x37
+ 219 0037 02       		.uleb128 0x2
+ 220 0038 01       		.byte	0x1
+ 221 0039 08       		.byte	0x8
+ 222 003a 70000000 		.4byte	.LASF1
+ 223 003e 03       		.uleb128 0x3
+ 224 003f 0A000000 		.4byte	.LASF3
+ 225 0043 02       		.byte	0x2
+ 226 0044 29       		.byte	0x29
+ 227 0045 49000000 		.4byte	0x49
+ 228 0049 02       		.uleb128 0x2
+ 229 004a 02       		.byte	0x2
+ 230 004b 05       		.byte	0x5
+ 231 004c 79020000 		.4byte	.LASF4
+ 232 0050 02       		.uleb128 0x2
+ 233 0051 02       		.byte	0x2
+ 234 0052 07       		.byte	0x7
+ 235 0053 96000000 		.4byte	.LASF5
+ 236 0057 03       		.uleb128 0x3
+ 237 0058 14000000 		.4byte	.LASF6
+ 238 005c 02       		.byte	0x2
+ 239 005d 3F       		.byte	0x3f
+ 240 005e 62000000 		.4byte	0x62
+ 241 0062 02       		.uleb128 0x2
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 6
+
+
+ 242 0063 04       		.byte	0x4
+ 243 0064 05       		.byte	0x5
+ 244 0065 9B020000 		.4byte	.LASF7
+ 245 0069 02       		.uleb128 0x2
+ 246 006a 04       		.byte	0x4
+ 247 006b 07       		.byte	0x7
+ 248 006c 84000000 		.4byte	.LASF8
+ 249 0070 02       		.uleb128 0x2
+ 250 0071 08       		.byte	0x8
+ 251 0072 05       		.byte	0x5
+ 252 0073 6B020000 		.4byte	.LASF9
+ 253 0077 02       		.uleb128 0x2
+ 254 0078 08       		.byte	0x8
+ 255 0079 07       		.byte	0x7
+ 256 007a 11020000 		.4byte	.LASF10
+ 257 007e 04       		.uleb128 0x4
+ 258 007f 04       		.byte	0x4
+ 259 0080 05       		.byte	0x5
+ 260 0081 696E7400 		.ascii	"int\000"
+ 261 0085 02       		.uleb128 0x2
+ 262 0086 04       		.byte	0x4
+ 263 0087 07       		.byte	0x7
+ 264 0088 04020000 		.4byte	.LASF11
+ 265 008c 03       		.uleb128 0x3
+ 266 008d 28020000 		.4byte	.LASF12
+ 267 0091 03       		.byte	0x3
+ 268 0092 15       		.byte	0x15
+ 269 0093 2C000000 		.4byte	0x2c
+ 270 0097 03       		.uleb128 0x3
+ 271 0098 3D020000 		.4byte	.LASF13
+ 272 009c 03       		.byte	0x3
+ 273 009d 20       		.byte	0x20
+ 274 009e 3E000000 		.4byte	0x3e
+ 275 00a2 03       		.uleb128 0x3
+ 276 00a3 26000000 		.4byte	.LASF14
+ 277 00a7 03       		.byte	0x3
+ 278 00a8 2C       		.byte	0x2c
+ 279 00a9 57000000 		.4byte	0x57
+ 280 00ad 05       		.uleb128 0x5
+ 281 00ae 7E000000 		.4byte	.LASF15
+ 282 00b2 04       		.byte	0x4
+ 283 00b3 9601     		.2byte	0x196
+ 284 00b5 49000000 		.4byte	0x49
+ 285 00b9 02       		.uleb128 0x2
+ 286 00ba 04       		.byte	0x4
+ 287 00bb 04       		.byte	0x4
+ 288 00bc 3C000000 		.4byte	.LASF16
+ 289 00c0 02       		.uleb128 0x2
+ 290 00c1 08       		.byte	0x8
+ 291 00c2 04       		.byte	0x4
+ 292 00c3 CA000000 		.4byte	.LASF17
+ 293 00c7 02       		.uleb128 0x2
+ 294 00c8 01       		.byte	0x1
+ 295 00c9 08       		.byte	0x8
+ 296 00ca A4020000 		.4byte	.LASF18
+ 297 00ce 02       		.uleb128 0x2
+ 298 00cf 04       		.byte	0x4
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 7
+
+
+ 299 00d0 07       		.byte	0x7
+ 300 00d1 62020000 		.4byte	.LASF19
+ 301 00d5 06       		.uleb128 0x6
+ 302 00d6 696D7500 		.ascii	"imu\000"
+ 303 00da 18       		.byte	0x18
+ 304 00db 05       		.byte	0x5
+ 305 00dc 13       		.byte	0x13
+ 306 00dd 24010000 		.4byte	0x124
+ 307 00e1 07       		.uleb128 0x7
+ 308 00e2 617800   		.ascii	"ax\000"
+ 309 00e5 05       		.byte	0x5
+ 310 00e6 14       		.byte	0x14
+ 311 00e7 B9000000 		.4byte	0xb9
+ 312 00eb 00       		.byte	0
+ 313 00ec 07       		.uleb128 0x7
+ 314 00ed 617900   		.ascii	"ay\000"
+ 315 00f0 05       		.byte	0x5
+ 316 00f1 15       		.byte	0x15
+ 317 00f2 B9000000 		.4byte	0xb9
+ 318 00f6 04       		.byte	0x4
+ 319 00f7 07       		.uleb128 0x7
+ 320 00f8 617A00   		.ascii	"az\000"
+ 321 00fb 05       		.byte	0x5
+ 322 00fc 16       		.byte	0x16
+ 323 00fd B9000000 		.4byte	0xb9
+ 324 0101 08       		.byte	0x8
+ 325 0102 07       		.uleb128 0x7
+ 326 0103 677800   		.ascii	"gx\000"
+ 327 0106 05       		.byte	0x5
+ 328 0107 17       		.byte	0x17
+ 329 0108 B9000000 		.4byte	0xb9
+ 330 010c 0C       		.byte	0xc
+ 331 010d 07       		.uleb128 0x7
+ 332 010e 677900   		.ascii	"gy\000"
+ 333 0111 05       		.byte	0x5
+ 334 0112 18       		.byte	0x18
+ 335 0113 B9000000 		.4byte	0xb9
+ 336 0117 10       		.byte	0x10
+ 337 0118 07       		.uleb128 0x7
+ 338 0119 677A00   		.ascii	"gz\000"
+ 339 011c 05       		.byte	0x5
+ 340 011d 19       		.byte	0x19
+ 341 011e B9000000 		.4byte	0xb9
+ 342 0122 14       		.byte	0x14
+ 343 0123 00       		.byte	0
+ 344 0124 08       		.uleb128 0x8
+ 345 0125 494D5500 		.ascii	"IMU\000"
+ 346 0129 05       		.byte	0x5
+ 347 012a 1A       		.byte	0x1a
+ 348 012b D5000000 		.4byte	0xd5
+ 349 012f 09       		.uleb128 0x9
+ 350 0130 92020000 		.4byte	.LASF33
+ 351 0134 01       		.byte	0x1
+ 352 0135 12       		.byte	0x12
+ 353 0136 00000000 		.4byte	.LFB63
+ 354 013a 16000000 		.4byte	.LFE63-.LFB63
+ 355 013e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 8
+
+
+ 356 013f 9C       		.byte	0x9c
+ 357 0140 6F010000 		.4byte	0x16f
+ 358 0144 0A       		.uleb128 0xa
+ 359 0145 06000000 		.4byte	.LVL0
+ 360 0149 96020000 		.4byte	0x296
+ 361 014d 0A       		.uleb128 0xa
+ 362 014e 0A000000 		.4byte	.LVL1
+ 363 0152 9D020000 		.4byte	0x29d
+ 364 0156 0A       		.uleb128 0xa
+ 365 0157 0E000000 		.4byte	.LVL2
+ 366 015b AB020000 		.4byte	0x2ab
+ 367 015f 0B       		.uleb128 0xb
+ 368 0160 14000000 		.4byte	.LVL3
+ 369 0164 B9020000 		.4byte	0x2b9
+ 370 0168 0C       		.uleb128 0xc
+ 371 0169 01       		.uleb128 0x1
+ 372 016a 50       		.byte	0x50
+ 373 016b 01       		.uleb128 0x1
+ 374 016c 36       		.byte	0x36
+ 375 016d 00       		.byte	0
+ 376 016e 00       		.byte	0
+ 377 016f 0D       		.uleb128 0xd
+ 378 0170 2E000000 		.4byte	.LASF20
+ 379 0174 01       		.byte	0x1
+ 380 0175 19       		.byte	0x19
+ 381 0176 00000000 		.4byte	.LFB64
+ 382 017a 10000000 		.4byte	.LFE64-.LFB64
+ 383 017e 01       		.uleb128 0x1
+ 384 017f 9C       		.byte	0x9c
+ 385 0180 92010000 		.4byte	0x192
+ 386 0184 0E       		.uleb128 0xe
+ 387 0185 696D7500 		.ascii	"imu\000"
+ 388 0189 01       		.byte	0x1
+ 389 018a 19       		.byte	0x19
+ 390 018b 92010000 		.4byte	0x192
+ 391 018f 01       		.uleb128 0x1
+ 392 0190 50       		.byte	0x50
+ 393 0191 00       		.byte	0
+ 394 0192 0F       		.uleb128 0xf
+ 395 0193 04       		.byte	0x4
+ 396 0194 24010000 		.4byte	0x124
+ 397 0198 10       		.uleb128 0x10
+ 398 0199 42000000 		.4byte	.LASF21
+ 399 019d 01       		.byte	0x1
+ 400 019e 22       		.byte	0x22
+ 401 019f 00000000 		.4byte	.LFB65
+ 402 01a3 88000000 		.4byte	.LFE65-.LFB65
+ 403 01a7 01       		.uleb128 0x1
+ 404 01a8 9C       		.byte	0x9c
+ 405 01a9 3B020000 		.4byte	0x23b
+ 406 01ad 11       		.uleb128 0x11
+ 407 01ae 696D7500 		.ascii	"imu\000"
+ 408 01b2 01       		.byte	0x1
+ 409 01b3 22       		.byte	0x22
+ 410 01b4 92010000 		.4byte	0x192
+ 411 01b8 00000000 		.4byte	.LLST0
+ 412 01bc 12       		.uleb128 0x12
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 9
+
+
+ 413 01bd 617800   		.ascii	"ax\000"
+ 414 01c0 01       		.byte	0x1
+ 415 01c1 23       		.byte	0x23
+ 416 01c2 AD000000 		.4byte	0xad
+ 417 01c6 02       		.uleb128 0x2
+ 418 01c7 91       		.byte	0x91
+ 419 01c8 76       		.sleb128 -10
+ 420 01c9 12       		.uleb128 0x12
+ 421 01ca 617900   		.ascii	"ay\000"
+ 422 01cd 01       		.byte	0x1
+ 423 01ce 23       		.byte	0x23
+ 424 01cf AD000000 		.4byte	0xad
+ 425 01d3 02       		.uleb128 0x2
+ 426 01d4 91       		.byte	0x91
+ 427 01d5 74       		.sleb128 -12
+ 428 01d6 12       		.uleb128 0x12
+ 429 01d7 617A00   		.ascii	"az\000"
+ 430 01da 01       		.byte	0x1
+ 431 01db 23       		.byte	0x23
+ 432 01dc AD000000 		.4byte	0xad
+ 433 01e0 02       		.uleb128 0x2
+ 434 01e1 91       		.byte	0x91
+ 435 01e2 72       		.sleb128 -14
+ 436 01e3 12       		.uleb128 0x12
+ 437 01e4 677800   		.ascii	"gx\000"
+ 438 01e7 01       		.byte	0x1
+ 439 01e8 24       		.byte	0x24
+ 440 01e9 AD000000 		.4byte	0xad
+ 441 01ed 02       		.uleb128 0x2
+ 442 01ee 91       		.byte	0x91
+ 443 01ef 70       		.sleb128 -16
+ 444 01f0 12       		.uleb128 0x12
+ 445 01f1 677900   		.ascii	"gy\000"
+ 446 01f4 01       		.byte	0x1
+ 447 01f5 24       		.byte	0x24
+ 448 01f6 AD000000 		.4byte	0xad
+ 449 01fa 02       		.uleb128 0x2
+ 450 01fb 91       		.byte	0x91
+ 451 01fc 6E       		.sleb128 -18
+ 452 01fd 12       		.uleb128 0x12
+ 453 01fe 677A00   		.ascii	"gz\000"
+ 454 0201 01       		.byte	0x1
+ 455 0202 24       		.byte	0x24
+ 456 0203 AD000000 		.4byte	0xad
+ 457 0207 02       		.uleb128 0x2
+ 458 0208 91       		.byte	0x91
+ 459 0209 6C       		.sleb128 -20
+ 460 020a 0B       		.uleb128 0xb
+ 461 020b 20000000 		.4byte	.LVL7
+ 462 020f CB020000 		.4byte	0x2cb
+ 463 0213 0C       		.uleb128 0xc
+ 464 0214 01       		.uleb128 0x1
+ 465 0215 53       		.byte	0x53
+ 466 0216 02       		.uleb128 0x2
+ 467 0217 91       		.byte	0x91
+ 468 0218 70       		.sleb128 -16
+ 469 0219 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 10
+
+
+ 470 021a 01       		.uleb128 0x1
+ 471 021b 52       		.byte	0x52
+ 472 021c 02       		.uleb128 0x2
+ 473 021d 91       		.byte	0x91
+ 474 021e 72       		.sleb128 -14
+ 475 021f 0C       		.uleb128 0xc
+ 476 0220 01       		.uleb128 0x1
+ 477 0221 51       		.byte	0x51
+ 478 0222 02       		.uleb128 0x2
+ 479 0223 91       		.byte	0x91
+ 480 0224 76       		.sleb128 -10
+ 481 0225 0C       		.uleb128 0xc
+ 482 0226 01       		.uleb128 0x1
+ 483 0227 50       		.byte	0x50
+ 484 0228 02       		.uleb128 0x2
+ 485 0229 91       		.byte	0x91
+ 486 022a 74       		.sleb128 -12
+ 487 022b 0C       		.uleb128 0xc
+ 488 022c 02       		.uleb128 0x2
+ 489 022d 7D       		.byte	0x7d
+ 490 022e 04       		.sleb128 4
+ 491 022f 02       		.uleb128 0x2
+ 492 0230 91       		.byte	0x91
+ 493 0231 6C       		.sleb128 -20
+ 494 0232 0C       		.uleb128 0xc
+ 495 0233 02       		.uleb128 0x2
+ 496 0234 7D       		.byte	0x7d
+ 497 0235 00       		.sleb128 0
+ 498 0236 02       		.uleb128 0x2
+ 499 0237 91       		.byte	0x91
+ 500 0238 6E       		.sleb128 -18
+ 501 0239 00       		.byte	0
+ 502 023a 00       		.byte	0
+ 503 023b 13       		.uleb128 0x13
+ 504 023c A9000000 		.4byte	.LASF22
+ 505 0240 06       		.byte	0x6
+ 506 0241 9606     		.2byte	0x696
+ 507 0243 47020000 		.4byte	0x247
+ 508 0247 14       		.uleb128 0x14
+ 509 0248 A2000000 		.4byte	0xa2
+ 510 024c 15       		.uleb128 0x15
+ 511 024d 58020000 		.4byte	.LASF23
+ 512 0251 01       		.byte	0x1
+ 513 0252 10       		.byte	0x10
+ 514 0253 5D020000 		.4byte	0x25d
+ 515 0257 05       		.uleb128 0x5
+ 516 0258 03       		.byte	0x3
+ 517 0259 00000000 		.4byte	IMU_SCALE
+ 518 025d 16       		.uleb128 0x16
+ 519 025e B9000000 		.4byte	0xb9
+ 520 0262 17       		.uleb128 0x17
+ 521 0263 83020000 		.4byte	.LASF24
+ 522 0267 07       		.byte	0x7
+ 523 0268 9101     		.2byte	0x191
+ 524 026a 8C000000 		.4byte	0x8c
+ 525 026e 05       		.uleb128 0x5
+ 526 026f 03       		.byte	0x3
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 11
+
+
+ 527 0270 00000000 		.4byte	devAddr
+ 528 0274 18       		.uleb128 0x18
+ 529 0275 8C000000 		.4byte	0x8c
+ 530 0279 84020000 		.4byte	0x284
+ 531 027d 19       		.uleb128 0x19
+ 532 027e CE000000 		.4byte	0xce
+ 533 0282 15       		.byte	0x15
+ 534 0283 00       		.byte	0
+ 535 0284 17       		.uleb128 0x17
+ 536 0285 8B020000 		.4byte	.LASF25
+ 537 0289 07       		.byte	0x7
+ 538 028a 9201     		.2byte	0x192
+ 539 028c 74020000 		.4byte	0x274
+ 540 0290 05       		.uleb128 0x5
+ 541 0291 03       		.byte	0x3
+ 542 0292 00000000 		.4byte	buffer
+ 543 0296 1A       		.uleb128 0x1a
+ 544 0297 64010000 		.4byte	.LASF34
+ 545 029b 08       		.byte	0x8
+ 546 029c 93       		.byte	0x93
+ 547 029d 1B       		.uleb128 0x1b
+ 548 029e 30020000 		.4byte	.LASF26
+ 549 02a2 07       		.byte	0x7
+ 550 02a3 9F01     		.2byte	0x19f
+ 551 02a5 AB020000 		.4byte	0x2ab
+ 552 02a9 1C       		.uleb128 0x1c
+ 553 02aa 00       		.byte	0
+ 554 02ab 1B       		.uleb128 0x1b
+ 555 02ac 45020000 		.4byte	.LASF27
+ 556 02b0 07       		.byte	0x7
+ 557 02b1 A201     		.2byte	0x1a2
+ 558 02b3 B9020000 		.4byte	0x2b9
+ 559 02b7 1C       		.uleb128 0x1c
+ 560 02b8 00       		.byte	0
+ 561 02b9 1D       		.uleb128 0x1d
+ 562 02ba B6000000 		.4byte	.LASF28
+ 563 02be 07       		.byte	0x7
+ 564 02bf B101     		.2byte	0x1b1
+ 565 02c1 CB020000 		.4byte	0x2cb
+ 566 02c5 1E       		.uleb128 0x1e
+ 567 02c6 8C000000 		.4byte	0x8c
+ 568 02ca 00       		.byte	0
+ 569 02cb 1D       		.uleb128 0x1d
+ 570 02cc 5D000000 		.4byte	.LASF29
+ 571 02d0 07       		.byte	0x7
+ 572 02d1 5102     		.2byte	0x251
+ 573 02d3 F6020000 		.4byte	0x2f6
+ 574 02d7 1E       		.uleb128 0x1e
+ 575 02d8 F6020000 		.4byte	0x2f6
+ 576 02dc 1E       		.uleb128 0x1e
+ 577 02dd F6020000 		.4byte	0x2f6
+ 578 02e1 1E       		.uleb128 0x1e
+ 579 02e2 F6020000 		.4byte	0x2f6
+ 580 02e6 1E       		.uleb128 0x1e
+ 581 02e7 F6020000 		.4byte	0x2f6
+ 582 02eb 1E       		.uleb128 0x1e
+ 583 02ec F6020000 		.4byte	0x2f6
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 12
+
+
+ 584 02f0 1E       		.uleb128 0x1e
+ 585 02f1 F6020000 		.4byte	0x2f6
+ 586 02f5 00       		.byte	0
+ 587 02f6 0F       		.uleb128 0xf
+ 588 02f7 04       		.byte	0x4
+ 589 02f8 97000000 		.4byte	0x97
+ 590 02fc 00       		.byte	0
+ 591              		.section	.debug_abbrev,"",%progbits
+ 592              	.Ldebug_abbrev0:
+ 593 0000 01       		.uleb128 0x1
+ 594 0001 11       		.uleb128 0x11
+ 595 0002 01       		.byte	0x1
+ 596 0003 25       		.uleb128 0x25
+ 597 0004 0E       		.uleb128 0xe
+ 598 0005 13       		.uleb128 0x13
+ 599 0006 0B       		.uleb128 0xb
+ 600 0007 03       		.uleb128 0x3
+ 601 0008 0E       		.uleb128 0xe
+ 602 0009 1B       		.uleb128 0x1b
+ 603 000a 0E       		.uleb128 0xe
+ 604 000b 55       		.uleb128 0x55
+ 605 000c 17       		.uleb128 0x17
+ 606 000d 11       		.uleb128 0x11
+ 607 000e 01       		.uleb128 0x1
+ 608 000f 10       		.uleb128 0x10
+ 609 0010 17       		.uleb128 0x17
+ 610 0011 00       		.byte	0
+ 611 0012 00       		.byte	0
+ 612 0013 02       		.uleb128 0x2
+ 613 0014 24       		.uleb128 0x24
+ 614 0015 00       		.byte	0
+ 615 0016 0B       		.uleb128 0xb
+ 616 0017 0B       		.uleb128 0xb
+ 617 0018 3E       		.uleb128 0x3e
+ 618 0019 0B       		.uleb128 0xb
+ 619 001a 03       		.uleb128 0x3
+ 620 001b 0E       		.uleb128 0xe
+ 621 001c 00       		.byte	0
+ 622 001d 00       		.byte	0
+ 623 001e 03       		.uleb128 0x3
+ 624 001f 16       		.uleb128 0x16
+ 625 0020 00       		.byte	0
+ 626 0021 03       		.uleb128 0x3
+ 627 0022 0E       		.uleb128 0xe
+ 628 0023 3A       		.uleb128 0x3a
+ 629 0024 0B       		.uleb128 0xb
+ 630 0025 3B       		.uleb128 0x3b
+ 631 0026 0B       		.uleb128 0xb
+ 632 0027 49       		.uleb128 0x49
+ 633 0028 13       		.uleb128 0x13
+ 634 0029 00       		.byte	0
+ 635 002a 00       		.byte	0
+ 636 002b 04       		.uleb128 0x4
+ 637 002c 24       		.uleb128 0x24
+ 638 002d 00       		.byte	0
+ 639 002e 0B       		.uleb128 0xb
+ 640 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 13
+
+
+ 641 0030 3E       		.uleb128 0x3e
+ 642 0031 0B       		.uleb128 0xb
+ 643 0032 03       		.uleb128 0x3
+ 644 0033 08       		.uleb128 0x8
+ 645 0034 00       		.byte	0
+ 646 0035 00       		.byte	0
+ 647 0036 05       		.uleb128 0x5
+ 648 0037 16       		.uleb128 0x16
+ 649 0038 00       		.byte	0
+ 650 0039 03       		.uleb128 0x3
+ 651 003a 0E       		.uleb128 0xe
+ 652 003b 3A       		.uleb128 0x3a
+ 653 003c 0B       		.uleb128 0xb
+ 654 003d 3B       		.uleb128 0x3b
+ 655 003e 05       		.uleb128 0x5
+ 656 003f 49       		.uleb128 0x49
+ 657 0040 13       		.uleb128 0x13
+ 658 0041 00       		.byte	0
+ 659 0042 00       		.byte	0
+ 660 0043 06       		.uleb128 0x6
+ 661 0044 13       		.uleb128 0x13
+ 662 0045 01       		.byte	0x1
+ 663 0046 03       		.uleb128 0x3
+ 664 0047 08       		.uleb128 0x8
+ 665 0048 0B       		.uleb128 0xb
+ 666 0049 0B       		.uleb128 0xb
+ 667 004a 3A       		.uleb128 0x3a
+ 668 004b 0B       		.uleb128 0xb
+ 669 004c 3B       		.uleb128 0x3b
+ 670 004d 0B       		.uleb128 0xb
+ 671 004e 01       		.uleb128 0x1
+ 672 004f 13       		.uleb128 0x13
+ 673 0050 00       		.byte	0
+ 674 0051 00       		.byte	0
+ 675 0052 07       		.uleb128 0x7
+ 676 0053 0D       		.uleb128 0xd
+ 677 0054 00       		.byte	0
+ 678 0055 03       		.uleb128 0x3
+ 679 0056 08       		.uleb128 0x8
+ 680 0057 3A       		.uleb128 0x3a
+ 681 0058 0B       		.uleb128 0xb
+ 682 0059 3B       		.uleb128 0x3b
+ 683 005a 0B       		.uleb128 0xb
+ 684 005b 49       		.uleb128 0x49
+ 685 005c 13       		.uleb128 0x13
+ 686 005d 38       		.uleb128 0x38
+ 687 005e 0B       		.uleb128 0xb
+ 688 005f 00       		.byte	0
+ 689 0060 00       		.byte	0
+ 690 0061 08       		.uleb128 0x8
+ 691 0062 16       		.uleb128 0x16
+ 692 0063 00       		.byte	0
+ 693 0064 03       		.uleb128 0x3
+ 694 0065 08       		.uleb128 0x8
+ 695 0066 3A       		.uleb128 0x3a
+ 696 0067 0B       		.uleb128 0xb
+ 697 0068 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 14
+
+
+ 698 0069 0B       		.uleb128 0xb
+ 699 006a 49       		.uleb128 0x49
+ 700 006b 13       		.uleb128 0x13
+ 701 006c 00       		.byte	0
+ 702 006d 00       		.byte	0
+ 703 006e 09       		.uleb128 0x9
+ 704 006f 2E       		.uleb128 0x2e
+ 705 0070 01       		.byte	0x1
+ 706 0071 3F       		.uleb128 0x3f
+ 707 0072 19       		.uleb128 0x19
+ 708 0073 03       		.uleb128 0x3
+ 709 0074 0E       		.uleb128 0xe
+ 710 0075 3A       		.uleb128 0x3a
+ 711 0076 0B       		.uleb128 0xb
+ 712 0077 3B       		.uleb128 0x3b
+ 713 0078 0B       		.uleb128 0xb
+ 714 0079 11       		.uleb128 0x11
+ 715 007a 01       		.uleb128 0x1
+ 716 007b 12       		.uleb128 0x12
+ 717 007c 06       		.uleb128 0x6
+ 718 007d 40       		.uleb128 0x40
+ 719 007e 18       		.uleb128 0x18
+ 720 007f 9742     		.uleb128 0x2117
+ 721 0081 19       		.uleb128 0x19
+ 722 0082 01       		.uleb128 0x1
+ 723 0083 13       		.uleb128 0x13
+ 724 0084 00       		.byte	0
+ 725 0085 00       		.byte	0
+ 726 0086 0A       		.uleb128 0xa
+ 727 0087 898201   		.uleb128 0x4109
+ 728 008a 00       		.byte	0
+ 729 008b 11       		.uleb128 0x11
+ 730 008c 01       		.uleb128 0x1
+ 731 008d 31       		.uleb128 0x31
+ 732 008e 13       		.uleb128 0x13
+ 733 008f 00       		.byte	0
+ 734 0090 00       		.byte	0
+ 735 0091 0B       		.uleb128 0xb
+ 736 0092 898201   		.uleb128 0x4109
+ 737 0095 01       		.byte	0x1
+ 738 0096 11       		.uleb128 0x11
+ 739 0097 01       		.uleb128 0x1
+ 740 0098 31       		.uleb128 0x31
+ 741 0099 13       		.uleb128 0x13
+ 742 009a 00       		.byte	0
+ 743 009b 00       		.byte	0
+ 744 009c 0C       		.uleb128 0xc
+ 745 009d 8A8201   		.uleb128 0x410a
+ 746 00a0 00       		.byte	0
+ 747 00a1 02       		.uleb128 0x2
+ 748 00a2 18       		.uleb128 0x18
+ 749 00a3 9142     		.uleb128 0x2111
+ 750 00a5 18       		.uleb128 0x18
+ 751 00a6 00       		.byte	0
+ 752 00a7 00       		.byte	0
+ 753 00a8 0D       		.uleb128 0xd
+ 754 00a9 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 15
+
+
+ 755 00aa 01       		.byte	0x1
+ 756 00ab 3F       		.uleb128 0x3f
+ 757 00ac 19       		.uleb128 0x19
+ 758 00ad 03       		.uleb128 0x3
+ 759 00ae 0E       		.uleb128 0xe
+ 760 00af 3A       		.uleb128 0x3a
+ 761 00b0 0B       		.uleb128 0xb
+ 762 00b1 3B       		.uleb128 0x3b
+ 763 00b2 0B       		.uleb128 0xb
+ 764 00b3 27       		.uleb128 0x27
+ 765 00b4 19       		.uleb128 0x19
+ 766 00b5 11       		.uleb128 0x11
+ 767 00b6 01       		.uleb128 0x1
+ 768 00b7 12       		.uleb128 0x12
+ 769 00b8 06       		.uleb128 0x6
+ 770 00b9 40       		.uleb128 0x40
+ 771 00ba 18       		.uleb128 0x18
+ 772 00bb 9742     		.uleb128 0x2117
+ 773 00bd 19       		.uleb128 0x19
+ 774 00be 01       		.uleb128 0x1
+ 775 00bf 13       		.uleb128 0x13
+ 776 00c0 00       		.byte	0
+ 777 00c1 00       		.byte	0
+ 778 00c2 0E       		.uleb128 0xe
+ 779 00c3 05       		.uleb128 0x5
+ 780 00c4 00       		.byte	0
+ 781 00c5 03       		.uleb128 0x3
+ 782 00c6 08       		.uleb128 0x8
+ 783 00c7 3A       		.uleb128 0x3a
+ 784 00c8 0B       		.uleb128 0xb
+ 785 00c9 3B       		.uleb128 0x3b
+ 786 00ca 0B       		.uleb128 0xb
+ 787 00cb 49       		.uleb128 0x49
+ 788 00cc 13       		.uleb128 0x13
+ 789 00cd 02       		.uleb128 0x2
+ 790 00ce 18       		.uleb128 0x18
+ 791 00cf 00       		.byte	0
+ 792 00d0 00       		.byte	0
+ 793 00d1 0F       		.uleb128 0xf
+ 794 00d2 0F       		.uleb128 0xf
+ 795 00d3 00       		.byte	0
+ 796 00d4 0B       		.uleb128 0xb
+ 797 00d5 0B       		.uleb128 0xb
+ 798 00d6 49       		.uleb128 0x49
+ 799 00d7 13       		.uleb128 0x13
+ 800 00d8 00       		.byte	0
+ 801 00d9 00       		.byte	0
+ 802 00da 10       		.uleb128 0x10
+ 803 00db 2E       		.uleb128 0x2e
+ 804 00dc 01       		.byte	0x1
+ 805 00dd 3F       		.uleb128 0x3f
+ 806 00de 19       		.uleb128 0x19
+ 807 00df 03       		.uleb128 0x3
+ 808 00e0 0E       		.uleb128 0xe
+ 809 00e1 3A       		.uleb128 0x3a
+ 810 00e2 0B       		.uleb128 0xb
+ 811 00e3 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 16
+
+
+ 812 00e4 0B       		.uleb128 0xb
+ 813 00e5 27       		.uleb128 0x27
+ 814 00e6 19       		.uleb128 0x19
+ 815 00e7 11       		.uleb128 0x11
+ 816 00e8 01       		.uleb128 0x1
+ 817 00e9 12       		.uleb128 0x12
+ 818 00ea 06       		.uleb128 0x6
+ 819 00eb 40       		.uleb128 0x40
+ 820 00ec 18       		.uleb128 0x18
+ 821 00ed 9642     		.uleb128 0x2116
+ 822 00ef 19       		.uleb128 0x19
+ 823 00f0 01       		.uleb128 0x1
+ 824 00f1 13       		.uleb128 0x13
+ 825 00f2 00       		.byte	0
+ 826 00f3 00       		.byte	0
+ 827 00f4 11       		.uleb128 0x11
+ 828 00f5 05       		.uleb128 0x5
+ 829 00f6 00       		.byte	0
+ 830 00f7 03       		.uleb128 0x3
+ 831 00f8 08       		.uleb128 0x8
+ 832 00f9 3A       		.uleb128 0x3a
+ 833 00fa 0B       		.uleb128 0xb
+ 834 00fb 3B       		.uleb128 0x3b
+ 835 00fc 0B       		.uleb128 0xb
+ 836 00fd 49       		.uleb128 0x49
+ 837 00fe 13       		.uleb128 0x13
+ 838 00ff 02       		.uleb128 0x2
+ 839 0100 17       		.uleb128 0x17
+ 840 0101 00       		.byte	0
+ 841 0102 00       		.byte	0
+ 842 0103 12       		.uleb128 0x12
+ 843 0104 34       		.uleb128 0x34
+ 844 0105 00       		.byte	0
+ 845 0106 03       		.uleb128 0x3
+ 846 0107 08       		.uleb128 0x8
+ 847 0108 3A       		.uleb128 0x3a
+ 848 0109 0B       		.uleb128 0xb
+ 849 010a 3B       		.uleb128 0x3b
+ 850 010b 0B       		.uleb128 0xb
+ 851 010c 49       		.uleb128 0x49
+ 852 010d 13       		.uleb128 0x13
+ 853 010e 02       		.uleb128 0x2
+ 854 010f 18       		.uleb128 0x18
+ 855 0110 00       		.byte	0
+ 856 0111 00       		.byte	0
+ 857 0112 13       		.uleb128 0x13
+ 858 0113 34       		.uleb128 0x34
+ 859 0114 00       		.byte	0
+ 860 0115 03       		.uleb128 0x3
+ 861 0116 0E       		.uleb128 0xe
+ 862 0117 3A       		.uleb128 0x3a
+ 863 0118 0B       		.uleb128 0xb
+ 864 0119 3B       		.uleb128 0x3b
+ 865 011a 05       		.uleb128 0x5
+ 866 011b 49       		.uleb128 0x49
+ 867 011c 13       		.uleb128 0x13
+ 868 011d 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 17
+
+
+ 869 011e 19       		.uleb128 0x19
+ 870 011f 3C       		.uleb128 0x3c
+ 871 0120 19       		.uleb128 0x19
+ 872 0121 00       		.byte	0
+ 873 0122 00       		.byte	0
+ 874 0123 14       		.uleb128 0x14
+ 875 0124 35       		.uleb128 0x35
+ 876 0125 00       		.byte	0
+ 877 0126 49       		.uleb128 0x49
+ 878 0127 13       		.uleb128 0x13
+ 879 0128 00       		.byte	0
+ 880 0129 00       		.byte	0
+ 881 012a 15       		.uleb128 0x15
+ 882 012b 34       		.uleb128 0x34
+ 883 012c 00       		.byte	0
+ 884 012d 03       		.uleb128 0x3
+ 885 012e 0E       		.uleb128 0xe
+ 886 012f 3A       		.uleb128 0x3a
+ 887 0130 0B       		.uleb128 0xb
+ 888 0131 3B       		.uleb128 0x3b
+ 889 0132 0B       		.uleb128 0xb
+ 890 0133 49       		.uleb128 0x49
+ 891 0134 13       		.uleb128 0x13
+ 892 0135 3F       		.uleb128 0x3f
+ 893 0136 19       		.uleb128 0x19
+ 894 0137 02       		.uleb128 0x2
+ 895 0138 18       		.uleb128 0x18
+ 896 0139 00       		.byte	0
+ 897 013a 00       		.byte	0
+ 898 013b 16       		.uleb128 0x16
+ 899 013c 26       		.uleb128 0x26
+ 900 013d 00       		.byte	0
+ 901 013e 49       		.uleb128 0x49
+ 902 013f 13       		.uleb128 0x13
+ 903 0140 00       		.byte	0
+ 904 0141 00       		.byte	0
+ 905 0142 17       		.uleb128 0x17
+ 906 0143 34       		.uleb128 0x34
+ 907 0144 00       		.byte	0
+ 908 0145 03       		.uleb128 0x3
+ 909 0146 0E       		.uleb128 0xe
+ 910 0147 3A       		.uleb128 0x3a
+ 911 0148 0B       		.uleb128 0xb
+ 912 0149 3B       		.uleb128 0x3b
+ 913 014a 05       		.uleb128 0x5
+ 914 014b 49       		.uleb128 0x49
+ 915 014c 13       		.uleb128 0x13
+ 916 014d 3F       		.uleb128 0x3f
+ 917 014e 19       		.uleb128 0x19
+ 918 014f 02       		.uleb128 0x2
+ 919 0150 18       		.uleb128 0x18
+ 920 0151 00       		.byte	0
+ 921 0152 00       		.byte	0
+ 922 0153 18       		.uleb128 0x18
+ 923 0154 01       		.uleb128 0x1
+ 924 0155 01       		.byte	0x1
+ 925 0156 49       		.uleb128 0x49
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 18
+
+
+ 926 0157 13       		.uleb128 0x13
+ 927 0158 01       		.uleb128 0x1
+ 928 0159 13       		.uleb128 0x13
+ 929 015a 00       		.byte	0
+ 930 015b 00       		.byte	0
+ 931 015c 19       		.uleb128 0x19
+ 932 015d 21       		.uleb128 0x21
+ 933 015e 00       		.byte	0
+ 934 015f 49       		.uleb128 0x49
+ 935 0160 13       		.uleb128 0x13
+ 936 0161 2F       		.uleb128 0x2f
+ 937 0162 0B       		.uleb128 0xb
+ 938 0163 00       		.byte	0
+ 939 0164 00       		.byte	0
+ 940 0165 1A       		.uleb128 0x1a
+ 941 0166 2E       		.uleb128 0x2e
+ 942 0167 00       		.byte	0
+ 943 0168 3F       		.uleb128 0x3f
+ 944 0169 19       		.uleb128 0x19
+ 945 016a 03       		.uleb128 0x3
+ 946 016b 0E       		.uleb128 0xe
+ 947 016c 3A       		.uleb128 0x3a
+ 948 016d 0B       		.uleb128 0xb
+ 949 016e 3B       		.uleb128 0x3b
+ 950 016f 0B       		.uleb128 0xb
+ 951 0170 27       		.uleb128 0x27
+ 952 0171 19       		.uleb128 0x19
+ 953 0172 3C       		.uleb128 0x3c
+ 954 0173 19       		.uleb128 0x19
+ 955 0174 00       		.byte	0
+ 956 0175 00       		.byte	0
+ 957 0176 1B       		.uleb128 0x1b
+ 958 0177 2E       		.uleb128 0x2e
+ 959 0178 01       		.byte	0x1
+ 960 0179 3F       		.uleb128 0x3f
+ 961 017a 19       		.uleb128 0x19
+ 962 017b 03       		.uleb128 0x3
+ 963 017c 0E       		.uleb128 0xe
+ 964 017d 3A       		.uleb128 0x3a
+ 965 017e 0B       		.uleb128 0xb
+ 966 017f 3B       		.uleb128 0x3b
+ 967 0180 05       		.uleb128 0x5
+ 968 0181 3C       		.uleb128 0x3c
+ 969 0182 19       		.uleb128 0x19
+ 970 0183 01       		.uleb128 0x1
+ 971 0184 13       		.uleb128 0x13
+ 972 0185 00       		.byte	0
+ 973 0186 00       		.byte	0
+ 974 0187 1C       		.uleb128 0x1c
+ 975 0188 18       		.uleb128 0x18
+ 976 0189 00       		.byte	0
+ 977 018a 00       		.byte	0
+ 978 018b 00       		.byte	0
+ 979 018c 1D       		.uleb128 0x1d
+ 980 018d 2E       		.uleb128 0x2e
+ 981 018e 01       		.byte	0x1
+ 982 018f 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 19
+
+
+ 983 0190 19       		.uleb128 0x19
+ 984 0191 03       		.uleb128 0x3
+ 985 0192 0E       		.uleb128 0xe
+ 986 0193 3A       		.uleb128 0x3a
+ 987 0194 0B       		.uleb128 0xb
+ 988 0195 3B       		.uleb128 0x3b
+ 989 0196 05       		.uleb128 0x5
+ 990 0197 27       		.uleb128 0x27
+ 991 0198 19       		.uleb128 0x19
+ 992 0199 3C       		.uleb128 0x3c
+ 993 019a 19       		.uleb128 0x19
+ 994 019b 01       		.uleb128 0x1
+ 995 019c 13       		.uleb128 0x13
+ 996 019d 00       		.byte	0
+ 997 019e 00       		.byte	0
+ 998 019f 1E       		.uleb128 0x1e
+ 999 01a0 05       		.uleb128 0x5
+ 1000 01a1 00       		.byte	0
+ 1001 01a2 49       		.uleb128 0x49
+ 1002 01a3 13       		.uleb128 0x13
+ 1003 01a4 00       		.byte	0
+ 1004 01a5 00       		.byte	0
+ 1005 01a6 00       		.byte	0
+ 1006              		.section	.debug_loc,"",%progbits
+ 1007              	.Ldebug_loc0:
+ 1008              	.LLST0:
+ 1009 0000 00000000 		.4byte	.LVL5
+ 1010 0004 12000000 		.4byte	.LVL6
+ 1011 0008 0100     		.2byte	0x1
+ 1012 000a 50       		.byte	0x50
+ 1013 000b 12000000 		.4byte	.LVL6
+ 1014 000f 84000000 		.4byte	.LVL20
+ 1015 0013 0100     		.2byte	0x1
+ 1016 0015 54       		.byte	0x54
+ 1017 0016 84000000 		.4byte	.LVL20
+ 1018 001a 88000000 		.4byte	.LFE65
+ 1019 001e 0400     		.2byte	0x4
+ 1020 0020 F3       		.byte	0xf3
+ 1021 0021 01       		.uleb128 0x1
+ 1022 0022 50       		.byte	0x50
+ 1023 0023 9F       		.byte	0x9f
+ 1024 0024 00000000 		.4byte	0
+ 1025 0028 00000000 		.4byte	0
+ 1026              		.section	.debug_aranges,"",%progbits
+ 1027 0000 2C000000 		.4byte	0x2c
+ 1028 0004 0200     		.2byte	0x2
+ 1029 0006 00000000 		.4byte	.Ldebug_info0
+ 1030 000a 04       		.byte	0x4
+ 1031 000b 00       		.byte	0
+ 1032 000c 0000     		.2byte	0
+ 1033 000e 0000     		.2byte	0
+ 1034 0010 00000000 		.4byte	.LFB63
+ 1035 0014 16000000 		.4byte	.LFE63-.LFB63
+ 1036 0018 00000000 		.4byte	.LFB64
+ 1037 001c 10000000 		.4byte	.LFE64-.LFB64
+ 1038 0020 00000000 		.4byte	.LFB65
+ 1039 0024 88000000 		.4byte	.LFE65-.LFB65
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 20
+
+
+ 1040 0028 00000000 		.4byte	0
+ 1041 002c 00000000 		.4byte	0
+ 1042              		.section	.debug_ranges,"",%progbits
+ 1043              	.Ldebug_ranges0:
+ 1044 0000 00000000 		.4byte	.LFB63
+ 1045 0004 16000000 		.4byte	.LFE63
+ 1046 0008 00000000 		.4byte	.LFB64
+ 1047 000c 10000000 		.4byte	.LFE64
+ 1048 0010 00000000 		.4byte	.LFB65
+ 1049 0014 88000000 		.4byte	.LFE65
+ 1050 0018 00000000 		.4byte	0
+ 1051 001c 00000000 		.4byte	0
+ 1052              		.section	.debug_line,"",%progbits
+ 1053              	.Ldebug_line0:
+ 1054 0000 B8010000 		.section	.debug_str,"MS",%progbits,1
+ 1054      02007301 
+ 1054      00000201 
+ 1054      FB0E0D00 
+ 1054      01010101 
+ 1055              	.LASF2:
+ 1056 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1056      6E74385F 
+ 1056      7400
+ 1057              	.LASF3:
+ 1058 000a 5F5F696E 		.ascii	"__int16_t\000"
+ 1058      7431365F 
+ 1058      7400
+ 1059              	.LASF6:
+ 1060 0014 5F5F696E 		.ascii	"__int32_t\000"
+ 1060      7433325F 
+ 1060      7400
+ 1061              	.LASF31:
+ 1062 001e 2E5C696D 		.ascii	".\\imu.c\000"
+ 1062      752E6300 
+ 1063              	.LASF14:
+ 1064 0026 696E7433 		.ascii	"int32_t\000"
+ 1064      325F7400 
+ 1065              	.LASF20:
+ 1066 002e 636F6E73 		.ascii	"construct_imu\000"
+ 1066      74727563 
+ 1066      745F696D 
+ 1066      7500
+ 1067              	.LASF16:
+ 1068 003c 666C6F61 		.ascii	"float\000"
+ 1068      7400
+ 1069              	.LASF21:
+ 1070 0042 6765745F 		.ascii	"get_imu_values\000"
+ 1070      696D755F 
+ 1070      76616C75 
+ 1070      657300
+ 1071              	.LASF0:
+ 1072 0051 7369676E 		.ascii	"signed char\000"
+ 1072      65642063 
+ 1072      68617200 
+ 1073              	.LASF29:
+ 1074 005d 4D505536 		.ascii	"MPU6050_getMotion6\000"
+ 1074      3035305F 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 21
+
+
+ 1074      6765744D 
+ 1074      6F74696F 
+ 1074      6E3600
+ 1075              	.LASF1:
+ 1076 0070 756E7369 		.ascii	"unsigned char\000"
+ 1076      676E6564 
+ 1076      20636861 
+ 1076      7200
+ 1077              	.LASF15:
+ 1078 007e 696E7431 		.ascii	"int16\000"
+ 1078      3600
+ 1079              	.LASF8:
+ 1080 0084 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1080      20756E73 
+ 1080      69676E65 
+ 1080      6420696E 
+ 1080      7400
+ 1081              	.LASF5:
+ 1082 0096 73686F72 		.ascii	"short unsigned int\000"
+ 1082      7420756E 
+ 1082      7369676E 
+ 1082      65642069 
+ 1082      6E7400
+ 1083              	.LASF22:
+ 1084 00a9 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1084      52784275 
+ 1084      66666572 
+ 1084      00
+ 1085              	.LASF28:
+ 1086 00b6 4D505536 		.ascii	"MPU6050_setDLPFMode\000"
+ 1086      3035305F 
+ 1086      73657444 
+ 1086      4C50464D 
+ 1086      6F646500 
+ 1087              	.LASF17:
+ 1088 00ca 646F7562 		.ascii	"double\000"
+ 1088      6C6500
+ 1089              	.LASF32:
+ 1090 00d1 433A5C55 		.ascii	"C:\\Users\\Michael\\Dropbox (MIT)\\College\\Senior "
+ 1090      73657273 
+ 1090      5C4D6963 
+ 1090      6861656C 
+ 1090      5C44726F 
+ 1091 00ff 59656172 		.ascii	"Year\\6.115 - Microcomputer Project Laboratory\\6.1"
+ 1091      5C362E31 
+ 1091      3135202D 
+ 1091      204D6963 
+ 1091      726F636F 
+ 1092 0130 3135202D 		.ascii	"15 - Final Project\\Software\\PSoC Creator\\Ball.cy"
+ 1092      2046696E 
+ 1092      616C2050 
+ 1092      726F6A65 
+ 1092      63745C53 
+ 1093 0160 64736E00 		.ascii	"dsn\000"
+ 1094              	.LASF34:
+ 1095 0164 4D505536 		.ascii	"MPU6050_I2C_Start\000"
+ 1095      3035305F 
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 22
+
+
+ 1095      4932435F 
+ 1095      53746172 
+ 1095      7400
+ 1096              	.LASF30:
+ 1097 0176 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 1097      4320342E 
+ 1097      392E3320 
+ 1097      32303135 
+ 1097      30333033 
+ 1098 01a9 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 1098      20726576 
+ 1098      6973696F 
+ 1098      6E203232 
+ 1098      31323230 
+ 1099 01dc 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1099      66756E63 
+ 1099      74696F6E 
+ 1099      2D736563 
+ 1099      74696F6E 
+ 1100              	.LASF11:
+ 1101 0204 756E7369 		.ascii	"unsigned int\000"
+ 1101      676E6564 
+ 1101      20696E74 
+ 1101      00
+ 1102              	.LASF10:
+ 1103 0211 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1103      206C6F6E 
+ 1103      6720756E 
+ 1103      7369676E 
+ 1103      65642069 
+ 1104              	.LASF12:
+ 1105 0228 75696E74 		.ascii	"uint8_t\000"
+ 1105      385F7400 
+ 1106              	.LASF26:
+ 1107 0230 4D505536 		.ascii	"MPU6050_init\000"
+ 1107      3035305F 
+ 1107      696E6974 
+ 1107      00
+ 1108              	.LASF13:
+ 1109 023d 696E7431 		.ascii	"int16_t\000"
+ 1109      365F7400 
+ 1110              	.LASF27:
+ 1111 0245 4D505536 		.ascii	"MPU6050_initialize\000"
+ 1111      3035305F 
+ 1111      696E6974 
+ 1111      69616C69 
+ 1111      7A6500
+ 1112              	.LASF23:
+ 1113 0258 494D555F 		.ascii	"IMU_SCALE\000"
+ 1113      5343414C 
+ 1113      4500
+ 1114              	.LASF19:
+ 1115 0262 73697A65 		.ascii	"sizetype\000"
+ 1115      74797065 
+ 1115      00
+ 1116              	.LASF9:
+ 1117 026b 6C6F6E67 		.ascii	"long long int\000"
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccoqdgwg.s 			page 23
+
+
+ 1117      206C6F6E 
+ 1117      6720696E 
+ 1117      7400
+ 1118              	.LASF4:
+ 1119 0279 73686F72 		.ascii	"short int\000"
+ 1119      7420696E 
+ 1119      7400
+ 1120              	.LASF24:
+ 1121 0283 64657641 		.ascii	"devAddr\000"
+ 1121      64647200 
+ 1122              	.LASF25:
+ 1123 028b 62756666 		.ascii	"buffer\000"
+ 1123      657200
+ 1124              	.LASF33:
+ 1125 0292 696E6974 		.ascii	"init_imu\000"
+ 1125      5F696D75 
+ 1125      00
+ 1126              	.LASF7:
+ 1127 029b 6C6F6E67 		.ascii	"long int\000"
+ 1127      20696E74 
+ 1127      00
+ 1128              	.LASF18:
+ 1129 02a4 63686172 		.ascii	"char\000"
+ 1129      00
+ 1130              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br

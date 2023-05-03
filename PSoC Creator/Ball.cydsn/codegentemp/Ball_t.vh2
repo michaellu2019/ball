@@ -1,15 +1,21 @@
 -- Project:   C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Ball.cyprj
--- Generated: 05/01/2023 22:26:10
+-- Generated: 05/02/2023 21:00:29
 -- PSoC Creator  3.3 CP3
 
 ENTITY Ball IS
     PORT(
-        Motor_A_Output_In1(0)_PAD : OUT std_ulogic;
-        Motor_A_Output_In2(0)_PAD : OUT std_ulogic;
+        Drive_DC_Motor_In2(0)_PAD : OUT std_ulogic;
+        Drive_DC_Motor_In1(0)_PAD : OUT std_ulogic;
         RC_Ch1(0)_PAD : IN std_ulogic;
         RC_Ch2(0)_PAD : IN std_ulogic;
         RC_Ch4(0)_PAD : IN std_ulogic;
-        RC_Ch3(0)_PAD : IN std_ulogic);
+        RC_Ch3(0)_PAD : IN std_ulogic;
+        Flywheel_DC_Motor_In1(0)_PAD : OUT std_ulogic;
+        Pendulum_DC_Motor_In1(0)_PAD : OUT std_ulogic;
+        Pendulum_DC_Motor_In2(0)_PAD : OUT std_ulogic;
+        Flywheel_DC_Motor_In2(0)_PAD : OUT std_ulogic;
+        MPU6050_SDA(0)_PAD : INOUT std_ulogic;
+        MPU6050_SCL(0)_PAD : INOUT std_ulogic);
     ATTRIBUTE voltage_VDDABUF OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VUSB OF __DEFAULT__ : ENTITY IS 5e0;
@@ -34,26 +40,30 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
+    SIGNAL Drive_DC_Motor_In1(0)__PA : bit;
+    SIGNAL Drive_DC_Motor_In2(0)__PA : bit;
+    SIGNAL Flywheel_DC_Motor_In1(0)__PA : bit;
+    SIGNAL Flywheel_DC_Motor_In2(0)__PA : bit;
     SIGNAL MODIN2_0 : bit;
-    ATTRIBUTE placement_force OF MODIN2_0 : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF MODIN2_0 : SIGNAL IS "U(2,0,B)2";
     SIGNAL MODIN2_1 : bit;
-    ATTRIBUTE placement_force OF MODIN2_1 : SIGNAL IS "U(3,1,A)0";
+    ATTRIBUTE placement_force OF MODIN2_1 : SIGNAL IS "U(2,0,A)0";
     SIGNAL MODIN3_0 : bit;
     SIGNAL MODIN3_1 : bit;
     SIGNAL MODIN5_0 : bit;
-    ATTRIBUTE placement_force OF MODIN5_0 : SIGNAL IS "U(0,0,B)0";
+    ATTRIBUTE placement_force OF MODIN5_0 : SIGNAL IS "U(1,2,B)2";
     SIGNAL MODIN5_1 : bit;
-    ATTRIBUTE placement_force OF MODIN5_1 : SIGNAL IS "U(0,0,A)0";
+    ATTRIBUTE placement_force OF MODIN5_1 : SIGNAL IS "U(1,2,A)0";
     SIGNAL MODIN6_0 : bit;
     SIGNAL MODIN6_1 : bit;
     SIGNAL MODIN8_0 : bit;
     ATTRIBUTE placement_force OF MODIN8_0 : SIGNAL IS "U(3,5,B)2";
     SIGNAL MODIN8_1 : bit;
-    ATTRIBUTE placement_force OF MODIN8_1 : SIGNAL IS "U(3,4,A)0";
+    ATTRIBUTE placement_force OF MODIN8_1 : SIGNAL IS "U(3,4,B)3";
     SIGNAL MODIN9_0 : bit;
     SIGNAL MODIN9_1 : bit;
-    SIGNAL Motor_A_Output_In1(0)__PA : bit;
-    SIGNAL Motor_A_Output_In2(0)__PA : bit;
+    SIGNAL MPU6050_SCL(0)__PA : bit;
+    SIGNAL MPU6050_SDA(0)__PA : bit;
     SIGNAL Net_1049 : bit;
     SIGNAL Net_1143 : bit;
     ATTRIBUTE global_signal OF Net_1143 : SIGNAL IS true;
@@ -65,50 +75,115 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL Net_1188 : bit;
     SIGNAL Net_1193 : bit;
     SIGNAL Net_1195 : bit;
+    SIGNAL Net_1219 : bit;
+    ATTRIBUTE udbclken_assigned OF Net_1219 : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF Net_1219 : SIGNAL IS true;
+    SIGNAL Net_1219_local : bit;
+    SIGNAL Net_1393 : bit;
+    ATTRIBUTE GROUND OF Net_1393 : SIGNAL IS true;
     SIGNAL Net_140 : bit;
-    ATTRIBUTE placement_force OF Net_140 : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF Net_140 : SIGNAL IS "U(0,0,A)0";
+    SIGNAL Net_1426 : bit;
+    ATTRIBUTE placement_force OF Net_1426 : SIGNAL IS "U(0,2,A)2";
+    SIGNAL Net_1427 : bit;
+    ATTRIBUTE placement_force OF Net_1427 : SIGNAL IS "U(0,2,B)1";
     SIGNAL Net_156 : bit;
-    ATTRIBUTE placement_force OF Net_156 : SIGNAL IS "U(2,2,B)1";
+    ATTRIBUTE placement_force OF Net_156 : SIGNAL IS "U(0,0,B)0";
+    SIGNAL Net_1631 : bit;
+    ATTRIBUTE placement_force OF Net_1631 : SIGNAL IS "U(2,2,A)2";
+    SIGNAL Net_1632 : bit;
+    ATTRIBUTE placement_force OF Net_1632 : SIGNAL IS "U(2,2,B)1";
     SIGNAL Net_323 : bit;
-    SIGNAL Net_48 : bit;
-    ATTRIBUTE udbclken_assigned OF Net_48 : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF Net_48 : SIGNAL IS true;
-    SIGNAL Net_48_local : bit;
+    SIGNAL Pendulum_DC_Motor_In1(0)__PA : bit;
+    SIGNAL Pendulum_DC_Motor_In2(0)__PA : bit;
     SIGNAL RC_Ch1(0)__PA : bit;
     SIGNAL RC_Ch2(0)__PA : bit;
     SIGNAL RC_Ch3(0)__PA : bit;
     SIGNAL RC_Ch4(0)__PA : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:cmp1_less\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:cmp2_less\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_0\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_1\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_2\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_3\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_4\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_5\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_6\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:control_7\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:prevCompare1\ : bit;
-    ATTRIBUTE placement_force OF \Motor_A_PWM:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,2,B)2";
-    SIGNAL \Motor_A_PWM:PWMUDB:prevCompare2\ : bit;
-    ATTRIBUTE placement_force OF \Motor_A_PWM:PWMUDB:prevCompare2\ : SIGNAL IS "U(2,2,A)1";
-    SIGNAL \Motor_A_PWM:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \Motor_A_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,2,A)3";
-    SIGNAL \Motor_A_PWM:PWMUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \Motor_A_PWM:PWMUDB:status_0\ : SIGNAL IS "U(2,2,B)3";
-    SIGNAL \Motor_A_PWM:PWMUDB:status_1\ : bit;
-    ATTRIBUTE placement_force OF \Motor_A_PWM:PWMUDB:status_1\ : SIGNAL IS "U(2,2,A)0";
-    SIGNAL \Motor_A_PWM:PWMUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \Motor_A_PWM:PWMUDB:status_2\ : SIGNAL IS "U(2,2,B)0";
-    SIGNAL \Motor_A_PWM:PWMUDB:status_3\ : bit;
-    SIGNAL \Motor_A_PWM:PWMUDB:tc_i\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_0\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_1\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_2\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_3\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_4\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_5\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_6\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_7\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\ : bit;
+    ATTRIBUTE placement_force OF \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\ : SIGNAL IS "U(1,0,A)2";
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\ : bit;
+    ATTRIBUTE placement_force OF \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\ : SIGNAL IS "U(1,0,B)1";
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ : bit;
+    ATTRIBUTE placement_force OF \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,0,A)3";
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_0\ : bit;
+    ATTRIBUTE placement_force OF \Drive_DC_Motor_PWM:PWMUDB:status_0\ : SIGNAL IS "U(1,0,A)3";
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_1\ : bit;
+    ATTRIBUTE placement_force OF \Drive_DC_Motor_PWM:PWMUDB:status_1\ : SIGNAL IS "U(1,0,B)3";
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_2\ : bit;
+    ATTRIBUTE placement_force OF \Drive_DC_Motor_PWM:PWMUDB:status_2\ : SIGNAL IS "U(1,0,A)0";
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_3\ : bit;
+    SIGNAL \Drive_DC_Motor_PWM:PWMUDB:tc_i\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_0\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_1\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_2\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_3\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_4\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_5\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_6\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_7\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\ : bit;
+    ATTRIBUTE placement_force OF \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\ : SIGNAL IS "U(2,2,B)2";
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\ : bit;
+    ATTRIBUTE placement_force OF \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\ : SIGNAL IS "U(2,2,A)1";
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ : bit;
+    ATTRIBUTE placement_force OF \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,2,A)3";
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_0\ : bit;
+    ATTRIBUTE placement_force OF \Flywheel_DC_Motor_PWM:PWMUDB:status_0\ : SIGNAL IS "U(2,2,B)3";
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_1\ : bit;
+    ATTRIBUTE placement_force OF \Flywheel_DC_Motor_PWM:PWMUDB:status_1\ : SIGNAL IS "U(2,2,A)0";
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_2\ : bit;
+    ATTRIBUTE placement_force OF \Flywheel_DC_Motor_PWM:PWMUDB:status_2\ : SIGNAL IS "U(2,2,B)0";
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_3\ : bit;
+    SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\ : bit;
+    SIGNAL \MPU6050_I2C:Net_1109_0\ : bit;
+    SIGNAL \MPU6050_I2C:Net_1109_1\ : bit;
+    SIGNAL \MPU6050_I2C:Net_643_0\ : bit;
+    SIGNAL \MPU6050_I2C:Net_697\ : bit;
+    SIGNAL \MPU6050_I2C:sda_x_wire\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_0\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_1\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_2\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_3\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_4\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_5\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_6\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_7\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\ : bit;
+    ATTRIBUTE placement_force OF \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\ : SIGNAL IS "U(0,2,B)2";
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\ : bit;
+    ATTRIBUTE placement_force OF \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\ : SIGNAL IS "U(0,2,A)1";
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ : bit;
+    ATTRIBUTE placement_force OF \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ : SIGNAL IS "U(0,2,A)3";
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_0\ : bit;
+    ATTRIBUTE placement_force OF \Pendulum_DC_Motor_PWM:PWMUDB:status_0\ : SIGNAL IS "U(0,2,B)3";
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_1\ : bit;
+    ATTRIBUTE placement_force OF \Pendulum_DC_Motor_PWM:PWMUDB:status_1\ : SIGNAL IS "U(0,2,A)0";
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_2\ : bit;
+    ATTRIBUTE placement_force OF \Pendulum_DC_Motor_PWM:PWMUDB:status_2\ : SIGNAL IS "U(0,2,B)0";
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_3\ : bit;
+    SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\ : bit;
     SIGNAL \RC_Ch1_Timer:TimerUDB:capt_fifo_load\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(3,0,A)2";
     ATTRIBUTE soft OF \RC_Ch1_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
     SIGNAL \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(2,0,A)1";
     SIGNAL \RC_Ch1_Timer:TimerUDB:capture_last\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(3,0,B)1";
+    ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(3,0,B)3";
     SIGNAL \RC_Ch1_Timer:TimerUDB:control_2\ : bit;
     SIGNAL \RC_Ch1_Timer:TimerUDB:control_3\ : bit;
     SIGNAL \RC_Ch1_Timer:TimerUDB:control_4\ : bit;
@@ -123,18 +198,18 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL \RC_Ch1_Timer:TimerUDB:status_tc\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:status_tc\ : SIGNAL IS "U(3,0,A)3";
     SIGNAL \RC_Ch1_Timer:TimerUDB:trig_fall_detected\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:trig_fall_detected\ : SIGNAL IS "U(3,0,B)0";
+    ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:trig_fall_detected\ : SIGNAL IS "U(3,0,B)1";
     SIGNAL \RC_Ch1_Timer:TimerUDB:trig_reg\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:trig_reg\ : SIGNAL IS "U(3,0,A)0";
     SIGNAL \RC_Ch1_Timer:TimerUDB:trig_rise_detected\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch1_Timer:TimerUDB:trig_rise_detected\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(1,1,A)2";
     ATTRIBUTE soft OF \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
     SIGNAL \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(0,0,A)1";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(1,1,B)2";
     SIGNAL \RC_Ch2_Timer:TimerUDB:capture_last\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(0,1,B)1";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(1,1,B)1";
     SIGNAL \RC_Ch2_Timer:TimerUDB:control_2\ : bit;
     SIGNAL \RC_Ch2_Timer:TimerUDB:control_3\ : bit;
     SIGNAL \RC_Ch2_Timer:TimerUDB:control_4\ : bit;
@@ -147,18 +222,18 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL \RC_Ch2_Timer:TimerUDB:status_2\ : bit;
     SIGNAL \RC_Ch2_Timer:TimerUDB:status_3\ : bit;
     SIGNAL \RC_Ch2_Timer:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:status_tc\ : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:status_tc\ : SIGNAL IS "U(1,1,A)3";
     SIGNAL \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : SIGNAL IS "U(0,1,B)0";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : SIGNAL IS "U(1,1,B)0";
     SIGNAL \RC_Ch2_Timer:TimerUDB:trig_reg\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:trig_reg\ : SIGNAL IS "U(0,1,A)0";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:trig_reg\ : SIGNAL IS "U(1,1,A)0";
     SIGNAL \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : SIGNAL IS "U(0,1,A)1";
+    ATTRIBUTE placement_force OF \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : SIGNAL IS "U(1,1,A)1";
     SIGNAL \RC_Ch3_Timer:TimerUDB:capt_fifo_load\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS "U(3,3,A)2";
     ATTRIBUTE soft OF \RC_Ch3_Timer:TimerUDB:capt_fifo_load\ : SIGNAL IS 1;
     SIGNAL \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(3,4,B)1";
+    ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(3,1,B)1";
     SIGNAL \RC_Ch3_Timer:TimerUDB:capture_last\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(3,3,B)1";
     SIGNAL \RC_Ch3_Timer:TimerUDB:control_0\ : bit;
@@ -172,7 +247,7 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL \RC_Ch3_Timer:TimerUDB:int_capt_count_0\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:int_capt_count_0\ : SIGNAL IS "U(3,3,B)2";
     SIGNAL \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : SIGNAL IS "U(3,1,A)0";
     SIGNAL \RC_Ch3_Timer:TimerUDB:per_zero\ : bit;
     SIGNAL \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u1.ce0__sig\ : bit;
     SIGNAL \RC_Ch3_Timer:TimerUDB:status_2\ : bit;
@@ -191,7 +266,7 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL \RC_Ch4_Timer:TimerUDB:capt_int_temp\ : bit;
     ATTRIBUTE placement_force OF \RC_Ch4_Timer:TimerUDB:capt_int_temp\ : SIGNAL IS "U(3,4,A)1";
     SIGNAL \RC_Ch4_Timer:TimerUDB:capture_last\ : bit;
-    ATTRIBUTE placement_force OF \RC_Ch4_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(2,5,B)3";
+    ATTRIBUTE placement_force OF \RC_Ch4_Timer:TimerUDB:capture_last\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \RC_Ch4_Timer:TimerUDB:control_2\ : bit;
     SIGNAL \RC_Ch4_Timer:TimerUDB:control_3\ : bit;
     SIGNAL \RC_Ch4_Timer:TimerUDB:control_4\ : bit;
@@ -239,10 +314,9 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
-    SIGNAL one : bit;
-    ATTRIBUTE POWER OF one : SIGNAL IS true;
-    SIGNAL zero : bit;
-    ATTRIBUTE GROUND OF zero : SIGNAL IS true;
+    SIGNAL tmpOE__Drive_DC_Motor_In2_net_0 : bit;
+    ATTRIBUTE POWER OF tmpOE__Drive_DC_Motor_In2_net_0 : SIGNAL IS true;
+    SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
     SIGNAL \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u0.z0__sig\ : bit;
@@ -341,10 +415,10 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     SIGNAL \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u2.sor__sig\ : bit;
     SIGNAL \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u2.cmsbo__sig\ : bit;
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
-    ATTRIBUTE lib_model OF Motor_A_Output_In1(0) : LABEL IS "iocell1";
-    ATTRIBUTE Location OF Motor_A_Output_In1(0) : LABEL IS "P1[7]";
-    ATTRIBUTE lib_model OF Motor_A_Output_In2(0) : LABEL IS "iocell2";
-    ATTRIBUTE Location OF Motor_A_Output_In2(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF Drive_DC_Motor_In2(0) : LABEL IS "iocell1";
+    ATTRIBUTE Location OF Drive_DC_Motor_In2(0) : LABEL IS "P1[6]";
+    ATTRIBUTE lib_model OF Drive_DC_Motor_In1(0) : LABEL IS "iocell2";
+    ATTRIBUTE Location OF Drive_DC_Motor_In1(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF RC_Ch1(0) : LABEL IS "iocell3";
     ATTRIBUTE Location OF RC_Ch1(0) : LABEL IS "P0[0]";
     ATTRIBUTE lib_model OF \USBUART:Dm(0)\ : LABEL IS "iocell4";
@@ -358,8 +432,20 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE Location OF RC_Ch4(0) : LABEL IS "P0[3]";
     ATTRIBUTE lib_model OF RC_Ch3(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF RC_Ch3(0) : LABEL IS "P0[2]";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:status_2\ : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:status_2\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF Flywheel_DC_Motor_In1(0) : LABEL IS "iocell9";
+    ATTRIBUTE Location OF Flywheel_DC_Motor_In1(0) : LABEL IS "P12[3]";
+    ATTRIBUTE lib_model OF Pendulum_DC_Motor_In1(0) : LABEL IS "iocell10";
+    ATTRIBUTE Location OF Pendulum_DC_Motor_In1(0) : LABEL IS "P1[5]";
+    ATTRIBUTE lib_model OF Pendulum_DC_Motor_In2(0) : LABEL IS "iocell11";
+    ATTRIBUTE Location OF Pendulum_DC_Motor_In2(0) : LABEL IS "P1[4]";
+    ATTRIBUTE lib_model OF Flywheel_DC_Motor_In2(0) : LABEL IS "iocell12";
+    ATTRIBUTE Location OF Flywheel_DC_Motor_In2(0) : LABEL IS "P12[2]";
+    ATTRIBUTE lib_model OF MPU6050_SDA(0) : LABEL IS "iocell13";
+    ATTRIBUTE Location OF MPU6050_SDA(0) : LABEL IS "P12[1]";
+    ATTRIBUTE lib_model OF MPU6050_SCL(0) : LABEL IS "iocell14";
+    ATTRIBUTE Location OF MPU6050_SCL(0) : LABEL IS "P12[0]";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:status_2\ : LABEL IS "macrocell1";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:status_2\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell2";
     ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:status_tc\ : LABEL IS "macrocell3";
@@ -367,11 +453,11 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:trig_reg\ : LABEL IS "macrocell4";
     ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:trig_reg\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:status_tc\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:status_tc\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:status_tc\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:trig_reg\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:trig_reg\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:trig_reg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \RC_Ch4_Timer:TimerUDB:capt_fifo_load\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:status_tc\ : LABEL IS "macrocell9";
@@ -384,14 +470,18 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:status_tc\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:trig_reg\ : LABEL IS "macrocell13";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:trig_reg\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:status_2\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:status_2\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:status_2\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:status_2\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell1";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell1";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell2";
     ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u0\ : LABEL IS "datapathcell2";
@@ -411,9 +501,9 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE Location OF \USBUART:sof_int\ : LABEL IS "[IntrContainer=(0)][IntrId=(21)]";
     ATTRIBUTE Location OF RC_Ch2_Timer_Interrupt : LABEL IS "[IntrContainer=(0)][IntrId=(2)]";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\ : LABEL IS "datapathcell5";
     ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\ : LABEL IS "datapathcell6";
@@ -436,7 +526,7 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell5";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:rstSts:stsreg\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u0\ : LABEL IS "datapathcell11";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u0\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u1\ : LABEL IS "datapathcell12";
@@ -444,68 +534,110 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
     ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u2\ : LABEL IS "datapathcell13";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u2\ : LABEL IS "U(3,2)";
     ATTRIBUTE Location OF RC_Ch3_Timer_Interrupt : LABEL IS "[IntrContainer=(0)][IntrId=(3)]";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:prevCompare1\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:prevCompare2\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:prevCompare2\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:status_0\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:status_0\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \Motor_A_PWM:PWMUDB:status_1\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \Motor_A_PWM:PWMUDB:status_1\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF Net_140 : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF Net_140 : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF Net_156 : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF Net_156 : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell21";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell6";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell6";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell14";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell7";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "statusicell7";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:genblk8:stsreg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell15";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \MPU6050_I2C:I2C_IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(15)]";
+    ATTRIBUTE Location OF \MPU6050_I2C:I2C_FF\ : LABEL IS "F(I2C,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:status_0\ : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:status_0\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF \Drive_DC_Motor_PWM:PWMUDB:status_1\ : LABEL IS "macrocell20";
+    ATTRIBUTE Location OF \Drive_DC_Motor_PWM:PWMUDB:status_1\ : LABEL IS "U(1,0)";
+    ATTRIBUTE lib_model OF Net_140 : LABEL IS "macrocell21";
+    ATTRIBUTE Location OF Net_140 : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF Net_156 : LABEL IS "macrocell22";
+    ATTRIBUTE Location OF Net_156 : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell23";
     ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:capture_last\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF MODIN2_1 : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF MODIN2_1 : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF MODIN2_0 : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF MODIN2_0 : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell25";
+    ATTRIBUTE lib_model OF MODIN2_1 : LABEL IS "macrocell24";
+    ATTRIBUTE Location OF MODIN2_1 : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF MODIN2_0 : LABEL IS "macrocell25";
+    ATTRIBUTE Location OF MODIN2_0 : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell26";
+    ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell27";
     ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell26";
+    ATTRIBUTE lib_model OF \RC_Ch1_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell28";
     ATTRIBUTE Location OF \RC_Ch1_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:capture_last\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF MODIN5_1 : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF MODIN5_1 : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF MODIN5_0 : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF MODIN5_0 : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \RC_Ch4_Timer:TimerUDB:capture_last\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF MODIN8_1 : LABEL IS "macrocell34";
+    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell29";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:capture_last\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF MODIN5_1 : LABEL IS "macrocell30";
+    ATTRIBUTE Location OF MODIN5_1 : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF MODIN5_0 : LABEL IS "macrocell31";
+    ATTRIBUTE Location OF MODIN5_0 : LABEL IS "U(1,2)";
+    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell32";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell33";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell34";
+    ATTRIBUTE Location OF \RC_Ch2_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell35";
+    ATTRIBUTE Location OF \RC_Ch4_Timer:TimerUDB:capture_last\ : LABEL IS "U(3,5)";
+    ATTRIBUTE lib_model OF MODIN8_1 : LABEL IS "macrocell36";
     ATTRIBUTE Location OF MODIN8_1 : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF MODIN8_0 : LABEL IS "macrocell35";
+    ATTRIBUTE lib_model OF MODIN8_0 : LABEL IS "macrocell37";
     ATTRIBUTE Location OF MODIN8_0 : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell36";
+    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell38";
     ATTRIBUTE Location OF \RC_Ch4_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell37";
+    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell39";
     ATTRIBUTE Location OF \RC_Ch4_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell38";
+    ATTRIBUTE lib_model OF \RC_Ch4_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell40";
     ATTRIBUTE Location OF \RC_Ch4_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell39";
+    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:capture_last\ : LABEL IS "macrocell41";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:capture_last\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell41";
+    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : LABEL IS "macrocell42";
+    ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:int_capt_count_1\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:int_capt_count_0\ : LABEL IS "macrocell43";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:int_capt_count_0\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell43";
+    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : LABEL IS "macrocell44";
+    ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:capt_int_temp\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "macrocell45";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:trig_rise_detected\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell44";
+    ATTRIBUTE lib_model OF \RC_Ch3_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "macrocell46";
     ATTRIBUTE Location OF \RC_Ch3_Timer:TimerUDB:trig_fall_detected\ : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell47";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell48";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "macrocell49";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:status_0\ : LABEL IS "macrocell50";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:status_0\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Pendulum_DC_Motor_PWM:PWMUDB:status_1\ : LABEL IS "macrocell51";
+    ATTRIBUTE Location OF \Pendulum_DC_Motor_PWM:PWMUDB:status_1\ : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF Net_1426 : LABEL IS "macrocell52";
+    ATTRIBUTE Location OF Net_1426 : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF Net_1427 : LABEL IS "macrocell53";
+    ATTRIBUTE Location OF Net_1427 : LABEL IS "U(0,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "macrocell54";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "macrocell55";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "macrocell56";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:status_0\ : LABEL IS "macrocell57";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:status_0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \Flywheel_DC_Motor_PWM:PWMUDB:status_1\ : LABEL IS "macrocell58";
+    ATTRIBUTE Location OF \Flywheel_DC_Motor_PWM:PWMUDB:status_1\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF Net_1631 : LABEL IS "macrocell59";
+    ATTRIBUTE Location OF Net_1631 : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF Net_1632 : LABEL IS "macrocell60";
+    ATTRIBUTE Location OF Net_1632 : LABEL IS "U(2,2)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -695,6 +827,15 @@ ARCHITECTURE __DEFAULT__ OF Ball IS
             cmsbo : OUT std_ulogic;
             busclk : IN std_ulogic);
     END COMPONENT;
+    COMPONENT i2ccell
+        PORT (
+            clock : IN std_ulogic;
+            scl_in : IN std_ulogic;
+            sda_in : IN std_ulogic;
+            scl_out : OUT std_ulogic;
+            sda_out : OUT std_ulogic;
+            interrupt : OUT std_ulogic);
+    END COMPONENT;
     COMPONENT interrupt
         PORT (
             interrupt : IN std_ulogic;
@@ -831,104 +972,13 @@ BEGIN
             clk_bus => ClockBlock_BUS_CLK_local,
             dsi_clkin_div => open,
             dsi_glb_div => open,
-            dclk_glb_0 => Net_48,
-            dclk_0 => Net_48_local,
+            dclk_glb_0 => Net_1219,
+            dclk_0 => Net_1219_local,
             dclk_glb_1 => Net_1143,
-            dclk_1 => Net_1143_local);
+            dclk_1 => Net_1143_local,
+            clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\);
 
-    Motor_A_Output_In1:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "CONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "1",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 0,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Motor_A_Output_In1(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Motor_A_Output_In1",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Motor_A_Output_In1(0)__PA,
-            oe => open,
-            pin_input => Net_140,
-            pad_out => Motor_A_Output_In1(0)_PAD,
-            pad_in => Motor_A_Output_In1(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
-    Motor_A_Output_In2:logicalport
+    Drive_DC_Motor_In2:logicalport
         GENERIC MAP(
             drive_mode => "110",
             ibuf_enabled => "1",
@@ -999,20 +1049,112 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    Motor_A_Output_In2(0):iocell
+    Drive_DC_Motor_In2(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "Motor_A_Output_In2",
+            logicalport => "Drive_DC_Motor_In2",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
         PORT MAP(
-            pa_out => Motor_A_Output_In2(0)__PA,
+            pa_out => Drive_DC_Motor_In2(0)__PA,
             oe => open,
             pin_input => Net_156,
-            pad_out => Motor_A_Output_In2(0)_PAD,
-            pad_in => Motor_A_Output_In2(0)_PAD,
+            pad_out => Drive_DC_Motor_In2(0)_PAD,
+            pad_in => Drive_DC_Motor_In2(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Drive_DC_Motor_In1:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "e851a3b9-efb8-48be-bbb8-b303b216c393",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Drive_DC_Motor_In1(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Drive_DC_Motor_In1",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Drive_DC_Motor_In1(0)__PA,
+            oe => open,
+            pin_input => Net_140,
+            pad_out => Drive_DC_Motor_In1(0)_PAD,
+            pad_in => Drive_DC_Motor_In1(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -1564,14 +1706,570 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    \Motor_A_PWM:PWMUDB:status_2\:macrocell
+    Flywheel_DC_Motor_In1:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "e5dea7d5-addd-4550-aa24-06571c6cab5c",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Flywheel_DC_Motor_In1(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Flywheel_DC_Motor_In1",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Flywheel_DC_Motor_In1(0)__PA,
+            oe => open,
+            pin_input => Net_1631,
+            pad_out => Flywheel_DC_Motor_In1(0)_PAD,
+            pad_in => Flywheel_DC_Motor_In1(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Pendulum_DC_Motor_In1:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "90cb7787-0f83-40f2-8837-69949bfe599d",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Pendulum_DC_Motor_In1(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Pendulum_DC_Motor_In1",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Pendulum_DC_Motor_In1(0)__PA,
+            oe => open,
+            pin_input => Net_1426,
+            pad_out => Pendulum_DC_Motor_In1(0)_PAD,
+            pad_in => Pendulum_DC_Motor_In1(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Pendulum_DC_Motor_In2:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "bc93c152-f199-4a46-ada7-ce2c9bd634d9",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Pendulum_DC_Motor_In2(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Pendulum_DC_Motor_In2",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Pendulum_DC_Motor_In2(0)__PA,
+            oe => open,
+            pin_input => Net_1427,
+            pad_out => Pendulum_DC_Motor_In2(0)_PAD,
+            pad_in => Pendulum_DC_Motor_In2(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Flywheel_DC_Motor_In2:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "b8aa409d-5cb2-40c5-99e3-826f7baaf2cd",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "1",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Flywheel_DC_Motor_In2(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Flywheel_DC_Motor_In2",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Flywheel_DC_Motor_In2(0)__PA,
+            oe => open,
+            pin_input => Net_1632,
+            pad_out => Flywheel_DC_Motor_In2(0)_PAD,
+            pad_in => Flywheel_DC_Motor_In2(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    MPU6050_SDA:logicalport
+        GENERIC MAP(
+            drive_mode => "100",
+            ibuf_enabled => "1",
+            id => "c70da4b5-4ecf-477b-9aae-63eb4c2eed94",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "B",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open,
+            in_clock => open);
+
+    MPU6050_SDA(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "MPU6050_SDA",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => MPU6050_SDA(0)__PA,
+            oe => open,
+            fb => \MPU6050_I2C:Net_1109_1\,
+            pin_input => \MPU6050_I2C:sda_x_wire\,
+            pad_out => MPU6050_SDA(0)_PAD,
+            pad_in => MPU6050_SDA(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    MPU6050_SCL:logicalport
+        GENERIC MAP(
+            drive_mode => "100",
+            ibuf_enabled => "1",
+            id => "3d01d459-5534-4694-9bcc-736a7a542cec",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "B",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open,
+            in_clock => open);
+
+    MPU6050_SCL(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "MPU6050_SCL",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => MPU6050_SCL(0)__PA,
+            oe => open,
+            fb => \MPU6050_I2C:Net_1109_0\,
+            pin_input => \MPU6050_I2C:Net_643_0\,
+            pad_out => MPU6050_SCL(0)_PAD,
+            pad_in => MPU6050_SCL(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    \Drive_DC_Motor_PWM:PWMUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
             clken_mode => 1)
         PORT MAP(
-            q => \Motor_A_PWM:PWMUDB:status_2\,
-            main_0 => \Motor_A_PWM:PWMUDB:runmode_enable\,
-            main_1 => \Motor_A_PWM:PWMUDB:tc_i\);
+            q => \Drive_DC_Motor_PWM:PWMUDB:status_2\,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Drive_DC_Motor_PWM:PWMUDB:tc_i\);
 
     \RC_Ch1_Timer:TimerUDB:capt_fifo_load\:macrocell
         GENERIC MAP(
@@ -1709,7 +2407,25 @@ BEGIN
             main_1 => \RC_Ch3_Timer:TimerUDB:control_4\,
             main_2 => \RC_Ch3_Timer:TimerUDB:trig_rise_detected\);
 
-    \Motor_A_PWM:PWMUDB:genblk1:ctrlreg\:controlcell
+    \Pendulum_DC_Motor_PWM:PWMUDB:status_2\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            clken_mode => 1)
+        PORT MAP(
+            q => \Pendulum_DC_Motor_PWM:PWMUDB:status_2\,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:status_2\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            clken_mode => 1)
+        PORT MAP(
+            q => \Flywheel_DC_Motor_PWM:PWMUDB:status_2\,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\);
+
+    \Drive_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "11111111",
             cy_ctrl_mode_1 => "00000000",
@@ -1719,18 +2435,18 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => Net_48,
-            control_7 => \Motor_A_PWM:PWMUDB:control_7\,
-            control_6 => \Motor_A_PWM:PWMUDB:control_6\,
-            control_5 => \Motor_A_PWM:PWMUDB:control_5\,
-            control_4 => \Motor_A_PWM:PWMUDB:control_4\,
-            control_3 => \Motor_A_PWM:PWMUDB:control_3\,
-            control_2 => \Motor_A_PWM:PWMUDB:control_2\,
-            control_1 => \Motor_A_PWM:PWMUDB:control_1\,
-            control_0 => \Motor_A_PWM:PWMUDB:control_0\,
+            clock => Net_1219,
+            control_7 => \Drive_DC_Motor_PWM:PWMUDB:control_7\,
+            control_6 => \Drive_DC_Motor_PWM:PWMUDB:control_6\,
+            control_5 => \Drive_DC_Motor_PWM:PWMUDB:control_5\,
+            control_4 => \Drive_DC_Motor_PWM:PWMUDB:control_4\,
+            control_3 => \Drive_DC_Motor_PWM:PWMUDB:control_3\,
+            control_2 => \Drive_DC_Motor_PWM:PWMUDB:control_2\,
+            control_1 => \Drive_DC_Motor_PWM:PWMUDB:control_1\,
+            control_0 => \Drive_DC_Motor_PWM:PWMUDB:control_0\,
             busclk => ClockBlock_BUS_CLK);
 
-    \Motor_A_PWM:PWMUDB:genblk8:stsreg\:statusicell
+    \Drive_DC_Motor_PWM:PWMUDB:genblk8:stsreg\:statusicell
         GENERIC MAP(
             cy_force_order => 1,
             cy_int_mask => "1111111",
@@ -1738,16 +2454,16 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => Net_48,
+            clock => Net_1219,
             status_6 => open,
             status_5 => open,
             status_4 => open,
-            status_3 => \Motor_A_PWM:PWMUDB:status_3\,
-            status_2 => \Motor_A_PWM:PWMUDB:status_2\,
-            status_1 => \Motor_A_PWM:PWMUDB:status_1\,
-            status_0 => \Motor_A_PWM:PWMUDB:status_0\);
+            status_3 => \Drive_DC_Motor_PWM:PWMUDB:status_3\,
+            status_2 => \Drive_DC_Motor_PWM:PWMUDB:status_2\,
+            status_1 => \Drive_DC_Motor_PWM:PWMUDB:status_1\,
+            status_0 => \Drive_DC_Motor_PWM:PWMUDB:status_0\);
 
-    \Motor_A_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
+    \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
         GENERIC MAP(
             a0_init => "00000000",
             a1_init => "00000000",
@@ -1775,13 +2491,13 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => Net_48,
-            cs_addr_2 => \Motor_A_PWM:PWMUDB:tc_i\,
-            cs_addr_1 => \Motor_A_PWM:PWMUDB:runmode_enable\,
-            cl0_comb => \Motor_A_PWM:PWMUDB:cmp1_less\,
-            z0_comb => \Motor_A_PWM:PWMUDB:tc_i\,
-            cl1_comb => \Motor_A_PWM:PWMUDB:cmp2_less\,
-            f1_blk_stat_comb => \Motor_A_PWM:PWMUDB:status_3\,
+            clock => Net_1219,
+            cs_addr_2 => \Drive_DC_Motor_PWM:PWMUDB:tc_i\,
+            cs_addr_1 => \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            cl0_comb => \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\,
+            z0_comb => \Drive_DC_Motor_PWM:PWMUDB:tc_i\,
+            cl1_comb => \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\,
+            f1_blk_stat_comb => \Drive_DC_Motor_PWM:PWMUDB:status_3\,
             busclk => ClockBlock_BUS_CLK);
 
     \RC_Ch1_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:controlcell
@@ -2686,57 +3402,226 @@ BEGIN
             interrupt => Net_1193,
             clock => ClockBlock_BUS_CLK);
 
-    \Motor_A_PWM:PWMUDB:runmode_enable\:macrocell
+    \Pendulum_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => Net_1219,
+            control_7 => \Pendulum_DC_Motor_PWM:PWMUDB:control_7\,
+            control_6 => \Pendulum_DC_Motor_PWM:PWMUDB:control_6\,
+            control_5 => \Pendulum_DC_Motor_PWM:PWMUDB:control_5\,
+            control_4 => \Pendulum_DC_Motor_PWM:PWMUDB:control_4\,
+            control_3 => \Pendulum_DC_Motor_PWM:PWMUDB:control_3\,
+            control_2 => \Pendulum_DC_Motor_PWM:PWMUDB:control_2\,
+            control_1 => \Pendulum_DC_Motor_PWM:PWMUDB:control_1\,
+            control_0 => \Pendulum_DC_Motor_PWM:PWMUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:genblk8:stsreg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0100111",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => Net_1219,
+            status_6 => open,
+            status_5 => open,
+            status_4 => open,
+            status_3 => \Pendulum_DC_Motor_PWM:PWMUDB:status_3\,
+            status_2 => \Pendulum_DC_Motor_PWM:PWMUDB:status_2\,
+            status_1 => \Pendulum_DC_Motor_PWM:PWMUDB:status_1\,
+            status_0 => \Pendulum_DC_Motor_PWM:PWMUDB:status_0\);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => Net_1219,
+            cs_addr_2 => \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\,
+            cs_addr_1 => \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            cl0_comb => \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\,
+            z0_comb => \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\,
+            cl1_comb => \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\,
+            f1_blk_stat_comb => \Pendulum_DC_Motor_PWM:PWMUDB:status_3\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "11111111",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => Net_1219,
+            control_7 => \Flywheel_DC_Motor_PWM:PWMUDB:control_7\,
+            control_6 => \Flywheel_DC_Motor_PWM:PWMUDB:control_6\,
+            control_5 => \Flywheel_DC_Motor_PWM:PWMUDB:control_5\,
+            control_4 => \Flywheel_DC_Motor_PWM:PWMUDB:control_4\,
+            control_3 => \Flywheel_DC_Motor_PWM:PWMUDB:control_3\,
+            control_2 => \Flywheel_DC_Motor_PWM:PWMUDB:control_2\,
+            control_1 => \Flywheel_DC_Motor_PWM:PWMUDB:control_1\,
+            control_0 => \Flywheel_DC_Motor_PWM:PWMUDB:control_0\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:genblk8:stsreg\:statusicell
+        GENERIC MAP(
+            cy_force_order => 1,
+            cy_int_mask => "1111111",
+            cy_md_select => "0100111",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => Net_1219,
+            status_6 => open,
+            status_5 => open,
+            status_4 => open,
+            status_3 => \Flywheel_DC_Motor_PWM:PWMUDB:status_3\,
+            status_2 => \Flywheel_DC_Motor_PWM:PWMUDB:status_2\,
+            status_1 => \Flywheel_DC_Motor_PWM:PWMUDB:status_1\,
+            status_0 => \Flywheel_DC_Motor_PWM:PWMUDB:status_0\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\:datapathcell
+        GENERIC MAP(
+            a0_init => "00000000",
+            a1_init => "00000000",
+            ce0_sync => 1,
+            ce1_sync => 1,
+            cl0_sync => 1,
+            cl1_sync => 1,
+            cmsb_sync => 1,
+            co_msb_sync => 1,
+            cy_dpconfig => "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+            d0_init => "00000000",
+            d1_init => "00000000",
+            f0_blk_sync => 1,
+            f0_bus_sync => 1,
+            f1_blk_sync => 1,
+            f1_bus_sync => 1,
+            ff0_sync => 1,
+            ff1_sync => 1,
+            ov_msb_sync => 1,
+            so_sync => 1,
+            z0_sync => 1,
+            z1_sync => 1,
+            uses_p_in => '0',
+            uses_p_out => '0',
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            clock => Net_1219,
+            cs_addr_2 => \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\,
+            cs_addr_1 => \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            cl0_comb => \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\,
+            z0_comb => \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\,
+            cl1_comb => \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\,
+            f1_blk_stat_comb => \Flywheel_DC_Motor_PWM:PWMUDB:status_3\,
+            busclk => ClockBlock_BUS_CLK);
+
+    \MPU6050_I2C:I2C_IRQ\:interrupt
+        GENERIC MAP(
+            int_type => "00")
+        PORT MAP(
+            interrupt => \MPU6050_I2C:Net_697\,
+            clock => ClockBlock_BUS_CLK);
+
+    \MPU6050_I2C:I2C_FF\:i2ccell
+        GENERIC MAP(
+            cy_registers => "",
+            use_wakeup => 0)
+        PORT MAP(
+            clock => \ClockBlock.clk_bus_glb_ff__sig\,
+            scl_in => \MPU6050_I2C:Net_1109_0\,
+            sda_in => \MPU6050_I2C:Net_1109_1\,
+            scl_out => \MPU6050_I2C:Net_643_0\,
+            sda_out => \MPU6050_I2C:sda_x_wire\,
+            interrupt => \MPU6050_I2C:Net_697\);
+
+    \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \Motor_A_PWM:PWMUDB:runmode_enable\,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:control_7\);
+            q => \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:control_7\);
 
-    \Motor_A_PWM:PWMUDB:prevCompare1\:macrocell
+    \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \Motor_A_PWM:PWMUDB:prevCompare1\,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:cmp1_less\);
+            q => \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\,
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\);
 
-    \Motor_A_PWM:PWMUDB:prevCompare2\:macrocell
+    \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \Motor_A_PWM:PWMUDB:prevCompare2\,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:cmp2_less\);
+            q => \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\,
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\);
 
-    \Motor_A_PWM:PWMUDB:status_0\:macrocell
+    \Drive_DC_Motor_PWM:PWMUDB:status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \Motor_A_PWM:PWMUDB:status_0\,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:prevCompare1\,
-            main_1 => \Motor_A_PWM:PWMUDB:cmp1_less\);
+            q => \Drive_DC_Motor_PWM:PWMUDB:status_0\,
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\,
+            main_1 => \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\);
 
-    \Motor_A_PWM:PWMUDB:status_1\:macrocell
+    \Drive_DC_Motor_PWM:PWMUDB:status_1\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1)",
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            q => \Motor_A_PWM:PWMUDB:status_1\,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:prevCompare2\,
-            main_1 => \Motor_A_PWM:PWMUDB:cmp2_less\);
+            q => \Drive_DC_Motor_PWM:PWMUDB:status_1\,
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\,
+            main_1 => \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\);
 
     Net_140:macrocell
         GENERIC MAP(
@@ -2745,9 +3630,9 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => Net_140,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:runmode_enable\,
-            main_1 => \Motor_A_PWM:PWMUDB:cmp1_less\);
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\);
 
     Net_156:macrocell
         GENERIC MAP(
@@ -2756,9 +3641,9 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => Net_156,
-            clock_0 => Net_48,
-            main_0 => \Motor_A_PWM:PWMUDB:runmode_enable\,
-            main_1 => \Motor_A_PWM:PWMUDB:cmp2_less\);
+            clock_0 => Net_1219,
+            main_0 => \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\);
 
     \RC_Ch1_Timer:TimerUDB:capture_last\:macrocell
         GENERIC MAP(
@@ -3079,5 +3964,153 @@ BEGIN
             main_2 => Net_1195,
             main_3 => \RC_Ch3_Timer:TimerUDB:capture_last\,
             main_4 => \RC_Ch3_Timer:TimerUDB:trig_fall_detected\);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:control_7\);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:status_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Pendulum_DC_Motor_PWM:PWMUDB:status_0\,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\,
+            main_1 => \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\);
+
+    \Pendulum_DC_Motor_PWM:PWMUDB:status_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Pendulum_DC_Motor_PWM:PWMUDB:status_1\,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\,
+            main_1 => \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\);
+
+    Net_1426:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_1426,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\);
+
+    Net_1427:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_1427,
+            clock_0 => Net_1219,
+            main_0 => \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:control_7\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:status_0\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Flywheel_DC_Motor_PWM:PWMUDB:status_0\,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\,
+            main_1 => \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\);
+
+    \Flywheel_DC_Motor_PWM:PWMUDB:status_1\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => \Flywheel_DC_Motor_PWM:PWMUDB:status_1\,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\,
+            main_1 => \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\);
+
+    Net_1631:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_1631,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\);
+
+    Net_1632:macrocell
+        GENERIC MAP(
+            eqn_main => "(main_0 * main_1)",
+            clk_inv => '0',
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_1632,
+            clock_0 => Net_1219,
+            main_0 => \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\,
+            main_1 => \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\);
 
 END __DEFAULT__;

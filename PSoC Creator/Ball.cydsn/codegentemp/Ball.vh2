@@ -2,7 +2,7 @@
 --	Conversion of Ball.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Mon May 01 22:26:07 2023
+--	Tue May 02 21:00:26 2023
 --
 
 USE cypress.cypress.all;
@@ -12,371 +12,371 @@ ATTRIBUTE part_name of top_RTL:TYPE IS "cpsoc3";
 END top_RTL;
 --------------------------------------------------------
 ARCHITECTURE R_T_L OF top_RTL IS
-SIGNAL \Motor_A_PWM:PWMUDB:km_run\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:min_kill_reg\ : bit;
-SIGNAL Net_48 : bit;
-SIGNAL one : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\ : bit;
-SIGNAL zero : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:control_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_enable\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_cmpmode2_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_cmpmode2_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_cmpmode2_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_cmpmode1_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_cmpmode1_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ctrl_cmpmode1_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:prevCapture\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:capt_rising\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:capt_falling\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:hwCapture\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:hwEnable\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:trig_last\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:trig_rise\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:trig_fall\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:trig_out\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:runmode_enable\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:runmode_enable\\R\ : bit;
-SIGNAL Net_154 : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:runmode_enable\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_enable\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:sc_kill_tmp\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:tc_i\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ltch_kill_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ltch_kill_reg\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ltch_kill_reg\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:min_kill_reg\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:min_kill_reg\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:sc_kill\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:min_kill\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_kill\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:km_tc\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:db_tc\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_1\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_1\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_0\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_0\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_sel\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:status_0\ : bit;
-SIGNAL \Motor_A_PWM:Net_55\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:prevCompare1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_status\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:prevCompare2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_status\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_status_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_status_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_kill_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_status_reg\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_status_reg\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_status_reg\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_status_reg\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_kill_reg\\R\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_kill_reg\\S\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:fifo_full\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cs_addr_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cs_addr_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cs_addr_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_capture\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_eq\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_less\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff0\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff0\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_eq\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_less\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:z1\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:z1\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff1\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff1\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ov_msb\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ov_msb\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:co_msb\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:co_msb\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:cmsb\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:cmsb\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:so\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:so\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:fifo_nempty\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ce0_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ce0_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:cl0_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:cl0_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:z0_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:z0_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff0_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff0_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ce1_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ce1_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:cl1_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:cl1_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:z1_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:z1_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff1_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ff1_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:so_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:so_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\ : bit;
-ATTRIBUTE port_state_att of \Motor_A_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\:SIGNAL IS 2;
-SIGNAL \Motor_A_PWM:PWMUDB:compare1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:compare2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm_i_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm_i\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm1_i_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm1_i\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm2_i_reg\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm2_i\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:tc_i_reg\ : bit;
-SIGNAL \Motor_A_PWM:Net_101\ : bit;
-SIGNAL \Motor_A_PWM:Net_96\ : bit;
-SIGNAL Net_140 : bit;
+SIGNAL Net_1393 : bit;
+SIGNAL tmpOE__Drive_DC_Motor_In2_net_0 : bit;
 SIGNAL Net_156 : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm_temp\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_31\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_30\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_29\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_28\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_27\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_26\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_25\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_23\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_22\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_21\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_20\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_19\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_18\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_17\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_15\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_14\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_13\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_12\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_11\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_10\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_9\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:b_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_31\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_30\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_29\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_28\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_27\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_26\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_25\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_23\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_22\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_21\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_20\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_19\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_18\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_17\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_15\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_14\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_13\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_12\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_11\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_10\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_9\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODIN1_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:a_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODIN1_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_31\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_30\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_29\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_28\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_27\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_26\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_25\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_23\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_22\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_21\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_20\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_19\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_18\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_17\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_15\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_14\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_13\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_12\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_11\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_10\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_9\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:b_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_31\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_31\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_30\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_30\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_29\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_29\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_28\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_28\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_27\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_27\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_26\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_26\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_25\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_25\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_23\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_23\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_22\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_22\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_21\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_21\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_20\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_20\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_19\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_19\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_18\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_18\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_17\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_17\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_15\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_15\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_14\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_14\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_13\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_13\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_12\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_12\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_11\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_11\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_10\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_10\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_9\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_9\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:add_vi_vv_MODGEN_1_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:s_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
-SIGNAL Net_163 : bit;
-SIGNAL Net_157 : bit;
-SIGNAL Net_155 : bit;
-SIGNAL \Motor_A_PWM:Net_113\ : bit;
-SIGNAL \Motor_A_PWM:Net_107\ : bit;
-SIGNAL \Motor_A_PWM:Net_114\ : bit;
-SIGNAL tmpOE__Motor_A_Output_In1_net_0 : bit;
-SIGNAL tmpFB_0__Motor_A_Output_In1_net_0 : bit;
-SIGNAL tmpIO_0__Motor_A_Output_In1_net_0 : bit;
-TERMINAL tmpSIOVREF__Motor_A_Output_In1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Motor_A_Output_In1_net_0 : bit;
-SIGNAL tmpOE__Motor_A_Output_In2_net_0 : bit;
-SIGNAL tmpFB_0__Motor_A_Output_In2_net_0 : bit;
-SIGNAL tmpIO_0__Motor_A_Output_In2_net_0 : bit;
-TERMINAL tmpSIOVREF__Motor_A_Output_In2_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__Motor_A_Output_In2_net_0 : bit;
+SIGNAL tmpFB_0__Drive_DC_Motor_In2_net_0 : bit;
+SIGNAL tmpIO_0__Drive_DC_Motor_In2_net_0 : bit;
+TERMINAL tmpSIOVREF__Drive_DC_Motor_In2_net_0 : bit;
+SIGNAL zero : bit;
+SIGNAL one : bit;
+SIGNAL tmpINTERRUPT_0__Drive_DC_Motor_In2_net_0 : bit;
+SIGNAL tmpOE__Drive_DC_Motor_In1_net_0 : bit;
+SIGNAL Net_140 : bit;
+SIGNAL tmpFB_0__Drive_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpIO_0__Drive_DC_Motor_In1_net_0 : bit;
+TERMINAL tmpSIOVREF__Drive_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Drive_DC_Motor_In1_net_0 : bit;
+SIGNAL Net_1219 : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:km_run\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:min_kill_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:control_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_enable\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCapture\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:capt_rising\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:capt_falling\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:hwCapture\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:hwEnable\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:trig_last\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:trig_rise\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:trig_fall\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:trig_out\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_enable\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sc_kill_tmp\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:tc_i\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ltch_kill_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:min_kill_reg\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:min_kill_reg\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sc_kill\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:min_kill\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_kill\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:km_tc\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:db_tc\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_sel\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:status_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:Net_55\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_status\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_status\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_status_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_status_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_kill_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_kill_reg\\R\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_kill_reg\\S\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:fifo_full\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cs_addr_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cs_addr_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cs_addr_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_capture\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_eq\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_eq\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:fifo_nempty\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce0_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl0_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z0_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce1_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl1_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:compare1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:compare2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm_i_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm_i\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm1_i_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm1_i\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm2_i_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm2_i\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:tc_i_reg\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:Net_101\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:Net_96\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm_temp\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_31\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_30\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_29\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_28\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_27\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_26\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_25\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_23\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_22\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_21\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_20\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_19\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_18\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_17\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_15\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_14\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_13\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_12\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_11\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_10\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_9\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:b_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_31\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_30\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_29\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_28\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_27\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_26\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_25\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_23\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_22\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_21\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_20\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_19\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_18\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_17\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_15\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_14\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_13\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_12\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_11\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_10\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_9\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODIN1_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:a_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODIN1_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_31\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_30\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_29\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_28\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_27\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_26\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_25\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_23\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_22\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_21\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_20\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_19\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_18\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_17\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_15\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_14\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_13\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_12\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_11\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_10\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_9\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:b_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_31\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_31\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_30\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_30\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_29\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_29\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_28\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_28\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_27\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_27\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_26\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_26\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_25\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_25\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_23\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_23\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_22\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_22\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_21\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_21\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_20\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_20\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_19\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_19\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_18\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_18\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_17\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_17\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_15\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_15\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_14\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_14\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_13\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_13\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_12\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_12\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_11\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_11\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_10\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_10\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_9\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_9\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_1_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:s_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL Net_2893 : bit;
+SIGNAL Net_2887 : bit;
+SIGNAL Net_2886 : bit;
+SIGNAL \Drive_DC_Motor_PWM:Net_113\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:Net_107\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:Net_114\ : bit;
 SIGNAL tmpOE__RC_Ch1_net_0 : bit;
 SIGNAL Net_1164 : bit;
 SIGNAL tmpIO_0__RC_Ch1_net_0 : bit;
@@ -1797,23 +1797,782 @@ SIGNAL tmpOE__RC_Ch3_net_0 : bit;
 SIGNAL tmpIO_0__RC_Ch3_net_0 : bit;
 TERMINAL tmpSIOVREF__RC_Ch3_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__RC_Ch3_net_0 : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:min_kill_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:prevCapture\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:trig_last\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:runmode_enable\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:sc_kill_tmp\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:ltch_kill_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_1\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:dith_count_0\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:prevCompare1\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:prevCompare2\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp1_status_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:cmp2_status_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:final_kill_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm_i_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm1_i_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:pwm2_i_reg\\D\ : bit;
-SIGNAL \Motor_A_PWM:PWMUDB:tc_i_reg\\D\ : bit;
+SIGNAL tmpOE__Flywheel_DC_Motor_In1_net_0 : bit;
+SIGNAL Net_1631 : bit;
+SIGNAL tmpFB_0__Flywheel_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpIO_0__Flywheel_DC_Motor_In1_net_0 : bit;
+TERMINAL tmpSIOVREF__Flywheel_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Flywheel_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpOE__Pendulum_DC_Motor_In1_net_0 : bit;
+SIGNAL Net_1426 : bit;
+SIGNAL tmpFB_0__Pendulum_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpIO_0__Pendulum_DC_Motor_In1_net_0 : bit;
+TERMINAL tmpSIOVREF__Pendulum_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Pendulum_DC_Motor_In1_net_0 : bit;
+SIGNAL tmpOE__Pendulum_DC_Motor_In2_net_0 : bit;
+SIGNAL Net_1427 : bit;
+SIGNAL tmpFB_0__Pendulum_DC_Motor_In2_net_0 : bit;
+SIGNAL tmpIO_0__Pendulum_DC_Motor_In2_net_0 : bit;
+TERMINAL tmpSIOVREF__Pendulum_DC_Motor_In2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Pendulum_DC_Motor_In2_net_0 : bit;
+SIGNAL Net_1428 : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:km_run\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:min_kill_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:control_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_enable\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCapture\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:capt_rising\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:capt_falling\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:hwCapture\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:hwEnable\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:trig_last\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:trig_rise\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:trig_fall\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:trig_out\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_enable\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sc_kill_tmp\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ltch_kill_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:min_kill_reg\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:min_kill_reg\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sc_kill\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:min_kill\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_kill\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:km_tc\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:db_tc\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_sel\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:status_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:Net_55\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_kill_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_kill_reg\\R\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_kill_reg\\S\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:fifo_full\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cs_addr_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cs_addr_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cs_addr_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_capture\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_eq\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_eq\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:fifo_nempty\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce0_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl0_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z0_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce1_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl1_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:compare1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:compare2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm_i_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm_i\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm1_i_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm1_i\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm2_i_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm2_i\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:tc_i_reg\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:Net_101\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:Net_96\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm_temp\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_31\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_30\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_29\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_28\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_27\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_26\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_25\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_23\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_22\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_21\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_20\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_19\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_18\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_17\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_15\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_14\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_13\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_12\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_11\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_10\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_9\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:b_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_31\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_30\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_29\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_28\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_27\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_26\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_25\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_23\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_22\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_21\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_20\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_19\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_18\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_17\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_15\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_14\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_13\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_12\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_11\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_10\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_9\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODIN14_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:a_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODIN14_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_31\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_30\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_29\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_28\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_27\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_26\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_25\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_23\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_22\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_21\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_20\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_19\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_18\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_17\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_15\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_14\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_13\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_12\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_11\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_10\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_9\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:b_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_31\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_31\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_30\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_30\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_29\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_29\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_28\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_28\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_27\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_27\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_26\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_26\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_25\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_25\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_23\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_23\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_22\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_22\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_21\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_21\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_20\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_20\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_19\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_19\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_18\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_18\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_17\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_17\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_15\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_15\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_14\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_14\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_13\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_13\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_12\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_12\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_11\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_11\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_10\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_10\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_9\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_9\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_10_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:s_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL Net_2903 : bit;
+SIGNAL Net_2897 : bit;
+SIGNAL Net_2896 : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:Net_113\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:Net_107\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:Net_114\ : bit;
+SIGNAL tmpOE__Flywheel_DC_Motor_In2_net_0 : bit;
+SIGNAL Net_1632 : bit;
+SIGNAL tmpFB_0__Flywheel_DC_Motor_In2_net_0 : bit;
+SIGNAL tmpIO_0__Flywheel_DC_Motor_In2_net_0 : bit;
+TERMINAL tmpSIOVREF__Flywheel_DC_Motor_In2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__Flywheel_DC_Motor_In2_net_0 : bit;
+SIGNAL Net_1633 : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:km_run\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:min_kill_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:control_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_enable\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_cmpmode2_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ctrl_cmpmode1_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCapture\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:capt_rising\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:capt_falling\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:hwCapture\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:hwEnable\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:trig_last\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:trig_rise\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:trig_fall\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:trig_out\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_enable\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sc_kill_tmp\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ltch_kill_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:min_kill_reg\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:min_kill_reg\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sc_kill\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:min_kill\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_kill\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:km_tc\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:db_tc\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_sel\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:status_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:Net_55\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_kill_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_kill_reg\\R\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_kill_reg\\S\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:fifo_full\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cs_addr_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cs_addr_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cs_addr_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_capture\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_eq\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_eq\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:fifo_nempty\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce0_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl0_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z0_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff0_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ce1_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cl1_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:z1_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ff1_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:so_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:compare1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:compare2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm_i_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm_i\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm1_i_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm1_i\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm2_i_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm2_i\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:tc_i_reg\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:Net_101\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:Net_96\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm_temp\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_31\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_30\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_29\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_28\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_27\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_26\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_25\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_23\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_22\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_21\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_20\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_19\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_18\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_17\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_15\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_14\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_13\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_12\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_11\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_10\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_9\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:b_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_31\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_30\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_29\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_28\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_27\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_26\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_25\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_23\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_22\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_21\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_20\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_19\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_18\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_17\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_15\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_14\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_13\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_12\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_11\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_10\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_9\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODIN15_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:a_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODIN15_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_31\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_30\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_29\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_28\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_27\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_26\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_25\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_23\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_22\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_21\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_20\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_19\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_18\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_17\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_15\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_14\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_13\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_12\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_11\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_10\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_9\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:b_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_31\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_31\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_30\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_30\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_29\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_29\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_28\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_28\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_27\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_27\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_26\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_26\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_25\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_25\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_23\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_23\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_22\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_22\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_21\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_21\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_20\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_20\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_19\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_19\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_18\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_18\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_17\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_17\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_15\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_15\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_14\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_14\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_13\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_13\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_12\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_12\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_11\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_11\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_10\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_10\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_9\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_9\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:add_vi_vv_MODGEN_11_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:s_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL Net_2913 : bit;
+SIGNAL Net_2907 : bit;
+SIGNAL Net_2906 : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:Net_113\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:Net_107\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:Net_114\ : bit;
+SIGNAL tmpOE__MPU6050_SDA_net_0 : bit;
+SIGNAL tmpFB_0__MPU6050_SDA_net_0 : bit;
+SIGNAL Net_2544 : bit;
+TERMINAL tmpSIOVREF__MPU6050_SDA_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__MPU6050_SDA_net_0 : bit;
+SIGNAL tmpOE__MPU6050_SCL_net_0 : bit;
+SIGNAL tmpFB_0__MPU6050_SCL_net_0 : bit;
+SIGNAL Net_2545 : bit;
+TERMINAL tmpSIOVREF__MPU6050_SCL_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__MPU6050_SCL_net_0 : bit;
+SIGNAL \MPU6050_I2C:sda_x_wire\ : bit;
+SIGNAL \MPU6050_I2C:Net_643_1\ : bit;
+SIGNAL \MPU6050_I2C:Net_697\ : bit;
+SIGNAL \MPU6050_I2C:bus_clk\ : bit;
+SIGNAL \MPU6050_I2C:Net_1109_0\ : bit;
+SIGNAL \MPU6050_I2C:Net_1109_1\ : bit;
+SIGNAL \MPU6050_I2C:Net_643_0\ : bit;
+SIGNAL \MPU6050_I2C:Net_643_2\ : bit;
+SIGNAL \MPU6050_I2C:scl_x_wire\ : bit;
+SIGNAL \MPU6050_I2C:Net_969\ : bit;
+SIGNAL \MPU6050_I2C:Net_968\ : bit;
+SIGNAL \MPU6050_I2C:udb_clk\ : bit;
+SIGNAL Net_2819 : bit;
+SIGNAL \MPU6050_I2C:Net_973\ : bit;
+SIGNAL Net_2820 : bit;
+SIGNAL \MPU6050_I2C:Net_974\ : bit;
+SIGNAL \MPU6050_I2C:scl_yfb\ : bit;
+SIGNAL \MPU6050_I2C:sda_yfb\ : bit;
+SIGNAL \MPU6050_I2C:tmpOE__Bufoe_scl_net_0\ : bit;
+SIGNAL \MPU6050_I2C:tmpOE__Bufoe_sda_net_0\ : bit;
+SIGNAL \MPU6050_I2C:timeout_clk\ : bit;
+SIGNAL Net_2825 : bit;
+SIGNAL \MPU6050_I2C:Net_975\ : bit;
+SIGNAL Net_2824 : bit;
+SIGNAL Net_2823 : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:min_kill_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCapture\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:trig_last\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:final_kill_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm_i_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm1_i_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:pwm2_i_reg\\D\ : bit;
+SIGNAL \Drive_DC_Motor_PWM:PWMUDB:tc_i_reg\\D\ : bit;
 SIGNAL \RC_Ch1_Timer:TimerUDB:capture_last\\D\ : bit;
 SIGNAL \RC_Ch1_Timer:TimerUDB:tc_reg_i\\D\ : bit;
 SIGNAL \RC_Ch1_Timer:TimerUDB:hwEnable_reg\\D\ : bit;
@@ -1854,30 +2613,64 @@ SIGNAL \RC_Ch3_Timer:TimerUDB:capt_int_temp\\D\ : bit;
 SIGNAL \RC_Ch3_Timer:TimerUDB:trig_last\\D\ : bit;
 SIGNAL \RC_Ch3_Timer:TimerUDB:trig_rise_detected\\D\ : bit;
 SIGNAL \RC_Ch3_Timer:TimerUDB:trig_fall_detected\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:min_kill_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCapture\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:trig_last\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:final_kill_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm_i_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm1_i_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:pwm2_i_reg\\D\ : bit;
+SIGNAL \Pendulum_DC_Motor_PWM:PWMUDB:tc_i_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:min_kill_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCapture\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:trig_last\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:ltch_kill_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:final_kill_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm_i_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm1_i_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:pwm2_i_reg\\D\ : bit;
+SIGNAL \Flywheel_DC_Motor_PWM:PWMUDB:tc_i_reg\\D\ : bit;
 BEGIN
 
-one <=  ('1') ;
+Net_1393 <=  ('0') ;
 
-zero <=  ('0') ;
+tmpOE__Drive_DC_Motor_In2_net_0 <=  ('1') ;
 
-\Motor_A_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \Motor_A_PWM:PWMUDB:tc_i\);
+\Drive_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \Drive_DC_Motor_PWM:PWMUDB:tc_i\);
 
-\Motor_A_PWM:PWMUDB:dith_count_1\\D\ <= ((not \Motor_A_PWM:PWMUDB:dith_count_1\ and \Motor_A_PWM:PWMUDB:tc_i\ and \Motor_A_PWM:PWMUDB:dith_count_0\)
-	OR (not \Motor_A_PWM:PWMUDB:dith_count_0\ and \Motor_A_PWM:PWMUDB:dith_count_1\)
-	OR (not \Motor_A_PWM:PWMUDB:tc_i\ and \Motor_A_PWM:PWMUDB:dith_count_1\));
+\Drive_DC_Motor_PWM:PWMUDB:dith_count_1\\D\ <= ((not \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\ and \Drive_DC_Motor_PWM:PWMUDB:tc_i\ and \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\)
+	OR (not \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\ and \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\)
+	OR (not \Drive_DC_Motor_PWM:PWMUDB:tc_i\ and \Drive_DC_Motor_PWM:PWMUDB:dith_count_1\));
 
-\Motor_A_PWM:PWMUDB:dith_count_0\\D\ <= ((not \Motor_A_PWM:PWMUDB:dith_count_0\ and \Motor_A_PWM:PWMUDB:tc_i\)
-	OR (not \Motor_A_PWM:PWMUDB:tc_i\ and \Motor_A_PWM:PWMUDB:dith_count_0\));
+\Drive_DC_Motor_PWM:PWMUDB:dith_count_0\\D\ <= ((not \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\ and \Drive_DC_Motor_PWM:PWMUDB:tc_i\)
+	OR (not \Drive_DC_Motor_PWM:PWMUDB:tc_i\ and \Drive_DC_Motor_PWM:PWMUDB:dith_count_0\));
 
-\Motor_A_PWM:PWMUDB:cmp1_status\ <= ((not \Motor_A_PWM:PWMUDB:prevCompare1\ and \Motor_A_PWM:PWMUDB:cmp1_less\));
+\Drive_DC_Motor_PWM:PWMUDB:cmp1_status\ <= ((not \Drive_DC_Motor_PWM:PWMUDB:prevCompare1\ and \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\));
 
-\Motor_A_PWM:PWMUDB:cmp2_status\ <= ((not \Motor_A_PWM:PWMUDB:prevCompare2\ and \Motor_A_PWM:PWMUDB:cmp2_less\));
+\Drive_DC_Motor_PWM:PWMUDB:cmp2_status\ <= ((not \Drive_DC_Motor_PWM:PWMUDB:prevCompare2\ and \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\));
 
-\Motor_A_PWM:PWMUDB:status_2\ <= ((\Motor_A_PWM:PWMUDB:runmode_enable\ and \Motor_A_PWM:PWMUDB:tc_i\));
+\Drive_DC_Motor_PWM:PWMUDB:status_2\ <= ((\Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Drive_DC_Motor_PWM:PWMUDB:tc_i\));
 
-\Motor_A_PWM:PWMUDB:pwm1_i\ <= ((\Motor_A_PWM:PWMUDB:runmode_enable\ and \Motor_A_PWM:PWMUDB:cmp1_less\));
+\Drive_DC_Motor_PWM:PWMUDB:pwm1_i\ <= ((\Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Drive_DC_Motor_PWM:PWMUDB:cmp1_less\));
 
-\Motor_A_PWM:PWMUDB:pwm2_i\ <= ((\Motor_A_PWM:PWMUDB:runmode_enable\ and \Motor_A_PWM:PWMUDB:cmp2_less\));
+\Drive_DC_Motor_PWM:PWMUDB:pwm2_i\ <= ((\Drive_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Drive_DC_Motor_PWM:PWMUDB:cmp2_less\));
 
 \RC_Ch1_Timer:TimerUDB:capt_fifo_load\ <= ((not Net_1164 and \RC_Ch1_Timer:TimerUDB:control_7\ and \RC_Ch1_Timer:TimerUDB:control_4\ and \RC_Ch1_Timer:TimerUDB:capture_last\ and \RC_Ch1_Timer:TimerUDB:trig_rise_detected\));
 
@@ -1991,206 +2784,45 @@ zero <=  ('0') ;
 
 \RC_Ch3_Timer:TimerUDB:trig_reg\ <= ((\RC_Ch3_Timer:TimerUDB:control_7\ and \RC_Ch3_Timer:TimerUDB:control_4\ and \RC_Ch3_Timer:TimerUDB:trig_rise_detected\));
 
-\Motor_A_PWM:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
-	GENERIC MAP(sync_mode=>'1')
-	PORT MAP(clock_in=>Net_48,
-		enable=>one,
-		clock_out=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\);
-\Motor_A_PWM:PWMUDB:genblk1:ctrlreg\:cy_psoc3_control
-	GENERIC MAP(cy_init_value=>"00000000",
-		cy_force_order=>'1',
-		cy_ctrl_mode_1=>"00000000",
-		cy_ctrl_mode_0=>"11111111",
-		cy_ext_reset=>'0')
-	PORT MAP(reset=>zero,
-		clock=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		control=>(\Motor_A_PWM:PWMUDB:control_7\, \Motor_A_PWM:PWMUDB:control_6\, \Motor_A_PWM:PWMUDB:control_5\, \Motor_A_PWM:PWMUDB:control_4\,
-			\Motor_A_PWM:PWMUDB:control_3\, \Motor_A_PWM:PWMUDB:control_2\, \Motor_A_PWM:PWMUDB:control_1\, \Motor_A_PWM:PWMUDB:control_0\));
-\Motor_A_PWM:PWMUDB:genblk8:stsreg\:cy_psoc3_statusi
-	GENERIC MAP(cy_force_order=>'1',
-		cy_md_select=>"0100111",
-		cy_int_mask=>"1111111")
-	PORT MAP(reset=>zero,
-		clock=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		status=>(zero, \Motor_A_PWM:PWMUDB:status_5\, zero, \Motor_A_PWM:PWMUDB:status_3\,
-			\Motor_A_PWM:PWMUDB:status_2\, \Motor_A_PWM:PWMUDB:status_1\, \Motor_A_PWM:PWMUDB:status_0\),
-		interrupt=>\Motor_A_PWM:Net_55\);
-\Motor_A_PWM:PWMUDB:sP8:pwmdp:u0\:cy_psoc3_dp
-	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
-		d0_init=>"00000000",
-		d1_init=>"00000000",
-		a0_init=>"00000000",
-		a1_init=>"00000000",
-		ce0_sync=>'1',
-		cl0_sync=>'1',
-		z0_sync=>'1',
-		ff0_sync=>'1',
-		ce1_sync=>'1',
-		cl1_sync=>'1',
-		z1_sync=>'1',
-		ff1_sync=>'1',
-		ov_msb_sync=>'1',
-		co_msb_sync=>'1',
-		cmsb_sync=>'1',
-		so_sync=>'1',
-		f0_bus_sync=>'1',
-		f0_blk_sync=>'1',
-		f1_bus_sync=>'1',
-		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		cs_addr=>(\Motor_A_PWM:PWMUDB:tc_i\, \Motor_A_PWM:PWMUDB:runmode_enable\, zero),
-		route_si=>zero,
-		route_ci=>zero,
-		f0_load=>zero,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
-		ce0=>\Motor_A_PWM:PWMUDB:cmp1_eq\,
-		cl0=>\Motor_A_PWM:PWMUDB:cmp1_less\,
-		z0=>\Motor_A_PWM:PWMUDB:tc_i\,
-		ff0=>open,
-		ce1=>\Motor_A_PWM:PWMUDB:cmp2_eq\,
-		cl1=>\Motor_A_PWM:PWMUDB:cmp2_less\,
-		z1=>open,
-		ff1=>open,
-		ov_msb=>open,
-		co_msb=>open,
-		cmsb=>open,
-		so=>open,
-		f0_bus_stat=>open,
-		f0_blk_stat=>open,
-		f1_bus_stat=>\Motor_A_PWM:PWMUDB:fifo_nempty\,
-		f1_blk_stat=>\Motor_A_PWM:PWMUDB:status_3\,
-		ce0_reg=>open,
-		cl0_reg=>open,
-		z0_reg=>open,
-		ff0_reg=>open,
-		ce1_reg=>open,
-		cl1_reg=>open,
-		z1_reg=>open,
-		ff1_reg=>open,
-		ov_msb_reg=>open,
-		co_msb_reg=>open,
-		cmsb_reg=>open,
-		so_reg=>open,
-		f0_bus_stat_reg=>open,
-		f0_blk_stat_reg=>open,
-		f1_bus_stat_reg=>open,
-		f1_blk_stat_reg=>open,
-		ci=>zero,
-		co=>open,
-		sir=>zero,
-		sor=>open,
-		sil=>zero,
-		sol=>open,
-		msbi=>zero,
-		msbo=>open,
-		cei=>(zero, zero),
-		ceo=>open,
-		cli=>(zero, zero),
-		clo=>open,
-		zi=>(zero, zero),
-		zo=>open,
-		fi=>(zero, zero),
-		fo=>open,
-		capi=>(zero, zero),
-		capo=>open,
-		cfbi=>zero,
-		cfbo=>open,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
-		po=>open);
-\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
-	PORT MAP(x=>zero,
-		y=>\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\);
-\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
-	PORT MAP(x=>zero,
-		y=>\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\);
-\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
-	PORT MAP(x=>zero,
-		y=>\Motor_A_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\);
-Clock:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"bb9ce68b-7b7f-4fa2-a8f8-762dfaa6805c",
-		source_clock_id=>"",
-		divisor=>0,
-		period=>"83333333.3333333",
-		is_direct=>'0',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_48,
-		dig_domain_out=>open);
-Motor_A_Output_In1:cy_psoc3_pins_v1_10
-	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
-		drive_mode=>"110",
-		ibuf_enabled=>"1",
-		init_dr_st=>"0",
-		input_sync=>"1",
-		input_clk_en=>'0',
-		input_sync_mode=>"0",
-		intr_mode=>"00",
-		invert_in_clock=>'0',
-		invert_in_clock_en=>'0',
-		invert_in_reset=>'0',
-		invert_out_clock=>'0',
-		invert_out_clock_en=>'0',
-		invert_out_reset=>'0',
-		io_voltage=>"",
-		layout_mode=>"CONTIGUOUS",
-		output_conn=>"1",
-		output_sync=>"0",
-		output_clk_en=>'0',
-		output_mode=>"0",
-		output_reset=>'0',
-		output_clock_mode=>"0",
-		oe_sync=>"0",
-		oe_conn=>"0",
-		oe_reset=>'0',
-		pin_aliases=>"",
-		pin_mode=>"O",
-		por_state=>4,
-		sio_group_cnt=>0,
-		sio_hifreq=>"00000000",
-		sio_hyst=>"1",
-		sio_ibuf=>"00000000",
-		sio_info=>"00",
-		sio_obuf=>"00000000",
-		sio_refsel=>"00000000",
-		sio_vtrip=>"00000000",
-		sio_vohsel=>"00000000",
-		slew_rate=>"0",
-		spanning=>'0',
-		sw_only=>'0',
-		vtrip=>"10",
-		width=>1,
-		port_alias_required=>'0',
-		port_alias_group=>"",
-		use_annotation=>"0",
-		pa_in_clock=>-1,
-		pa_in_clock_en=>-1,
-		pa_in_reset=>-1,
-		pa_out_clock=>-1,
-		pa_out_clock_en=>-1,
-		pa_out_reset=>-1,
-		ovt_needed=>"0",
-		ovt_slew_control=>"00",
-		ovt_hyst_trim=>"0",
-		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>Net_140,
-		fb=>(tmpFB_0__Motor_A_Output_In1_net_0),
-		analog=>(open),
-		io=>(tmpIO_0__Motor_A_Output_In1_net_0),
-		siovref=>(tmpSIOVREF__Motor_A_Output_In1_net_0),
-		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Motor_A_Output_In1_net_0);
-Motor_A_Output_In2:cy_psoc3_pins_v1_10
+\Pendulum_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\);
+
+\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\\D\ <= ((not \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\ and \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\ and \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\)
+	OR (not \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\ and \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\)
+	OR (not \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\ and \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\));
+
+\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\\D\ <= ((not \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\ and \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\)
+	OR (not \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\ and \Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\));
+
+\Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status\ <= ((not \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\ and \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\));
+
+\Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status\ <= ((not \Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\ and \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\));
+
+\Pendulum_DC_Motor_PWM:PWMUDB:status_2\ <= ((\Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Pendulum_DC_Motor_PWM:PWMUDB:tc_i\));
+
+\Pendulum_DC_Motor_PWM:PWMUDB:pwm1_i\ <= ((\Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\));
+
+\Pendulum_DC_Motor_PWM:PWMUDB:pwm2_i\ <= ((\Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\ <= (not \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\);
+
+\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\\D\ <= ((not \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\ and \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\ and \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\)
+	OR (not \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\ and \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\)
+	OR (not \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\ and \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\\D\ <= ((not \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\ and \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\)
+	OR (not \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\ and \Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status\ <= ((not \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\ and \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status\ <= ((not \Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\ and \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:status_2\ <= ((\Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Flywheel_DC_Motor_PWM:PWMUDB:tc_i\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:pwm1_i\ <= ((\Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\));
+
+\Flywheel_DC_Motor_PWM:PWMUDB:pwm2_i\ <= ((\Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\ and \Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\));
+
+Drive_DC_Motor_In2:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"ddaa27cd-195f-4177-9b15-4ebcfc487cd1",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -2246,20 +2878,219 @@ Motor_A_Output_In2:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
 		y=>Net_156,
-		fb=>(tmpFB_0__Motor_A_Output_In2_net_0),
+		fb=>(tmpFB_0__Drive_DC_Motor_In2_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__Motor_A_Output_In2_net_0),
-		siovref=>(tmpSIOVREF__Motor_A_Output_In2_net_0),
+		io=>(tmpIO_0__Drive_DC_Motor_In2_net_0),
+		siovref=>(tmpSIOVREF__Drive_DC_Motor_In2_net_0),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__Motor_A_Output_In2_net_0);
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__Drive_DC_Motor_In2_net_0);
+Drive_DC_Motor_In1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e851a3b9-efb8-48be-bbb8-b303b216c393",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>Net_140,
+		fb=>(tmpFB_0__Drive_DC_Motor_In1_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Drive_DC_Motor_In1_net_0),
+		siovref=>(tmpSIOVREF__Drive_DC_Motor_In1_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__Drive_DC_Motor_In1_net_0);
+Clock:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"bb9ce68b-7b7f-4fa2-a8f8-762dfaa6805c",
+		source_clock_id=>"",
+		divisor=>0,
+		period=>"83333333.3333333",
+		is_direct=>'0',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_1219,
+		dig_domain_out=>open);
+\Drive_DC_Motor_PWM:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1219,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
+		clock_out=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\);
+\Drive_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>Net_1393,
+		clock=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		control=>(\Drive_DC_Motor_PWM:PWMUDB:control_7\, \Drive_DC_Motor_PWM:PWMUDB:control_6\, \Drive_DC_Motor_PWM:PWMUDB:control_5\, \Drive_DC_Motor_PWM:PWMUDB:control_4\,
+			\Drive_DC_Motor_PWM:PWMUDB:control_3\, \Drive_DC_Motor_PWM:PWMUDB:control_2\, \Drive_DC_Motor_PWM:PWMUDB:control_1\, \Drive_DC_Motor_PWM:PWMUDB:control_0\));
+\Drive_DC_Motor_PWM:PWMUDB:genblk8:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0100111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>Net_1393,
+		clock=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		status=>(Net_1393, \Drive_DC_Motor_PWM:PWMUDB:status_5\, Net_1393, \Drive_DC_Motor_PWM:PWMUDB:status_3\,
+			\Drive_DC_Motor_PWM:PWMUDB:status_2\, \Drive_DC_Motor_PWM:PWMUDB:status_1\, \Drive_DC_Motor_PWM:PWMUDB:status_0\),
+		interrupt=>\Drive_DC_Motor_PWM:Net_55\);
+\Drive_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		cs_addr=>(\Drive_DC_Motor_PWM:PWMUDB:tc_i\, \Drive_DC_Motor_PWM:PWMUDB:runmode_enable\, Net_1393),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
+		f0_load=>Net_1393,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
+		ce0=>\Drive_DC_Motor_PWM:PWMUDB:cmp1_eq\,
+		cl0=>\Drive_DC_Motor_PWM:PWMUDB:cmp1_less\,
+		z0=>\Drive_DC_Motor_PWM:PWMUDB:tc_i\,
+		ff0=>open,
+		ce1=>\Drive_DC_Motor_PWM:PWMUDB:cmp2_eq\,
+		cl1=>\Drive_DC_Motor_PWM:PWMUDB:cmp2_less\,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>\Drive_DC_Motor_PWM:PWMUDB:fifo_nempty\,
+		f1_blk_stat=>\Drive_DC_Motor_PWM:PWMUDB:status_3\,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>Net_1393,
+		co=>open,
+		sir=>Net_1393,
+		sor=>open,
+		sil=>Net_1393,
+		sol=>open,
+		msbi=>Net_1393,
+		msbo=>open,
+		cei=>(Net_1393, Net_1393),
+		ceo=>open,
+		cli=>(Net_1393, Net_1393),
+		clo=>open,
+		zi=>(Net_1393, Net_1393),
+		zo=>open,
+		fi=>(Net_1393, Net_1393),
+		fo=>open,
+		capi=>(Net_1393, Net_1393),
+		capo=>open,
+		cfbi=>Net_1393,
+		cfbo=>open,
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
+		po=>open);
+\Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_24\);
+\Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_16\);
+\Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Drive_DC_Motor_PWM:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_8\);
 RC_Ch1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"17eff6c9-5227-43d9-8962-90a0b89e9ef4",
 		drive_mode=>"011",
@@ -2316,29 +3147,29 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>(zero),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
 		fb=>Net_1164,
 		analog=>(open),
 		io=>(tmpIO_0__RC_Ch1_net_0),
 		siovref=>(tmpSIOVREF__RC_Ch1_net_0),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
 		interrupt=>tmpINTERRUPT_0__RC_Ch1_net_0);
 \RC_Ch1_Timer:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch1_Timer:TimerUDB:ClockOutFromEnBlock\);
 \RC_Ch1_Timer:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch1_Timer:TimerUDB:Clk_Ctl_i\);
 \RC_Ch1_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
@@ -2346,7 +3177,7 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch1_Timer:TimerUDB:Clk_Ctl_i\,
 		control=>(\RC_Ch1_Timer:TimerUDB:control_7\, \RC_Ch1_Timer:TimerUDB:control_6\, \RC_Ch1_Timer:TimerUDB:control_5\, \RC_Ch1_Timer:TimerUDB:control_4\,
 			\RC_Ch1_Timer:TimerUDB:control_3\, \RC_Ch1_Timer:TimerUDB:control_2\, MODIN3_1, MODIN3_0));
@@ -2354,9 +3185,9 @@ RC_Ch1:cy_psoc3_pins_v1_10
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch1_Timer:TimerUDB:ClockOutFromEnBlock\,
-		status=>(zero, zero, zero, \RC_Ch1_Timer:TimerUDB:status_3\,
+		status=>(Net_1393, Net_1393, Net_1393, \RC_Ch1_Timer:TimerUDB:status_3\,
 			\RC_Ch1_Timer:TimerUDB:status_2\, \RC_Ch1_Timer:TimerUDB:capt_int_temp\, \RC_Ch1_Timer:TimerUDB:status_tc\),
 		interrupt=>Net_1162);
 \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u0\:cy_psoc3_dp
@@ -2381,15 +3212,15 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch1_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch1_Timer:TimerUDB:trig_reg\, \RC_Ch1_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch1_Timer:TimerUDB:trig_reg\, \RC_Ch1_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch1_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch1_Timer:TimerUDB:nc0\,
@@ -2422,28 +3253,28 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>zero,
+		ci=>Net_1393,
 		co=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:carry0\,
-		sir=>zero,
+		sir=>Net_1393,
 		sor=>open,
 		sil=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:sh_right0\,
 		sol=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:sh_left0\,
 		msbi=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:msb0\,
 		msbo=>open,
-		cei=>(zero, zero),
+		cei=>(Net_1393, Net_1393),
 		ceo=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_eq0_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_eq0_0\),
-		cli=>(zero, zero),
+		cli=>(Net_1393, Net_1393),
 		clo=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_lt0_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_lt0_0\),
-		zi=>(zero, zero),
+		zi=>(Net_1393, Net_1393),
 		zo=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_zero0_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_zero0_0\),
-		fi=>(zero, zero),
+		fi=>(Net_1393, Net_1393),
 		fo=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_ff0_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_ff0_0\),
-		capi=>(zero, zero),
+		capi=>(Net_1393, Net_1393),
 		capo=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cap0_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cap0_0\),
-		cfbi=>zero,
+		cfbi=>Net_1393,
 		cfbo=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cfb0\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u1\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -2467,15 +3298,15 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch1_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch1_Timer:TimerUDB:trig_reg\, \RC_Ch1_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch1_Timer:TimerUDB:trig_reg\, \RC_Ch1_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch1_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch1_Timer:TimerUDB:nc1\,
@@ -2528,8 +3359,8 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		capo=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cap1_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cap1_0\),
 		cfbi=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cfb0\,
 		cfbo=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cfb1\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch1_Timer:TimerUDB:sT24:timerdp:u2\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -2553,15 +3384,15 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch1_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch1_Timer:TimerUDB:trig_reg\, \RC_Ch1_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch1_Timer:TimerUDB:trig_reg\, \RC_Ch1_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch1_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch1_Timer:TimerUDB:per_zero\,
@@ -2598,9 +3429,9 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		co=>open,
 		sir=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:sh_left1\,
 		sor=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:sh_right1\,
-		sil=>zero,
+		sil=>Net_1393,
 		sol=>open,
-		msbi=>zero,
+		msbi=>Net_1393,
 		msbo=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:msb1\,
 		cei=>(\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_eq1_1\, \RC_Ch1_Timer:TimerUDB:sT24:timerdp:cmp_eq1_0\),
 		ceo=>open,
@@ -2614,8 +3445,8 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		capo=>open,
 		cfbi=>\RC_Ch1_Timer:TimerUDB:sT24:timerdp:cfb1\,
 		cfbo=>open,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \USBUART:dp_int\:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
@@ -2676,19 +3507,19 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>(zero),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
 		fb=>(\USBUART:tmpFB_0__Dm_net_0\),
 		analog=>\USBUART:Net_597\,
 		io=>(\USBUART:tmpIO_0__Dm_net_0\),
 		siovref=>(\USBUART:tmpSIOVREF__Dm_net_0\),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
 		interrupt=>\USBUART:tmpINTERRUPT_0__Dm_net_0\);
 \USBUART:Dp\:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"beca5e2d-f70f-4900-a4db-7eca1ed3126e/618a72fc-5ddd-4df5-958f-a3d55102db42",
@@ -2746,19 +3577,19 @@ RC_Ch1:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>(zero),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
 		fb=>(\USBUART:tmpFB_0__Dp_net_0\),
 		analog=>\USBUART:Net_1000\,
 		io=>(\USBUART:tmpIO_0__Dp_net_0\),
 		siovref=>(\USBUART:tmpSIOVREF__Dp_net_0\),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
 		interrupt=>\USBUART:Net_1010\);
 \USBUART:USB\:cy_psoc3_usb_v1_0
 	GENERIC MAP(cy_registers=>"")
@@ -2854,29 +3685,29 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>(zero),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
 		fb=>Net_1049,
 		analog=>(open),
 		io=>(tmpIO_0__RC_Ch2_net_0),
 		siovref=>(tmpSIOVREF__RC_Ch2_net_0),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
 		interrupt=>tmpINTERRUPT_0__RC_Ch2_net_0);
 \RC_Ch2_Timer:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch2_Timer:TimerUDB:ClockOutFromEnBlock\);
 \RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch2_Timer:TimerUDB:Clk_Ctl_i\);
 \RC_Ch2_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
@@ -2884,7 +3715,7 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch2_Timer:TimerUDB:Clk_Ctl_i\,
 		control=>(\RC_Ch2_Timer:TimerUDB:control_7\, \RC_Ch2_Timer:TimerUDB:control_6\, \RC_Ch2_Timer:TimerUDB:control_5\, \RC_Ch2_Timer:TimerUDB:control_4\,
 			\RC_Ch2_Timer:TimerUDB:control_3\, \RC_Ch2_Timer:TimerUDB:control_2\, MODIN6_1, MODIN6_0));
@@ -2892,9 +3723,9 @@ RC_Ch2:cy_psoc3_pins_v1_10
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch2_Timer:TimerUDB:ClockOutFromEnBlock\,
-		status=>(zero, zero, zero, \RC_Ch2_Timer:TimerUDB:status_3\,
+		status=>(Net_1393, Net_1393, Net_1393, \RC_Ch2_Timer:TimerUDB:status_3\,
 			\RC_Ch2_Timer:TimerUDB:status_2\, \RC_Ch2_Timer:TimerUDB:capt_int_temp\, \RC_Ch2_Timer:TimerUDB:status_tc\),
 		interrupt=>Net_1152);
 \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u0\:cy_psoc3_dp
@@ -2919,15 +3750,15 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch2_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch2_Timer:TimerUDB:trig_reg\, \RC_Ch2_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch2_Timer:TimerUDB:trig_reg\, \RC_Ch2_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch2_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch2_Timer:TimerUDB:nc0\,
@@ -2960,28 +3791,28 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>zero,
+		ci=>Net_1393,
 		co=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:carry0\,
-		sir=>zero,
+		sir=>Net_1393,
 		sor=>open,
 		sil=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:sh_right0\,
 		sol=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:sh_left0\,
 		msbi=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:msb0\,
 		msbo=>open,
-		cei=>(zero, zero),
+		cei=>(Net_1393, Net_1393),
 		ceo=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_eq0_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_eq0_0\),
-		cli=>(zero, zero),
+		cli=>(Net_1393, Net_1393),
 		clo=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_lt0_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_lt0_0\),
-		zi=>(zero, zero),
+		zi=>(Net_1393, Net_1393),
 		zo=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_zero0_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_zero0_0\),
-		fi=>(zero, zero),
+		fi=>(Net_1393, Net_1393),
 		fo=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_ff0_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_ff0_0\),
-		capi=>(zero, zero),
+		capi=>(Net_1393, Net_1393),
 		capo=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cap0_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cap0_0\),
-		cfbi=>zero,
+		cfbi=>Net_1393,
 		cfbo=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cfb0\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u1\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -3005,15 +3836,15 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch2_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch2_Timer:TimerUDB:trig_reg\, \RC_Ch2_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch2_Timer:TimerUDB:trig_reg\, \RC_Ch2_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch2_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch2_Timer:TimerUDB:nc1\,
@@ -3066,8 +3897,8 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		capo=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cap1_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cap1_0\),
 		cfbi=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cfb0\,
 		cfbo=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cfb1\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch2_Timer:TimerUDB:sT24:timerdp:u2\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -3091,15 +3922,15 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch2_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch2_Timer:TimerUDB:trig_reg\, \RC_Ch2_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch2_Timer:TimerUDB:trig_reg\, \RC_Ch2_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch2_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch2_Timer:TimerUDB:per_zero\,
@@ -3136,9 +3967,9 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		co=>open,
 		sir=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:sh_left1\,
 		sor=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:sh_right1\,
-		sil=>zero,
+		sil=>Net_1393,
 		sol=>open,
-		msbi=>zero,
+		msbi=>Net_1393,
 		msbo=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:msb1\,
 		cei=>(\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_eq1_1\, \RC_Ch2_Timer:TimerUDB:sT24:timerdp:cmp_eq1_0\),
 		ceo=>open,
@@ -3152,8 +3983,8 @@ RC_Ch2:cy_psoc3_pins_v1_10
 		capo=>open,
 		cfbi=>\RC_Ch2_Timer:TimerUDB:sT24:timerdp:cfb1\,
 		cfbo=>open,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 Bus_Clock:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -3184,12 +4015,12 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 \RC_Ch4_Timer:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch4_Timer:TimerUDB:ClockOutFromEnBlock\);
 \RC_Ch4_Timer:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch4_Timer:TimerUDB:Clk_Ctl_i\);
 \RC_Ch4_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
@@ -3197,7 +4028,7 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch4_Timer:TimerUDB:Clk_Ctl_i\,
 		control=>(\RC_Ch4_Timer:TimerUDB:control_7\, \RC_Ch4_Timer:TimerUDB:control_6\, \RC_Ch4_Timer:TimerUDB:control_5\, \RC_Ch4_Timer:TimerUDB:control_4\,
 			\RC_Ch4_Timer:TimerUDB:control_3\, \RC_Ch4_Timer:TimerUDB:control_2\, MODIN9_1, MODIN9_0));
@@ -3205,9 +4036,9 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch4_Timer:TimerUDB:ClockOutFromEnBlock\,
-		status=>(zero, zero, zero, \RC_Ch4_Timer:TimerUDB:status_3\,
+		status=>(Net_1393, Net_1393, Net_1393, \RC_Ch4_Timer:TimerUDB:status_3\,
 			\RC_Ch4_Timer:TimerUDB:status_2\, \RC_Ch4_Timer:TimerUDB:capt_int_temp\, \RC_Ch4_Timer:TimerUDB:status_tc\),
 		interrupt=>Net_1186);
 \RC_Ch4_Timer:TimerUDB:sT24:timerdp:u0\:cy_psoc3_dp
@@ -3232,15 +4063,15 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch4_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch4_Timer:TimerUDB:trig_reg\, \RC_Ch4_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch4_Timer:TimerUDB:trig_reg\, \RC_Ch4_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch4_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch4_Timer:TimerUDB:nc0\,
@@ -3273,28 +4104,28 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>zero,
+		ci=>Net_1393,
 		co=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:carry0\,
-		sir=>zero,
+		sir=>Net_1393,
 		sor=>open,
 		sil=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:sh_right0\,
 		sol=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:sh_left0\,
 		msbi=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:msb0\,
 		msbo=>open,
-		cei=>(zero, zero),
+		cei=>(Net_1393, Net_1393),
 		ceo=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_eq0_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_eq0_0\),
-		cli=>(zero, zero),
+		cli=>(Net_1393, Net_1393),
 		clo=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_lt0_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_lt0_0\),
-		zi=>(zero, zero),
+		zi=>(Net_1393, Net_1393),
 		zo=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_zero0_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_zero0_0\),
-		fi=>(zero, zero),
+		fi=>(Net_1393, Net_1393),
 		fo=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_ff0_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_ff0_0\),
-		capi=>(zero, zero),
+		capi=>(Net_1393, Net_1393),
 		capo=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cap0_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cap0_0\),
-		cfbi=>zero,
+		cfbi=>Net_1393,
 		cfbo=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cfb0\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch4_Timer:TimerUDB:sT24:timerdp:u1\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -3318,15 +4149,15 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch4_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch4_Timer:TimerUDB:trig_reg\, \RC_Ch4_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch4_Timer:TimerUDB:trig_reg\, \RC_Ch4_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch4_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch4_Timer:TimerUDB:nc1\,
@@ -3379,8 +4210,8 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		capo=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cap1_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cap1_0\),
 		cfbi=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cfb0\,
 		cfbo=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cfb1\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch4_Timer:TimerUDB:sT24:timerdp:u2\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -3404,15 +4235,15 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch4_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch4_Timer:TimerUDB:trig_reg\, \RC_Ch4_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch4_Timer:TimerUDB:trig_reg\, \RC_Ch4_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch4_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch4_Timer:TimerUDB:per_zero\,
@@ -3449,9 +4280,9 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		co=>open,
 		sir=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:sh_left1\,
 		sor=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:sh_right1\,
-		sil=>zero,
+		sil=>Net_1393,
 		sol=>open,
-		msbi=>zero,
+		msbi=>Net_1393,
 		msbo=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:msb1\,
 		cei=>(\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_eq1_1\, \RC_Ch4_Timer:TimerUDB:sT24:timerdp:cmp_eq1_0\),
 		ceo=>open,
@@ -3465,8 +4296,8 @@ RC_Ch1_Timer_Interrupt:cy_isr_v1_0
 		capo=>open,
 		cfbi=>\RC_Ch4_Timer:TimerUDB:sT24:timerdp:cfb1\,
 		cfbo=>open,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 RC_Ch4:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"71170c2f-8956-4da1-9345-e086ddb03c94",
@@ -3524,19 +4355,19 @@ RC_Ch4:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>(zero),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
 		fb=>Net_1188,
 		analog=>(open),
 		io=>(tmpIO_0__RC_Ch4_net_0),
 		siovref=>(tmpSIOVREF__RC_Ch4_net_0),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
 		interrupt=>tmpINTERRUPT_0__RC_Ch4_net_0);
 RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
@@ -3544,12 +4375,12 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 \RC_Ch3_Timer:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch3_Timer:TimerUDB:ClockOutFromEnBlock\);
 \RC_Ch3_Timer:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_10,
-		enable=>one,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
 		clock_out=>\RC_Ch3_Timer:TimerUDB:Clk_Ctl_i\);
 \RC_Ch3_Timer:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
 	GENERIC MAP(cy_init_value=>"00000000",
@@ -3557,7 +4388,7 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		cy_ctrl_mode_1=>"00000000",
 		cy_ctrl_mode_0=>"11111111",
 		cy_ext_reset=>'0')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch3_Timer:TimerUDB:Clk_Ctl_i\,
 		control=>(\RC_Ch3_Timer:TimerUDB:control_7\, \RC_Ch3_Timer:TimerUDB:control_6\, \RC_Ch3_Timer:TimerUDB:control_5\, \RC_Ch3_Timer:TimerUDB:control_4\,
 			\RC_Ch3_Timer:TimerUDB:control_3\, \RC_Ch3_Timer:TimerUDB:control_2\, \RC_Ch3_Timer:TimerUDB:control_1\, \RC_Ch3_Timer:TimerUDB:control_0\));
@@ -3565,9 +4396,9 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clock=>\RC_Ch3_Timer:TimerUDB:ClockOutFromEnBlock\,
-		status=>(zero, zero, zero, \RC_Ch3_Timer:TimerUDB:status_3\,
+		status=>(Net_1393, Net_1393, Net_1393, \RC_Ch3_Timer:TimerUDB:status_3\,
 			\RC_Ch3_Timer:TimerUDB:status_2\, \RC_Ch3_Timer:TimerUDB:capt_int_temp\, \RC_Ch3_Timer:TimerUDB:status_tc\),
 		interrupt=>Net_1193);
 \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u0\:cy_psoc3_dp
@@ -3592,15 +4423,15 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch3_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch3_Timer:TimerUDB:trig_reg\, \RC_Ch3_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch3_Timer:TimerUDB:trig_reg\, \RC_Ch3_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch3_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch3_Timer:TimerUDB:nc0\,
@@ -3633,28 +4464,28 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_stat_reg=>open,
 		f1_bus_stat_reg=>open,
 		f1_blk_stat_reg=>open,
-		ci=>zero,
+		ci=>Net_1393,
 		co=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:carry0\,
-		sir=>zero,
+		sir=>Net_1393,
 		sor=>open,
 		sil=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:sh_right0\,
 		sol=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:sh_left0\,
 		msbi=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:msb0\,
 		msbo=>open,
-		cei=>(zero, zero),
+		cei=>(Net_1393, Net_1393),
 		ceo=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_eq0_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_eq0_0\),
-		cli=>(zero, zero),
+		cli=>(Net_1393, Net_1393),
 		clo=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_lt0_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_lt0_0\),
-		zi=>(zero, zero),
+		zi=>(Net_1393, Net_1393),
 		zo=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_zero0_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_zero0_0\),
-		fi=>(zero, zero),
+		fi=>(Net_1393, Net_1393),
 		fo=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_ff0_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_ff0_0\),
-		capi=>(zero, zero),
+		capi=>(Net_1393, Net_1393),
 		capo=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cap0_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cap0_0\),
-		cfbi=>zero,
+		cfbi=>Net_1393,
 		cfbo=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cfb0\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u1\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -3678,15 +4509,15 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch3_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch3_Timer:TimerUDB:trig_reg\, \RC_Ch3_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch3_Timer:TimerUDB:trig_reg\, \RC_Ch3_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch3_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch3_Timer:TimerUDB:nc1\,
@@ -3739,8 +4570,8 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		capo=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cap1_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cap1_0\),
 		cfbi=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cfb0\,
 		cfbo=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cfb1\,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 \RC_Ch3_Timer:TimerUDB:sT24:timerdp:u2\:cy_psoc3_dp
 	GENERIC MAP(cy_dpconfig=>"0000000001000000000000000100000001000000010000000000000010000000000000001000000000000000100000000000000010000000000000001000000011111111000000001111111111111111100000110000000000000001000000110000000000011000",
@@ -3764,15 +4595,15 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		f0_blk_sync=>'1',
 		f1_bus_sync=>'1',
 		f1_blk_sync=>'1')
-	PORT MAP(reset=>zero,
+	PORT MAP(reset=>Net_1393,
 		clk=>\RC_Ch3_Timer:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(zero, \RC_Ch3_Timer:TimerUDB:trig_reg\, \RC_Ch3_Timer:TimerUDB:per_zero\),
-		route_si=>zero,
-		route_ci=>zero,
+		cs_addr=>(Net_1393, \RC_Ch3_Timer:TimerUDB:trig_reg\, \RC_Ch3_Timer:TimerUDB:per_zero\),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
 		f0_load=>\RC_Ch3_Timer:TimerUDB:capt_fifo_load\,
-		f1_load=>zero,
-		d0_load=>zero,
-		d1_load=>zero,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
 		ce0=>open,
 		cl0=>open,
 		z0=>\RC_Ch3_Timer:TimerUDB:per_zero\,
@@ -3809,9 +4640,9 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		co=>open,
 		sir=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:sh_left1\,
 		sor=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:sh_right1\,
-		sil=>zero,
+		sil=>Net_1393,
 		sol=>open,
-		msbi=>zero,
+		msbi=>Net_1393,
 		msbo=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:msb1\,
 		cei=>(\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_eq1_1\, \RC_Ch3_Timer:TimerUDB:sT24:timerdp:cmp_eq1_0\),
 		ceo=>open,
@@ -3825,8 +4656,8 @@ RC_Ch4_Timer_Interrupt:cy_isr_v1_0
 		capo=>open,
 		cfbi=>\RC_Ch3_Timer:TimerUDB:sT24:timerdp:cfb1\,
 		cfbo=>open,
-		pi=>(zero, zero, zero, zero,
-			zero, zero, zero, zero),
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
 		po=>open);
 RC_Ch3:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"cfa21f5c-92b5-41ea-a4ab-d463666be88b",
@@ -3884,107 +4715,797 @@ RC_Ch3:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"00",
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
-	PORT MAP(oe=>(one),
-		y=>(zero),
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
 		fb=>Net_1195,
 		analog=>(open),
 		io=>(tmpIO_0__RC_Ch3_net_0),
 		siovref=>(tmpSIOVREF__RC_Ch3_net_0),
 		annotation=>(open),
-		in_clock=>zero,
-		in_clock_en=>one,
-		in_reset=>zero,
-		out_clock=>zero,
-		out_clock_en=>one,
-		out_reset=>zero,
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
 		interrupt=>tmpINTERRUPT_0__RC_Ch3_net_0);
 RC_Ch3_Timer_Interrupt:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10")
 	PORT MAP(int_signal=>Net_1193);
-\Motor_A_PWM:PWMUDB:min_kill_reg\:cy_dsrff
-	PORT MAP(d=>one,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:min_kill_reg\);
-\Motor_A_PWM:PWMUDB:prevCapture\:cy_dff
-	PORT MAP(d=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:prevCapture\);
-\Motor_A_PWM:PWMUDB:trig_last\:cy_dff
-	PORT MAP(d=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:trig_last\);
-\Motor_A_PWM:PWMUDB:runmode_enable\:cy_dsrff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:control_7\,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:runmode_enable\);
-\Motor_A_PWM:PWMUDB:sc_kill_tmp\:cy_dff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:sc_kill_tmp\\D\,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:sc_kill_tmp\);
-\Motor_A_PWM:PWMUDB:ltch_kill_reg\:cy_dsrff
-	PORT MAP(d=>one,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:ltch_kill_reg\);
-\Motor_A_PWM:PWMUDB:dith_count_1\:cy_dsrff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:dith_count_1\\D\,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:dith_count_1\);
-\Motor_A_PWM:PWMUDB:dith_count_0\:cy_dsrff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:dith_count_0\\D\,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:dith_count_0\);
-\Motor_A_PWM:PWMUDB:prevCompare1\:cy_dff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:cmp1_less\,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:prevCompare1\);
-\Motor_A_PWM:PWMUDB:prevCompare2\:cy_dff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:cmp2_less\,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:prevCompare2\);
-\Motor_A_PWM:PWMUDB:cmp1_status_reg\:cy_dsrff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:cmp1_status\,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:status_0\);
-\Motor_A_PWM:PWMUDB:cmp2_status_reg\:cy_dsrff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:cmp2_status\,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:status_1\);
-\Motor_A_PWM:PWMUDB:final_kill_reg\:cy_dsrff
-	PORT MAP(d=>zero,
-		s=>zero,
-		r=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:status_5\);
-\Motor_A_PWM:PWMUDB:pwm_i_reg\:cy_dff
-	PORT MAP(d=>zero,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:pwm_i_reg\);
-\Motor_A_PWM:PWMUDB:pwm1_i_reg\:cy_dff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:pwm1_i\,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
+Flywheel_DC_Motor_In1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"e5dea7d5-addd-4550-aa24-06571c6cab5c",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>Net_1631,
+		fb=>(tmpFB_0__Flywheel_DC_Motor_In1_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Flywheel_DC_Motor_In1_net_0),
+		siovref=>(tmpSIOVREF__Flywheel_DC_Motor_In1_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__Flywheel_DC_Motor_In1_net_0);
+Pendulum_DC_Motor_In1:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"90cb7787-0f83-40f2-8837-69949bfe599d",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>Net_1426,
+		fb=>(tmpFB_0__Pendulum_DC_Motor_In1_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Pendulum_DC_Motor_In1_net_0),
+		siovref=>(tmpSIOVREF__Pendulum_DC_Motor_In1_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__Pendulum_DC_Motor_In1_net_0);
+Pendulum_DC_Motor_In2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"bc93c152-f199-4a46-ada7-ce2c9bd634d9",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>Net_1427,
+		fb=>(tmpFB_0__Pendulum_DC_Motor_In2_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Pendulum_DC_Motor_In2_net_0),
+		siovref=>(tmpSIOVREF__Pendulum_DC_Motor_In2_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__Pendulum_DC_Motor_In2_net_0);
+\Pendulum_DC_Motor_PWM:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1219,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
+		clock_out=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\);
+\Pendulum_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>Net_1393,
+		clock=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		control=>(\Pendulum_DC_Motor_PWM:PWMUDB:control_7\, \Pendulum_DC_Motor_PWM:PWMUDB:control_6\, \Pendulum_DC_Motor_PWM:PWMUDB:control_5\, \Pendulum_DC_Motor_PWM:PWMUDB:control_4\,
+			\Pendulum_DC_Motor_PWM:PWMUDB:control_3\, \Pendulum_DC_Motor_PWM:PWMUDB:control_2\, \Pendulum_DC_Motor_PWM:PWMUDB:control_1\, \Pendulum_DC_Motor_PWM:PWMUDB:control_0\));
+\Pendulum_DC_Motor_PWM:PWMUDB:genblk8:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0100111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>Net_1393,
+		clock=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		status=>(Net_1393, \Pendulum_DC_Motor_PWM:PWMUDB:status_5\, Net_1393, \Pendulum_DC_Motor_PWM:PWMUDB:status_3\,
+			\Pendulum_DC_Motor_PWM:PWMUDB:status_2\, \Pendulum_DC_Motor_PWM:PWMUDB:status_1\, \Pendulum_DC_Motor_PWM:PWMUDB:status_0\),
+		interrupt=>\Pendulum_DC_Motor_PWM:Net_55\);
+\Pendulum_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		cs_addr=>(\Pendulum_DC_Motor_PWM:PWMUDB:tc_i\, \Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\, Net_1393),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
+		f0_load=>Net_1393,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
+		ce0=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp1_eq\,
+		cl0=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\,
+		z0=>\Pendulum_DC_Motor_PWM:PWMUDB:tc_i\,
+		ff0=>open,
+		ce1=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp2_eq\,
+		cl1=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>\Pendulum_DC_Motor_PWM:PWMUDB:fifo_nempty\,
+		f1_blk_stat=>\Pendulum_DC_Motor_PWM:PWMUDB:status_3\,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>Net_1393,
+		co=>open,
+		sir=>Net_1393,
+		sor=>open,
+		sil=>Net_1393,
+		sol=>open,
+		msbi=>Net_1393,
+		msbo=>open,
+		cei=>(Net_1393, Net_1393),
+		ceo=>open,
+		cli=>(Net_1393, Net_1393),
+		clo=>open,
+		zi=>(Net_1393, Net_1393),
+		zo=>open,
+		fi=>(Net_1393, Net_1393),
+		fo=>open,
+		capi=>(Net_1393, Net_1393),
+		capo=>open,
+		cfbi=>Net_1393,
+		cfbo=>open,
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
+		po=>open);
+\Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_24\);
+\Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_16\);
+\Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Pendulum_DC_Motor_PWM:PWMUDB:MODULE_10:g2:a0:g1:z1:s0:g1:u0:c_8\);
+Flywheel_DC_Motor_In2:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"b8aa409d-5cb2-40c5-99e3-826f7baaf2cd",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>Net_1632,
+		fb=>(tmpFB_0__Flywheel_DC_Motor_In2_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__Flywheel_DC_Motor_In2_net_0),
+		siovref=>(tmpSIOVREF__Flywheel_DC_Motor_In2_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__Flywheel_DC_Motor_In2_net_0);
+\Flywheel_DC_Motor_PWM:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_1219,
+		enable=>tmpOE__Drive_DC_Motor_In2_net_0,
+		clock_out=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\);
+\Flywheel_DC_Motor_PWM:PWMUDB:genblk1:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>Net_1393,
+		clock=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		control=>(\Flywheel_DC_Motor_PWM:PWMUDB:control_7\, \Flywheel_DC_Motor_PWM:PWMUDB:control_6\, \Flywheel_DC_Motor_PWM:PWMUDB:control_5\, \Flywheel_DC_Motor_PWM:PWMUDB:control_4\,
+			\Flywheel_DC_Motor_PWM:PWMUDB:control_3\, \Flywheel_DC_Motor_PWM:PWMUDB:control_2\, \Flywheel_DC_Motor_PWM:PWMUDB:control_1\, \Flywheel_DC_Motor_PWM:PWMUDB:control_0\));
+\Flywheel_DC_Motor_PWM:PWMUDB:genblk8:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0100111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>Net_1393,
+		clock=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		status=>(Net_1393, \Flywheel_DC_Motor_PWM:PWMUDB:status_5\, Net_1393, \Flywheel_DC_Motor_PWM:PWMUDB:status_3\,
+			\Flywheel_DC_Motor_PWM:PWMUDB:status_2\, \Flywheel_DC_Motor_PWM:PWMUDB:status_1\, \Flywheel_DC_Motor_PWM:PWMUDB:status_0\),
+		interrupt=>\Flywheel_DC_Motor_PWM:Net_55\);
+\Flywheel_DC_Motor_PWM:PWMUDB:sP8:pwmdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		cs_addr=>(\Flywheel_DC_Motor_PWM:PWMUDB:tc_i\, \Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\, Net_1393),
+		route_si=>Net_1393,
+		route_ci=>Net_1393,
+		f0_load=>Net_1393,
+		f1_load=>Net_1393,
+		d0_load=>Net_1393,
+		d1_load=>Net_1393,
+		ce0=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp1_eq\,
+		cl0=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\,
+		z0=>\Flywheel_DC_Motor_PWM:PWMUDB:tc_i\,
+		ff0=>open,
+		ce1=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp2_eq\,
+		cl1=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>\Flywheel_DC_Motor_PWM:PWMUDB:fifo_nempty\,
+		f1_blk_stat=>\Flywheel_DC_Motor_PWM:PWMUDB:status_3\,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>Net_1393,
+		co=>open,
+		sir=>Net_1393,
+		sor=>open,
+		sil=>Net_1393,
+		sol=>open,
+		msbi=>Net_1393,
+		msbo=>open,
+		cei=>(Net_1393, Net_1393),
+		ceo=>open,
+		cli=>(Net_1393, Net_1393),
+		clo=>open,
+		zi=>(Net_1393, Net_1393),
+		zo=>open,
+		fi=>(Net_1393, Net_1393),
+		fo=>open,
+		capi=>(Net_1393, Net_1393),
+		capo=>open,
+		cfbi=>Net_1393,
+		cfbo=>open,
+		pi=>(Net_1393, Net_1393, Net_1393, Net_1393,
+			Net_1393, Net_1393, Net_1393, Net_1393),
+		po=>open);
+\Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_24\);
+\Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_16\);
+\Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
+	PORT MAP(x=>Net_1393,
+		y=>\Flywheel_DC_Motor_PWM:PWMUDB:MODULE_11:g2:a0:g1:z1:s0:g1:u0:c_8\);
+MPU6050_SDA:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"c70da4b5-4ecf-477b-9aae-63eb4c2eed94",
+		drive_mode=>"100",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"B",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
+		fb=>(tmpFB_0__MPU6050_SDA_net_0),
+		analog=>(open),
+		io=>Net_2544,
+		siovref=>(tmpSIOVREF__MPU6050_SDA_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__MPU6050_SDA_net_0);
+MPU6050_SCL:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"3d01d459-5534-4694-9bcc-736a7a542cec",
+		drive_mode=>"100",
+		ibuf_enabled=>"1",
+		init_dr_st=>"1",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"0",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"B",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"00",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(tmpOE__Drive_DC_Motor_In2_net_0),
+		y=>(Net_1393),
+		fb=>(tmpFB_0__MPU6050_SCL_net_0),
+		analog=>(open),
+		io=>Net_2545,
+		siovref=>(tmpSIOVREF__MPU6050_SCL_net_0),
+		annotation=>(open),
+		in_clock=>Net_1393,
+		in_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		in_reset=>Net_1393,
+		out_clock=>Net_1393,
+		out_clock_en=>tmpOE__Drive_DC_Motor_In2_net_0,
+		out_reset=>Net_1393,
+		interrupt=>tmpINTERRUPT_0__MPU6050_SCL_net_0);
+\MPU6050_I2C:I2C_IRQ\:cy_isr_v1_0
+	GENERIC MAP(int_type=>"00")
+	PORT MAP(int_signal=>\MPU6050_I2C:Net_697\);
+\MPU6050_I2C:I2C_FF\:cy_psoc3_i2c_v1_0
+	GENERIC MAP(cy_registers=>"",
+		use_wakeup=>'0')
+	PORT MAP(clock=>\MPU6050_I2C:bus_clk\,
+		scl_in=>\MPU6050_I2C:Net_1109_0\,
+		sda_in=>\MPU6050_I2C:Net_1109_1\,
+		scl_out=>\MPU6050_I2C:Net_643_0\,
+		sda_out=>\MPU6050_I2C:sda_x_wire\,
+		interrupt=>\MPU6050_I2C:Net_697\);
+\MPU6050_I2C:BusClock\:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"6f2d57bd-b6d0-4115-93da-ded3485bf4ed/5ece924d-20ba-480e-9102-bc082dcdd926",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>\MPU6050_I2C:bus_clk\,
+		dig_domain_out=>open);
+\MPU6050_I2C:Bufoe_scl\:cy_bufoe
+	PORT MAP(x=>\MPU6050_I2C:Net_643_0\,
+		oe=>tmpOE__Drive_DC_Motor_In2_net_0,
+		y=>Net_2545,
+		yfb=>\MPU6050_I2C:Net_1109_0\);
+\MPU6050_I2C:Bufoe_sda\:cy_bufoe
+	PORT MAP(x=>\MPU6050_I2C:sda_x_wire\,
+		oe=>tmpOE__Drive_DC_Motor_In2_net_0,
+		y=>Net_2544,
+		yfb=>\MPU6050_I2C:Net_1109_1\);
+\Drive_DC_Motor_PWM:PWMUDB:min_kill_reg\:cy_dsrff
+	PORT MAP(d=>tmpOE__Drive_DC_Motor_In2_net_0,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:min_kill_reg\);
+\Drive_DC_Motor_PWM:PWMUDB:prevCapture\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:prevCapture\);
+\Drive_DC_Motor_PWM:PWMUDB:trig_last\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:trig_last\);
+\Drive_DC_Motor_PWM:PWMUDB:runmode_enable\:cy_dsrff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:control_7\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:runmode_enable\);
+\Drive_DC_Motor_PWM:PWMUDB:sc_kill_tmp\:cy_dff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:sc_kill_tmp\);
+\Drive_DC_Motor_PWM:PWMUDB:ltch_kill_reg\:cy_dsrff
+	PORT MAP(d=>tmpOE__Drive_DC_Motor_In2_net_0,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:ltch_kill_reg\);
+\Drive_DC_Motor_PWM:PWMUDB:dith_count_1\:cy_dsrff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:dith_count_1\\D\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:dith_count_1\);
+\Drive_DC_Motor_PWM:PWMUDB:dith_count_0\:cy_dsrff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:dith_count_0\\D\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:dith_count_0\);
+\Drive_DC_Motor_PWM:PWMUDB:prevCompare1\:cy_dff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:cmp1_less\,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:prevCompare1\);
+\Drive_DC_Motor_PWM:PWMUDB:prevCompare2\:cy_dff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:cmp2_less\,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:prevCompare2\);
+\Drive_DC_Motor_PWM:PWMUDB:cmp1_status_reg\:cy_dsrff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:cmp1_status\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:status_0\);
+\Drive_DC_Motor_PWM:PWMUDB:cmp2_status_reg\:cy_dsrff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:cmp2_status\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:status_1\);
+\Drive_DC_Motor_PWM:PWMUDB:final_kill_reg\:cy_dsrff
+	PORT MAP(d=>Net_1393,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:status_5\);
+\Drive_DC_Motor_PWM:PWMUDB:pwm_i_reg\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:pwm_i_reg\);
+\Drive_DC_Motor_PWM:PWMUDB:pwm1_i_reg\:cy_dff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:pwm1_i\,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
 		q=>Net_140);
-\Motor_A_PWM:PWMUDB:pwm2_i_reg\:cy_dff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:pwm2_i\,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
+\Drive_DC_Motor_PWM:PWMUDB:pwm2_i_reg\:cy_dff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:pwm2_i\,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
 		q=>Net_156);
-\Motor_A_PWM:PWMUDB:tc_i_reg\:cy_dff
-	PORT MAP(d=>\Motor_A_PWM:PWMUDB:status_2\,
-		clk=>\Motor_A_PWM:PWMUDB:ClockOutFromEnBlock\,
-		q=>\Motor_A_PWM:PWMUDB:tc_i_reg\);
+\Drive_DC_Motor_PWM:PWMUDB:tc_i_reg\:cy_dff
+	PORT MAP(d=>\Drive_DC_Motor_PWM:PWMUDB:status_2\,
+		clk=>\Drive_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Drive_DC_Motor_PWM:PWMUDB:tc_i_reg\);
 \RC_Ch1_Timer:TimerUDB:capture_last\:cy_dff
 	PORT MAP(d=>Net_1164,
 		clk=>\RC_Ch1_Timer:TimerUDB:ClockOutFromEnBlock\,
@@ -4145,5 +5666,173 @@ RC_Ch3_Timer_Interrupt:cy_isr_v1_0
 	PORT MAP(d=>\RC_Ch3_Timer:TimerUDB:trig_fall_detected\\D\,
 		clk=>\RC_Ch3_Timer:TimerUDB:ClockOutFromEnBlock\,
 		q=>\RC_Ch3_Timer:TimerUDB:trig_fall_detected\);
+\Pendulum_DC_Motor_PWM:PWMUDB:min_kill_reg\:cy_dsrff
+	PORT MAP(d=>tmpOE__Drive_DC_Motor_In2_net_0,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:min_kill_reg\);
+\Pendulum_DC_Motor_PWM:PWMUDB:prevCapture\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:prevCapture\);
+\Pendulum_DC_Motor_PWM:PWMUDB:trig_last\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:trig_last\);
+\Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\:cy_dsrff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:control_7\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:runmode_enable\);
+\Pendulum_DC_Motor_PWM:PWMUDB:sc_kill_tmp\:cy_dff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:sc_kill_tmp\);
+\Pendulum_DC_Motor_PWM:PWMUDB:ltch_kill_reg\:cy_dsrff
+	PORT MAP(d=>tmpOE__Drive_DC_Motor_In2_net_0,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:ltch_kill_reg\);
+\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\:cy_dsrff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\\D\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_1\);
+\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\:cy_dsrff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\\D\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:dith_count_0\);
+\Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\:cy_dff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp1_less\,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:prevCompare1\);
+\Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\:cy_dff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp2_less\,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:prevCompare2\);
+\Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status_reg\:cy_dsrff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp1_status\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:status_0\);
+\Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status_reg\:cy_dsrff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:cmp2_status\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:status_1\);
+\Pendulum_DC_Motor_PWM:PWMUDB:final_kill_reg\:cy_dsrff
+	PORT MAP(d=>Net_1393,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:status_5\);
+\Pendulum_DC_Motor_PWM:PWMUDB:pwm_i_reg\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:pwm_i_reg\);
+\Pendulum_DC_Motor_PWM:PWMUDB:pwm1_i_reg\:cy_dff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:pwm1_i\,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>Net_1426);
+\Pendulum_DC_Motor_PWM:PWMUDB:pwm2_i_reg\:cy_dff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:pwm2_i\,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>Net_1427);
+\Pendulum_DC_Motor_PWM:PWMUDB:tc_i_reg\:cy_dff
+	PORT MAP(d=>\Pendulum_DC_Motor_PWM:PWMUDB:status_2\,
+		clk=>\Pendulum_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Pendulum_DC_Motor_PWM:PWMUDB:tc_i_reg\);
+\Flywheel_DC_Motor_PWM:PWMUDB:min_kill_reg\:cy_dsrff
+	PORT MAP(d=>tmpOE__Drive_DC_Motor_In2_net_0,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:min_kill_reg\);
+\Flywheel_DC_Motor_PWM:PWMUDB:prevCapture\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:prevCapture\);
+\Flywheel_DC_Motor_PWM:PWMUDB:trig_last\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:trig_last\);
+\Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\:cy_dsrff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:control_7\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:runmode_enable\);
+\Flywheel_DC_Motor_PWM:PWMUDB:sc_kill_tmp\:cy_dff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:sc_kill_tmp\\D\,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:sc_kill_tmp\);
+\Flywheel_DC_Motor_PWM:PWMUDB:ltch_kill_reg\:cy_dsrff
+	PORT MAP(d=>tmpOE__Drive_DC_Motor_In2_net_0,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:ltch_kill_reg\);
+\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\:cy_dsrff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\\D\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_1\);
+\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\:cy_dsrff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\\D\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:dith_count_0\);
+\Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\:cy_dff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp1_less\,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:prevCompare1\);
+\Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\:cy_dff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp2_less\,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:prevCompare2\);
+\Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status_reg\:cy_dsrff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp1_status\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:status_0\);
+\Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status_reg\:cy_dsrff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:cmp2_status\,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:status_1\);
+\Flywheel_DC_Motor_PWM:PWMUDB:final_kill_reg\:cy_dsrff
+	PORT MAP(d=>Net_1393,
+		s=>Net_1393,
+		r=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:status_5\);
+\Flywheel_DC_Motor_PWM:PWMUDB:pwm_i_reg\:cy_dff
+	PORT MAP(d=>Net_1393,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:pwm_i_reg\);
+\Flywheel_DC_Motor_PWM:PWMUDB:pwm1_i_reg\:cy_dff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:pwm1_i\,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>Net_1631);
+\Flywheel_DC_Motor_PWM:PWMUDB:pwm2_i_reg\:cy_dff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:pwm2_i\,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>Net_1632);
+\Flywheel_DC_Motor_PWM:PWMUDB:tc_i_reg\:cy_dff
+	PORT MAP(d=>\Flywheel_DC_Motor_PWM:PWMUDB:status_2\,
+		clk=>\Flywheel_DC_Motor_PWM:PWMUDB:ClockOutFromEnBlock\,
+		q=>\Flywheel_DC_Motor_PWM:PWMUDB:tc_i_reg\);
 
 END R_T_L;
