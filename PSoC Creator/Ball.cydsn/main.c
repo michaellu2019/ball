@@ -50,9 +50,11 @@ int main()
        
     init_dc_motors();
     DC_MOTOR drive_dc_motor;
-    construct_dc_motor(&drive_dc_motor, DRIVE_DC_MOTOR);
+    construct_dc_motor(&drive_dc_motor, DRIVE_DC_MOTOR, DRIVE_DC_MOTOR_MAX_PWM, DRIVE_DC_MOTOR_COUNTS_PER_ROT, MAXFLOAT, -MAXFLOAT);
     DC_MOTOR pendulum_dc_motor;
-    construct_dc_motor(&pendulum_dc_motor, PENDULUM_DC_MOTOR);
+    construct_dc_motor(&pendulum_dc_motor, PENDULUM_DC_MOTOR, PENDULUM_DC_MOTOR_MAX_PWM, PENDULUM_DC_MOTOR_COUNTS_PER_ROT, PENDULUM_DC_MOTOR_MAX_POS, PENDULUM_DC_MOTOR_MIN_POS);
+    DC_MOTOR flywheel_dc_motor;
+    construct_dc_motor(&flywheel_dc_motor, FLYWHEEL_DC_MOTOR, FLYWHEEL_DC_MOTOR_MAX_PWM, FLYWHEEL_DC_MOTOR_COUNTS_PER_ROT, MAXFLOAT, -MAXFLOAT);
     
     init_rc_channels();
     RC_CH rc_ch1;
@@ -76,22 +78,28 @@ int main()
         get_rc_ch_value(&rc_ch4);
         
         if (rc_ch2.connected && rc_ch2.value != 0) {
-            run_motor(&drive_dc_motor, rc_ch2.value);
+            set_dc_motor_pwm(&drive_dc_motor, rc_ch2.value);
         } else {
-            run_motor(&drive_dc_motor, 0);
+            set_dc_motor_pwm(&drive_dc_motor, 0);
         }
         if (rc_ch1.connected && rc_ch1.value != 0) {
-            run_motor(&pendulum_dc_motor, rc_ch1.value);
+            set_dc_motor_pwm(&pendulum_dc_motor, rc_ch1.value);
         } else {
-            run_motor(&pendulum_dc_motor, 0);
+            //run_dc_motor(&pendulum_dc_motor, 0);
+            set_dc_motor_pos(&pendulum_dc_motor, 0);
         }
+        
+        get_dc_motor_pos(&drive_dc_motor);
+        get_dc_motor_pos(&pendulum_dc_motor);
+        get_dc_motor_pos(&flywheel_dc_motor);
         
         get_imu_values(&imu);
 
         if (rc_ch1.value != 0 || rc_ch2.value != 0 || rc_ch3.value != 0 || rc_ch3.value != 0) {
             char debug[64] = "";
-            sprintf(debug, "[%ld] %d %d %d %d - %d %d %d %d %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value,
-                                                                         (int) imu.ax, (int) imu.ay, (int) imu.az, (int) imu.gx, (int) imu.gy, (int) imu.gz);
+            sprintf(debug, "[%ld] %d %d %d %d - %d %d %d - %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value,
+                                                                            (int) imu.ax, (int) imu.ay, (int) imu.az,
+                                                                            (int) (drive_dc_motor.pos * 100), (int) (pendulum_dc_motor.pos * 100));
             USBUART_PutString(debug);
         }
     }

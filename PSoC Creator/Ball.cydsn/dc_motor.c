@@ -13,52 +13,117 @@
 #include "dc_motor.h"
 
 const int NUM_DC_MOTORS = 3;
+const float DC_MOTOR_POS_TOLERANCE = 0.1;
 
 void init_dc_motors() {
     Drive_DC_Motor_PWM_Start();
+    Drive_DC_Motor_Quad_Dec_Start();
+    Drive_DC_Motor_Quad_Dec_SetCounter(0);
+    
     Pendulum_DC_Motor_PWM_Start();
+    Pendulum_DC_Motor_Quad_Dec_Start();
+    Pendulum_DC_Motor_Quad_Dec_SetCounter(0);
+    
     Flywheel_DC_Motor_PWM_Start();
 }
 
-void construct_dc_motor(DC_MOTOR *dc_motor, uint8 motor_id) {
-    dc_motor->motor_id = motor_id;
-    dc_motor->motor_pwm = 0;
+void construct_dc_motor(DC_MOTOR *dc_motor, uint8 id, int16 max_pwm, uint16 counts_per_rot, float max_pos, float min_pos) {
+    dc_motor->id = id;
+    dc_motor->max_pwm = max_pwm;
+    dc_motor->pwm = 0;
+    dc_motor->counts_per_rot = counts_per_rot;
+    dc_motor->enc_count = 0;
+    dc_motor->max_pos = max_pos;
+    dc_motor->min_pos = min_pos;
+    dc_motor->pos = 0;
+    dc_motor->vel = 0;
 }
 
-void run_motor(DC_MOTOR *dc_motor, int16 motor_pwm) {
-    if (dc_motor->motor_id == DRIVE_DC_MOTOR) {
-        if (motor_pwm < 0) {
-            Drive_DC_Motor_PWM_WriteCompare1(abs(motor_pwm));
+void set_dc_motor_pwm(DC_MOTOR *dc_motor, int16 pwm) {
+    if (abs(pwm) > dc_motor->max_pwm) {
+        if (pwm < 0) 
+            dc_motor->pwm = -dc_motor->max_pwm;
+        if (pwm > 0) 
+            dc_motor->pwm = dc_motor->max_pwm;
+    } else {
+        dc_motor->pwm = pwm;
+    }
+    
+    if (dc_motor->id == DRIVE_DC_MOTOR) {
+        if (pwm < 0) {
+            Drive_DC_Motor_PWM_WriteCompare1(abs(dc_motor->pwm));
             Drive_DC_Motor_PWM_WriteCompare2(0);
-        } else if (motor_pwm > 0) {
+        } else if (pwm > 0) {
             Drive_DC_Motor_PWM_WriteCompare1(0);
-            Drive_DC_Motor_PWM_WriteCompare2(motor_pwm);
+            Drive_DC_Motor_PWM_WriteCompare2(dc_motor->pwm);
         } else {
             Drive_DC_Motor_PWM_WriteCompare1(0);
             Drive_DC_Motor_PWM_WriteCompare2(0);
         }
-    } else if (dc_motor->motor_id == PENDULUM_DC_MOTOR) {
-        if (motor_pwm < 0) {
-            Pendulum_DC_Motor_PWM_WriteCompare1(abs(motor_pwm));
-            Pendulum_DC_Motor_PWM_WriteCompare2(0);
-        } else if (motor_pwm > 0) {
+    } else if (dc_motor->id == PENDULUM_DC_MOTOR) {
+        get_dc_motor_pos(dc_motor);
+        if (dc_motor->pos > dc_motor->max_pos || dc_motor->pos < dc_motor->min_pos) {
             Pendulum_DC_Motor_PWM_WriteCompare1(0);
-            Pendulum_DC_Motor_PWM_WriteCompare2(motor_pwm);
+            Pendulum_DC_Motor_PWM_WriteCompare2(0);
         } else {
-            Pendulum_DC_Motor_PWM_WriteCompare1(0);
-            Pendulum_DC_Motor_PWM_WriteCompare2(0);
+            if (pwm < 0) {
+                Pendulum_DC_Motor_PWM_WriteCompare1(abs(dc_motor->pwm));
+                Pendulum_DC_Motor_PWM_WriteCompare2(0);
+            } else if (pwm > 0) {
+                Pendulum_DC_Motor_PWM_WriteCompare1(0);
+                Pendulum_DC_Motor_PWM_WriteCompare2(dc_motor->pwm);
+            } else {
+                Pendulum_DC_Motor_PWM_WriteCompare1(0);
+                Pendulum_DC_Motor_PWM_WriteCompare2(0);
+            }
         }
-    } else if (dc_motor->motor_id == FLYWHEEL_DC_MOTOR) {
-        if (motor_pwm < 0) {
-            Flywheel_DC_Motor_PWM_WriteCompare1(abs(motor_pwm));
+    } else if (dc_motor->id == FLYWHEEL_DC_MOTOR) {
+        if (pwm < 0) {
+            Flywheel_DC_Motor_PWM_WriteCompare1(abs(dc_motor->pwm));
             Flywheel_DC_Motor_PWM_WriteCompare2(0);
-        } else if (motor_pwm > 0) {
+        } else if (pwm > 0) {
             Flywheel_DC_Motor_PWM_WriteCompare1(0);
-            Flywheel_DC_Motor_PWM_WriteCompare2(motor_pwm);
+            Flywheel_DC_Motor_PWM_WriteCompare2(dc_motor->pwm);
         } else {
             Flywheel_DC_Motor_PWM_WriteCompare1(0);
             Flywheel_DC_Motor_PWM_WriteCompare2(0);
         }
     }
 }
+
+void get_dc_motor_pos(DC_MOTOR *dc_motor) {
+    if (dc_motor->id == DRIVE_DC_MOTOR) {
+        dc_motor->enc_count = Drive_DC_Motor_Quad_Dec_GetCounter();
+    } else if (dc_motor->id == PENDULUM_DC_MOTOR) {
+        dc_motor->enc_count = Pendulum_DC_Motor_Quad_Dec_GetCounter();
+    } else if (dc_motor->id == FLYWHEEL_DC_MOTOR) {
+        //dc_motor->enc_count = Flywheel_DC_Motor_Quad_Dec_GetCounter();
+    }
+    
+    dc_motor->pos = (dc_motor->enc_count * 2 * M_PI * COUNTS_PER_QUADRATURE)/dc_motor->counts_per_rot;
+}
+
+void set_dc_motor_pos(DC_MOTOR *dc_motor, float dc_motor_pos) {
+    if (dc_motor->id == PENDULUM_DC_MOTOR) {
+        const int pwm = 150;
+        get_dc_motor_pos(dc_motor);
+        if (dc_motor->pos > dc_motor_pos + DC_MOTOR_POS_TOLERANCE) {
+            set_dc_motor_pwm(dc_motor, -pwm);
+            //char debug[64] = "";
+            //sprintf(debug, "back %d\r\n", (int) (dc_motor->pos * 100));
+            //USBUART_PutString(debug);
+        } else if (dc_motor->pos < dc_motor_pos - DC_MOTOR_POS_TOLERANCE) {
+            set_dc_motor_pwm(dc_motor, pwm);
+            //char debug[64] = "";
+            //sprintf(debug, "fwd %d\r\n", (int) (dc_motor->pos * 100));
+            //USBUART_PutString(debug);
+        } else {
+            set_dc_motor_pwm(dc_motor, 0);
+            //char debug[64] = "";
+            //sprintf(debug, "stop %d\r\n", (int) (dc_motor->pos * 100));
+            //USBUART_PutString(debug);
+        }
+    }
+}
+
 /* [] END OF FILE */
