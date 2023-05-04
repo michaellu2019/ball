@@ -88,10 +88,15 @@ int main()
             //run_dc_motor(&pendulum_dc_motor, 0);
             set_dc_motor_pos(&pendulum_dc_motor, 0);
         }
+        if (rc_ch4.connected && rc_ch4.value != 0) {
+            set_dc_motor_pwm(&flywheel_dc_motor, rc_ch4.value);
+        } else {
+            set_dc_motor_pwm(&flywheel_dc_motor, 0);
+        }
         
-        get_dc_motor_pos(&drive_dc_motor);
+        /*get_dc_motor_pos(&drive_dc_motor);
         get_dc_motor_pos(&pendulum_dc_motor);
-        get_dc_motor_pos(&flywheel_dc_motor);
+        get_dc_motor_pos(&flywheel_dc_motor);*/
         
         get_imu_values(&imu);
 

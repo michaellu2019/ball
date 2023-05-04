@@ -61,11 +61,11 @@ void set_dc_motor_pwm(DC_MOTOR *dc_motor, int16 pwm) {
             Drive_DC_Motor_PWM_WriteCompare2(0);
         }
     } else if (dc_motor->id == PENDULUM_DC_MOTOR) {
-        get_dc_motor_pos(dc_motor);
+        /*get_dc_motor_pos(dc_motor);
         if (dc_motor->pos > dc_motor->max_pos || dc_motor->pos < dc_motor->min_pos) {
             Pendulum_DC_Motor_PWM_WriteCompare1(0);
             Pendulum_DC_Motor_PWM_WriteCompare2(0);
-        } else {
+        } else {*/
             if (pwm < 0) {
                 Pendulum_DC_Motor_PWM_WriteCompare1(abs(dc_motor->pwm));
                 Pendulum_DC_Motor_PWM_WriteCompare2(0);
@@ -76,7 +76,7 @@ void set_dc_motor_pwm(DC_MOTOR *dc_motor, int16 pwm) {
                 Pendulum_DC_Motor_PWM_WriteCompare1(0);
                 Pendulum_DC_Motor_PWM_WriteCompare2(0);
             }
-        }
+        //}
     } else if (dc_motor->id == FLYWHEEL_DC_MOTOR) {
         if (pwm < 0) {
             Flywheel_DC_Motor_PWM_WriteCompare1(abs(dc_motor->pwm));
