@@ -11,6 +11,7 @@
 */
 #pragma once
 #include "project.h"
+#include "pid.h"
 #include "math.h"
 
 #define DRIVE_DC_MOTOR 0
@@ -38,20 +39,28 @@ typedef struct dc_motor {
     int16 max_pwm;
     uint16 counts_per_rot;
     int16 enc_count;
+    
     float max_pos;
     float min_pos;
     float pos;
+    float prev_pos;
     float vel;
+    float prev_vel;
+    float vel_filt;
+    
+    PID *pid;
 } DC_MOTOR;
 
 void init_dc_motors();
 
-void construct_dc_motor(DC_MOTOR *dc_motor, uint8 id, int16 max_pwm, uint16 counts_per_rot, float max_pos, float min_pos);
+void construct_dc_motor(DC_MOTOR *dc_motor, uint8 id, int16 max_pwm, uint16 counts_per_rot, float max_pos, float min_pos, PID *PID);
 
 void set_dc_motor_pwm(DC_MOTOR *dc_motor, int16 pwm);
 
 void get_dc_motor_pos(DC_MOTOR *dc_motor);
 
 void set_dc_motor_pos(DC_MOTOR *dc_motor, float dc_motor_pos);
+
+void set_dc_motor_speed(DC_MOTOR *dc_motor, float target_v, float dt);
 
 /* [] END OF FILE */

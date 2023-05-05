@@ -27,7 +27,7 @@ void init_dc_motors() {
     Flywheel_DC_Motor_PWM_Start();
 }
 
-void construct_dc_motor(DC_MOTOR *dc_motor, uint8 id, int16 max_pwm, uint16 counts_per_rot, float max_pos, float min_pos) {
+void construct_dc_motor(DC_MOTOR *dc_motor, uint8 id, int16 max_pwm, uint16 counts_per_rot, float max_pos, float min_pos, PID *pid) {
     dc_motor->id = id;
     dc_motor->max_pwm = max_pwm;
     dc_motor->pwm = 0;
@@ -36,7 +36,11 @@ void construct_dc_motor(DC_MOTOR *dc_motor, uint8 id, int16 max_pwm, uint16 coun
     dc_motor->max_pos = max_pos;
     dc_motor->min_pos = min_pos;
     dc_motor->pos = 0;
+    dc_motor->prev_pos = 0;
     dc_motor->vel = 0;
+    dc_motor->prev_vel = 0;
+    dc_motor->vel_filt = 0;
+    dc_motor->pid = pid;
 }
 
 void set_dc_motor_pwm(DC_MOTOR *dc_motor, int16 pwm) {
@@ -124,6 +128,20 @@ void set_dc_motor_pos(DC_MOTOR *dc_motor, float dc_motor_pos) {
             //USBUART_PutString(debug);
         }
     }
+}
+
+void set_dc_motor_speed(DC_MOTOR *dc_motor, float target_vel, float dt) {
+    //dc_motor->target_vel = (abs(target_vel) < 0.0) ? 0 : target_vel;
+    get_dc_motor_pos(dc_motor);
+    float vel = (dc_motor->pos - dc_motor->prev_pos)/dt;
+    //float vel2 = (dc_motor->vel/
+    float af = 0.893;
+    float bf = (1.0 - af)/2.0;
+    dc_motor->vel_filt = af * dc_motor->vel_filt + bf * vel + bf * dc_motor->prev_vel;
+    
+    get_pid_output(dc_motor->pid, target_vel, dc_motor->vel_filt, dt);
+    int16 pwm = (int16) dc_motor->pid->output;
+    set_dc_motor_pwm(dc_motor, pwm);
 }
 
 /* [] END OF FILE */

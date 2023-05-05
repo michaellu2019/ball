@@ -47,14 +47,23 @@ int main()
     USBUART_PutString("Init...");
     
     init_milliseconds();
+    uint32 prev_time_ms = MILLISECONDS;
+    
+    init_pid();
+    PID drive_dc_motor_pid;
+    construct_pid(&drive_dc_motor_pid, 1.0, 0.0, 1.0);
+    PID pendulum_dc_motor_pid;
+    construct_pid(&pendulum_dc_motor_pid, 1.0, 0.0, 1.0);
+    PID flywheel_dc_motor_pid;
+    construct_pid(&flywheel_dc_motor_pid, 1.0, 0.0, 1.0);
        
     init_dc_motors();
     DC_MOTOR drive_dc_motor;
-    construct_dc_motor(&drive_dc_motor, DRIVE_DC_MOTOR, DRIVE_DC_MOTOR_MAX_PWM, DRIVE_DC_MOTOR_COUNTS_PER_ROT, MAXFLOAT, -MAXFLOAT);
+    construct_dc_motor(&drive_dc_motor, DRIVE_DC_MOTOR, DRIVE_DC_MOTOR_MAX_PWM, DRIVE_DC_MOTOR_COUNTS_PER_ROT, MAXFLOAT, -MAXFLOAT, &drive_dc_motor_pid);
     DC_MOTOR pendulum_dc_motor;
-    construct_dc_motor(&pendulum_dc_motor, PENDULUM_DC_MOTOR, PENDULUM_DC_MOTOR_MAX_PWM, PENDULUM_DC_MOTOR_COUNTS_PER_ROT, PENDULUM_DC_MOTOR_MAX_POS, PENDULUM_DC_MOTOR_MIN_POS);
+    construct_dc_motor(&pendulum_dc_motor, PENDULUM_DC_MOTOR, PENDULUM_DC_MOTOR_MAX_PWM, PENDULUM_DC_MOTOR_COUNTS_PER_ROT, PENDULUM_DC_MOTOR_MAX_POS, PENDULUM_DC_MOTOR_MIN_POS, &pendulum_dc_motor_pid);
     DC_MOTOR flywheel_dc_motor;
-    construct_dc_motor(&flywheel_dc_motor, FLYWHEEL_DC_MOTOR, FLYWHEEL_DC_MOTOR_MAX_PWM, FLYWHEEL_DC_MOTOR_COUNTS_PER_ROT, MAXFLOAT, -MAXFLOAT);
+    construct_dc_motor(&flywheel_dc_motor, FLYWHEEL_DC_MOTOR, FLYWHEEL_DC_MOTOR_MAX_PWM, FLYWHEEL_DC_MOTOR_COUNTS_PER_ROT, MAXFLOAT, -MAXFLOAT, &flywheel_dc_motor_pid);
     
     init_rc_channels();
     RC_CH rc_ch1;
@@ -83,9 +92,11 @@ int main()
             set_dc_motor_pwm(&drive_dc_motor, 0);
         }
         if (rc_ch1.connected && rc_ch1.value != 0) {
-            set_dc_motor_pwm(&pendulum_dc_motor, rc_ch1.value);
+            // set_dc_motor_pwm(&pendulum_dc_motor, rc_ch1.value);
+            float pendulum_angle = rc_ch1.value/100.0;
+            set_dc_motor_pos(&pendulum_dc_motor, pendulum_angle);
         } else {
-            //run_dc_motor(&pendulum_dc_motor, 0);
+            // run_dc_motor(&pendulum_dc_motor, 0);
             set_dc_motor_pos(&pendulum_dc_motor, 0);
         }
         if (rc_ch4.connected && rc_ch4.value != 0) {
@@ -93,6 +104,11 @@ int main()
         } else {
             set_dc_motor_pwm(&flywheel_dc_motor, 0);
         }
+        
+        float dt = (float) (MILLISECONDS - prev_time_ms);
+        prev_time_ms = MILLISECONDS;
+        
+        //set_dc_motor_speed(&drive_dc_motor, 0.0, dt);
         
         /*get_dc_motor_pos(&drive_dc_motor);
         get_dc_motor_pos(&pendulum_dc_motor);

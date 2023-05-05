@@ -43,12 +43,14 @@
           <File BuildType="BUILD" Toolchain="">.\mpu6050.c</File>
           <File BuildType="BUILD" Toolchain="">.\i2cFunctions.c</File>
           <File BuildType="BUILD" Toolchain="">.\imu.c</File>
+          <File BuildType="BUILD" Toolchain="">.\pid.c</File>
           <File BuildType="BUILD" Toolchain="">.\cyapicallbacks.h</File>
           <File BuildType="BUILD" Toolchain="">.\milliseconds.h</File>
           <File BuildType="BUILD" Toolchain="">.\rc_ch.h</File>
           <File BuildType="BUILD" Toolchain="">.\dc_motor.h</File>
           <File BuildType="BUILD" Toolchain="">.\mpu6050.h</File>
           <File BuildType="BUILD" Toolchain="">.\imu.h</File>
+          <File BuildType="BUILD" Toolchain="">.\pid.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\Michael\Dropbox (MIT)\College\Senior Year\6.115 - Microcomputer Project Laboratory\6.115 - Final Project\Software\PSoC Creator\Ball.cydsn\Generated_Source\PSoC5">
