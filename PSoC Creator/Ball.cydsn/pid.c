@@ -47,7 +47,8 @@ void get_pid_output(PID *pid, float setpoint, float value, float dt) {
     pid->value = value;
     pid->dt = dt;
     
-    pid->error = pid->setpoint - pid->value;
+    
+    pid->error = setpoint - value;
     pid->sum_error = pid->sum_error + pid->error * pid->dt;
     pid->d_error = (pid->error - pid->prev_error)/pid->dt;
     pid->prev_error = pid->error;

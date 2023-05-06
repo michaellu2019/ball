@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Ball-000">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Ball-000\Ball\Header Files\imu.h">
 <ExpandedNodeIds>
 <v>Ball-000</v>
 <v>Ball-000\Ball</v>
@@ -546,6 +546,8 @@
 <name v=".\dc_motor.h" />
 <name v=".\dc_motor.c" />
 <name v=".\rc_ch.c" />
+<name v=".\pid.h" />
+<name v=".\pid.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />

@@ -107,25 +107,28 @@ void get_dc_motor_pos(DC_MOTOR *dc_motor) {
     dc_motor->pos = (dc_motor->enc_count * 2 * M_PI * COUNTS_PER_QUADRATURE)/dc_motor->counts_per_rot;
 }
 
-void set_dc_motor_pos(DC_MOTOR *dc_motor, float dc_motor_pos) {
+void set_dc_motor_pos(DC_MOTOR *dc_motor, float target_pos, float dt, uint8 controller) {
     if (dc_motor->id == PENDULUM_DC_MOTOR) {
-        const int pwm = 150;
-        get_dc_motor_pos(dc_motor);
-        if (dc_motor->pos > dc_motor_pos + DC_MOTOR_POS_TOLERANCE) {
-            set_dc_motor_pwm(dc_motor, -pwm);
-            //char debug[64] = "";
-            //sprintf(debug, "back %d\r\n", (int) (dc_motor->pos * 100));
-            //USBUART_PutString(debug);
-        } else if (dc_motor->pos < dc_motor_pos - DC_MOTOR_POS_TOLERANCE) {
-            set_dc_motor_pwm(dc_motor, pwm);
-            //char debug[64] = "";
-            //sprintf(debug, "fwd %d\r\n", (int) (dc_motor->pos * 100));
-            //USBUART_PutString(debug);
-        } else {
-            set_dc_motor_pwm(dc_motor, 0);
-            //char debug[64] = "";
-            //sprintf(debug, "stop %d\r\n", (int) (dc_motor->pos * 100));
-            //USBUART_PutString(debug);
+        if (controller == BANG_BANG_CONTROLLER) {
+            const int pwm = (int) dc_motor->pid->kp;
+            get_dc_motor_pos(dc_motor);
+            if (dc_motor->pos > target_pos + DC_MOTOR_POS_TOLERANCE) {
+                set_dc_motor_pwm(dc_motor, -pwm);
+            } else if (dc_motor->pos < target_pos - DC_MOTOR_POS_TOLERANCE) {
+                set_dc_motor_pwm(dc_motor, pwm);
+            } else {
+                set_dc_motor_pwm(dc_motor, 0);
+            }
+        } else if (controller == PID_CONTROLLER) {
+            get_dc_motor_pos(dc_motor);
+            get_pid_output(dc_motor->pid, target_pos, dc_motor->pos, dt);
+            int pwm = (int) dc_motor->pid->output;
+            
+            if (abs(pwm) < 70) {
+                set_dc_motor_pwm(dc_motor, 0);
+            } else {
+                set_dc_motor_pwm(dc_motor, pwm);
+            }
         }
     }
 }
@@ -134,6 +137,7 @@ void set_dc_motor_speed(DC_MOTOR *dc_motor, float target_vel, float dt) {
     //dc_motor->target_vel = (abs(target_vel) < 0.0) ? 0 : target_vel;
     get_dc_motor_pos(dc_motor);
     float vel = (dc_motor->pos - dc_motor->prev_pos)/dt;
+    dc_motor->prev_pos = dc_motor->pos;
     //float vel2 = (dc_motor->vel/
     float af = 0.893;
     float bf = (1.0 - af)/2.0;
@@ -142,6 +146,10 @@ void set_dc_motor_speed(DC_MOTOR *dc_motor, float target_vel, float dt) {
     get_pid_output(dc_motor->pid, target_vel, dc_motor->vel_filt, dt);
     int16 pwm = (int16) dc_motor->pid->output;
     set_dc_motor_pwm(dc_motor, pwm);
+    
+    /*char debug[64] = "";
+    sprintf(debug, "%d %d -> %d => %d \r\n", (int) (target_vel * 100), (int) (dc_motor->pos * 100), (int) (dc_motor->prev_pos * 100), (int) (pwm));
+    USBUART_PutString(debug);*/
 }
 
 /* [] END OF FILE */

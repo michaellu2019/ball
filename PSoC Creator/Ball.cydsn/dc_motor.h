@@ -30,6 +30,9 @@
 #define PENDULUM_DC_MOTOR_MAX_POS 2.4
 #define PENDULUM_DC_MOTOR_MIN_POS -2.4
 
+#define BANG_BANG_CONTROLLER 0
+#define PID_CONTROLLER 1
+
 const int NUM_DC_MOTORS;
 const float DC_MOTOR_POS_TOLERANCE;
 
@@ -59,7 +62,7 @@ void set_dc_motor_pwm(DC_MOTOR *dc_motor, int16 pwm);
 
 void get_dc_motor_pos(DC_MOTOR *dc_motor);
 
-void set_dc_motor_pos(DC_MOTOR *dc_motor, float dc_motor_pos);
+void set_dc_motor_pos(DC_MOTOR *dc_motor, float target_pos, float dt, uint8 controller);
 
 void set_dc_motor_speed(DC_MOTOR *dc_motor, float target_v, float dt);
 

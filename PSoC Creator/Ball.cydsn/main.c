@@ -41,19 +41,21 @@ int main()
     CyGlobalIntEnable; /* Enable global interrupts. */
 
     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-    USBUART_Start(0, USBUART_5V_OPERATION);
     
+    #if DEBUG
+    USBUART_Start(0, USBUART_5V_OPERATION);
     while (USBUART_GetConfiguration() == 0) {}
     USBUART_PutString("Init...");
+    #endif
     
     init_milliseconds();
     uint32 prev_time_ms = MILLISECONDS;
     
     init_pid();
     PID drive_dc_motor_pid;
-    construct_pid(&drive_dc_motor_pid, 1.0, 0.0, 1.0);
+    construct_pid(&drive_dc_motor_pid, 100.0, 0.0, 20.0);
     PID pendulum_dc_motor_pid;
-    construct_pid(&pendulum_dc_motor_pid, 1.0, 0.0, 1.0);
+    construct_pid(&pendulum_dc_motor_pid, 220.0, 0.0, 0.0);
     PID flywheel_dc_motor_pid;
     construct_pid(&flywheel_dc_motor_pid, 1.0, 0.0, 1.0);
        
@@ -81,6 +83,9 @@ int main()
     
     for(;;)
     {
+        float dt = (float) (MILLISECONDS - prev_time_ms);
+        prev_time_ms = MILLISECONDS;
+        
         get_rc_ch_value(&rc_ch1);
         get_rc_ch_value(&rc_ch2);
         get_rc_ch_value(&rc_ch3);
@@ -91,13 +96,13 @@ int main()
         } else {
             set_dc_motor_pwm(&drive_dc_motor, 0);
         }
-        if (rc_ch1.connected && rc_ch1.value != 0) {
+        if (rc_ch1.connected && abs(rc_ch1.value) > 40) {
             // set_dc_motor_pwm(&pendulum_dc_motor, rc_ch1.value);
-            float pendulum_angle = rc_ch1.value/100.0;
-            set_dc_motor_pos(&pendulum_dc_motor, pendulum_angle);
+            float pendulum_angle = -rc_ch1.value/100.0;
+            set_dc_motor_pos(&pendulum_dc_motor, pendulum_angle, dt, BANG_BANG_CONTROLLER);
         } else {
             // run_dc_motor(&pendulum_dc_motor, 0);
-            set_dc_motor_pos(&pendulum_dc_motor, 0);
+            set_dc_motor_pos(&pendulum_dc_motor, 0, dt, BANG_BANG_CONTROLLER);
         }
         if (rc_ch4.connected && rc_ch4.value != 0) {
             set_dc_motor_pwm(&flywheel_dc_motor, rc_ch4.value);
@@ -105,10 +110,7 @@ int main()
             set_dc_motor_pwm(&flywheel_dc_motor, 0);
         }
         
-        float dt = (float) (MILLISECONDS - prev_time_ms);
-        prev_time_ms = MILLISECONDS;
-        
-        //set_dc_motor_speed(&drive_dc_motor, 0.0, dt);
+        //set_dc_motor_speed(&drive_dc_motor, M_PI/2.0, dt);
         
         /*get_dc_motor_pos(&drive_dc_motor);
         get_dc_motor_pos(&pendulum_dc_motor);
@@ -116,13 +118,15 @@ int main()
         
         get_imu_values(&imu);
 
+        #if DEBUG
         if (rc_ch1.value != 0 || rc_ch2.value != 0 || rc_ch3.value != 0 || rc_ch3.value != 0) {
             char debug[64] = "";
             sprintf(debug, "[%ld] %d %d %d %d - %d %d %d - %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value,
-                                                                            (int) imu.ax, (int) imu.ay, (int) imu.az,
+                                                                            (int) (imu.ax * 100), (int) (imu.ay * 100), (int) (imu.az * 100),
                                                                             (int) (drive_dc_motor.pos * 100), (int) (pendulum_dc_motor.pos * 100));
             USBUART_PutString(debug);
         }
+        #endif
     }
 }
 

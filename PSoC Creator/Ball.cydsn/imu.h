@@ -23,6 +23,8 @@ typedef struct imu {
     float gx;
     float gy;
     float gz;
+    
+    float a;
 } IMU;
 
 void init_imu();
