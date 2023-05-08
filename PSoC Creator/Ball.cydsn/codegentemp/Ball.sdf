@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2023-05-04T02:32:03Z")
+ (DATE "2023-05-08T02:08:00Z")
  (DESIGN "Ball")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -825,6 +825,7 @@
     (INTERCONNECT Drive_DC_Motor_Enc_B\(0\)_PAD Drive_DC_Motor_Enc_B\(0\).pad_in (0.000:0.000:0.000))
     (INTERCONNECT Pendulum_DC_Motor_Enc_A\(0\)_PAD Pendulum_DC_Motor_Enc_A\(0\).pad_in (0.000:0.000:0.000))
     (INTERCONNECT Pendulum_DC_Motor_Enc_B\(0\)_PAD Pendulum_DC_Motor_Enc_B\(0\).pad_in (0.000:0.000:0.000))
+    (INTERCONNECT Status_LED\(0\)_PAD Status_LED\(0\).pad_in (0.000:0.000:0.000))
    )
   )
  )

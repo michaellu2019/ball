@@ -24,7 +24,7 @@
 #include "dc_motor.h"
 #include "imu.h"
 
-#define DEBUG 1
+#define DEBUG 0
 char debug_data_buf[64] = "";
 
 /*
@@ -51,13 +51,20 @@ int main()
     init_milliseconds();
     uint32 prev_time_ms = MILLISECONDS;
     
+    Status_LED_Write(0);
+    
     init_pid();
     PID drive_dc_motor_pid;
     construct_pid(&drive_dc_motor_pid, 100.0, 0.0, 20.0);
     PID pendulum_dc_motor_pid;
-    construct_pid(&pendulum_dc_motor_pid, 220.0, 0.0, 0.0);
+    construct_pid(&pendulum_dc_motor_pid, 160.0, 0.0, 0.0);
     PID flywheel_dc_motor_pid;
     construct_pid(&flywheel_dc_motor_pid, 1.0, 0.0, 1.0);
+    
+    PID pitch_stabilizer_pid;
+    construct_pid(&pitch_stabilizer_pid, 30.0, 0.0, 10.5);
+    PID roll_stabilizer_pid;
+    construct_pid(&roll_stabilizer_pid, 3.0, 0.0, 1.5);
        
     init_dc_motors();
     DC_MOTOR drive_dc_motor;
@@ -86,28 +93,48 @@ int main()
         float dt = (float) (MILLISECONDS - prev_time_ms);
         prev_time_ms = MILLISECONDS;
         
+        get_imu_values(&imu);
+        
         get_rc_ch_value(&rc_ch1);
         get_rc_ch_value(&rc_ch2);
         get_rc_ch_value(&rc_ch3);
         get_rc_ch_value(&rc_ch4);
         
+        // Drive Channel/Motor
         if (rc_ch2.connected && rc_ch2.value != 0) {
             set_dc_motor_pwm(&drive_dc_motor, rc_ch2.value);
         } else {
-            set_dc_motor_pwm(&drive_dc_motor, 0);
+            float setpoint = 0.0;//(rc_ch2.value * 30.0)/((float) RC_MAX_VALUE);
+            get_pid_output(&pitch_stabilizer_pid, setpoint, imu.pitch, IMU_TILT_TOLERANCE, dt);
+            int drive_dc_motor_pwm = (int) pitch_stabilizer_pid.output;
+            set_dc_motor_pwm(&drive_dc_motor, drive_dc_motor_pwm);
         }
-        if (rc_ch1.connected && abs(rc_ch1.value) > 40) {
+        
+        // Pendulum Channel/Motor
+        if (rc_ch1.connected && abs(rc_ch1.value) > 25) {
             // set_dc_motor_pwm(&pendulum_dc_motor, rc_ch1.value);
-            float pendulum_angle = -rc_ch1.value/100.0;
+            float pendulum_angle = (rc_ch1.value * -100.0)/RC_MAX_VALUE;
             set_dc_motor_pos(&pendulum_dc_motor, pendulum_angle, dt, BANG_BANG_CONTROLLER);
         } else {
             // run_dc_motor(&pendulum_dc_motor, 0);
             set_dc_motor_pos(&pendulum_dc_motor, 0, dt, BANG_BANG_CONTROLLER);
+            /*float setpoint = 0.0;
+            get_pid_output(&roll_stabilizer_pid, setpoint, imu.roll, IMU_TILT_TOLERANCE, dt);
+            int drive_dc_motor_pwm = (int) roll_stabilizer_pid.output;
+            set_dc_motor_pwm(&drive_dc_motor, drive_dc_motor_pwm);*/
         }
+        
+        // Flywheel Channel/Motor
         if (rc_ch4.connected && rc_ch4.value != 0) {
             set_dc_motor_pwm(&flywheel_dc_motor, rc_ch4.value);
         } else {
             set_dc_motor_pwm(&flywheel_dc_motor, 0);
+        }
+        
+        if (fabs(imu.ax[0]) < 1.0 && fabs(imu.ay[0]) < 1.0 && fabs(imu.az[0]) < 1.0) {
+            Status_LED_Write(1);
+        } else {
+            Status_LED_Write(0);
         }
         
         //set_dc_motor_speed(&drive_dc_motor, M_PI/2.0, dt);
@@ -115,15 +142,15 @@ int main()
         /*get_dc_motor_pos(&drive_dc_motor);
         get_dc_motor_pos(&pendulum_dc_motor);
         get_dc_motor_pos(&flywheel_dc_motor);*/
-        
-        get_imu_values(&imu);
 
         #if DEBUG
         if (rc_ch1.value != 0 || rc_ch2.value != 0 || rc_ch3.value != 0 || rc_ch3.value != 0) {
             char debug[64] = "";
-            sprintf(debug, "[%ld] %d %d %d %d - %d %d %d - %d %d \r\n", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value,
-                                                                            (int) (imu.ax * 100), (int) (imu.ay * 100), (int) (imu.az * 100),
-                                                                            (int) (drive_dc_motor.pos * 100), (int) (pendulum_dc_motor.pos * 100));
+            sprintf(debug, "[%ld] %d %d %d %d", MILLISECONDS, rc_ch1.value, rc_ch2.value, rc_ch3.value, rc_ch4.value);
+            sprintf(debug, "%s - (%d %d %d) %d %d", debug, (int) (imu.ax[0] * 100), (int) (imu.ay[0] * 100), (int) (imu.az[0] * 100), (int) (imu.roll * 1), (int) (imu.pitch * 1));
+            sprintf(debug, "%s - %d %d", debug, (int) (drive_dc_motor.pwm * 1), (int) (pendulum_dc_motor.pwm * 1));
+            //sprintf(debug, "%s - %d %d", debug, (int) (drive_dc_motor.pos * 1), (int) (pendulum_dc_motor.pos * 1));
+            sprintf(debug, "%s\r\n", debug);
             USBUART_PutString(debug);
         }
         #endif

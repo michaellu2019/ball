@@ -42,18 +42,21 @@ void construct_pid(PID *pid, float kp, float ki, float kd) {
     pid->output = 0;
 }
 
-void get_pid_output(PID *pid, float setpoint, float value, float dt) {
+void get_pid_output(PID *pid, float setpoint, float value, float tolerance, float dt) {
     pid->setpoint = setpoint;
     pid->value = value;
     pid->dt = dt;
-    
     
     pid->error = setpoint - value;
     pid->sum_error = pid->sum_error + pid->error * pid->dt;
     pid->d_error = (pid->error - pid->prev_error)/pid->dt;
     pid->prev_error = pid->error;
     
-    pid->output = pid->kp * pid->error + pid->ki * pid->sum_error + pid->kd * pid->d_error;
+    if (fabs(pid->error) > tolerance) {
+        pid->output = pid->kp * pid->error + pid->ki * pid->sum_error + pid->kd * pid->d_error;
+    } else {
+        pid->output = 0.0;
+    }
 }
 
 void reset_pid_sum_error(PID *pid) {

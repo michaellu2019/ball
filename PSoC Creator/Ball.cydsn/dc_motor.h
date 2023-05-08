@@ -34,6 +34,7 @@
 #define PID_CONTROLLER 1
 
 const int NUM_DC_MOTORS;
+const float DC_MOTOR_SPEED_TOLERANCE;
 const float DC_MOTOR_POS_TOLERANCE;
 
 typedef struct dc_motor {

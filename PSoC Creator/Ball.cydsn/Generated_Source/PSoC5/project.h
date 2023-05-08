@@ -77,6 +77,8 @@
 #include "Pendulum_DC_Motor_Enc_A.h"
 #include "Pendulum_DC_Motor_Enc_B_aliases.h"
 #include "Pendulum_DC_Motor_Enc_B.h"
+#include "Status_LED_aliases.h"
+#include "Status_LED.h"
 #include "USBUART_Dm_aliases.h"
 #include "USBUART_Dm.h"
 #include "USBUART_Dp_aliases.h"

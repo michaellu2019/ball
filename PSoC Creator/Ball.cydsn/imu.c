@@ -14,6 +14,7 @@
 #include "mpu6050.h"
 
 const float IMU_SCALE = 1600.0;
+const float IMU_TILT_TOLERANCE = 6.0;
 
 void init_imu() {
     MPU6050_I2C_Start();
@@ -23,23 +24,39 @@ void init_imu() {
 }
 
 void construct_imu(IMU* imu) {
-    imu->ax = 0;
-    imu->ay = 0;
-    imu->az = 0;
-    imu->gx = 0;
-    imu->gy = 0;
-    imu->gz = 0;
+    int i;
+    for (i = 0; i < NUM_IMU_AVG_SAMPLES; i++) {
+        imu->ax[i] = 0.0;
+        imu->ay[i] = 0.0;
+        imu->az[i] = 0.0;
+    }
+    
+    imu->a = 0.9;
 }
 
 void get_imu_values(IMU* imu) {
     int16 ax, ay, az;
     int16 gx, gy, gz;
     MPU6050_getMotion6(&ay, &ax, &az, &gx, &gy, &gz);
-    imu->ax = ax/IMU_SCALE;
-    imu->ay = ay/IMU_SCALE;
-    imu->az = az/IMU_SCALE;
-    imu->gx = gx/IMU_SCALE;
-    imu->gy = gy/IMU_SCALE;
-    imu->gz = gz/IMU_SCALE;
+    
+    int i;
+    float sum_ax = 0.0;
+    float sum_ay = 0.0;
+    float sum_az = 0.0;
+    for (i = NUM_IMU_AVG_SAMPLES - 1; i > 0; i--) {
+        imu->ax[i] = imu->ax[i - 1];
+        imu->ay[i] = imu->ay[i - 1];
+        imu->az[i] = imu->az[i - 1];
+        sum_ax += imu->ax[i];
+        sum_ay += imu->ay[i];
+        sum_az += imu->az[i];
+    }
+    
+    imu->ax[0] = (sum_ax + ax/IMU_SCALE)/NUM_IMU_AVG_SAMPLES;
+    imu->ay[0] = (sum_ay + ay/IMU_SCALE)/NUM_IMU_AVG_SAMPLES;
+    imu->az[0] = (sum_az + az/IMU_SCALE)/NUM_IMU_AVG_SAMPLES;
+    
+    imu->roll = atan2(imu->az[0], imu->ay[0]) * (180.0/M_PI) + 90.0;
+    imu->pitch = atan2(imu->az[0], imu->ax[0]) * (180.0/M_PI) + 90.0;
 }
 /* [] END OF FILE */

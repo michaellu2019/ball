@@ -36,7 +36,7 @@ void init_pid();
 
 void construct_pid(PID *pid, float kp, float ki, float kd);
 
-void get_pid_output(PID *pid, float setpoint, float value, float dt);
+void get_pid_output(PID *pid, float setpoint, float value, float tolerance, float dt);
 
 void reset_pid_sum_error(PID *pid);
 

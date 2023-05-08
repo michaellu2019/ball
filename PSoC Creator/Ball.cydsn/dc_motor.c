@@ -13,7 +13,8 @@
 #include "dc_motor.h"
 
 const int NUM_DC_MOTORS = 3;
-const float DC_MOTOR_POS_TOLERANCE = 0.1;
+const float DC_MOTOR_SPEED_TOLERANCE = 0.0;
+const float DC_MOTOR_POS_TOLERANCE = 2.0;
 
 void init_dc_motors() {
     Drive_DC_Motor_PWM_Start();
@@ -104,7 +105,7 @@ void get_dc_motor_pos(DC_MOTOR *dc_motor) {
         //dc_motor->enc_count = Flywheel_DC_Motor_Quad_Dec_GetCounter();
     }
     
-    dc_motor->pos = (dc_motor->enc_count * 2 * M_PI * COUNTS_PER_QUADRATURE)/dc_motor->counts_per_rot;
+    dc_motor->pos = (dc_motor->enc_count * 2 * M_PI * COUNTS_PER_QUADRATURE)/dc_motor->counts_per_rot * (180.0/M_PI);
 }
 
 void set_dc_motor_pos(DC_MOTOR *dc_motor, float target_pos, float dt, uint8 controller) {
@@ -121,7 +122,7 @@ void set_dc_motor_pos(DC_MOTOR *dc_motor, float target_pos, float dt, uint8 cont
             }
         } else if (controller == PID_CONTROLLER) {
             get_dc_motor_pos(dc_motor);
-            get_pid_output(dc_motor->pid, target_pos, dc_motor->pos, dt);
+            get_pid_output(dc_motor->pid, target_pos, dc_motor->pos, DC_MOTOR_POS_TOLERANCE, dt);
             int pwm = (int) dc_motor->pid->output;
             
             if (abs(pwm) < 70) {
@@ -143,7 +144,7 @@ void set_dc_motor_speed(DC_MOTOR *dc_motor, float target_vel, float dt) {
     float bf = (1.0 - af)/2.0;
     dc_motor->vel_filt = af * dc_motor->vel_filt + bf * vel + bf * dc_motor->prev_vel;
     
-    get_pid_output(dc_motor->pid, target_vel, dc_motor->vel_filt, dt);
+    get_pid_output(dc_motor->pid, target_vel, dc_motor->vel_filt, DC_MOTOR_SPEED_TOLERANCE, dt);
     int16 pwm = (int16) dc_motor->pid->output;
     set_dc_motor_pwm(dc_motor, pwm);
     

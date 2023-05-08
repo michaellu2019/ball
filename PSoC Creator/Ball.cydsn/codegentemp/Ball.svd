@@ -240,7 +240,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>RC_Ch3_Timer</name>
+      <name>Flywheel_DC_Motor_PWM</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -250,27 +250,27 @@
       </addressBlock>
       <registers>
         <register>
-          <name>RC_Ch3_Timer_COUNTER</name>
-          <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x40006404</addressOffset>
-          <size>24</size>
+          <name>Flywheel_DC_Motor_PWM__COMPARE1</name>
+          <description>UDB.D0 - Assigned Compare1 Value</description>
+          <addressOffset>0x40006427</addressOffset>
+          <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>RC_Ch3_Timer_PERIOD</name>
-          <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006424</addressOffset>
-          <size>24</size>
+          <name>Flywheel_DC_Motor_PWM__COMPARE2</name>
+          <description>UDB.D1 - Assigned Compare2 Value</description>
+          <addressOffset>0x40006437</addressOffset>
+          <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>RC_Ch3_Timer_Control_Reg</name>
+          <name>Flywheel_DC_Motor_PWM_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006472</addressOffset>
+          <addressOffset>0x40006477</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -278,84 +278,77 @@
           <fields>
             <field>
               <name>CTRL_ENABLE</name>
-              <description>Enable the Timer</description>
+              <description>Enable the PWM</description>
               <lsb>7</lsb>
               <msb>7</msb>
               <access>read-write</access>
             </field>
             <field>
-              <name>CTRL_CMODE</name>
-              <description>Capture Mode</description>
-              <lsb>5</lsb>
-              <msb>6</msb>
+              <name>CTRL_CMPMODE2</name>
+              <description>Compare mode 2</description>
+              <lsb>3</lsb>
+              <msb>5</msb>
               <access>read-write</access>
             </field>
             <field>
-              <name>CTRL_TEN</name>
-              <description>Trigger Enable Bit</description>
-              <lsb>4</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_TMODE</name>
-              <description>Trigger Mode</description>
-              <lsb>2</lsb>
-              <msb>3</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_IC</name>
-              <description>Interrupt Count</description>
+              <name>CTRL_CMPMODE1</name>
+              <description>Compare mode 1</description>
               <lsb>0</lsb>
-              <msb>1</msb>
+              <msb>2</msb>
               <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>RC_Ch3_Timer_STATUS_MASK</name>
+          <name>Flywheel_DC_Motor_PWM_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006485</addressOffset>
+          <addressOffset>0x40006487</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
           <fields>
             <field>
-              <name>TIMER_STS_TC</name>
-              <description>Enables the Interrupt on TC</description>
+              <name>PWM_STS_CMP1</name>
+              <description>Enables the Interrupt on Compare 1</description>
               <lsb>0</lsb>
               <msb>0</msb>
               <access>read-only</access>
             </field>
             <field>
-              <name>TIMER_STS_CAPT</name>
-              <description>Enables the Interrupt on Capture</description>
+              <name>PWM_STS_CMP2</name>
+              <description>Enables the Interrupt on Compare 2</description>
               <lsb>1</lsb>
               <msb>1</msb>
               <access>read-only</access>
             </field>
             <field>
-              <name>TIMER_STS_FIFO_FULL</name>
-              <description>FIFO Full Status </description>
+              <name>PWM_STS_TC</name>
+              <description>Enables the Interrupt on Terminal Count</description>
               <lsb>2</lsb>
               <msb>2</msb>
               <access>read-only</access>
             </field>
             <field>
-              <name>TIMER_STS_FIFO_NEMPTY</name>
-              <description>FIFO Empty status </description>
+              <name>PWM_STS_FIFO_FULL</name>
+              <description>FIFO Full Status Mask </description>
               <lsb>3</lsb>
               <msb>3</msb>
+              <access>read-only</access>
+            </field>
+            <field>
+              <name>PWM_STS_KILL</name>
+              <description>Enables the Interrupt on Kill</description>
+              <lsb>5</lsb>
+              <msb>5</msb>
               <access>read-only</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>RC_Ch3_Timer_STATUS_AUX_CTRL</name>
+          <name>Flywheel_DC_Motor_PWM_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006495</addressOffset>
+          <addressOffset>0x40006497</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -480,7 +473,7 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>Flywheel_DC_Motor_PWM</name>
+      <name>RC_Ch3_Timer</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
       <addressBlock>
@@ -490,27 +483,27 @@
       </addressBlock>
       <registers>
         <register>
-          <name>Flywheel_DC_Motor_PWM__COMPARE1</name>
-          <description>UDB.D0 - Assigned Compare1 Value</description>
-          <addressOffset>0x40006427</addressOffset>
-          <size>8</size>
+          <name>RC_Ch3_Timer_COUNTER</name>
+          <description>UDB.A0 - Current Down Counter Value</description>
+          <addressOffset>0x40006404</addressOffset>
+          <size>24</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>Flywheel_DC_Motor_PWM__COMPARE2</name>
-          <description>UDB.D1 - Assigned Compare2 Value</description>
-          <addressOffset>0x40006437</addressOffset>
-          <size>8</size>
+          <name>RC_Ch3_Timer_PERIOD</name>
+          <description>UDB.D0 - Assigned Period</description>
+          <addressOffset>0x40006424</addressOffset>
+          <size>24</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
         </register>
         <register>
-          <name>Flywheel_DC_Motor_PWM_Control_Reg</name>
+          <name>RC_Ch3_Timer_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006477</addressOffset>
+          <addressOffset>0x40006472</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -518,77 +511,84 @@
           <fields>
             <field>
               <name>CTRL_ENABLE</name>
-              <description>Enable the PWM</description>
+              <description>Enable the Timer</description>
               <lsb>7</lsb>
               <msb>7</msb>
               <access>read-write</access>
             </field>
             <field>
-              <name>CTRL_CMPMODE2</name>
-              <description>Compare mode 2</description>
-              <lsb>3</lsb>
-              <msb>5</msb>
+              <name>CTRL_CMODE</name>
+              <description>Capture Mode</description>
+              <lsb>5</lsb>
+              <msb>6</msb>
               <access>read-write</access>
             </field>
             <field>
-              <name>CTRL_CMPMODE1</name>
-              <description>Compare mode 1</description>
+              <name>CTRL_TEN</name>
+              <description>Trigger Enable Bit</description>
+              <lsb>4</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_TMODE</name>
+              <description>Trigger Mode</description>
+              <lsb>2</lsb>
+              <msb>3</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_IC</name>
+              <description>Interrupt Count</description>
               <lsb>0</lsb>
-              <msb>2</msb>
+              <msb>1</msb>
               <access>read-write</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>Flywheel_DC_Motor_PWM_STATUS_MASK</name>
+          <name>RC_Ch3_Timer_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006487</addressOffset>
+          <addressOffset>0x40006485</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
           <fields>
             <field>
-              <name>PWM_STS_CMP1</name>
-              <description>Enables the Interrupt on Compare 1</description>
+              <name>TIMER_STS_TC</name>
+              <description>Enables the Interrupt on TC</description>
               <lsb>0</lsb>
               <msb>0</msb>
               <access>read-only</access>
             </field>
             <field>
-              <name>PWM_STS_CMP2</name>
-              <description>Enables the Interrupt on Compare 2</description>
+              <name>TIMER_STS_CAPT</name>
+              <description>Enables the Interrupt on Capture</description>
               <lsb>1</lsb>
               <msb>1</msb>
               <access>read-only</access>
             </field>
             <field>
-              <name>PWM_STS_TC</name>
-              <description>Enables the Interrupt on Terminal Count</description>
+              <name>TIMER_STS_FIFO_FULL</name>
+              <description>FIFO Full Status </description>
               <lsb>2</lsb>
               <msb>2</msb>
               <access>read-only</access>
             </field>
             <field>
-              <name>PWM_STS_FIFO_FULL</name>
-              <description>FIFO Full Status Mask </description>
+              <name>TIMER_STS_FIFO_NEMPTY</name>
+              <description>FIFO Empty status </description>
               <lsb>3</lsb>
               <msb>3</msb>
-              <access>read-only</access>
-            </field>
-            <field>
-              <name>PWM_STS_KILL</name>
-              <description>Enables the Interrupt on Kill</description>
-              <lsb>5</lsb>
-              <msb>5</msb>
               <access>read-only</access>
             </field>
           </fields>
         </register>
         <register>
-          <name>Flywheel_DC_Motor_PWM_STATUS_AUX_CTRL</name>
+          <name>RC_Ch3_Timer_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006497</addressOffset>
+          <addressOffset>0x40006495</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
