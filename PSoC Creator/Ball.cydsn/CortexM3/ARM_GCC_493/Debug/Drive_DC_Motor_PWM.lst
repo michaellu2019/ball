@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
   29:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****          constant 1 for reset. This will prevent the component from operating.
   30:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** #endif /* Drive_DC_Motor_PWM_PWMUDB_genblk1_ctrlreg__REMOVED */
   31:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 2
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 2
 
 
   32:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** uint8 Drive_DC_Motor_PWM_initVar = 0u;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
   86:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     #if (Drive_DC_Motor_PWM_UsingFixedFunction || Drive_DC_Motor_PWM_UseControl)
   87:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         uint8 ctrl;
   88:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     #endif /* (Drive_DC_Motor_PWM_UsingFixedFunction || Drive_DC_Motor_PWM_UseControl) */
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 3
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 3
 
 
   89:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  143:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         #endif /* (Drive_DC_Motor_PWM_UseOneCompareMode) */
  144:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  145:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         #if (Drive_DC_Motor_PWM_KillModeMinTime)
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 4
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 4
 
 
  146:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****             Drive_DC_Motor_PWM_WriteKillTime(Drive_DC_Motor_PWM_MinimumKillTime);
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  200:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** {
   27              		.loc 1 200 0
   28              		.cfi_startproc
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 5
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 5
 
 
   29              		@ args = 0, pretend = 0, frame = 0
@@ -262,7 +262,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
   38              	.L3:
   39              		.align	2
   40              	.L2:
-  41 000c 77650040 		.word	1073767799
+  41 000c 7B650040 		.word	1073767803
   42              		.cfi_endproc
   43              	.LFE2:
   44              		.size	Drive_DC_Motor_PWM_Enable, .-Drive_DC_Motor_PWM_Enable
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  231:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** *
  232:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** *******************************************************************************/
  233:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** void Drive_DC_Motor_PWM_Stop(void) 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 6
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 6
 
 
  234:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** {
@@ -318,7 +318,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
   64              	.L6:
   65              		.align	2
   66              	.L5:
-  67 000c 77650040 		.word	1073767799
+  67 000c 7B650040 		.word	1073767803
   68              		.cfi_endproc
   69              	.LFE3:
   70              		.size	Drive_DC_Motor_PWM_Stop, .-Drive_DC_Motor_PWM_Stop
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  262:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         * Return:
  263:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         *  None
  264:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         *
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 7
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 7
 
 
  265:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         *******************************************************************************/
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  319:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         *  comparemode:  The new compare mode for the PWM output. Use the compare types
  320:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         *                defined in the H file as input arguments.
  321:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         *
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 8
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 8
 
 
  322:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         * Return:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  376:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  377:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** #endif /* UseOneCompareMode */
  378:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 9
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 9
 
 
  379:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
@@ -522,7 +522,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
   89              	.L9:
   90 0006 00BF     		.align	2
   91              	.L8:
-  92 0008 07650040 		.word	1073767687
+  92 0008 0A650040 		.word	1073767690
   93              		.cfi_endproc
   94              	.LFE4:
   95              		.size	Drive_DC_Motor_PWM_WriteCounter, .-Drive_DC_Motor_PWM_WriteCounter
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  408:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  409:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  410:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     /*******************************************************************************
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 10
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 10
 
 
  411:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     * Function Name: Drive_DC_Motor_PWM_ReadCounter
@@ -581,8 +581,8 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  117              	.L12:
  118 000a 00BF     		.align	2
  119              	.L11:
- 120 000c 17650040 		.word	1073767703
- 121 0010 57650040 		.word	1073767767
+ 120 000c 1A650040 		.word	1073767706
+ 121 0010 5A650040 		.word	1073767770
  122              		.cfi_endproc
  123              	.LFE5:
  124              		.size	Drive_DC_Motor_PWM_ReadCounter, .-Drive_DC_Motor_PWM_ReadCounter
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  436:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     #if (Drive_DC_Motor_PWM_UseStatus)
  437:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  438:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 11
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 11
 
 
  439:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         /*******************************************************************************
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  487:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         CY_SET_REG8(Drive_DC_Motor_PWM_PERIOD_LSB_PTR, period);
  139              		.loc 1 487 0
  140 0000 014B     		ldr	r3, .L14
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 12
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 12
 
 
  141 0002 1870     		strb	r0, [r3]
@@ -666,7 +666,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  143              	.L15:
  144 0006 00BF     		.align	2
  145              	.L14:
- 146 0008 47650040 		.word	1073767751
+ 146 0008 4A650040 		.word	1073767754
  147              		.cfi_endproc
  148              	.LFE7:
  149              		.size	Drive_DC_Motor_PWM_WritePeriod, .-Drive_DC_Motor_PWM_WritePeriod
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  525:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         #if (Drive_DC_Motor_PWM_PWMMode == Drive_DC_Motor_PWM__B_PWM__DITHER)
  526:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****             #if(Drive_DC_Motor_PWM_UsingFixedFunction)
  527:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****                 CY_SET_REG16(Drive_DC_Motor_PWM_COMPARE2_LSB_PTR, (uint16)(compare + 1u));
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 13
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 13
 
 
  528:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****             #else
@@ -768,7 +768,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  168              	.L18:
  169 0006 00BF     		.align	2
  170              	.L17:
- 171 0008 27650040 		.word	1073767719
+ 171 0008 2A650040 		.word	1073767722
  172              		.cfi_endproc
  173              	.LFE8:
  174              		.size	Drive_DC_Motor_PWM_WriteCompare1, .-Drive_DC_Motor_PWM_WriteCompare1
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  178              		.thumb
  179              		.thumb_func
  180              		.type	Drive_DC_Motor_PWM_WriteCompare2, %function
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 14
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 14
 
 
  181              	Drive_DC_Motor_PWM_WriteCompare2:
@@ -825,7 +825,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  193              	.L21:
  194 0006 00BF     		.align	2
  195              	.L20:
- 196 0008 37650040 		.word	1073767735
+ 196 0008 3A650040 		.word	1073767738
  197              		.cfi_endproc
  198              	.LFE9:
  199              		.size	Drive_DC_Motor_PWM_WriteCompare2, .-Drive_DC_Motor_PWM_WriteCompare2
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  206              	Drive_DC_Motor_PWM_SetInterruptMode:
  207              	.LFB10:
  591:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****         #endif /* (Drive_DC_Motor_PWM_UsingFixedFunction) */
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 15
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 15
 
 
  592:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     }
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  646:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     *
  647:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     *******************************************************************************/
  648:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     uint8 Drive_DC_Motor_PWM_ReadDeadTime(void) 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 16
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 16
 
 
  649:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     {
@@ -952,13 +952,13 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  218              	.L24:
  219 0006 00BF     		.align	2
  220              	.L23:
- 221 0008 87650040 		.word	1073767815
+ 221 0008 8A650040 		.word	1073767818
  222              		.cfi_endproc
  223              	.LFE10:
  224              		.size	Drive_DC_Motor_PWM_SetInterruptMode, .-Drive_DC_Motor_PWM_SetInterruptMode
  225              		.section	.text.Drive_DC_Motor_PWM_ReadStatusRegister,"ax",%progbits
  226              		.align	2
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 17
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 17
 
 
  227              		.global	Drive_DC_Motor_PWM_ReadStatusRegister
@@ -1008,7 +1008,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  243              	.L27:
  244 0006 00BF     		.align	2
  245              	.L26:
- 246 0008 67650040 		.word	1073767783
+ 246 0008 6A650040 		.word	1073767786
  247              		.cfi_endproc
  248              	.LFE11:
  249              		.size	Drive_DC_Motor_PWM_ReadStatusRegister, .-Drive_DC_Motor_PWM_ReadStatusRegister
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  253              		.thumb
  254              		.thumb_func
  255              		.type	Drive_DC_Motor_PWM_ReadControlRegister, %function
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 18
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 18
 
 
  256              	Drive_DC_Motor_PWM_ReadControlRegister:
@@ -1066,7 +1066,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  269              	.L30:
  270 0006 00BF     		.align	2
  271              	.L29:
- 272 0008 77650040 		.word	1073767799
+ 272 0008 7B650040 		.word	1073767803
  273              		.cfi_endproc
  274              	.LFE12:
  275              		.size	Drive_DC_Motor_PWM_ReadControlRegister, .-Drive_DC_Motor_PWM_ReadControlRegister
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  281              		.type	Drive_DC_Motor_PWM_WriteControlRegister, %function
  282              	Drive_DC_Motor_PWM_WriteControlRegister:
  283              	.LFB13:
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 19
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 19
 
 
  744:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
@@ -1118,7 +1118,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  294              	.L33:
  295 0006 00BF     		.align	2
  296              	.L32:
- 297 0008 77650040 		.word	1073767799
+ 297 0008 7B650040 		.word	1073767803
  298              		.cfi_endproc
  299              	.LFE13:
  300              		.size	Drive_DC_Motor_PWM_WriteControlRegister, .-Drive_DC_Motor_PWM_WriteControlRegister
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  773:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** #if (!Drive_DC_Motor_PWM_UsingFixedFunction)
  774:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  775:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 20
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 20
 
 
  776:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     /*******************************************************************************
@@ -1172,7 +1172,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  319              	.L36:
  320 0006 00BF     		.align	2
  321              	.L35:
- 322 0008 57650040 		.word	1073767767
+ 322 0008 5A650040 		.word	1073767770
  323              		.cfi_endproc
  324              	.LFE14:
  325              		.size	Drive_DC_Motor_PWM_ReadCapture, .-Drive_DC_Motor_PWM_ReadCapture
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  343 0002 01E0     		b	.L38
  344              	.L39:
  457:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****             }
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 21
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 21
 
 
  345              		.loc 1 457 0
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  392              	.LVL11:
  136:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** 
  393              		.loc 1 136 0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 22
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 22
 
 
  394 0020 FF20     		movs	r0, #255
@@ -1300,8 +1300,8 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  423              	.L44:
  424 004e 00BF     		.align	2
  425              	.L43:
- 426 0050 77650040 		.word	1073767799
- 427 0054 97650040 		.word	1073767831
+ 426 0050 7B650040 		.word	1073767803
+ 427 0054 9A650040 		.word	1073767834
  428              		.cfi_endproc
  429              	.LFE1:
  430              		.size	Drive_DC_Motor_PWM_Init, .-Drive_DC_Motor_PWM_Init
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  440              		.cfi_startproc
  441              		@ args = 0, pretend = 0, frame = 0
  442              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 23
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 23
 
 
  443 0000 08B5     		push	{r3, lr}
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  809:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     * Parameters:
  810:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     *  None
  811:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     *
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 24
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 24
 
 
  812:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c ****     * Return:
@@ -1428,7 +1428,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  488              	.L52:
  489 0006 00BF     		.align	2
  490              	.L51:
- 491 0008 27650040 		.word	1073767719
+ 491 0008 2A650040 		.word	1073767722
  492              		.cfi_endproc
  493              	.LFE15:
  494              		.size	Drive_DC_Motor_PWM_ReadCompare1, .-Drive_DC_Motor_PWM_ReadCompare1
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  498              		.thumb
  499              		.thumb_func
  500              		.type	Drive_DC_Motor_PWM_ReadCompare2, %function
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 25
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 25
 
 
  501              	Drive_DC_Motor_PWM_ReadCompare2:
@@ -1476,7 +1476,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  513              	.L55:
  514 0006 00BF     		.align	2
  515              	.L54:
- 516 0008 37650040 		.word	1073767735
+ 516 0008 3A650040 		.word	1073767738
  517              		.cfi_endproc
  518              	.LFE16:
  519              		.size	Drive_DC_Motor_PWM_ReadCompare2, .-Drive_DC_Motor_PWM_ReadCompare2
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  873:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** *
  874:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** * Summary:
  875:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** *  Reads the period value used by the PWM hardware.
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 26
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 26
 
 
  876:.\Generated_Source\PSoC5/Drive_DC_Motor_PWM.c **** *
@@ -1530,7 +1530,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  538              	.L58:
  539 0006 00BF     		.align	2
  540              	.L57:
- 541 0008 47650040 		.word	1073767751
+ 541 0008 4A650040 		.word	1073767754
  542              		.cfi_endproc
  543              	.LFE17:
  544              		.size	Drive_DC_Motor_PWM_ReadPeriod, .-Drive_DC_Motor_PWM_ReadPeriod
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  566 0015 F9000000 		.4byte	.LASF42
  567 0019 00000000 		.4byte	.Ldebug_ranges0+0
  568 001d 00000000 		.4byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 27
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 27
 
 
  569 0021 00000000 		.4byte	.Ldebug_line0
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  623 0085 02       		.uleb128 0x2
  624 0086 01       		.byte	0x1
  625 0087 08       		.byte	0x8
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 28
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 28
 
 
  626 0088 82040000 		.4byte	.LASF11
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  680 0101 07       		.uleb128 0x7
  681 0102 10040000 		.4byte	.LASF18
  682 0106 01       		.byte	0x1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 29
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 29
 
 
  683 0107 E201     		.2byte	0x1e2
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  737 0180 01       		.uleb128 0x1
  738 0181 9C       		.byte	0x9c
  739 0182 95010000 		.4byte	0x195
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 30
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 30
 
 
  740 0186 08       		.uleb128 0x8
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  794 01fe 01       		.byte	0x1
  795 01ff 1603     		.2byte	0x316
  796 0201 6B000000 		.4byte	0x6b
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 31
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 31
 
 
  797 0205 00000000 		.4byte	.LFB14
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  851 0284 01010000 		.4byte	0x101
  852 0288 93020000 		.4byte	0x293
  853 028c 10       		.uleb128 0x10
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 32
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 32
 
 
  854 028d 01       		.uleb128 0x1
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  908 02f9 10030000 		.4byte	0x310
  909 02fd 0C       		.uleb128 0xc
  910 02fe 0C000000 		.4byte	.LVL19
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 33
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 33
 
 
  911 0302 38020000 		.4byte	0x238
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  965              	.Ldebug_abbrev0:
  966 0000 01       		.uleb128 0x1
  967 0001 11       		.uleb128 0x11
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 34
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 34
 
 
  968 0002 01       		.byte	0x1
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1022 0038 00       		.byte	0
  1023 0039 49       		.uleb128 0x49
  1024 003a 13       		.uleb128 0x13
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 35
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 35
 
 
  1025 003b 00       		.byte	0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1079 0073 0E       		.uleb128 0xe
  1080 0074 3A       		.uleb128 0x3a
  1081 0075 0B       		.uleb128 0xb
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 36
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 36
 
 
  1082 0076 3B       		.uleb128 0x3b
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1136 00ad 9742     		.uleb128 0x2117
  1137 00af 19       		.uleb128 0x19
  1138 00b0 01       		.uleb128 0x1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 37
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 37
 
 
  1139 00b1 13       		.uleb128 0x13
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1193 00ea 00       		.byte	0
  1194 00eb 03       		.uleb128 0x3
  1195 00ec 0E       		.uleb128 0xe
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 38
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 38
 
 
  1196 00ed 3A       		.uleb128 0x3a
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1250 0128 3A       		.uleb128 0x3a
  1251 0129 0B       		.uleb128 0xb
  1252 012a 3B       		.uleb128 0x3b
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 39
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 39
 
 
  1253 012b 0B       		.uleb128 0xb
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1307 000a 04       		.byte	0x4
  1308 000b 00       		.byte	0
  1309 000c 0000     		.2byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 40
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 40
 
 
  1310 000e 0000     		.2byte	0
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1364 0034 0C000000 		.4byte	.LFE9
  1365 0038 00000000 		.4byte	.LFB10
  1366 003c 0C000000 		.4byte	.LFE10
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 41
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 41
 
 
  1367 0040 00000000 		.4byte	.LFB11
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1401      65642069 
  1401      6E7400
  1402              	.LASF27:
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 42
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 42
 
 
  1403 007c 44726976 		.ascii	"Drive_DC_Motor_PWM_ReadStatusRegister\000"
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1423              	.LASF12:
  1424 019e 75696E74 		.ascii	"uint8\000"
  1424      3800
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 43
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 43
 
 
  1425              	.LASF29:
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1445              	.LASF40:
  1446 02b2 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  1446      4320342E 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 44
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 44
 
 
  1446      392E3320 
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1464      5F4D6F74 
  1464      6F725F50 
  1464      574D5F52 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 45
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 45
 
 
  1465              	.LASF34:
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 1
  1490 04b9 44726976 		.ascii	"Drive_DC_Motor_PWM_Start\000"
  1490      655F4443 
  1490      5F4D6F74 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccLE6kWj.s 			page 46
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cc5lx4B7.s 			page 46
 
 
  1490      6F725F50 

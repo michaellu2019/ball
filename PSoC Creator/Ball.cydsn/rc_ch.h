@@ -24,6 +24,8 @@ const int RC_CONNECTION_TIMEOUT;
 const int RC_MAX_VALUE;
 const int RC_MIN_VALUE;
 
+const int RC_CH1_MIN_VALUE;
+
 typedef struct rc_ch {
     uint8 ch_number;
     uint8 connected;

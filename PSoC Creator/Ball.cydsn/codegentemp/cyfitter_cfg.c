@@ -135,25 +135,28 @@ CYPACKED typedef struct
 #define cy_cfg_data_table ((const cy_cfg_addrvalue_t CYFAR *)0x480000A4u)
 
 /* IOPORT_7 Address: CYDEV_PRTDSI_PRT12_BASE Size (bytes): 6 */
-#define BS_IOPORT_7_VAL ((const uint8 CYFAR *)0x48000F90u)
+#define BS_IOPORT_7_VAL ((const uint8 CYFAR *)0x4800109Cu)
+
+/* UDB_1_1_0_CONFIG Address: CYDEV_UCFG_B1_P3_U1_BASE Size (bytes): 128 */
+#define BS_UDB_1_1_0_CONFIG_VAL ((const uint8 CYFAR *)0x480010A4u)
 
 /* UCFG_BCTL0 Address: CYREG_BCTL0_MDCLK_EN Size (bytes): 16 */
-#define BS_UCFG_BCTL0_VAL ((const uint8 CYFAR *)0x48000F98u)
+#define BS_UCFG_BCTL0_VAL ((const uint8 CYFAR *)0x48001124u)
 
 /* IOPINS0_0 Address: CYREG_PRT0_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48000FA8u)
+#define BS_IOPINS0_0_VAL ((const uint8 CYFAR *)0x48001134u)
 
 /* IOPINS0_7 Address: CYREG_PRT12_DR Size (bytes): 10 */
-#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x48000FB0u)
+#define BS_IOPINS0_7_VAL ((const uint8 CYFAR *)0x4800113Cu)
 
 /* IOPINS0_8 Address: CYREG_PRT15_DR Size (bytes): 10 */
-#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x48000FBCu)
+#define BS_IOPINS0_8_VAL ((const uint8 CYFAR *)0x48001148u)
 
 /* IOPINS0_1 Address: CYREG_PRT1_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x48000FC8u)
+#define BS_IOPINS0_1_VAL ((const uint8 CYFAR *)0x48001154u)
 
 /* IOPINS0_2 Address: CYREG_PRT2_DM0 Size (bytes): 8 */
-#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x48000FD0u)
+#define BS_IOPINS0_2_VAL ((const uint8 CYFAR *)0x4800115Cu)
 
 
 /*******************************************************************************
@@ -215,8 +218,10 @@ static void ClockSetup(void)
 	/* Configure Digital Clocks based on settings from Clock DWR */
 	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0), 0x0001u);
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG0_CFG0 + 0x2u), 0x18u);
-	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x5DBFu);
+	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0), 0x000Bu);
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG1_CFG0 + 0x2u), 0x18u);
+	CY_SET_XTND_REG16((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0), 0x5DBFu);
+	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_DCFG2_CFG0 + 0x2u), 0x18u);
 
 	/* Configure ILO based on settings from Clock DWR */
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_SLOWCLK_ILO_CR0), 0x06u);
@@ -252,7 +257,7 @@ static void ClockSetup(void)
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_UCFG), 0x00u);
 	CY_SET_XTND_REG8((void CYFAR *)(CYREG_CLKDIST_LD), 0x02u);
 
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_PM_ACT_CFG2), ((CY_GET_XTND_REG8((void CYFAR *)CYREG_PM_ACT_CFG2) | 0x03u)));
+	CY_SET_XTND_REG8((void CYFAR *)(CYREG_PM_ACT_CFG2), ((CY_GET_XTND_REG8((void CYFAR *)CYREG_PM_ACT_CFG2) | 0x07u)));
 }
 
 
@@ -364,7 +369,8 @@ void cyfitter_cfg(void)
 			{(void CYFAR *)(CYREG_I2C_XCFG), 25u},
 			{(void CYFAR *)(CYREG_PRT3_DR), 64u},
 			{(void CYFAR *)(CYDEV_UCFG_B0_P0_U0_BASE), 4096u},
-			{(void CYFAR *)(CYDEV_UCFG_B1_P2_U0_BASE), 2048u},
+			{(void CYFAR *)(CYDEV_UCFG_B1_P2_U0_BASE), 640u},
+			{(void CYFAR *)(CYDEV_UCFG_B1_P3_ROUTE_BASE), 1280u},
 			{(void CYFAR *)(CYDEV_UCFG_DSI0_BASE), 2560u},
 			{(void CYFAR *)(CYDEV_UCFG_DSI12_BASE), 512u},
 			{(void CYFAR *)(CYREG_BCTL1_MDCLK_EN), 16u},
@@ -373,6 +379,7 @@ void cyfitter_cfg(void)
 		static const cfg_memcpy_t CYCODE cfg_memcpy_list [] = {
 			/* dest, src, size */
 			{(void CYFAR *)(CYDEV_PRTDSI_PRT12_BASE), BS_IOPORT_7_VAL, 6u},
+			{(void CYFAR *)(CYDEV_UCFG_B1_P3_U1_BASE), BS_UDB_1_1_0_CONFIG_VAL, 128u},
 			{(void CYFAR *)(CYREG_BCTL0_MDCLK_EN), BS_UCFG_BCTL0_VAL, 16u},
 		};
 
@@ -413,8 +420,7 @@ void cyfitter_cfg(void)
 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT15_DR), (const void CYFAR *)(BS_IOPINS0_8_VAL), 10u);
 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT1_DM0), (const void CYFAR *)(BS_IOPINS0_1_VAL), 8u);
 	CYCONFIGCPY((void CYFAR *)(CYREG_PRT2_DM0), (const void CYFAR *)(BS_IOPINS0_2_VAL), 8u);
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P4_U1_CFG27), 0x84u);
-	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P7_U0_CFG27), 0x44u);
+	CY_SET_XTND_REG8((void CYFAR *)(CYREG_B0_P4_U0_CFG27), 0x84u);
 	/* Switch Boost to the precision bandgap reference from its internal reference */
 	CY_SET_REG8((void CYXDATA *)CYREG_BOOST_CR2, (CY_GET_REG8((void CYXDATA *)CYREG_BOOST_CR2) | 0x08u));
 

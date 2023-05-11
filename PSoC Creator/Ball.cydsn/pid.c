@@ -57,6 +57,16 @@ void get_pid_output(PID *pid, float setpoint, float value, float tolerance, floa
     } else {
         pid->output = 0.0;
     }
+    
+    #if 0
+    char debug[64] = "";
+    sprintf(debug, "%s %d - %d =", debug, (int) (pid->setpoint * 100), (int) (pid->value * 100));
+    sprintf(debug, "%s %d", debug, (int) (pid->error * 100));
+    sprintf(debug, "%s -> %d", debug, (int) (pid->output));
+    
+    sprintf(debug, "%s\r\n", debug);
+    USBUART_PutString(debug);
+    #endif
 }
 
 void reset_pid_sum_error(PID *pid) {

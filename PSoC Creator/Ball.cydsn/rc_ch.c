@@ -23,6 +23,8 @@ const int RC_CONNECTION_TIMEOUT = 50;
 const int RC_MAX_VALUE = 240;
 const int RC_MIN_VALUE = 0;
 
+const int RC_CH1_MIN_VALUE = 25;
+
 static uint8 isr_rc_ch1_timer_int_flag;
 static uint8 isr_rc_ch2_timer_int_flag;
 static uint8 isr_rc_ch3_timer_int_flag;

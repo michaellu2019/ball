@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 1
 
 
    1              		.syntax unified
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
   29:.\i2cFunctions.c **** *
   30:.\i2cFunctions.c **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH
   31:.\i2cFunctions.c **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 2
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 2
 
 
   32:.\i2cFunctions.c **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
   59:.\i2cFunctions.c ****         MPU6050_I2C_MasterSendRestart(devAddr,1);
   54              		.loc 1 59 0
   55 0016 2046     		mov	r0, r4
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 3
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 3
 
 
   56 0018 0121     		movs	r1, #1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  100              		.thumb_func
  101              		.type	I2CWriteBytes, %function
  102              	I2CWriteBytes:
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 4
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 4
 
 
  103              	.LFB64:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  136 001a FFF7FEFF 		bl	MPU6050_I2C_MasterWriteByte
  137              	.LVL20:
   88:.\i2cFunctions.c ****         i++;
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 5
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 5
 
 
  138              		.loc 1 88 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  178 0004 0122     		movs	r2, #1
  179              	.LVL27:
  180 0006 FFF7FEFF 		bl	I2CReadBytes
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 6
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 6
 
 
  181              	.LVL28:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  110:.\i2cFunctions.c **** void I2CReadBits(uint8_t devAddr, uint8_t regAddr, uint8_t bitStart, \
  111:.\i2cFunctions.c ****                                                 uint8_t length, uint8_t *value) 
  112:.\i2cFunctions.c **** {
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 7
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 7
 
 
  227              		.loc 1 112 0
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  273              		.cfi_startproc
  274              		@ args = 0, pretend = 0, frame = 0
  275              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 8
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 8
 
 
  276              	.LVL36:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  323 000c FFF7FEFF 		bl	I2CWriteBytes
  324              	.LVL41:
  128:.\i2cFunctions.c **** }
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 9
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 9
 
 
  325              		.loc 1 128 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  136:.\i2cFunctions.c **** 	value <<= (bitStart - length + 1);
  372              		.loc 1 136 0
  373 0022 9DF82020 		ldrb	r2, [sp, #32]	@ zero_extendqisi2
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 10
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 10
 
 
  374 0026 AA40     		lsls	r2, r2, r5
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  420              		.cfi_def_cfa_offset 32
  421 0004 0546     		mov	r5, r0
  422 0006 0C46     		mov	r4, r1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 11
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 11
 
 
  423 0008 1646     		mov	r6, r2
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  472              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
  473              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
  474              		.file 6 "Generated_Source\\PSoC5/MPU6050_I2C.h"
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 12
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 12
 
 
  475              		.section	.debug_info,"",%progbits
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  529 006e 07       		.byte	0x7
  530 006f 27020000 		.4byte	.LASF9
  531 0073 04       		.uleb128 0x4
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 13
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 13
 
 
  532 0074 04       		.byte	0x4
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  586 00e4 7B000000 		.4byte	.LASF19
  587 00e8 01       		.byte	0x1
  588 00e9 2F       		.byte	0x2f
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 14
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 14
 
 
  589 00ea 81000000 		.4byte	0x81
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  643 015a 01       		.uleb128 0x1
  644 015b 31       		.byte	0x31
  645 015c 0A       		.uleb128 0xa
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 15
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 15
 
 
  646 015d 01       		.uleb128 0x1
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  700 01cc 07       		.uleb128 0x7
  701 01cd 3D030000 		.4byte	.LASF20
  702 01d1 01       		.byte	0x1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 16
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 16
 
 
  703 01d2 49       		.byte	0x49
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  757 024b 01       		.byte	0x1
  758 024c 64       		.byte	0x64
  759 024d 81000000 		.4byte	0x81
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 17
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 17
 
 
  760 0251 82010000 		.4byte	.LLST10
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  814 02c6 BF000000 		.4byte	0xbf
  815 02ca 0A       		.uleb128 0xa
  816 02cb 01       		.uleb128 0x1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 18
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 18
 
 
  817 02cc 53       		.byte	0x53
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  871 033b 01       		.byte	0x1
  872 033c 71       		.byte	0x71
  873 033d 81000000 		.4byte	0x81
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 19
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 19
 
 
  874 0341 B6020000 		.4byte	.LLST19
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  928 03b6 00       		.byte	0
  929 03b7 00       		.byte	0
  930 03b8 06       		.uleb128 0x6
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 20
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 20
 
 
  931 03b9 A8000000 		.4byte	.LASF30
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  985 042b 82       		.byte	0x82
  986 042c 81000000 		.4byte	0x81
  987 0430 B7030000 		.4byte	.LLST27
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 21
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 21
 
 
  988 0434 07       		.uleb128 0x7
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1042 04a4 0A       		.uleb128 0xa
  1043 04a5 01       		.uleb128 0x1
  1044 04a6 50       		.byte	0x50
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 22
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 22
 
 
  1045 04a7 02       		.uleb128 0x2
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1099 0504 8F       		.byte	0x8f
  1100 0505 81000000 		.4byte	0x81
  1101 0509 C5040000 		.4byte	.LLST35
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 23
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 23
 
 
  1102 050d 07       		.uleb128 0x7
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1156 055f 12       		.uleb128 0x12
  1157 0560 B5000000 		.4byte	.LASF33
  1158 0564 05       		.byte	0x5
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 24
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 24
 
 
  1159 0565 9606     		.2byte	0x696
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1213 05e4 06       		.byte	0x6
  1214 05e5 B5       		.byte	0xb5
  1215 05e6 97000000 		.4byte	0x97
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 25
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 25
 
 
  1216 05ea 00       		.byte	0
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1270 0033 08       		.uleb128 0x8
  1271 0034 00       		.byte	0
  1272 0035 00       		.byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 26
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 26
 
 
  1273 0036 05       		.uleb128 0x5
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1327 006d 34       		.uleb128 0x34
  1328 006e 00       		.byte	0
  1329 006f 03       		.uleb128 0x3
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 27
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 27
 
 
  1330 0070 08       		.uleb128 0x8
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1384 00af 31       		.uleb128 0x31
  1385 00b0 13       		.uleb128 0x13
  1386 00b1 00       		.byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 28
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 28
 
 
  1387 00b2 00       		.byte	0
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1441 00e9 02       		.uleb128 0x2
  1442 00ea 17       		.uleb128 0x17
  1443 00eb 00       		.byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 29
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 29
 
 
  1444 00ec 00       		.byte	0
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1498 0122 18       		.uleb128 0x18
  1499 0123 00       		.byte	0
  1500 0124 00       		.byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 30
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 30
 
 
  1501 0125 15       		.uleb128 0x15
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1555 000a 50       		.byte	0x50
  1556 000b 0F000000 		.4byte	.LVL3-1
  1557 000f 44000000 		.4byte	.LFE63
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 31
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 31
 
 
  1558 0013 0400     		.2byte	0x4
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1612              	.LLST4:
  1613 0097 0A000000 		.4byte	.LVL1
  1614 009b 22000000 		.4byte	.LVL6
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 32
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 32
 
 
  1615 009f 0200     		.2byte	0x2
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1669 0120 24000000 		.4byte	.LVL23
  1670 0124 0100     		.2byte	0x1
  1671 0126 54       		.byte	0x54
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 33
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 33
 
 
  1672 0127 26000000 		.4byte	.LVL24
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1726 01b6 0400     		.2byte	0x4
  1727 01b8 F3       		.byte	0xf3
  1728 01b9 01       		.uleb128 0x1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 34
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 34
 
 
  1729 01ba 51       		.byte	0x51
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1783 023c 50       		.byte	0x50
  1784 023d 17000000 		.4byte	.LVL34-1
  1785 0241 22000000 		.4byte	.LFE67
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 35
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 35
 
 
  1786 0245 0400     		.2byte	0x4
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1840 02c1 00000000 		.4byte	0
  1841 02c5 00000000 		.4byte	0
  1842              	.LLST20:
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 36
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 36
 
 
  1843 02c9 00000000 		.4byte	.LVL36
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1897 034e 0F000000 		.4byte	.LVL41-1
  1898 0352 0100     		.2byte	0x1
  1899 0354 50       		.byte	0x50
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 37
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 37
 
 
  1900 0355 0F000000 		.4byte	.LVL41-1
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  1954              	.LLST28:
  1955 03d8 00000000 		.4byte	.LVL42
  1956 03dc 21000000 		.4byte	.LVL45-1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 38
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 38
 
 
  1957 03e0 0100     		.2byte	0x1
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  2011 0461 00000000 		.4byte	0
  2012              	.LLST32:
  2013 0465 1A000000 		.4byte	.LVL44
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 39
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 39
 
 
  2014 0469 2C000000 		.4byte	.LVL47
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  2068 04ee 0100     		.2byte	0x1
  2069 04f0 53       		.byte	0x53
  2070 04f1 13000000 		.4byte	.LVL52-1
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 40
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 40
 
 
  2071 04f5 40000000 		.4byte	.LFE71
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  2125 0040 00000000 		.4byte	.LFB71
  2126 0044 40000000 		.4byte	.LFE71
  2127 0048 00000000 		.4byte	0
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 41
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 41
 
 
  2128 004c 00000000 		.4byte	0
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  2155      64647200 
  2156              	.LASF7:
  2157 0083 6C6F6E67 		.ascii	"long unsigned int\000"
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 42
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 42
 
 
  2157      20756E73 
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  2177              	.LASF39:
  2178 018c 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
  2178      4320342E 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 43
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 43
 
 
  2178      392E3320 
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 1
  2197              	.LASF8:
  2198 02a9 6C6F6E67 		.ascii	"long long int\000"
  2198      206C6F6E 
-ARM GAS  C:\Users\Michael\AppData\Local\Temp\ccKooXD9.s 			page 44
+ARM GAS  C:\Users\Michael\AppData\Local\Temp\cccswm96.s 			page 44
 
 
  2198      6720696E 
