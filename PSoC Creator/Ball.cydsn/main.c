@@ -65,7 +65,7 @@ int main()
     PID pitch_stabilizer_pid;
     construct_pid(&pitch_stabilizer_pid, 40.0, 0.0, 7.5);
     PID roll_stabilizer_pid;
-    construct_pid(&roll_stabilizer_pid, 3.0, 0.0, 0.5);
+    construct_pid(&roll_stabilizer_pid, 3.0, 0.0, 0.0);
     typedef enum roll_stabilizer_state { IDLE, PUSH, PULL } ROLL_STABILIZER_STATE;
     ROLL_STABILIZER_STATE pendulum_stabilizer_state = IDLE;
     uint32 pendulum_stabilizer_time_ms = MILLISECONDS;
@@ -101,7 +101,7 @@ int main()
         float dt = (float) (MILLISECONDS - prev_time_ms);
         prev_time_ms = MILLISECONDS;
         
-        if (rc_ch2.value == 0 || abs(rc_ch1.value) < RC_CH1_MIN_VALUE) {
+        if (rc_ch2.value == 0 && abs(rc_ch1.value) < RC_CH1_MIN_VALUE) {
             get_imu_values(&imu);
             /*if (fabs(imu.ax[0]) < 1.0 && fabs(imu.ay[0]) < 1.0 && fabs(imu.az[0]) < 1.0) {
                 Status_LED_Write(1);
@@ -142,26 +142,29 @@ int main()
             set_dc_motor_pos(&pendulum_dc_motor, pendulum_angle, dt, BANG_BANG_CONTROLLER);
             pendulum_stabilizer_state = IDLE;
         } else {
-            if (fabs(imu.roll) < IMU_TILT_TOLERANCE * 2) {
+            if (fabs(imu.roll) < IMU_TILT_TOLERANCE * 1.7) {
+                Status_LED_Write(0);
+                pendulum_dc_motor_pid.kp = 30.0;
                 set_dc_motor_pos(&pendulum_dc_motor, 0, dt, BANG_BANG_CONTROLLER);
                 pendulum_stabilizer_state = IDLE;
                 pendulum_stabilizer_time_ms = MILLISECONDS;
-            } else if (pendulum_stabilizer_state == IDLE && fabs(imu.roll) > IMU_TILT_TOLERANCE * 2) {
+            } else if (pendulum_stabilizer_state == IDLE && fabs(imu.roll) > IMU_TILT_TOLERANCE * 1.7) {
                 pendulum_stabilizer_state = PUSH;
-                int pendulum_motor_pwm = 40.0 * imu.roll/fabs(imu.roll);
-                set_dc_motor_pwm(&pendulum_dc_motor, pendulum_motor_pwm);
-                Status_LED_Write(1);
-                //set_dc_motor_pos(&pendulum_dc_motor, -imu.roll * 1.1, dt, BANG_BANG_CONTROLLER);
+                //int sign = imu.roll < 0 ? -1 : 1;
+                //int pendulum_motor_pwm = 40 * sign;
+                //set_dc_motor_pwm(&pendulum_dc_motor, pendulum_motor_pwm);
+                set_dc_motor_pos(&pendulum_dc_motor, imu.roll * 1.1, dt, BANG_BANG_CONTROLLER);
                 /*float setpoint = imu.roll * 1.1;
                 get_pid_output(&roll_stabilizer_pid, setpoint, imu.roll, IMU_TILT_TOLERANCE, dt);
                 int pendulum_dc_motor_pwm = (int) -roll_stabilizer_pid.output;
                 set_dc_motor_pwm(&pendulum_dc_motor, pendulum_dc_motor_pwm);*/
                 Status_LED_Write(1);
             } else if (pendulum_stabilizer_state == PUSH && MILLISECONDS - pendulum_stabilizer_time_ms > 50) {
-                Status_LED_Write(0);
+                Status_LED_Write(1);
                 pendulum_stabilizer_state = PULL;
-                pendulum_dc_motor_pid.kp = 30.0;
-                set_dc_motor_pos(&pendulum_dc_motor, 0, dt, BANG_BANG_CONTROLLER);
+                pendulum_dc_motor_pid.kp = 18.0;
+                pendulum_dc_motor_pid.kd = 15.0;
+                set_dc_motor_pos(&pendulum_dc_motor, 0, dt, PID_CONTROLLER);
                 /*float setpoint = 0.0;
                 get_pid_output(&roll_stabilizer_pid, setpoint, imu.roll, IMU_TILT_TOLERANCE, dt);
                 int pendulum_dc_motor_pwm = (int) -roll_stabilizer_pid.output;

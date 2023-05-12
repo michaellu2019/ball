@@ -120,6 +120,16 @@ void set_dc_motor_pos(DC_MOTOR *dc_motor, float target_pos, float dt, uint8 cont
             } else {
                 set_dc_motor_pwm(dc_motor, 0);
             }
+        } else if (controller == PID_CONTROLLER) {
+            get_dc_motor_pos(dc_motor);
+            get_pid_output(dc_motor->pid, target_pos, dc_motor->pos, DC_MOTOR_POS_TOLERANCE, dt);
+            int pwm = (int) dc_motor->pid->output;
+            
+            if (abs(pwm) < 20) {
+                set_dc_motor_pwm(dc_motor, 0);
+            } else {
+                set_dc_motor_pwm(dc_motor, pwm);
+            }
         }
     }
 }
