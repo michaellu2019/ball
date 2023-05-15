@@ -123,7 +123,7 @@ int main()
             set_dc_motor_pwm(&drive_dc_motor, rc_ch2.value);
             
             get_dc_motor_pos(&drive_dc_motor);
-            if ((int) drive_dc_motor.pos % 360 < 20) {
+            if ((int) drive_dc_motor.pos % (int) (360 * 1.0/0.508) < 20) {
                 Status_LED_Write(1);
             } else {
                 Status_LED_Write(0);
@@ -142,8 +142,12 @@ int main()
             set_dc_motor_pos(&pendulum_dc_motor, pendulum_angle, dt, BANG_BANG_CONTROLLER);
             pendulum_stabilizer_state = IDLE;
         } else {
+            float setpoint = 0.0;
+            set_dc_motor_pos(&pendulum_dc_motor, setpoint, dt, BANG_BANG_CONTROLLER);
+            
+            #if 0
             if (fabs(imu.roll) < IMU_TILT_TOLERANCE * 1.7) {
-                Status_LED_Write(0);
+                //Status_LED_Write(0);
                 pendulum_dc_motor_pid.kp = 30.0;
                 set_dc_motor_pos(&pendulum_dc_motor, 0, dt, BANG_BANG_CONTROLLER);
                 pendulum_stabilizer_state = IDLE;
@@ -160,7 +164,7 @@ int main()
                 set_dc_motor_pwm(&pendulum_dc_motor, pendulum_dc_motor_pwm);*/
                 Status_LED_Write(1);
             } else if (pendulum_stabilizer_state == PUSH && MILLISECONDS - pendulum_stabilizer_time_ms > 50) {
-                Status_LED_Write(1);
+                //Status_LED_Write(1);
                 pendulum_stabilizer_state = PULL;
                 pendulum_dc_motor_pid.kp = 18.0;
                 pendulum_dc_motor_pid.kd = 15.0;
@@ -169,12 +173,13 @@ int main()
                 get_pid_output(&roll_stabilizer_pid, setpoint, imu.roll, IMU_TILT_TOLERANCE, dt);
                 int pendulum_dc_motor_pwm = (int) -roll_stabilizer_pid.output;
                 set_dc_motor_pwm(&pendulum_dc_motor, pendulum_dc_motor_pwm);*/
-            }
+            }*/
             
             /*float setpoint = 0.0;
             get_pid_output(&roll_stabilizer_pid, setpoint, imu.roll, IMU_TILT_TOLERANCE, dt);
             int pendulum_dc_motor_pwm = (int) -roll_stabilizer_pid.output;
             set_dc_motor_pwm(&pendulum_dc_motor, pendulum_dc_motor_pwm);*/
+            #endif
         }
         
         // Flywheel Channel/Motor

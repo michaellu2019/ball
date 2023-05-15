@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Ball-000\Ball\Source Files\rc_ch.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Ball-000\Ball\Generated_Source">
 <ExpandedNodeIds>
 <v>Ball-000</v>
 <v>Ball-000\Ball</v>
@@ -38,7 +38,6 @@
 <v>Ball-000\Ball\Source Files\pid.c</v>
 <v>Ball-000\Ball\Source Files\rc_ch.c</v>
 <v>Ball-000\Ball\Source Files\servo.c</v>
-<v>Ball-000\Ball\Generated_Source</v>
 <v>Ball-000\Ball\Generated_Source\PSoC5</v>
 <v>Ball-000\Ball\Generated_Source\PSoC5\Clock</v>
 <v>Ball-000\Ball\Generated_Source\PSoC5\Clock\Clock.c</v>
@@ -297,29 +296,6 @@
 <v>Ball-000\Ball\Source Files\rc_ch.c</v>
 <v>Ball-000\Ball\Source Files\servo.c</v>
 <v>Ball-000\Ball\Generated_Source</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock\Clock.c</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock\Clock.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_1</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_1\Clock_1.c</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_1\Clock_1.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_Millis</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_Millis\Clock_Millis.c</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_Millis\Clock_Millis.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_Millis_Interrupt</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_Millis_Interrupt\Clock_Millis_Interrupt.c</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Clock_Millis_Interrupt\Clock_Millis_Interrupt.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\cy_boot</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_A</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_A\Drive_DC_Motor_Enc_A.c</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_A\Drive_DC_Motor_Enc_A.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_A\Drive_DC_Motor_Enc_A_aliases.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_B</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_B\Drive_DC_Motor_Enc_B.c</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_B\Drive_DC_Motor_Enc_B.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_Enc_B\Drive_DC_Motor_Enc_B_aliases.h</v>
-<v>Ball-000\Ball\Generated_Source\PSoC5\Drive_DC_Motor_In1</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -566,8 +542,6 @@
 <name v=".\Ball.cydwr" />
 <name v=".\TopDesign\TopDesign.cysch" />
 <name v=".\main.c" />
-<name v=".\pid.c" />
-<name v=".\dc_motor.c" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
