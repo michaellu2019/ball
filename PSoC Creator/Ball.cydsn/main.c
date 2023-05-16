@@ -51,6 +51,7 @@ int main()
     
     init_milliseconds();
     uint32 prev_time_ms = MILLISECONDS;
+    uint32 prev_log_time_ms = MILLISECONDS;
     
     Status_LED_Write(0);
     
@@ -101,7 +102,7 @@ int main()
         float dt = (float) (MILLISECONDS - prev_time_ms);
         prev_time_ms = MILLISECONDS;
         
-        if (rc_ch2.value == 0 && abs(rc_ch1.value) < RC_CH1_MIN_VALUE) {
+        if (rc_ch2.value == 0/* && abs(rc_ch1.value) < RC_CH1_MIN_VALUE*/) {
             get_imu_values(&imu);
             /*if (fabs(imu.ax[0]) < 1.0 && fabs(imu.ay[0]) < 1.0 && fabs(imu.az[0]) < 1.0) {
                 Status_LED_Write(1);
@@ -129,6 +130,7 @@ int main()
                 Status_LED_Write(0);
             }
         } else {
+            //set_dc_motor_pwm(&drive_dc_motor, 0);
             float setpoint = 0.0;
             get_pid_output(&pitch_stabilizer_pid, setpoint, imu.pitch, IMU_TILT_TOLERANCE, dt);
             int drive_dc_motor_pwm = (int) pitch_stabilizer_pid.output;
@@ -191,7 +193,7 @@ int main()
         
         // Head Channel/Servo
         if (rc_ch3.connected && rc_ch3.value != 0) {
-            uint8 head_servo_pos = (rc_ch3.value * 90)/(RC_MAX_VALUE) + 90;
+            uint8 head_servo_pos = (rc_ch3.value * 50/*90*/)/(RC_MAX_VALUE) + 90;
             set_servo_pos(&head_servo, head_servo_pos);
         } else {
             set_servo_pos(&head_servo, 90);
@@ -220,6 +222,19 @@ int main()
             sprintf(debug, "%s\r\n", debug);
             USBUART_PutString(debug);
         }
+        #endif
+        
+        #if 0
+            if (MILLISECONDS - prev_log_time_ms > 10) {
+                char debug[64] = "";
+                
+                sprintf(debug, "%ld,%d", MILLISECONDS, (int) (imu.pitch * 1));
+                
+                sprintf(debug, "%s\r\n", debug);
+                USBUART_PutString(debug);
+                
+                prev_log_time_ms = MILLISECONDS;
+            }
         #endif
     }
 }
