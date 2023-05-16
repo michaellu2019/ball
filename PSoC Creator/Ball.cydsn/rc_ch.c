@@ -34,6 +34,8 @@ static volatile uint32 isr_rc_ch2_timer_count;
 static volatile uint32 isr_rc_ch3_timer_count;
 static volatile uint32 isr_rc_ch4_timer_count;
 
+// interrupt service routines to read the RC timer registers 
+// and count the number of high values
 CY_ISR(RC_Ch1_Timer_ISR_Handler)
 {
     isr_rc_ch1_timer_int_flag = RC_Ch1_Timer_ReadStatusRegister();    
@@ -82,6 +84,7 @@ CY_ISR(RC_Ch4_Timer_ISR_Handler)
     RC_Ch4_Timer_WriteCounter(RC_TIMER_PERIOD);
 }
 
+// initialize all PSoC components for reading RC channels
 void init_rc_channels() {
     RC_Ch1_Timer_Interrupt_StartEx(RC_Ch1_Timer_ISR_Handler);
     RC_Ch1_Timer_Start();
@@ -93,6 +96,7 @@ void init_rc_channels() {
     RC_Ch4_Timer_Start();
 }
 
+// construct an RC channel struct object
 void construct_rc_ch(RC_CH* rc_ch, uint8 ch_number) {
     rc_ch->ch_number = ch_number;
     rc_ch->connected = 0;
@@ -101,6 +105,7 @@ void construct_rc_ch(RC_CH* rc_ch, uint8 ch_number) {
     rc_ch->last_timer_count = 0;
 }
 
+// get the duty cycle count of an RC channel
 void get_rc_ch_value(RC_CH* rc_ch) {
     uint8 isr_rc_timer_int_flag = rc_ch->ch_number == 1 ? isr_rc_ch1_timer_int_flag :
                                   rc_ch->ch_number == 2 ? isr_rc_ch2_timer_int_flag :
@@ -116,6 +121,9 @@ void get_rc_ch_value(RC_CH* rc_ch) {
                              rc_ch->ch_number == 2 ? RC_Ch2_Read() :
                              rc_ch->ch_number == 3 ? RC_Ch3_Read() :
                                                      RC_Ch4_Read();
+    
+    // failsafe so that if the rc channel is disconnected, i.e. no value for a while
+    // shut off the channel so the motor stops running and nobody dies
     if (rc_ch_read_value) {
         rc_ch->last_connected = MILLISECONDS;
         rc_ch->connected = 1;
@@ -125,6 +133,7 @@ void get_rc_ch_value(RC_CH* rc_ch) {
         }
     }
     
+    // if the RC  channel is connected, remap the duty cycle count value to an integer between -255 and 255
     if (rc_ch->connected && isr_rc_timer_int_flag) {
         uint32 rc_ch_timer_count = (isr_rc_timer_count < RC_TIMER_MIN_VALUE || 
                                     isr_rc_timer_count > RC_TIMER_MAX_VALUE) ? 

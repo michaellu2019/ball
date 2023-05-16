@@ -16,6 +16,7 @@
 const float IMU_SCALE = 1600.0;
 const float IMU_TILT_TOLERANCE = 6.0;
 
+// initialize all PSoC components for the IMU
 void init_imu() {
     MPU6050_I2C_Start();
     MPU6050_init();
@@ -23,6 +24,7 @@ void init_imu() {
     MPU6050_setDLPFMode(IMU_DLP_MODE);
 }
 
+// construct an IMU object with the specified parameters
 void construct_imu(IMU* imu) {
     int i;
     for (i = 0; i < NUM_IMU_AVG_SAMPLES; i++) {
@@ -34,11 +36,13 @@ void construct_imu(IMU* imu) {
     imu->a = 0.9;
 }
 
+// get the IMU acceleration values and calculate the roll and pitch angle
 void get_imu_values(IMU* imu) {
     int16 ax, ay, az;
     int16 gx, gy, gz;
     MPU6050_getMotion6(&ay, &ax, &az, &gx, &gy, &gz);
     
+    // compute a running average of 4 samples to smooth out the data
     int i;
     float sum_ax = 0.0;
     float sum_ay = 0.0;
@@ -56,6 +60,9 @@ void get_imu_values(IMU* imu) {
     imu->ay[0] = (sum_ay + ay/IMU_SCALE)/NUM_IMU_AVG_SAMPLES;
     imu->az[0] = (sum_az + az/IMU_SCALE)/NUM_IMU_AVG_SAMPLES;
     
+    // compute the roll and pitch angle of the IMU from the acceleration values
+    // as there will always be an acceleration vector pointing towards the core of the earth
+    // at 9.8 m/s^2
     imu->roll = atan2(imu->az[0], imu->ay[0]) * (180.0/M_PI) + 90.0;
     imu->pitch = atan2(imu->az[0], imu->ax[0]) * (180.0/M_PI) + 90.0;
 }

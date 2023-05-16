@@ -12,15 +12,18 @@
 #include "project.h"
 #include "servo.h"
 
+// initialize all PSoC components for servos
 void init_servos() {
     Head_Servo_PWM_Start();
 }
 
+// construct a servo struct object
 void construct_servo(SERVO *servo, uint8 id, int8 init_pos) {
     servo->id = id;
     set_servo_pos(servo, init_pos);
 }
 
+// write a PWM value to the servo based on the provided position
 void set_servo_pos(SERVO *servo, int16 pos) {
     servo->pos = pos;
     if (servo->id == HEAD_SERVO) {
